@@ -1,5 +1,5 @@
 # ProjectDatabases
-Gemaakt door Tim Roffelsen, Ruben Stoop en Thomas Eddyson
+Gemaakt door Tim Roffelsen, Ruben Stoop, Thomas Eddyson en Thang Nguyen Anh
 
 * 15-02-2021
 
