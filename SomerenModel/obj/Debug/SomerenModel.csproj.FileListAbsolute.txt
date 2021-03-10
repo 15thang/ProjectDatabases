@@ -20,3 +20,9 @@ C:\Users\thoma\OneDrive\Bureaublad\Someren1920F\SomerenModel\obj\Debug\SomerenMo
 C:\Users\thoma\OneDrive\Bureaublad\Someren1920F\SomerenModel\obj\Debug\SomerenModel.csproj.CoreCompileInputs.cache
 C:\Users\thoma\OneDrive\Bureaublad\Someren1920F\SomerenModel\obj\Debug\SomerenModel.dll
 C:\Users\thoma\OneDrive\Bureaublad\Someren1920F\SomerenModel\obj\Debug\SomerenModel.pdb
+C:\Users\thoma\OneDrive\Inholland\Git\ProjectDatabases\SomerenModel\bin\Debug\SomerenModel.dll
+C:\Users\thoma\OneDrive\Inholland\Git\ProjectDatabases\SomerenModel\bin\Debug\SomerenModel.pdb
+C:\Users\thoma\OneDrive\Inholland\Git\ProjectDatabases\SomerenModel\obj\Debug\SomerenModel.csprojAssemblyReference.cache
+C:\Users\thoma\OneDrive\Inholland\Git\ProjectDatabases\SomerenModel\obj\Debug\SomerenModel.csproj.CoreCompileInputs.cache
+C:\Users\thoma\OneDrive\Inholland\Git\ProjectDatabases\SomerenModel\obj\Debug\SomerenModel.dll
+C:\Users\thoma\OneDrive\Inholland\Git\ProjectDatabases\SomerenModel\obj\Debug\SomerenModel.pdb

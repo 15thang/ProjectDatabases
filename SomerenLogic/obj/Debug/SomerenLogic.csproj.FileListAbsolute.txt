@@ -40,3 +40,15 @@ C:\Users\thoma\OneDrive\Bureaublad\Someren1920F\SomerenLogic\obj\Debug\SomerenLo
 C:\Users\thoma\OneDrive\Bureaublad\Someren1920F\SomerenLogic\obj\Debug\SomerenLogic.csproj.CopyComplete
 C:\Users\thoma\OneDrive\Bureaublad\Someren1920F\SomerenLogic\obj\Debug\SomerenLogic.dll
 C:\Users\thoma\OneDrive\Bureaublad\Someren1920F\SomerenLogic\obj\Debug\SomerenLogic.pdb
+C:\Users\thoma\OneDrive\Inholland\Git\ProjectDatabases\SomerenLogic\bin\Debug\SomerenLogic.dll
+C:\Users\thoma\OneDrive\Inholland\Git\ProjectDatabases\SomerenLogic\bin\Debug\SomerenLogic.pdb
+C:\Users\thoma\OneDrive\Inholland\Git\ProjectDatabases\SomerenLogic\bin\Debug\SomerenDAL.dll
+C:\Users\thoma\OneDrive\Inholland\Git\ProjectDatabases\SomerenLogic\bin\Debug\SomerenModel.dll
+C:\Users\thoma\OneDrive\Inholland\Git\ProjectDatabases\SomerenLogic\bin\Debug\SomerenDAL.pdb
+C:\Users\thoma\OneDrive\Inholland\Git\ProjectDatabases\SomerenLogic\bin\Debug\SomerenDAL.dll.config
+C:\Users\thoma\OneDrive\Inholland\Git\ProjectDatabases\SomerenLogic\bin\Debug\SomerenModel.pdb
+C:\Users\thoma\OneDrive\Inholland\Git\ProjectDatabases\SomerenLogic\obj\Debug\SomerenLogic.csprojAssemblyReference.cache
+C:\Users\thoma\OneDrive\Inholland\Git\ProjectDatabases\SomerenLogic\obj\Debug\SomerenLogic.csproj.CoreCompileInputs.cache
+C:\Users\thoma\OneDrive\Inholland\Git\ProjectDatabases\SomerenLogic\obj\Debug\SomerenLogic.csproj.CopyComplete
+C:\Users\thoma\OneDrive\Inholland\Git\ProjectDatabases\SomerenLogic\obj\Debug\SomerenLogic.dll
+C:\Users\thoma\OneDrive\Inholland\Git\ProjectDatabases\SomerenLogic\obj\Debug\SomerenLogic.pdb
