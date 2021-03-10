@@ -146,7 +146,7 @@ namespace SomerenUI
                 listViewRooms.Columns.Add("Capacity", 120);
 
                 foreach (SomerenModel.Room r in roomList)
-                {
+                {                    
 
                     //Add items in the listview
                     string[] arr = new string[4];

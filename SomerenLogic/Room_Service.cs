@@ -28,7 +28,7 @@ namespace SomerenLogic
                 Room a = new Room();
                 a.Number = 0;
                 a.Capacity = 404;
-                a.Type = true;
+                a.Type = "Docent";
                 room.Add(a);
 
                 return room;

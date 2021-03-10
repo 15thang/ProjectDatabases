@@ -12,6 +12,7 @@ namespace SomerenDAL
 {
     public class Room_DAO : Base
     {
+        string roomType;
 
         public List<Room> Db_Get_All_Rooms()
         {            
@@ -22,14 +23,24 @@ namespace SomerenDAL
 
         private List<Room> ReadTables(DataTable dataTable)
         {
-            List<Room> Rooms = new List<Room>();
+            List<Room> Rooms = new List<Room>();            
 
             foreach (DataRow dr in dataTable.Rows)
-            {                
+            {
+                // hacking way. Not Good.
+                if ((bool)dr["isDocentenKamer"] == true)
+                {
+                    roomType = "docent";
+                }
+                else
+                {
+                    roomType = "Student";
+                }
+
                 Room room = new Room()
                 {
                     Number = (int)dr["KamerID"],
-                    Type = (bool)dr["isDocentenKamer"],
+                    Type = roomType,
                     Capacity = (int)dr["KamerType"]
                 };
                 Rooms.Add(room);
