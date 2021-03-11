@@ -124,7 +124,7 @@ namespace SomerenUI
                 pnl_Teachers.Hide();
                 pnl_Students.Hide();
 
-                // show students
+                // show room
                 pnl_Rooms.Show();
 
 

@@ -27,10 +27,13 @@ namespace SomerenDAL
 
             foreach (DataRow dr in dataTable.Rows)
             {
-                // hacking way. Not Good.
+                // Hacking way. Not Good. - Thomas
+                // Better way. make new table in database with a columns bool and string and use that for type. - Thomas
+                // Team is ok with how this works. - Thomas
+                // Takes the result from sql query to determine result of string 'roomtype'. - Thomas
                 if ((bool)dr["isDocentenKamer"] == true)
                 {
-                    roomType = "docent";
+                    roomType = "Docent";
                 }
                 else
                 {
