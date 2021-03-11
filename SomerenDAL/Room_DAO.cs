@@ -12,8 +12,6 @@ namespace SomerenDAL
 {
     public class Room_DAO : Base
     {
-        string roomType;
-
         public List<Room> Db_Get_All_Rooms()
         {            
             string query = "SELECT Kamer.KamerID, Kamer.isDocentenKamer, kamer.KamerType FROM Kamer";
