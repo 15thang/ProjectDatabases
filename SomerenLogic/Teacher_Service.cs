@@ -13,6 +13,8 @@ namespace SomerenLogic
     {
         Teacher_DAO teacher_db = new Teacher_DAO();
 
+        // Tim Roffelsen
+        // The logic layer fetches the list with students, if something goes wrong a test user is made
         public List<Teacher> GetTeachers()
         {
             try
@@ -27,7 +29,7 @@ namespace SomerenLogic
                 List <Teacher> teachers = new List<Teacher>();
                 Teacher a = new Teacher();
                 a.FirstName = "Mr. Test";
-                a.LastName = "teacher";
+                a.LastName = "Teacher";
                 a.TeacherID = 474791;
                 a.PersonID = 100;
                 teachers.Add(a);

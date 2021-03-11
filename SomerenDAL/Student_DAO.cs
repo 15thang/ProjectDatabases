@@ -13,8 +13,8 @@ namespace SomerenDAL
     public class Student_DAO : Base
     {
 
-        //Ruben Stoop
-        //Hier wordt de query geschreven. We maken gebruik van een inner join omdat de meeste gegevens van de student staan opgeslagen in de Persoon tabel.
+        // Ruben Stoop
+        // Data gets pulled from the database by the query, INNER JOIN is used to get data from 'Persoon' table
         public List<Student> Db_Get_All_Students()
         {
             string query = "SELECT Student.StudentID, Persoon.Voornaam, Persoon.Achternaam FROM [Student] INNER JOIN[Persoon] ON Student.PersoonID = Persoon.PersoonID;";
@@ -22,8 +22,8 @@ namespace SomerenDAL
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
 
-        //Ruben Stoop
-        //De data die de database terug geeft wordt hier in een list opgeslagen.
+        // Ruben Stoop
+        // The returned data gets saved in a list
         private List<Student> ReadTables(DataTable dataTable)
         {
             List<Student> students = new List<Student>();
@@ -33,7 +33,6 @@ namespace SomerenDAL
                     Student student = new Student()
                     {
                         StudentID = (int)dr["StudentID"],
-
                         FirstName = (String)dr["Voornaam"],
                         LastName = (String)dr["Achternaam"],
                     };

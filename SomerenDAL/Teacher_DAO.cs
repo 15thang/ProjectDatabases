@@ -12,7 +12,8 @@ namespace SomerenDAL
 {
     public class Teacher_DAO : Base
     {
-      
+        // Tim Roffelsen
+        // Data gets pulled from the database by the query, INNER JOIN is used to get data from 'Persoon' table
         public List<Teacher> Db_Get_All_Teachers()
         {
             string query = "SELECT Docent.DocentID, Persoon.Voornaam, Persoon.Achternaam FROM [Docent] INNER JOIN[Persoon] ON Docent.PersoonID = Persoon.PersoonID;";
@@ -20,6 +21,8 @@ namespace SomerenDAL
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
 
+        // Tim Roffelsen
+        // The returned data gets saved in a list
         private List<Teacher> ReadTables(DataTable dataTable)
         {
             List<Teacher> teachers = new List<Teacher>();

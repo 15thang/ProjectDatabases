@@ -9,6 +9,5 @@ namespace SomerenModel
     public class Student : Person
     { 
         public int StudentID { get; set; } // StudentNumber, e.g. 474791
-
     }
 }

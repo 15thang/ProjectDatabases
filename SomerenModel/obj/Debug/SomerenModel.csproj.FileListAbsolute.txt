@@ -32,3 +32,9 @@ C:\Users\nebur\Source\Repos\15thang\ProjectDatabases\SomerenModel\obj\Debug\Some
 C:\Users\nebur\Source\Repos\15thang\ProjectDatabases\SomerenModel\obj\Debug\SomerenModel.csproj.CoreCompileInputs.cache
 C:\Users\nebur\Source\Repos\15thang\ProjectDatabases\SomerenModel\obj\Debug\SomerenModel.dll
 C:\Users\nebur\Source\Repos\15thang\ProjectDatabases\SomerenModel\obj\Debug\SomerenModel.pdb
+C:\Users\Tim\Documents\GitHub\ProjectDatabases\SomerenModel\bin\Debug\SomerenModel.dll
+C:\Users\Tim\Documents\GitHub\ProjectDatabases\SomerenModel\bin\Debug\SomerenModel.pdb
+C:\Users\Tim\Documents\GitHub\ProjectDatabases\SomerenModel\obj\Debug\SomerenModel.csprojAssemblyReference.cache
+C:\Users\Tim\Documents\GitHub\ProjectDatabases\SomerenModel\obj\Debug\SomerenModel.csproj.CoreCompileInputs.cache
+C:\Users\Tim\Documents\GitHub\ProjectDatabases\SomerenModel\obj\Debug\SomerenModel.dll
+C:\Users\Tim\Documents\GitHub\ProjectDatabases\SomerenModel\obj\Debug\SomerenModel.pdb

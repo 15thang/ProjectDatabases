@@ -64,7 +64,7 @@ namespace SomerenUI
                 listViewStudents.FullRowSelect = true;
                 listViewStudents.Sorting = SortOrder.Ascending;
 
-                //Voegt de kolom headers toe
+                // add column headers
                 listViewStudents.Columns.Add("StudentID", 70);
                 listViewStudents.Columns.Add("First Name", 120);
                 listViewStudents.Columns.Add("Last Name", 120);
@@ -106,11 +106,10 @@ namespace SomerenUI
                 listViewTeachers.FullRowSelect = true;
                 listViewTeachers.Sorting = SortOrder.Ascending;
 
-                //Add column header
+                // add column header
                 listViewTeachers.Columns.Add("TeacherID", 70);
                 listViewTeachers.Columns.Add("First Name", 120);
                 listViewTeachers.Columns.Add("Last Name", 120);
-
 
                 foreach (SomerenModel.Teacher t in teacherList)
                 {
@@ -124,13 +123,6 @@ namespace SomerenUI
                     arr[2] = t.LastName;
                     itm = new ListViewItem(arr);
                     listViewTeachers.Items.Add(itm);
-
-
-                    //ListViewItem li = new ListViewItem(t.Name);
-                    //ListViewItem li2 = new ListViewItem(t.TeacherID.ToString());
-                    //listViewTeachers.Items.Add(li2);
-                    //listViewTeachers.Items.Add(li);
-
                 }
             }
             else if (panelName == "Rooms")
@@ -143,9 +135,6 @@ namespace SomerenUI
 
                 // show students
                 pnl_Rooms.Show();
-
-
-
 
                 // fill the students listview within the students panel with a list of students
                 SomerenLogic.Room_Service roomService = new SomerenLogic.Room_Service();

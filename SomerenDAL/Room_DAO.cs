@@ -30,7 +30,7 @@ namespace SomerenDAL
                 // hacking way. Not Good.
                 if ((bool)dr["isDocentenKamer"] == true)
                 {
-                    roomType = "docent";
+                    roomType = "Docent";
                 }
                 else
                 {
