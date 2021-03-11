@@ -87,14 +87,15 @@ namespace SomerenUI
                 // clear the listview before filling it again
                 listViewTeachers.Clear();
 
+                // add grid lines, rows and enable sorting
                 listViewTeachers.View = View.Details;
                 listViewTeachers.GridLines = true;
                 listViewTeachers.FullRowSelect = true;
                 listViewTeachers.Sorting = SortOrder.Ascending;
+
                 //Add column header
                 listViewTeachers.Columns.Add("TeacherID", 70);
                 listViewTeachers.Columns.Add("Name", 120);
-
 
                 foreach (SomerenModel.Teacher t in teacherList)
                 {

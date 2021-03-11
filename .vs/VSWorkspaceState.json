@@ -2,8 +2,10 @@
   "ExpandedNodes": [
     "",
     "\\SomerenDAL",
-    "\\SomerenUI"
+    "\\SomerenUI",
+    "\\SomerenUI\\obj",
+    "\\SomerenUI\\Properties"
   ],
-  "SelectedNode": "\\SomerenUI\\SomerenUI.csproj",
+  "SelectedNode": "\\Someren1819.sln",
   "PreviewInSolutionExplorer": false
 }
