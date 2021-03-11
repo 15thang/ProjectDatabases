@@ -154,7 +154,7 @@ namespace SomerenUI
 
                     //Add first item
                     arr[0] = r.Number.ToString();
-                    arr[1] = r.Type.ToString();
+                    arr[1] = r.RoomType.ToString();
                     arr[2] = r.Capacity.ToString();
                     itm = new ListViewItem(arr);
                     listViewRooms.Items.Add(itm);

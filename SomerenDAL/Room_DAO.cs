@@ -12,8 +12,6 @@ namespace SomerenDAL
 {
     public class Room_DAO : Base
     {
-        string roomType;
-
         public List<Room> Db_Get_All_Rooms()
         {            
             string query = "SELECT Kamer.KamerID, Kamer.isDocentenKamer, kamer.KamerType FROM Kamer";
@@ -27,24 +25,22 @@ namespace SomerenDAL
 
             foreach (DataRow dr in dataTable.Rows)
             {
-                // Hacking way. Not Good. - Thomas
-                // Better way. make new table in database with a columns bool and string and use that for type. - Thomas
-                // Team is ok with how this works. - Thomas
-                // Takes the result from sql query to determine result of string 'roomtype'. - Thomas
+                Room roomType = new Room();
+                // Determins if the roomtype is either for students or teachers
                 if ((bool)dr["isDocentenKamer"] == true)
                 {
-                    roomType = "Docent";
+                    roomType.RoomType = "Teacher";
                 }
                 else
                 {
-                    roomType = "Student";
+                    roomType.RoomType = "Student";
                 }
 
                 Room room = new Room()
                 {
                     Number = (int)dr["KamerID"],
-                    Type = roomType,
-                    Capacity = (int)dr["KamerType"]
+                    Capacity = (int)dr["KamerType"],
+                    RoomType = roomType.RoomType
                 };
                 Rooms.Add(room);
             }
