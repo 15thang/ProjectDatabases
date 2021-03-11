@@ -343,7 +343,7 @@
             this.pnl_RoomLayout.Controls.Add(this.listViewRoomLayout);
             this.pnl_RoomLayout.Controls.Add(this.pictureBox4);
             this.pnl_RoomLayout.Controls.Add(this.label3);
-            this.pnl_RoomLayout.Location = new System.Drawing.Point(201, 73);
+            this.pnl_RoomLayout.Location = new System.Drawing.Point(21, 0);
             this.pnl_RoomLayout.Margin = new System.Windows.Forms.Padding(4);
             this.pnl_RoomLayout.Name = "pnl_RoomLayout";
             this.pnl_RoomLayout.Size = new System.Drawing.Size(1251, 533);
