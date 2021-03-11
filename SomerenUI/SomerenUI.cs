@@ -28,29 +28,31 @@ namespace SomerenUI
         private void showPanel(string panelName)
         {
 
-            if(panelName == "Dashboard")
+            if (panelName == "Dashboard")
             {
 
                 // hide all other panels
                 pnl_Students.Hide();
                 pnl_Teachers.Hide();
                 pnl_Rooms.Hide();
+                pnl_RoomLayout.Hide();
 
                 // show dashboard
                 pnl_Dashboard.Show();
                 img_Dashboard.Show();
             }
-            else if(panelName == "Students")
+            else if (panelName == "Students")
             {
                 // hide all other panels
                 pnl_Dashboard.Hide();
                 img_Dashboard.Hide();
                 pnl_Teachers.Hide();
                 pnl_Rooms.Hide();
+                pnl_RoomLayout.Hide();
 
                 // show students
                 pnl_Students.Show();
-                
+
 
 
 
@@ -116,6 +118,48 @@ namespace SomerenUI
 
                 }
             }
+            else if (panelName == "RoomLayout")
+            {
+                // hide all other panels
+                pnl_Dashboard.Hide();
+                img_Dashboard.Hide();
+                pnl_Teachers.Hide();
+                pnl_Students.Hide();
+                pnl_Rooms.Hide();
+
+                // show Room Layout
+                pnl_RoomLayout.Show();
+
+                // fill the Room listview within the Room panel with a list of Rooms
+                SomerenLogic.RoomLayout_Service roomLayoutService = new SomerenLogic.RoomLayout_Service();
+                List<RoomLayout> roomLayoutList = roomLayoutService.GetRoomLayout();
+
+                listViewRoomLayout.Clear();
+
+                listViewRoomLayout.View = View.Details;
+                listViewRoomLayout.GridLines = true;
+                listViewRoomLayout.FullRowSelect = true;
+                listViewRoomLayout.Sorting = SortOrder.Ascending;
+                //Add column header
+                listViewRoomLayout.Columns.Add("Number", 70);
+                listViewRoomLayout.Columns.Add("FirstName", 120);
+                listViewRoomLayout.Columns.Add("LastName", 120);
+
+                foreach (SomerenModel.RoomLayout o in roomLayoutList)
+                {
+
+                    //Add items in the listview
+                    string[] arr = new string[4];
+                    ListViewItem itm;
+
+                    //Add first item
+                    arr[0] = o.Number.ToString();
+                    arr[1] = o.FirstName.ToString();
+                    arr[2] = o.LastName.ToString();
+                    itm = new ListViewItem(arr);
+                    listViewRooms.Items.Add(itm);
+                }
+            }
             else if (panelName == "Rooms")
             {
                 // hide all other panels
@@ -123,6 +167,7 @@ namespace SomerenUI
                 img_Dashboard.Hide();
                 pnl_Teachers.Hide();
                 pnl_Students.Hide();
+                pnl_RoomLayout.Hide();
 
                 // show students
                 pnl_Rooms.Show();
@@ -146,7 +191,7 @@ namespace SomerenUI
                 listViewRooms.Columns.Add("Capacity", 120);
 
                 foreach (SomerenModel.Room r in roomList)
-                {                    
+                {
 
                     //Add items in the listview
                     string[] arr = new string[4];
@@ -211,7 +256,6 @@ namespace SomerenUI
         {
             showPanel("Rooms");
         }
-
         private void pictureBox3_Click(object sender, EventArgs e)
         {
 
@@ -225,6 +269,26 @@ namespace SomerenUI
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void pnl_Rooms_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void pnl_RoomLayout_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void roomLayoutToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            showPanel("RoomLayout");
         }
     }
 }
