@@ -27,21 +27,22 @@ namespace SomerenDAL
 
             foreach (DataRow dr in dataTable.Rows)
             {
-                // hacking way. Not Good.
+                Room roomType = new Room();
+                // Determins if the roomtype is either for students or teachers
                 if ((bool)dr["isDocentenKamer"] == true)
                 {
-                    roomType = "Docent";
+                    roomType.RoomType = "Teacher";
                 }
                 else
                 {
-                    roomType = "Student";
+                    roomType.RoomType = "Student";
                 }
 
                 Room room = new Room()
                 {
                     Number = (int)dr["KamerID"],
-                    Type = roomType,
-                    Capacity = (int)dr["KamerType"]
+                    Capacity = (int)dr["KamerType"],
+                    RoomType = roomType.RoomType
                 };
                 Rooms.Add(room);
             }

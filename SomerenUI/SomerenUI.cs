@@ -133,7 +133,7 @@ namespace SomerenUI
                 pnl_Teachers.Hide();
                 pnl_Students.Hide();
 
-                // show students
+                // show rooms
                 pnl_Rooms.Show();
 
                 // fill the students listview within the students panel with a list of students
@@ -160,7 +160,7 @@ namespace SomerenUI
 
                     //Add first item
                     arr[0] = r.Number.ToString();
-                    arr[1] = r.Type.ToString();
+                    arr[1] = r.RoomType.ToString();
                     arr[2] = r.Capacity.ToString();
                     itm = new ListViewItem(arr);
                     listViewRooms.Items.Add(itm);
