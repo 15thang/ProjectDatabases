@@ -51,9 +51,6 @@ namespace SomerenUI
                 // show students
                 pnl_Students.Show();
                 
-
-
-
                 // fill the students listview within the students panel with a list of students
                 SomerenLogic.Student_Service studService = new SomerenLogic.Student_Service();
                 List<Student> studentList = studService.GetStudents();
@@ -61,6 +58,7 @@ namespace SomerenUI
                 // clear the listview before filling it again
                 listViewStudents.Clear();
 
+                // add grid lines, rows and enable sorting
                 listViewStudents.View = View.Details;
                 listViewStudents.GridLines = true;
                 listViewStudents.FullRowSelect = true;
@@ -94,7 +92,6 @@ namespace SomerenUI
 
                 // show students
                 pnl_Teachers.Show();
-
 
                 // fill the students listview within the students panel with a list of teachers
                 SomerenLogic.Teacher_Service teachService = new SomerenLogic.Teacher_Service();
@@ -197,11 +194,6 @@ namespace SomerenUI
             showPanel("Dashboard");
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void img_Dashboard_Click(object sender, EventArgs e)
         {
             MessageBox.Show("What happens in Someren, stays in Someren!");
@@ -212,19 +204,9 @@ namespace SomerenUI
             showPanel("Students");
         }
 
-        private void listViewStudents_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void lecturersToolStripMenuItem_Click(object sender, EventArgs e)
         {
             showPanel("Teachers");
-        }
-
-        private void label1_Click_1(object sender, EventArgs e)
-        {
-
         }
 
         private void roomsToolStripMenuItem_Click(object sender, EventArgs e)

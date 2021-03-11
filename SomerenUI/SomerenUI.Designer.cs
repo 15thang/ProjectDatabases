@@ -175,7 +175,6 @@
             this.lbl_Dashboard.Size = new System.Drawing.Size(275, 20);
             this.lbl_Dashboard.TabIndex = 1;
             this.lbl_Dashboard.Text = "Welcome to the Someren Application!";
-            this.lbl_Dashboard.Click += new System.EventHandler(this.label1_Click);
             // 
             // pnl_Students
             // 
@@ -201,7 +200,6 @@
             this.listViewStudents.Size = new System.Drawing.Size(1147, 470);
             this.listViewStudents.TabIndex = 5;
             this.listViewStudents.UseCompatibleStateImageBehavior = false;
-            this.listViewStudents.SelectedIndexChanged += new System.EventHandler(this.listViewStudents_SelectedIndexChanged);
             // 
             // studentID
             // 
@@ -295,7 +293,6 @@
             this.label1.Size = new System.Drawing.Size(158, 39);
             this.label1.TabIndex = 3;
             this.label1.Text = "Lecturers";
-            this.label1.Click += new System.EventHandler(this.label1_Click_1);
             // 
             // pnl_Rooms
             // 
