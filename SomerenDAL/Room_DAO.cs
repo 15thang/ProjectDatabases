@@ -14,7 +14,7 @@ namespace SomerenDAL
     {
         public List<Room> Db_Get_All_Rooms()
         {            
-            string query = "SELECT Kamer.KamerID, Kamer.isDocentenKamer, kamer.KamerType FROM Kamer";
+            string query = "SELECT Kamer.KamerID, Kamer.isDocentenKamer, kamer.KamerGrootte FROM Kamer";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
@@ -39,7 +39,7 @@ namespace SomerenDAL
                 Room room = new Room()
                 {
                     Number = (int)dr["KamerID"],
-                    Capacity = (int)dr["KamerType"],
+                    Capacity = (int)dr["KamerGrootte"],
                     RoomType = roomType.RoomType
                 };
                 Rooms.Add(room);

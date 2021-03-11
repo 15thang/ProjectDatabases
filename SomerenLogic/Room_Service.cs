@@ -22,7 +22,7 @@ namespace SomerenLogic
             }
             catch (Exception e)
             {
-                // throw new Exception(e.Message);
+                //throw new Exception(e.Message);
                 // something went wrong connecting to the database, so we will add a fake room to the list to make sure the rest of the application continues working!
                 List<Room> room = new List<Room>();
                 Room a = new Room();
