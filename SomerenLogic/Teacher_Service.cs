@@ -35,9 +35,7 @@ namespace SomerenLogic
                 teachers.Add(a);
                
                 return teachers;
-                
             }
-
         }
     }
 }

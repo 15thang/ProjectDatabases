@@ -35,9 +35,7 @@ namespace SomerenLogic
                 student.Add(a);
                
                 return student;
-                
             }
-
         }
     }
 }

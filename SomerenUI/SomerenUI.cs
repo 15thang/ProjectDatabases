@@ -110,6 +110,7 @@ namespace SomerenUI
                 listViewTeachers.Columns.Add("TeacherID", 70);
                 listViewTeachers.Columns.Add("First Name", 120);
                 listViewTeachers.Columns.Add("Last Name", 120);
+                listViewTeachers.Columns.Add("Begeleider", 120);
 
                 foreach (SomerenModel.Teacher t in teacherList)
                 {
