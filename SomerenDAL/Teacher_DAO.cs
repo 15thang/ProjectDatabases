@@ -15,7 +15,7 @@ namespace SomerenDAL
       
         public List<Teacher> Db_Get_All_Teachers()
         {
-            string query = "SELECT Docent.DocentID, Persoon.Naam FROM [Docent] INNER JOIN[Persoon] ON Docent.PersoonID = Persoon.PersoonID;";
+            string query = "SELECT Docent.DocentID, Persoon.Voornaam, Persoon.Achternaam FROM [Docent] INNER JOIN[Persoon] ON Docent.PersoonID = Persoon.PersoonID;";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
@@ -29,7 +29,8 @@ namespace SomerenDAL
                 Teacher teacher = new Teacher()
                 {
                     TeacherID = (int)dr["DocentID"],
-                    Name = (String)dr["Naam"],
+                    FirstName = (String)dr["Voornaam"],
+                    LastName = (String)dr["Achternaam"],
                 };
                 teachers.Add(teacher);
             }

@@ -26,7 +26,8 @@ namespace SomerenLogic
                 // something went wrong connecting to the database, so we will add a fake teacher to the list to make sure the rest of the application continues working!
                 List <Teacher> teachers = new List<Teacher>();
                 Teacher a = new Teacher();
-                a.Name = "Mr. Test teacher";
+                a.FirstName = "Mr. Test";
+                a.LastName = "teacher";
                 a.TeacherID = 474791;
                 a.PersonID = 100;
                 teachers.Add(a);

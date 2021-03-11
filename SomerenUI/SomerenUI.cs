@@ -61,10 +61,26 @@ namespace SomerenUI
                 // clear the listview before filling it again
                 listViewStudents.Clear();
 
+                listViewStudents.View = View.Details;
+                listViewStudents.GridLines = true;
+                listViewStudents.FullRowSelect = true;
+                listViewStudents.Sorting = SortOrder.Ascending;
+
+                //Voegt de kolom headers toe
+                listViewStudents.Columns.Add("StudentID", 70);
+                listViewStudents.Columns.Add("First Name", 120);
+                listViewStudents.Columns.Add("Last Name", 120);
+
                 foreach (SomerenModel.Student s in studentList)
                 {
+                    string[] arr = new string[4];
+                    ListViewItem li;
 
-                    ListViewItem li = new ListViewItem(s.Name);
+                    //Add first item
+                    arr[0] = s.StudentID.ToString();
+                    arr[1] = s.FirstName;
+                    arr[2] = s.LastName;
+                    li = new ListViewItem(arr);
                     listViewStudents.Items.Add(li);
                 }
             }
@@ -80,7 +96,7 @@ namespace SomerenUI
                 pnl_Teachers.Show();
 
 
-                // fill the students listview within the students panel with a list of students
+                // fill the students listview within the students panel with a list of teachers
                 SomerenLogic.Teacher_Service teachService = new SomerenLogic.Teacher_Service();
                 List<Teacher> teacherList = teachService.GetTeachers();
 
@@ -93,7 +109,9 @@ namespace SomerenUI
                 listViewTeachers.Sorting = SortOrder.Ascending;
                 //Add column header
                 listViewTeachers.Columns.Add("TeacherID", 70);
-                listViewTeachers.Columns.Add("Name", 120);
+                listViewTeachers.Columns.Add("First Name", 120);
+                listViewTeachers.Columns.Add("Last Name", 120);
+
 
 
                 foreach (SomerenModel.Teacher t in teacherList)
@@ -104,7 +122,8 @@ namespace SomerenUI
 
                     //Add first item
                     arr[0] = t.TeacherID.ToString();
-                    arr[1] = t.Name;
+                    arr[1] = t.FirstName;
+                    arr[2] = t.LastName;
                     itm = new ListViewItem(arr);
                     listViewTeachers.Items.Add(itm);
 
