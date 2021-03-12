@@ -302,7 +302,7 @@ namespace SomerenUI
                 listViewRoomLayout.Clear();
 
                 listViewRoomLayout.View = View.Details;
-                listViewRoomLayout.Columns.Add("Room Layout");
+                listViewRoomLayout.Columns.Add("Rooms");
                 List<int> UniqueRoom = new List<int>();
                 foreach (SomerenModel.RoomLayout o in roomLayoutList)
                 {
@@ -327,8 +327,7 @@ namespace SomerenUI
                             ListViewItem itm = new ListViewItem(arr);
                             listViewRoomLayout.Items.Add(itm);
                         }
-                    }
-                    
+                    }                    
                 }
                    
                 foreach (ColumnHeader ch in listViewRoomLayout.Columns) // dynamically change column width
