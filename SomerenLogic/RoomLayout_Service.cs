@@ -13,6 +13,9 @@ namespace SomerenLogic
     {
         RoomLayout_DAO roomLayout_db = new RoomLayout_DAO();
 
+        // Thang Nguyen Anh
+        // The logic layer fetches the list with Roomlayouts, if something goes wrong a test RoomLayout is made
+
         public List<RoomLayout> GetRoomLayout()
         {
             try

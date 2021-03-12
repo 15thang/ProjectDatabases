@@ -280,7 +280,7 @@ namespace SomerenUI
             }
             else if (panelName == "RoomsLayout")
             {
-                // Thomas Eddyson
+                // Thang Nguyen Anh
                 // hide all other panels
                 pnl_Dashboard.Hide();
                 img_Dashboard.Hide();
@@ -302,28 +302,35 @@ namespace SomerenUI
                 listViewRoomLayout.Clear();
 
                 listViewRoomLayout.View = View.Details;
-                listViewRoomLayout.GridLines = true;
-                listViewRoomLayout.FullRowSelect = true;
-                listViewRoomLayout.Sorting = SortOrder.Ascending;
-                //Add column header
-                listViewRoomLayout.Columns.Add("Number", 70);
-                listViewRoomLayout.Columns.Add("FirstName", 120);
-                listViewRoomLayout.Columns.Add("LastName", 120);
-
+                listViewRoomLayout.Columns.Add("Room Layout");
+                List<int> UniqueRoom = new List<int>();
                 foreach (SomerenModel.RoomLayout o in roomLayoutList)
                 {
-
-                    //Add items in the listview
-                    string[] arr = new string[4];
-                    ListViewItem itm;
-
-                    //Add first item
-                    arr[0] = o.Number.ToString();
-                    arr[1] = o.FirstName.ToString();
-                    arr[2] = o.LastName.ToString();
-                    itm = new ListViewItem(arr);
-                    listViewRoomLayout.Items.Add(itm);
+                    if(UniqueRoom.Contains(o.Number) == false)
+                    {
+                        UniqueRoom.Add(o.Number);
+                    }
                 }
+                
+                foreach (int i in UniqueRoom)
+                {
+                    listViewRoomLayout.Items.Add("");
+                    listViewRoomLayout.Items.Add(i.ToString());
+                    Console.WriteLine(i);
+                    string[] arr = new string[16];
+                    int counter = 0;
+                    foreach (SomerenModel.RoomLayout o in roomLayoutList)
+                    {
+                        if (o.Number == i)
+                        {
+                            arr[counter] = o.FirstName + " " + o.LastName;
+                            ListViewItem itm = new ListViewItem(arr);
+                            listViewRoomLayout.Items.Add(itm);
+                        }
+                    }
+                    
+                }
+                   
                 foreach (ColumnHeader ch in listViewRoomLayout.Columns) // dynamically change column width
                 {
                     ch.Width = -2;
