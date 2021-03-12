@@ -48,6 +48,7 @@ namespace SomerenUI
                 pnl_Teachers.Hide();
                 pnl_Rooms.Hide();
                 pnl_Activities.Hide();
+                pnl_Roomslayout.Hide();
 
                 // show dashboard
                 pnl_Dashboard.Show();
@@ -62,6 +63,7 @@ namespace SomerenUI
                 pnl_Teachers.Hide();
                 pnl_Rooms.Hide();
                 pnl_Activities.Hide();
+                pnl_Roomslayout.Hide();
 
                 // show students
                 pnl_Students.Show();
@@ -110,6 +112,7 @@ namespace SomerenUI
                 pnl_Students.Hide();
                 pnl_Rooms.Hide();
                 pnl_Activities.Hide();
+                pnl_Roomslayout.Hide();
 
                 // show teachers
                 pnl_Teachers.Show();
@@ -170,6 +173,7 @@ namespace SomerenUI
                 pnl_Teachers.Hide();
                 pnl_Students.Hide();
                 pnl_Activities.Hide();
+                pnl_Roomslayout.Hide();
 
                 // show rooms
                 pnl_Rooms.Show();
@@ -218,6 +222,7 @@ namespace SomerenUI
                 pnl_Students.Hide();
                 pnl_Rooms.Hide();
                 pnl_Teachers.Hide();
+                pnl_Roomslayout.Hide();
 
                 // show activities
                 pnl_Activities.Show();
@@ -256,6 +261,54 @@ namespace SomerenUI
                     listViewActivities.Items.Add(itm);
                 }
                 foreach (ColumnHeader ch in listViewActivities.Columns) // dynamically change column width
+                {
+                    ch.Width = -2;
+                }
+            }
+            else if (panelName == "RoomsLayout")
+            {
+                // Thomas Eddyson
+                // hide all other panels
+                pnl_Dashboard.Hide();
+                img_Dashboard.Hide();
+                pnl_Teachers.Hide();
+                pnl_Students.Hide();
+                pnl_Rooms.Hide();
+                pnl_Activities.Hide();
+
+                // show rooms
+                pnl_Roomslayout.Show();
+
+                // fill the Room listview within the Room panel with a list of Rooms
+                SomerenLogic.RoomLayout_Service roomLayoutService = new SomerenLogic.RoomLayout_Service();
+                List<RoomLayout> roomLayoutList = roomLayoutService.GetRoomLayout();
+
+                listViewRoomLayout.Clear();
+
+                listViewRoomLayout.View = View.Details;
+                listViewRoomLayout.GridLines = true;
+                listViewRoomLayout.FullRowSelect = true;
+                listViewRoomLayout.Sorting = SortOrder.Ascending;
+                //Add column header
+                listViewRoomLayout.Columns.Add("Number", 70);
+                listViewRoomLayout.Columns.Add("FirstName", 120);
+                listViewRoomLayout.Columns.Add("LastName", 120);
+
+                foreach (SomerenModel.RoomLayout o in roomLayoutList)
+                {
+
+                    //Add items in the listview
+                    string[] arr = new string[4];
+                    ListViewItem itm;
+
+                    //Add first item
+                    arr[0] = o.Number.ToString();
+                    arr[1] = o.FirstName.ToString();
+                    arr[2] = o.LastName.ToString();
+                    itm = new ListViewItem(arr);
+                    listViewRoomLayout.Items.Add(itm);
+                }
+                foreach (ColumnHeader ch in listViewRoomLayout.Columns) // dynamically change column width
                 {
                     ch.Width = -2;
                 }
@@ -300,6 +353,11 @@ namespace SomerenUI
         private void activitiesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             showPanel("Activities");
+        }
+
+        private void roomLayoutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            showPanel("RoomsLayout");
         }
 
         private void listViewActivities_ColumnClick(object sender, ColumnClickEventArgs e)
@@ -408,6 +466,6 @@ namespace SomerenUI
 
             // Perform the sort with these new sort options.
             this.listViewTeachers.Sort();
-        }
+        }        
     }
 }
