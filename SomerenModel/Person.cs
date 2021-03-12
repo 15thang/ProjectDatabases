@@ -8,6 +8,7 @@ namespace SomerenModel
 {
     public class Person
     {
+        // Ruben Stoop
         public int PersonID { get;set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }

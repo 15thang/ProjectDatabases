@@ -15,9 +15,19 @@ namespace SomerenUI
 {
     public partial class SomerenUI : Form
     {
+        private ListViewColumnSorter lvwColumnSorter;
+
         public SomerenUI()
         {
             InitializeComponent();
+            // Create an instance of a ListView column sorter and assign it
+            // to the ListView control.
+            // Makes columns sortable
+            lvwColumnSorter = new ListViewColumnSorter();
+            this.listViewStudents.ListViewItemSorter = lvwColumnSorter;
+            this.listViewTeachers.ListViewItemSorter = lvwColumnSorter;
+            this.listViewRooms.ListViewItemSorter = lvwColumnSorter;
+            this.listViewActivities.ListViewItemSorter = lvwColumnSorter;
         }
 
         private void SomerenUI_Load(object sender, EventArgs e)
@@ -33,7 +43,6 @@ namespace SomerenUI
 
             if(panelName == "Dashboard")
             {
-
                 // hide all other panels
                 pnl_Students.Hide();
                 pnl_Teachers.Hide();
@@ -46,6 +55,7 @@ namespace SomerenUI
             }
             else if(panelName == "Students")
             {
+                // Ruben Stoop
                 // hide all other panels
                 pnl_Dashboard.Hide();
                 img_Dashboard.Hide();
@@ -70,9 +80,9 @@ namespace SomerenUI
                 listViewStudents.Sorting = SortOrder.Ascending;
 
                 // add column headers
-                listViewStudents.Columns.Add("StudentID", 70);
-                listViewStudents.Columns.Add("First Name", 120);
-                listViewStudents.Columns.Add("Last Name", 120);
+                listViewStudents.Columns.Add("StudentID");
+                listViewStudents.Columns.Add("First Name");
+                listViewStudents.Columns.Add("Last Name");
 
                 foreach (SomerenModel.Student s in studentList)
                 {
@@ -86,9 +96,14 @@ namespace SomerenUI
                     li = new ListViewItem(arr);
                     listViewStudents.Items.Add(li);
                 }
+                foreach (ColumnHeader ch in listViewStudents.Columns) // dynamically change column width
+                {
+                    ch.Width = -2;
+                }
             }
             else if (panelName == "Teachers")
             {
+                // Tim Roffelsen
                 // hide all other panels
                 pnl_Dashboard.Hide();
                 img_Dashboard.Hide();
@@ -122,10 +137,10 @@ namespace SomerenUI
                 listViewTeachers.Sorting = SortOrder.Ascending;
 
                 // add column header
-                listViewTeachers.Columns.Add("TeacherID", 70);
-                listViewTeachers.Columns.Add("First Name", 120);
-                listViewTeachers.Columns.Add("Last Name", 120);
-                listViewTeachers.Columns.Add("Supervises", 160);
+                listViewTeachers.Columns.Add("TeacherID");
+                listViewTeachers.Columns.Add("First Name");
+                listViewTeachers.Columns.Add("Last Name");
+                listViewTeachers.Columns.Add("Supervises");
 
                 foreach (SomerenModel.Teacher t in teacherList)
                 {
@@ -141,9 +156,14 @@ namespace SomerenUI
                     itm = new ListViewItem(arr);
                     listViewTeachers.Items.Add(itm);
                 }
+                foreach (ColumnHeader ch in listViewTeachers.Columns) // dynamically change column width
+                {
+                    ch.Width = -2;
+                }
             }
             else if (panelName == "Rooms")
             {
+                // Thomas Eddyson
                 // hide all other panels
                 pnl_Dashboard.Hide();
                 img_Dashboard.Hide();
@@ -167,9 +187,9 @@ namespace SomerenUI
                 listViewRooms.Sorting = SortOrder.Ascending;
 
                 //Add column header
-                listViewRooms.Columns.Add("Room Number", 90);
-                listViewRooms.Columns.Add("Type Room", 70);
-                listViewRooms.Columns.Add("Beds", 40);
+                listViewRooms.Columns.Add("Room Number");
+                listViewRooms.Columns.Add("Type Room");
+                listViewRooms.Columns.Add("Beds");
 
                 foreach (SomerenModel.Room r in roomList)
                 {                    
@@ -184,9 +204,14 @@ namespace SomerenUI
                     itm = new ListViewItem(arr);
                     listViewRooms.Items.Add(itm);
                 }
+                foreach (ColumnHeader ch in listViewRooms.Columns) // dynamically change column width
+                {
+                    ch.Width = -2;
+                }
             }
             else if (panelName == "Activities")
             {
+                // Tim Roffelsen
                 // hide all other panels
                 pnl_Dashboard.Hide();
                 img_Dashboard.Hide();
@@ -211,10 +236,10 @@ namespace SomerenUI
                 listViewActivities.Sorting = SortOrder.Ascending;
 
                 // add column header
-                listViewActivities.Columns.Add("ActivityID", 70);
-                listViewActivities.Columns.Add("Type", 120);
-                listViewActivities.Columns.Add("Begin Time", 160);
-                listViewActivities.Columns.Add("End Time", 160);
+                listViewActivities.Columns.Add("ActivityID");
+                listViewActivities.Columns.Add("Type");
+                listViewActivities.Columns.Add("Begin Time");
+                listViewActivities.Columns.Add("End Time");
 
                 foreach (SomerenModel.Activity a in activityList)
                 {
@@ -229,6 +254,10 @@ namespace SomerenUI
                     arr[3] = a.EndTime.ToString("dd/MM/yyyy (dddd) HH:mm");
                     itm = new ListViewItem(arr);
                     listViewActivities.Items.Add(itm);
+                }
+                foreach (ColumnHeader ch in listViewActivities.Columns) // dynamically change column width
+                {
+                    ch.Width = -2;
                 }
             }
         }
@@ -271,6 +300,114 @@ namespace SomerenUI
         private void activitiesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             showPanel("Activities");
+        }
+
+        private void listViewActivities_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            // Tim Roffelsen
+            // Determine if clicked column is already the column that is being sorted.
+            if (e.Column == lvwColumnSorter.SortColumn)
+            {
+                // Reverse the current sort direction for this column.
+                if (lvwColumnSorter.Order == SortOrder.Ascending)
+                {
+                    lvwColumnSorter.Order = SortOrder.Descending;
+                }
+                else
+                {
+                    lvwColumnSorter.Order = SortOrder.Ascending;
+                }
+            }
+            else
+            {
+                // Set the column number that is to be sorted; default to ascending.
+                lvwColumnSorter.SortColumn = e.Column;
+                lvwColumnSorter.Order = SortOrder.Ascending;
+            }
+
+            // Perform the sort with these new sort options.
+            this.listViewActivities.Sort();
+        }
+
+        private void listViewRooms_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            // Tim Roffelsen
+            // Determine if clicked column is already the column that is being sorted.
+            if (e.Column == lvwColumnSorter.SortColumn)
+            {
+                // Reverse the current sort direction for this column.
+                if (lvwColumnSorter.Order == SortOrder.Ascending)
+                {
+                    lvwColumnSorter.Order = SortOrder.Descending;
+                }
+                else
+                {
+                    lvwColumnSorter.Order = SortOrder.Ascending;
+                }
+            }
+            else
+            {
+                // Set the column number that is to be sorted; default to ascending.
+                lvwColumnSorter.SortColumn = e.Column;
+                lvwColumnSorter.Order = SortOrder.Ascending;
+            }
+
+            // Perform the sort with these new sort options.
+            this.listViewRooms.Sort();
+        }
+
+        private void listViewStudents_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            // Tim Roffelsen
+            // Determine if clicked column is already the column that is being sorted.
+            if (e.Column == lvwColumnSorter.SortColumn)
+            {
+                // Reverse the current sort direction for this column.
+                if (lvwColumnSorter.Order == SortOrder.Ascending)
+                {
+                    lvwColumnSorter.Order = SortOrder.Descending;
+                }
+                else
+                {
+                    lvwColumnSorter.Order = SortOrder.Ascending;
+                }
+            }
+            else
+            {
+                // Set the column number that is to be sorted; default to ascending.
+                lvwColumnSorter.SortColumn = e.Column;
+                lvwColumnSorter.Order = SortOrder.Ascending;
+            }
+
+            // Perform the sort with these new sort options.
+            this.listViewStudents.Sort();
+        }
+
+        private void listViewTeachers_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            // Tim Roffelsen
+            // Determine if clicked column is already the column that is being sorted.
+            if (e.Column == lvwColumnSorter.SortColumn)
+            {
+                // Reverse the current sort direction for this column.
+                if (lvwColumnSorter.Order == SortOrder.Ascending)
+                {
+                    lvwColumnSorter.Order = SortOrder.Descending;
+                }
+                else
+                {
+                    lvwColumnSorter.Order = SortOrder.Ascending;
+                }
+            }
+            else
+            {
+                // Set the column number that is to be sorted; default to ascending.
+                lvwColumnSorter.SortColumn = e.Column;
+                lvwColumnSorter.Order = SortOrder.Ascending;
+            }
+
+            // Perform the sort with these new sort options.
+            this.listViewTeachers.Sort();
         }
     }
 }

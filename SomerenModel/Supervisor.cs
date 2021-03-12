@@ -8,6 +8,7 @@ namespace SomerenModel
 {
     public class Supervisor
     {
+        // Tim Roffelsen
         public int teacherID { get; set; }
         public int activityID { get; set; }
     }

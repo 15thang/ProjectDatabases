@@ -11,6 +11,7 @@ namespace SomerenLogic
 {
     public class Room_Service
     {
+        // Thomas Eddyson
         Room_DAO room_db = new Room_DAO();
 
         public List<Room> GetRooms()

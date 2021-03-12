@@ -205,6 +205,7 @@
             this.listViewStudents.Size = new System.Drawing.Size(766, 307);
             this.listViewStudents.TabIndex = 5;
             this.listViewStudents.UseCompatibleStateImageBehavior = false;
+            this.listViewStudents.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.listViewStudents_ColumnClick);
             // 
             // studentID
             // 
@@ -260,6 +261,7 @@
             this.listViewTeachers.Size = new System.Drawing.Size(766, 307);
             this.listViewTeachers.TabIndex = 5;
             this.listViewTeachers.UseCompatibleStateImageBehavior = false;
+            this.listViewTeachers.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.listViewTeachers_ColumnClick);
             // 
             // columnHeader1
             // 
@@ -315,6 +317,7 @@
             this.listViewRooms.Size = new System.Drawing.Size(766, 307);
             this.listViewRooms.TabIndex = 5;
             this.listViewRooms.UseCompatibleStateImageBehavior = false;
+            this.listViewRooms.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.listViewRooms_ColumnClick);
             // 
             // columnHeader4
             // 
@@ -370,6 +373,7 @@
             this.listViewActivities.Size = new System.Drawing.Size(766, 307);
             this.listViewActivities.TabIndex = 5;
             this.listViewActivities.UseCompatibleStateImageBehavior = false;
+            this.listViewActivities.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.listViewActivities_ColumnClick);
             // 
             // columnHeader7
             // 
