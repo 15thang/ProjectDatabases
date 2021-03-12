@@ -315,7 +315,7 @@ namespace SomerenUI
                 foreach (int i in UniqueRoom)
                 {
                     listViewRoomLayout.Items.Add("");
-                    listViewRoomLayout.Items.Add(i.ToString());
+                    listViewRoomLayout.Items.Add("Room " + i.ToString());
                     Console.WriteLine(i);
                     string[] arr = new string[16];
                     int counter = 0;
