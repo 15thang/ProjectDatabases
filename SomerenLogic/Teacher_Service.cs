@@ -14,7 +14,7 @@ namespace SomerenLogic
         Teacher_DAO teacher_db = new Teacher_DAO();
 
         // Tim Roffelsen
-        // The logic layer fetches the list with students, if something goes wrong a test user is made
+        // The logic layer fetches the list with students, if something goes wrong a test teacher is made
         public List<Teacher> GetTeachers()
         {
             try
@@ -35,9 +35,7 @@ namespace SomerenLogic
                 teachers.Add(a);
                
                 return teachers;
-                
             }
-
         }
     }
 }

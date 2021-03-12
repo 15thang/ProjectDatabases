@@ -76,3 +76,15 @@ C:\Users\Tim\Documents\GitHub\ProjectDatabases\SomerenLogic\obj\Debug\SomerenLog
 C:\Users\Tim\Documents\GitHub\ProjectDatabases\SomerenLogic\obj\Debug\SomerenLogic.csproj.CopyComplete
 C:\Users\Tim\Documents\GitHub\ProjectDatabases\SomerenLogic\obj\Debug\SomerenLogic.dll
 C:\Users\Tim\Documents\GitHub\ProjectDatabases\SomerenLogic\obj\Debug\SomerenLogic.pdb
+C:\Users\Tim\source\repos\ProjectDatabases Main\SomerenLogic\bin\Debug\SomerenLogic.dll
+C:\Users\Tim\source\repos\ProjectDatabases Main\SomerenLogic\bin\Debug\SomerenLogic.pdb
+C:\Users\Tim\source\repos\ProjectDatabases Main\SomerenLogic\bin\Debug\SomerenDAL.dll
+C:\Users\Tim\source\repos\ProjectDatabases Main\SomerenLogic\bin\Debug\SomerenModel.dll
+C:\Users\Tim\source\repos\ProjectDatabases Main\SomerenLogic\bin\Debug\SomerenDAL.pdb
+C:\Users\Tim\source\repos\ProjectDatabases Main\SomerenLogic\bin\Debug\SomerenDAL.dll.config
+C:\Users\Tim\source\repos\ProjectDatabases Main\SomerenLogic\bin\Debug\SomerenModel.pdb
+C:\Users\Tim\source\repos\ProjectDatabases Main\SomerenLogic\obj\Debug\SomerenLogic.csprojAssemblyReference.cache
+C:\Users\Tim\source\repos\ProjectDatabases Main\SomerenLogic\obj\Debug\SomerenLogic.csproj.CoreCompileInputs.cache
+C:\Users\Tim\source\repos\ProjectDatabases Main\SomerenLogic\obj\Debug\SomerenLogic.csproj.CopyComplete
+C:\Users\Tim\source\repos\ProjectDatabases Main\SomerenLogic\obj\Debug\SomerenLogic.dll
+C:\Users\Tim\source\repos\ProjectDatabases Main\SomerenLogic\obj\Debug\SomerenLogic.pdb

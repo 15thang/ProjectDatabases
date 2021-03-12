@@ -24,7 +24,10 @@ namespace SomerenUI
         {
             showPanel("Dashboard");
         }
-
+        private void HideAllPanels()
+        {
+            // to do
+        }
         private void showPanel(string panelName)
         {
 
@@ -35,6 +38,7 @@ namespace SomerenUI
                 pnl_Students.Hide();
                 pnl_Teachers.Hide();
                 pnl_Rooms.Hide();
+                pnl_Activities.Hide();
 
                 // show dashboard
                 pnl_Dashboard.Show();
@@ -47,6 +51,7 @@ namespace SomerenUI
                 img_Dashboard.Hide();
                 pnl_Teachers.Hide();
                 pnl_Rooms.Hide();
+                pnl_Activities.Hide();
 
                 // show students
                 pnl_Students.Show();
@@ -89,11 +94,12 @@ namespace SomerenUI
                 img_Dashboard.Hide();
                 pnl_Students.Hide();
                 pnl_Rooms.Hide();
+                pnl_Activities.Hide();
 
-                // show students
+                // show teachers
                 pnl_Teachers.Show();
 
-                // fill the students listview within the students panel with a list of teachers
+                // fill the teachers listview within the teachers panel with a list of teachers
                 SomerenLogic.Teacher_Service teachService = new SomerenLogic.Teacher_Service();
                 List<Teacher> teacherList = teachService.GetTeachers();
 
@@ -110,6 +116,7 @@ namespace SomerenUI
                 listViewTeachers.Columns.Add("TeacherID", 70);
                 listViewTeachers.Columns.Add("First Name", 120);
                 listViewTeachers.Columns.Add("Last Name", 120);
+                listViewTeachers.Columns.Add("Supervises", 120);
 
                 foreach (SomerenModel.Teacher t in teacherList)
                 {
@@ -132,28 +139,30 @@ namespace SomerenUI
                 img_Dashboard.Hide();
                 pnl_Teachers.Hide();
                 pnl_Students.Hide();
+                pnl_Activities.Hide();
 
                 // show rooms
                 pnl_Rooms.Show();
 
-                // fill the students listview within the students panel with a list of students
+                // fill the rooms listview within the rooms panel with a list of rooms
                 SomerenLogic.Room_Service roomService = new SomerenLogic.Room_Service();
                 List<Room> roomList = roomService.GetRooms();
 
+                // clear the listview before filling it again
                 listViewRooms.Clear();
 
                 listViewRooms.View = View.Details;
                 listViewRooms.GridLines = true;
                 listViewRooms.FullRowSelect = true;
                 listViewRooms.Sorting = SortOrder.Ascending;
+
                 //Add column header
-                listViewRooms.Columns.Add("number", 70);
-                listViewRooms.Columns.Add("Type", 120);
-                listViewRooms.Columns.Add("Capacity", 120);
+                listViewRooms.Columns.Add("Room Number", 90);
+                listViewRooms.Columns.Add("Type Room", 70);
+                listViewRooms.Columns.Add("Beds", 40);
 
                 foreach (SomerenModel.Room r in roomList)
                 {                    
-
                     //Add items in the listview
                     string[] arr = new string[4];
                     ListViewItem itm;
@@ -164,6 +173,52 @@ namespace SomerenUI
                     arr[2] = r.Capacity.ToString();
                     itm = new ListViewItem(arr);
                     listViewRooms.Items.Add(itm);
+                }
+            }
+            else if (panelName == "Activities")
+            {
+                // hide all other panels
+                pnl_Dashboard.Hide();
+                img_Dashboard.Hide();
+                pnl_Students.Hide();
+                pnl_Rooms.Hide();
+                pnl_Teachers.Hide();
+
+                // show activities
+                pnl_Activities.Show();
+
+                // fill the students listview within the students panel with a list of teachers
+                SomerenLogic.Activity_Service actService = new SomerenLogic.Activity_Service();
+                List<Activity> activityList = actService.GetActivities();
+
+                // clear the listview before filling it again
+                listViewActivities.Clear();
+
+                // add grid lines, rows and enable sorting
+                listViewActivities.View = View.Details;
+                listViewActivities.GridLines = true;
+                listViewActivities.FullRowSelect = true;
+                listViewActivities.Sorting = SortOrder.Ascending;
+
+                // add column header
+                listViewActivities.Columns.Add("ActivityID", 70);
+                listViewActivities.Columns.Add("Type", 120);
+                listViewActivities.Columns.Add("Begin Time", 160);
+                listViewActivities.Columns.Add("End Time", 160);
+
+                foreach (SomerenModel.Activity a in activityList)
+                {
+                    //Add items in the listview
+                    string[] arr = new string[4];
+                    ListViewItem itm;
+
+                    //Add first item
+                    arr[0] = a.ActivityId.ToString();
+                    arr[1] = a.Type;
+                    arr[2] = a.BeginTime.ToString("dd/MM/yyyy (dddd) HH:mm");
+                    arr[3] = a.EndTime.ToString("dd/MM/yyyy (dddd) HH:mm");
+                    itm = new ListViewItem(arr);
+                    listViewActivities.Items.Add(itm);
                 }
             }
         }
@@ -201,6 +256,11 @@ namespace SomerenUI
         private void roomsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             showPanel("Rooms");
+        }
+
+        private void activitiesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            showPanel("Activities");
         }
     }
 }

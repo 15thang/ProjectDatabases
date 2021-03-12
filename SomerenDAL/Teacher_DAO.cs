@@ -33,7 +33,7 @@ namespace SomerenDAL
                 {
                     TeacherID = (int)dr["DocentID"],
                     FirstName = (String)dr["Voornaam"],
-                    LastName = (String)dr["Achternaam"],
+                    LastName = (String)dr["Achternaam"]
                 };
                 teachers.Add(teacher);
             }
