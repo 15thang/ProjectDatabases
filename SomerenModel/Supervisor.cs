@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace SomerenModel
 {
-    public class Teacher : Person
+    public class Supervisor
     {
-        public int TeacherID { get; set; } // teacher number
+        public int teacherID { get; set; }
+        public int activityID { get; set; }
     }
 }

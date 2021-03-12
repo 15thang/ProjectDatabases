@@ -103,6 +103,15 @@ namespace SomerenUI
                 SomerenLogic.Teacher_Service teachService = new SomerenLogic.Teacher_Service();
                 List<Teacher> teacherList = teachService.GetTeachers();
 
+                //list supervisors
+                SomerenLogic.Supervisor_Service supService = new SomerenLogic.Supervisor_Service();
+                List<Supervisor> supList = supService.GetSupervisors();
+
+                //list activities
+                SomerenLogic.Activity_Service actService = new SomerenLogic.Activity_Service();
+                List<Activity> activityList = actService.GetActivities();
+
+
                 // clear the listview before filling it again
                 listViewTeachers.Clear();
 
@@ -116,7 +125,7 @@ namespace SomerenUI
                 listViewTeachers.Columns.Add("TeacherID", 70);
                 listViewTeachers.Columns.Add("First Name", 120);
                 listViewTeachers.Columns.Add("Last Name", 120);
-                listViewTeachers.Columns.Add("Supervises", 120);
+                listViewTeachers.Columns.Add("Supervises", 160);
 
                 foreach (SomerenModel.Teacher t in teacherList)
                 {
@@ -128,6 +137,7 @@ namespace SomerenUI
                     arr[0] = t.TeacherID.ToString();
                     arr[1] = t.FirstName;
                     arr[2] = t.LastName;
+                    arr[3] = supService.FindType(t.TeacherID, activityList, supList); // find type of activities
                     itm = new ListViewItem(arr);
                     listViewTeachers.Items.Add(itm);
                 }
