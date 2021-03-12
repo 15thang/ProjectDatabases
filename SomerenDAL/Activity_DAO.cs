@@ -27,6 +27,12 @@ namespace SomerenDAL
         {
             List<Activity> activities = new List<Activity>();
 
+            // Check if datatable is null
+            if (dataTable == null)
+            {
+                throw new Exception("Datatable is null");
+            }
+
             foreach (DataRow dr in dataTable.Rows)
             {
                 Activity activity = new Activity()

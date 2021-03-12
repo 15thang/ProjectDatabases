@@ -27,6 +27,12 @@ namespace SomerenDAL
         {
             List<Supervisor> supervisors = new List<Supervisor>();
 
+            // Check if datatable is null
+            if (dataTable == null)
+            {
+                throw new Exception("Datatable is null");
+            }
+
             foreach (DataRow dr in dataTable.Rows)
             {
                 Supervisor supervisor = new Supervisor()

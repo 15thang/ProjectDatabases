@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace SomerenLogic
 {
-    public class Room_Service
+    public class Room_Service : Base_Service
     {
         // Thomas Eddyson
         Room_DAO room_db = new Room_DAO();
@@ -23,6 +23,8 @@ namespace SomerenLogic
             }
             catch (Exception e)
             {
+                ErrorText = e.Message;
+                Error = true;
                 //throw new Exception(e.Message);
                 // something went wrong connecting to the database, so we will add a fake room to the list to make sure the rest of the application continues working!
                 List<Room> room = new List<Room>();

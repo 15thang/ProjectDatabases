@@ -22,7 +22,13 @@ namespace SomerenDAL
 
         private List<Room> ReadTables(DataTable dataTable)
         {
-            List<Room> Rooms = new List<Room>();            
+            List<Room> Rooms = new List<Room>();
+
+            // Check if datatable is null
+            if (dataTable == null)
+            {
+                throw new Exception("Datatable is null");
+            }
 
             foreach (DataRow dr in dataTable.Rows)
             {

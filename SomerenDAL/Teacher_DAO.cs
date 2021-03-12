@@ -27,6 +27,12 @@ namespace SomerenDAL
         {
             List<Teacher> teachers = new List<Teacher>();
 
+            // Check if datatable is null
+            if (dataTable == null)
+            {
+                throw new Exception("Datatable is null");
+            }
+
             foreach (DataRow dr in dataTable.Rows)
             {
                 Teacher teacher = new Teacher()

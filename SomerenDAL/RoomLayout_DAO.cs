@@ -23,6 +23,12 @@ namespace SomerenDAL
         {
             List<RoomLayout> RoomLayout = new List<RoomLayout>();
 
+            // Check if datatable is null
+            if (dataTable == null)
+            {
+                throw new Exception("Datatable is null");
+            }
+
             foreach (DataRow dr in dataTable.Rows)
             {
                 RoomLayout roomlayout = new RoomLayout()

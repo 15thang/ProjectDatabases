@@ -72,6 +72,9 @@ namespace SomerenUI
                 SomerenLogic.Student_Service studService = new SomerenLogic.Student_Service();
                 List<Student> studentList = studService.GetStudents();
 
+                // Shows message box if there is an error
+                Error_Show(studService);
+
                 // clear the listview before filling it again
                 listViewStudents.Clear();
 
@@ -129,6 +132,10 @@ namespace SomerenUI
                 SomerenLogic.Activity_Service actService = new SomerenLogic.Activity_Service();
                 List<Activity> activityList = actService.GetActivities();
 
+                // Shows message box if there is an error
+                Error_Show(teachService);
+                Error_Show(actService);
+                Error_Show(supService);
 
                 // clear the listview before filling it again
                 listViewTeachers.Clear();
@@ -182,6 +189,9 @@ namespace SomerenUI
                 SomerenLogic.Room_Service roomService = new SomerenLogic.Room_Service();
                 List<Room> roomList = roomService.GetRooms();
 
+                // Shows message box if there is an error
+                Error_Show(roomService);
+
                 // clear the listview before filling it again
                 listViewRooms.Clear();
 
@@ -230,6 +240,9 @@ namespace SomerenUI
                 // fill the students listview within the students panel with a list of teachers
                 SomerenLogic.Activity_Service actService = new SomerenLogic.Activity_Service();
                 List<Activity> activityList = actService.GetActivities();
+
+                // Shows message box if there is an error
+                Error_Show(actService);
 
                 // clear the listview before filling it again
                 listViewActivities.Clear();
@@ -282,6 +295,9 @@ namespace SomerenUI
                 // fill the Room listview within the Room panel with a list of Rooms
                 SomerenLogic.RoomLayout_Service roomLayoutService = new SomerenLogic.RoomLayout_Service();
                 List<RoomLayout> roomLayoutList = roomLayoutService.GetRoomLayout();
+
+                // Shows message box if there is an error
+                Error_Show(roomLayoutService);
 
                 listViewRoomLayout.Clear();
 
@@ -466,6 +482,15 @@ namespace SomerenUI
 
             // Perform the sort with these new sort options.
             this.listViewTeachers.Sort();
-        }        
+        }
+
+        //Shows error message if an error occured
+        public void Error_Show(Base_Service service)
+        {
+            if (service.Error == true)
+            {
+                MessageBox.Show($"{service.ErrorText}", "Error!", MessageBoxButtons.OK);
+            }
+        }
     }
 }

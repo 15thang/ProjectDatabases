@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace SomerenLogic
 {
-    public class Supervisor_Service
+    public class Supervisor_Service : Base_Service
     {
         Supervisor_DAO supervisor_db = new Supervisor_DAO();
 
@@ -24,6 +24,8 @@ namespace SomerenLogic
             }
             catch (Exception e)
             {
+                ErrorText = e.Message;
+                Error = true;
                 //throw new Exception(e.Message);
                 //something went wrong connecting to the database, so we will add a fake teacher to the list to make sure the rest of the application continues working!
                 List<Supervisor> supervisors = new List<Supervisor>();
