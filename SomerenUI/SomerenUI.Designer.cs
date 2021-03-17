@@ -79,12 +79,15 @@
             this.label4 = new System.Windows.Forms.Label();
             this.orderDrinksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnl_OrderDrinks = new System.Windows.Forms.Panel();
-            this.listView1 = new System.Windows.Forms.ListView();
-            this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader14 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader15 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.drinkLV = new System.Windows.Forms.ListView();
+            this.studentLV = new System.Windows.Forms.ListView();
+            this.orderButton = new System.Windows.Forms.Button();
+            this.total = new System.Windows.Forms.Label();
+            this.totalPriceLabel = new System.Windows.Forms.Label();
+            this.drinksLabel = new System.Windows.Forms.Label();
+            this.studentsLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.img_Dashboard)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.pnl_Dashboard.SuspendLayout();
@@ -329,9 +332,9 @@
             this.pnl_Rooms.Controls.Add(this.listViewRooms);
             this.pnl_Rooms.Controls.Add(this.pictureBox3);
             this.pnl_Rooms.Controls.Add(this.label2);
-            this.pnl_Rooms.Location = new System.Drawing.Point(12, 24);
+            this.pnl_Rooms.Location = new System.Drawing.Point(0, 24);
             this.pnl_Rooms.Name = "pnl_Rooms";
-            this.pnl_Rooms.Size = new System.Drawing.Size(938, 466);
+            this.pnl_Rooms.Size = new System.Drawing.Size(938, 442);
             this.pnl_Rooms.TabIndex = 7;
             // 
             // listViewRooms
@@ -385,9 +388,9 @@
             this.pnl_Activities.Controls.Add(this.listViewActivities);
             this.pnl_Activities.Controls.Add(this.pictureBox4);
             this.pnl_Activities.Controls.Add(this.label3);
-            this.pnl_Activities.Location = new System.Drawing.Point(12, 24);
+            this.pnl_Activities.Location = new System.Drawing.Point(0, 24);
             this.pnl_Activities.Name = "pnl_Activities";
-            this.pnl_Activities.Size = new System.Drawing.Size(938, 466);
+            this.pnl_Activities.Size = new System.Drawing.Size(938, 442);
             this.pnl_Activities.TabIndex = 8;
             // 
             // listViewActivities
@@ -438,13 +441,12 @@
             // 
             // pnl_Roomslayout
             // 
-            this.pnl_Roomslayout.Controls.Add(this.pnl_OrderDrinks);
             this.pnl_Roomslayout.Controls.Add(this.listViewRoomLayout);
             this.pnl_Roomslayout.Controls.Add(this.pictureBox5);
             this.pnl_Roomslayout.Controls.Add(this.label4);
-            this.pnl_Roomslayout.Location = new System.Drawing.Point(12, 24);
+            this.pnl_Roomslayout.Location = new System.Drawing.Point(0, 24);
             this.pnl_Roomslayout.Name = "pnl_Roomslayout";
-            this.pnl_Roomslayout.Size = new System.Drawing.Size(938, 466);
+            this.pnl_Roomslayout.Size = new System.Drawing.Size(938, 442);
             this.pnl_Roomslayout.TabIndex = 9;
             // 
             // listViewRoomLayout
@@ -501,38 +503,19 @@
             // 
             // pnl_OrderDrinks
             // 
-            this.pnl_OrderDrinks.Controls.Add(this.listView1);
+            this.pnl_OrderDrinks.Controls.Add(this.studentsLabel);
+            this.pnl_OrderDrinks.Controls.Add(this.drinksLabel);
+            this.pnl_OrderDrinks.Controls.Add(this.totalPriceLabel);
+            this.pnl_OrderDrinks.Controls.Add(this.total);
+            this.pnl_OrderDrinks.Controls.Add(this.orderButton);
+            this.pnl_OrderDrinks.Controls.Add(this.studentLV);
+            this.pnl_OrderDrinks.Controls.Add(this.drinkLV);
             this.pnl_OrderDrinks.Controls.Add(this.pictureBox6);
             this.pnl_OrderDrinks.Controls.Add(this.label5);
-            this.pnl_OrderDrinks.Location = new System.Drawing.Point(0, 0);
+            this.pnl_OrderDrinks.Location = new System.Drawing.Point(3, 24);
             this.pnl_OrderDrinks.Name = "pnl_OrderDrinks";
-            this.pnl_OrderDrinks.Size = new System.Drawing.Size(938, 466);
+            this.pnl_OrderDrinks.Size = new System.Drawing.Size(935, 442);
             this.pnl_OrderDrinks.TabIndex = 10;
-            // 
-            // listView1
-            // 
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader13,
-            this.columnHeader14,
-            this.columnHeader15});
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(16, 42);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(766, 307);
-            this.listView1.TabIndex = 5;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            // 
-            // columnHeader13
-            // 
-            this.columnHeader13.Text = "ID";
-            // 
-            // columnHeader14
-            // 
-            this.columnHeader14.Text = "Name";
-            // 
-            // columnHeader15
-            // 
-            this.columnHeader15.Text = "Date of Birth";
             // 
             // pictureBox6
             // 
@@ -548,24 +531,87 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(10, 10);
+            this.label5.Location = new System.Drawing.Point(24, 10);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(147, 29);
             this.label5.TabIndex = 3;
-            this.label5.Text = "Room layout";
+            this.label5.Text = "Order drinks";
+            // 
+            // drinkLV
+            // 
+            this.drinkLV.HideSelection = false;
+            this.drinkLV.Location = new System.Drawing.Point(29, 74);
+            this.drinkLV.Name = "drinkLV";
+            this.drinkLV.Size = new System.Drawing.Size(301, 127);
+            this.drinkLV.TabIndex = 6;
+            this.drinkLV.UseCompatibleStateImageBehavior = false;
+            // 
+            // studentLV
+            // 
+            this.studentLV.HideSelection = false;
+            this.studentLV.Location = new System.Drawing.Point(358, 74);
+            this.studentLV.Name = "studentLV";
+            this.studentLV.Size = new System.Drawing.Size(301, 127);
+            this.studentLV.TabIndex = 7;
+            this.studentLV.UseCompatibleStateImageBehavior = false;
+            // 
+            // orderButton
+            // 
+            this.orderButton.Location = new System.Drawing.Point(29, 241);
+            this.orderButton.Name = "orderButton";
+            this.orderButton.Size = new System.Drawing.Size(75, 23);
+            this.orderButton.TabIndex = 8;
+            this.orderButton.Text = "Order";
+            this.orderButton.UseVisualStyleBackColor = true;
+            // 
+            // total
+            // 
+            this.total.AutoSize = true;
+            this.total.Location = new System.Drawing.Point(26, 213);
+            this.total.Name = "total";
+            this.total.Size = new System.Drawing.Size(61, 13);
+            this.total.TabIndex = 9;
+            this.total.Text = "Total Price:";
+            // 
+            // totalPriceLabel
+            // 
+            this.totalPriceLabel.AutoSize = true;
+            this.totalPriceLabel.Location = new System.Drawing.Point(104, 213);
+            this.totalPriceLabel.Name = "totalPriceLabel";
+            this.totalPriceLabel.Size = new System.Drawing.Size(0, 13);
+            this.totalPriceLabel.TabIndex = 10;
+            // 
+            // drinksLabel
+            // 
+            this.drinksLabel.AutoSize = true;
+            this.drinksLabel.Location = new System.Drawing.Point(29, 55);
+            this.drinksLabel.Name = "drinksLabel";
+            this.drinksLabel.Size = new System.Drawing.Size(37, 13);
+            this.drinksLabel.TabIndex = 11;
+            this.drinksLabel.Text = "Drinks";
+            // 
+            // studentsLabel
+            // 
+            this.studentsLabel.AutoSize = true;
+            this.studentsLabel.Location = new System.Drawing.Point(358, 54);
+            this.studentsLabel.Name = "studentsLabel";
+            this.studentsLabel.Size = new System.Drawing.Size(49, 13);
+            this.studentsLabel.TabIndex = 12;
+            this.studentsLabel.Text = "Students";
             // 
             // SomerenUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(962, 505);
+            this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.pnl_OrderDrinks);
             this.Controls.Add(this.pnl_Roomslayout);
-            this.Controls.Add(this.pnl_Activities);
             this.Controls.Add(this.pnl_Rooms);
+            this.Controls.Add(this.pnl_Activities);
             this.Controls.Add(this.pnl_Teachers);
             this.Controls.Add(this.pnl_Students);
             this.Controls.Add(this.pnl_Dashboard);
-            this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "SomerenUI";
@@ -652,12 +698,15 @@
         private System.Windows.Forms.ToolStripMenuItem roomLayoutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem orderDrinksToolStripMenuItem;
         private System.Windows.Forms.Panel pnl_OrderDrinks;
-        private System.Windows.Forms.ListView listView1;
-        private System.Windows.Forms.ColumnHeader columnHeader13;
-        private System.Windows.Forms.ColumnHeader columnHeader14;
-        private System.Windows.Forms.ColumnHeader columnHeader15;
         private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label studentsLabel;
+        private System.Windows.Forms.Label drinksLabel;
+        private System.Windows.Forms.Label totalPriceLabel;
+        private System.Windows.Forms.Label total;
+        private System.Windows.Forms.Button orderButton;
+        private System.Windows.Forms.ListView studentLV;
+        private System.Windows.Forms.ListView drinkLV;
     }
 }
 

@@ -313,13 +313,52 @@ namespace SomerenUI
                 {
                     ch.Width = -2;
                 }
-            } else if(panelName == "OrderDrinks")
+            } 
+            else if(panelName == "OrderDrinks")
             {
                 // Ruben Stoop
                 // hide all other panels
                 HideAllPanels();
-                // show rooms
+                
+                // show Order drinks
                 pnl_OrderDrinks.Show();
+
+                // fill the students listview within the students panel with a list of students
+                SomerenLogic.Student_Service studService = new SomerenLogic.Student_Service();
+                List<Student> studentList = studService.GetStudents();
+
+                // Shows message box if there is an error
+                Error_Show(studService);
+
+                // clear the listview before filling it again
+                studentLV.Clear();
+
+                // add grid lines, rows and enable sorting
+                studentLV.View = View.Details;
+                studentLV.GridLines = true;
+                studentLV.FullRowSelect = true;
+                studentLV.Sorting = SortOrder.Ascending;
+
+                // add column headers
+                studentLV.Columns.Add("StudentID");
+                studentLV.Columns.Add("Name");
+
+                foreach (SomerenModel.Student s in studentList)
+                {
+                    string[] arr = new string[4];
+                    ListViewItem li;
+
+                    //Add first item
+                    arr[0] = s.StudentID.ToString();
+                    arr[1] = s.FirstName + " " + s.LastName;
+
+                    li = new ListViewItem(arr);
+                    studentLV.Items.Add(li);
+                }
+                foreach (ColumnHeader ch in studentLV.Columns) // dynamically change column width
+                {
+                    ch.Width = -2;
+                }
             }
         }
 
