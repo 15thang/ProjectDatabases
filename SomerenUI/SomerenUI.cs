@@ -36,19 +36,23 @@ namespace SomerenUI
         }
         private void HideAllPanels()
         {
-            // to do
+            pnl_Dashboard.Hide();
+            img_Dashboard.Hide();
+            pnl_Teachers.Hide();
+            pnl_Students.Hide();
+            pnl_Rooms.Hide();
+            pnl_Activities.Hide();
+            pnl_Roomslayout.Hide();
+            pnl_OrderDrinks.Hide();
         }
+
         private void showPanel(string panelName)
         {
 
             if(panelName == "Dashboard")
             {
                 // hide all other panels
-                pnl_Students.Hide();
-                pnl_Teachers.Hide();
-                pnl_Rooms.Hide();
-                pnl_Activities.Hide();
-                pnl_Roomslayout.Hide();
+                HideAllPanels();
 
                 // show dashboard
                 pnl_Dashboard.Show();
@@ -58,12 +62,7 @@ namespace SomerenUI
             {
                 // Ruben Stoop
                 // hide all other panels
-                pnl_Dashboard.Hide();
-                img_Dashboard.Hide();
-                pnl_Teachers.Hide();
-                pnl_Rooms.Hide();
-                pnl_Activities.Hide();
-                pnl_Roomslayout.Hide();
+                HideAllPanels();
 
                 // show students
                 pnl_Students.Show();
@@ -110,12 +109,7 @@ namespace SomerenUI
             {
                 // Tim Roffelsen
                 // hide all other panels
-                pnl_Dashboard.Hide();
-                img_Dashboard.Hide();
-                pnl_Students.Hide();
-                pnl_Rooms.Hide();
-                pnl_Activities.Hide();
-                pnl_Roomslayout.Hide();
+                HideAllPanels();
 
                 // show teachers
                 pnl_Teachers.Show();
@@ -175,12 +169,7 @@ namespace SomerenUI
             {
                 // Thomas Eddyson
                 // hide all other panels
-                pnl_Dashboard.Hide();
-                img_Dashboard.Hide();
-                pnl_Teachers.Hide();
-                pnl_Students.Hide();
-                pnl_Activities.Hide();
-                pnl_Roomslayout.Hide();
+                HideAllPanels();
 
                 // show rooms
                 pnl_Rooms.Show();
@@ -227,12 +216,7 @@ namespace SomerenUI
             {
                 // Tim Roffelsen
                 // hide all other panels
-                pnl_Dashboard.Hide();
-                img_Dashboard.Hide();
-                pnl_Students.Hide();
-                pnl_Rooms.Hide();
-                pnl_Teachers.Hide();
-                pnl_Roomslayout.Hide();
+                HideAllPanels();
 
                 // show activities
                 pnl_Activities.Show();
@@ -282,12 +266,7 @@ namespace SomerenUI
             {
                 // Thang Nguyen Anh
                 // hide all other panels
-                pnl_Dashboard.Hide();
-                img_Dashboard.Hide();
-                pnl_Teachers.Hide();
-                pnl_Students.Hide();
-                pnl_Rooms.Hide();
-                pnl_Activities.Hide();
+                HideAllPanels();
 
                 // show rooms
                 pnl_Roomslayout.Show();
@@ -334,6 +313,13 @@ namespace SomerenUI
                 {
                     ch.Width = -2;
                 }
+            } else if(panelName == "OrderDrinks")
+            {
+                // Ruben Stoop
+                // hide all other panels
+                HideAllPanels();
+                // show rooms
+                pnl_OrderDrinks.Show();
             }
         }
 
@@ -380,6 +366,11 @@ namespace SomerenUI
         private void roomLayoutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             showPanel("RoomsLayout");
+        }
+
+        private void orderDrinksToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            showPanel("OrderDrinks");
         }
 
         private void listViewActivities_ColumnClick(object sender, ColumnClickEventArgs e)
@@ -498,5 +489,7 @@ namespace SomerenUI
                 MessageBox.Show($"{service.ErrorText}", "Error!", MessageBoxButtons.OK);
             }
         }
+
+
     }
 }
