@@ -40,6 +40,7 @@
             this.activitiesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.roomsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.roomLayoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.orderDrinksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnl_Dashboard = new System.Windows.Forms.Panel();
             this.lbl_Dashboard = new System.Windows.Forms.Label();
             this.pnl_Students = new System.Windows.Forms.Panel();
@@ -77,17 +78,16 @@
             this.columnHeader12 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.orderDrinksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnl_OrderDrinks = new System.Windows.Forms.Panel();
+            this.studentsLabel = new System.Windows.Forms.Label();
+            this.drinksLabel = new System.Windows.Forms.Label();
+            this.totalPriceLabel = new System.Windows.Forms.Label();
+            this.total = new System.Windows.Forms.Label();
+            this.orderButton = new System.Windows.Forms.Button();
+            this.studentLV = new System.Windows.Forms.ListView();
+            this.drinkLV = new System.Windows.Forms.ListView();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.drinkLV = new System.Windows.Forms.ListView();
-            this.studentLV = new System.Windows.Forms.ListView();
-            this.orderButton = new System.Windows.Forms.Button();
-            this.total = new System.Windows.Forms.Label();
-            this.totalPriceLabel = new System.Windows.Forms.Label();
-            this.drinksLabel = new System.Windows.Forms.Label();
-            this.studentsLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.img_Dashboard)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.pnl_Dashboard.SuspendLayout();
@@ -196,6 +196,13 @@
             this.roomLayoutToolStripMenuItem.Size = new System.Drawing.Size(90, 22);
             this.roomLayoutToolStripMenuItem.Text = "Room Layout";
             this.roomLayoutToolStripMenuItem.Click += new System.EventHandler(this.roomLayoutToolStripMenuItem_Click);
+            // 
+            // orderDrinksToolStripMenuItem
+            // 
+            this.orderDrinksToolStripMenuItem.Name = "orderDrinksToolStripMenuItem";
+            this.orderDrinksToolStripMenuItem.Size = new System.Drawing.Size(85, 22);
+            this.orderDrinksToolStripMenuItem.Text = "Order Drinks";
+            this.orderDrinksToolStripMenuItem.Click += new System.EventHandler(this.orderDrinksToolStripMenuItem_Click);
             // 
             // pnl_Dashboard
             // 
@@ -494,13 +501,6 @@
             this.label4.TabIndex = 3;
             this.label4.Text = "Room layout";
             // 
-            // orderDrinksToolStripMenuItem
-            // 
-            this.orderDrinksToolStripMenuItem.Name = "orderDrinksToolStripMenuItem";
-            this.orderDrinksToolStripMenuItem.Size = new System.Drawing.Size(85, 22);
-            this.orderDrinksToolStripMenuItem.Text = "Order Drinks";
-            this.orderDrinksToolStripMenuItem.Click += new System.EventHandler(this.orderDrinksToolStripMenuItem_Click);
-            // 
             // pnl_OrderDrinks
             // 
             this.pnl_OrderDrinks.Controls.Add(this.studentsLabel);
@@ -516,6 +516,69 @@
             this.pnl_OrderDrinks.Name = "pnl_OrderDrinks";
             this.pnl_OrderDrinks.Size = new System.Drawing.Size(935, 442);
             this.pnl_OrderDrinks.TabIndex = 10;
+            // 
+            // studentsLabel
+            // 
+            this.studentsLabel.AutoSize = true;
+            this.studentsLabel.Location = new System.Drawing.Point(21, 197);
+            this.studentsLabel.Name = "studentsLabel";
+            this.studentsLabel.Size = new System.Drawing.Size(49, 13);
+            this.studentsLabel.TabIndex = 12;
+            this.studentsLabel.Text = "Students";
+            // 
+            // drinksLabel
+            // 
+            this.drinksLabel.AutoSize = true;
+            this.drinksLabel.Location = new System.Drawing.Point(22, 42);
+            this.drinksLabel.Name = "drinksLabel";
+            this.drinksLabel.Size = new System.Drawing.Size(233, 13);
+            this.drinksLabel.TabIndex = 11;
+            this.drinksLabel.Text = "Drinks (Use control click to select multiple items)";
+            // 
+            // totalPriceLabel
+            // 
+            this.totalPriceLabel.AutoSize = true;
+            this.totalPriceLabel.Location = new System.Drawing.Point(97, 352);
+            this.totalPriceLabel.Name = "totalPriceLabel";
+            this.totalPriceLabel.Size = new System.Drawing.Size(0, 13);
+            this.totalPriceLabel.TabIndex = 10;
+            // 
+            // total
+            // 
+            this.total.AutoSize = true;
+            this.total.Location = new System.Drawing.Point(22, 352);
+            this.total.Name = "total";
+            this.total.Size = new System.Drawing.Size(61, 13);
+            this.total.TabIndex = 9;
+            this.total.Text = "Total Price:";
+            // 
+            // orderButton
+            // 
+            this.orderButton.Location = new System.Drawing.Point(22, 385);
+            this.orderButton.Name = "orderButton";
+            this.orderButton.Size = new System.Drawing.Size(75, 23);
+            this.orderButton.TabIndex = 8;
+            this.orderButton.Text = "Order";
+            this.orderButton.UseVisualStyleBackColor = true;
+            // 
+            // studentLV
+            // 
+            this.studentLV.HideSelection = false;
+            this.studentLV.Location = new System.Drawing.Point(22, 213);
+            this.studentLV.Name = "studentLV";
+            this.studentLV.Size = new System.Drawing.Size(640, 127);
+            this.studentLV.TabIndex = 7;
+            this.studentLV.UseCompatibleStateImageBehavior = false;
+            // 
+            // drinkLV
+            // 
+            this.drinkLV.HideSelection = false;
+            this.drinkLV.Location = new System.Drawing.Point(22, 58);
+            this.drinkLV.Name = "drinkLV";
+            this.drinkLV.Size = new System.Drawing.Size(640, 127);
+            this.drinkLV.TabIndex = 6;
+            this.drinkLV.UseCompatibleStateImageBehavior = false;
+            this.drinkLV.SelectedIndexChanged += new System.EventHandler(this.drinkLV_SelectedIndexChanged);
             // 
             // pictureBox6
             // 
@@ -536,68 +599,6 @@
             this.label5.Size = new System.Drawing.Size(147, 29);
             this.label5.TabIndex = 3;
             this.label5.Text = "Order drinks";
-            // 
-            // drinkLV
-            // 
-            this.drinkLV.HideSelection = false;
-            this.drinkLV.Location = new System.Drawing.Point(22, 58);
-            this.drinkLV.Name = "drinkLV";
-            this.drinkLV.Size = new System.Drawing.Size(640, 127);
-            this.drinkLV.TabIndex = 6;
-            this.drinkLV.UseCompatibleStateImageBehavior = false;
-            // 
-            // studentLV
-            // 
-            this.studentLV.HideSelection = false;
-            this.studentLV.Location = new System.Drawing.Point(22, 213);
-            this.studentLV.Name = "studentLV";
-            this.studentLV.Size = new System.Drawing.Size(640, 127);
-            this.studentLV.TabIndex = 7;
-            this.studentLV.UseCompatibleStateImageBehavior = false;
-            // 
-            // orderButton
-            // 
-            this.orderButton.Location = new System.Drawing.Point(22, 385);
-            this.orderButton.Name = "orderButton";
-            this.orderButton.Size = new System.Drawing.Size(75, 23);
-            this.orderButton.TabIndex = 8;
-            this.orderButton.Text = "Order";
-            this.orderButton.UseVisualStyleBackColor = true;
-            // 
-            // total
-            // 
-            this.total.AutoSize = true;
-            this.total.Location = new System.Drawing.Point(22, 352);
-            this.total.Name = "total";
-            this.total.Size = new System.Drawing.Size(61, 13);
-            this.total.TabIndex = 9;
-            this.total.Text = "Total Price:";
-            // 
-            // totalPriceLabel
-            // 
-            this.totalPriceLabel.AutoSize = true;
-            this.totalPriceLabel.Location = new System.Drawing.Point(97, 352);
-            this.totalPriceLabel.Name = "totalPriceLabel";
-            this.totalPriceLabel.Size = new System.Drawing.Size(0, 13);
-            this.totalPriceLabel.TabIndex = 10;
-            // 
-            // drinksLabel
-            // 
-            this.drinksLabel.AutoSize = true;
-            this.drinksLabel.Location = new System.Drawing.Point(22, 42);
-            this.drinksLabel.Name = "drinksLabel";
-            this.drinksLabel.Size = new System.Drawing.Size(37, 13);
-            this.drinksLabel.TabIndex = 11;
-            this.drinksLabel.Text = "Drinks";
-            // 
-            // studentsLabel
-            // 
-            this.studentsLabel.AutoSize = true;
-            this.studentsLabel.Location = new System.Drawing.Point(21, 197);
-            this.studentsLabel.Name = "studentsLabel";
-            this.studentsLabel.Size = new System.Drawing.Size(49, 13);
-            this.studentsLabel.TabIndex = 12;
-            this.studentsLabel.Text = "Students";
             // 
             // SomerenUI
             // 

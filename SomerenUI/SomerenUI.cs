@@ -338,6 +338,7 @@ namespace SomerenUI
                 studentLV.GridLines = true;
                 studentLV.FullRowSelect = true;
                 studentLV.Sorting = SortOrder.Ascending;
+                studentLV.MultiSelect = false;
 
                 // add column headers
                 studentLV.Columns.Add("StudentID");
@@ -370,7 +371,7 @@ namespace SomerenUI
                 drinkLV.GridLines = true;
                 drinkLV.FullRowSelect = true;
                 drinkLV.Sorting = SortOrder.Ascending;
-
+                drinkLV.MultiSelect = true;
                 // add column headers
                 drinkLV.Columns.Add("Drink Id");
                 drinkLV.Columns.Add("Product Name");
@@ -406,6 +407,15 @@ namespace SomerenUI
                     ch.Width = -2;
                 }
             }
+        }
+        private void drinkLV_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            double totalPrice = 0.00;
+            foreach (ListViewItem item in drinkLV.SelectedItems)
+            {
+                totalPrice += Double.Parse(item.SubItems[3].Text);
+            }
+            totalPriceLabel.Text = totalPrice.ToString("0.00");
         }
 
         private void dashboardToolStripMenuItem_Click(object sender, EventArgs e)
