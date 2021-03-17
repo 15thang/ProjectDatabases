@@ -355,6 +355,52 @@ namespace SomerenUI
                     li = new ListViewItem(arr);
                     studentLV.Items.Add(li);
                 }
+
+                // Ruben Stoop
+                //get The product from the database
+                SomerenLogic.Product_Service prodService = new SomerenLogic.Product_Service();
+                List<Product> productlist = prodService.GetProducts();
+
+                Error_Show(prodService);
+
+                drinkLV.Clear();
+
+                // add grid lines, rows and enable sorting
+                drinkLV.View = View.Details;
+                drinkLV.GridLines = true;
+                drinkLV.FullRowSelect = true;
+                drinkLV.Sorting = SortOrder.Ascending;
+
+                // add column headers
+                drinkLV.Columns.Add("Drink Id");
+                drinkLV.Columns.Add("Product Name");
+                drinkLV.Columns.Add("Contains Alcohol");
+                drinkLV.Columns.Add("Prijs");
+                drinkLV.Columns.Add("Voorraad");
+
+
+                foreach (SomerenModel.Product p in productlist)
+                {
+                    string[] arr = new string[5];
+                    ListViewItem li;
+
+
+                    // Add the items
+                    arr[0] = p.ProductID.ToString();
+                    arr[1] = p.ProductName;
+                    arr[2] = p.AlcoholString;
+                    arr[3] = p.Price.ToString("0.00");
+                    arr[4] = p.Stock.ToString();
+
+                    li = new ListViewItem(arr);
+                    drinkLV.Items.Add(li);
+                }
+
+                foreach (ColumnHeader ch in drinkLV.Columns) // dynamically change column width
+                {
+                    ch.Width = -2;
+                }
+
                 foreach (ColumnHeader ch in studentLV.Columns) // dynamically change column width
                 {
                     ch.Width = -2;

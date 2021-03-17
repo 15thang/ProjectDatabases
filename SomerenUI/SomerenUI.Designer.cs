@@ -531,7 +531,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(24, 10);
+            this.label5.Location = new System.Drawing.Point(17, 4);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(147, 29);
             this.label5.TabIndex = 3;
@@ -540,24 +540,24 @@
             // drinkLV
             // 
             this.drinkLV.HideSelection = false;
-            this.drinkLV.Location = new System.Drawing.Point(29, 74);
+            this.drinkLV.Location = new System.Drawing.Point(22, 58);
             this.drinkLV.Name = "drinkLV";
-            this.drinkLV.Size = new System.Drawing.Size(301, 127);
+            this.drinkLV.Size = new System.Drawing.Size(640, 127);
             this.drinkLV.TabIndex = 6;
             this.drinkLV.UseCompatibleStateImageBehavior = false;
             // 
             // studentLV
             // 
             this.studentLV.HideSelection = false;
-            this.studentLV.Location = new System.Drawing.Point(358, 74);
+            this.studentLV.Location = new System.Drawing.Point(22, 213);
             this.studentLV.Name = "studentLV";
-            this.studentLV.Size = new System.Drawing.Size(301, 127);
+            this.studentLV.Size = new System.Drawing.Size(640, 127);
             this.studentLV.TabIndex = 7;
             this.studentLV.UseCompatibleStateImageBehavior = false;
             // 
             // orderButton
             // 
-            this.orderButton.Location = new System.Drawing.Point(29, 241);
+            this.orderButton.Location = new System.Drawing.Point(22, 385);
             this.orderButton.Name = "orderButton";
             this.orderButton.Size = new System.Drawing.Size(75, 23);
             this.orderButton.TabIndex = 8;
@@ -567,7 +567,7 @@
             // total
             // 
             this.total.AutoSize = true;
-            this.total.Location = new System.Drawing.Point(26, 213);
+            this.total.Location = new System.Drawing.Point(22, 352);
             this.total.Name = "total";
             this.total.Size = new System.Drawing.Size(61, 13);
             this.total.TabIndex = 9;
@@ -576,7 +576,7 @@
             // totalPriceLabel
             // 
             this.totalPriceLabel.AutoSize = true;
-            this.totalPriceLabel.Location = new System.Drawing.Point(104, 213);
+            this.totalPriceLabel.Location = new System.Drawing.Point(97, 352);
             this.totalPriceLabel.Name = "totalPriceLabel";
             this.totalPriceLabel.Size = new System.Drawing.Size(0, 13);
             this.totalPriceLabel.TabIndex = 10;
@@ -584,7 +584,7 @@
             // drinksLabel
             // 
             this.drinksLabel.AutoSize = true;
-            this.drinksLabel.Location = new System.Drawing.Point(29, 55);
+            this.drinksLabel.Location = new System.Drawing.Point(22, 42);
             this.drinksLabel.Name = "drinksLabel";
             this.drinksLabel.Size = new System.Drawing.Size(37, 13);
             this.drinksLabel.TabIndex = 11;
@@ -593,7 +593,7 @@
             // studentsLabel
             // 
             this.studentsLabel.AutoSize = true;
-            this.studentsLabel.Location = new System.Drawing.Point(358, 54);
+            this.studentsLabel.Location = new System.Drawing.Point(21, 197);
             this.studentsLabel.Name = "studentsLabel";
             this.studentsLabel.Size = new System.Drawing.Size(49, 13);
             this.studentsLabel.TabIndex = 12;

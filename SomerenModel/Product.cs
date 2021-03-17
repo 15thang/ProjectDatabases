@@ -9,7 +9,22 @@ namespace SomerenModel
     public class Product
     {
         // Ruben Stoop
-        
+        public Product(int productID, bool isalcohol, string productName, double price, int stock)
+        {
+            this.ProductID = productID;
+            this.isAlcohol = isalcohol;
+            this.ProductName = productName;
+            this.Price = price;
+            this.Stock = stock;
+            
+            if(isalcohol)
+            {
+                this.AlcoholString = "Yes";
+            } else if(!isalcohol)
+            {
+                this.AlcoholString = "No";
+            }
+        }
         // Key
         public int ProductID { get; set; } 
         // Is alcoholic drink
@@ -20,5 +35,7 @@ namespace SomerenModel
         public double Price { get; set; }
         // Stock
         public int Stock { get; set; }
+        //Bool alcohol naar string
+        public string AlcoholString { get; set; }
     }
 }
