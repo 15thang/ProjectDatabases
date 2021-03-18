@@ -595,6 +595,7 @@ namespace SomerenUI
         // Ruben Stoop
         private void orderButton_Click(object sender, EventArgs e)
         {
+            //Order
             //Makes The Order
             SomerenLogic.Order_Service order_Service = new SomerenLogic.Order_Service();
 
@@ -619,6 +620,8 @@ namespace SomerenUI
             order.StudentID = studentID;
 
             order_Service.Insert_Order(order);
+
+            //Order Product
         }
     }
 }
