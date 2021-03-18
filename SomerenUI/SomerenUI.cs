@@ -390,14 +390,8 @@ namespace SomerenUI
                     arr[0] = p.ProductID.ToString();
                     arr[1] = p.ProductName;
                     arr[2] = p.AlcoholString;
-                    if (p.Price == 0)
-                    {
-                        arr[3] = "0.00";
-                    }
-                    else
-                    {
-                        arr[3] = p.Price.ToString("0.00");
-                    }
+                    arr[3] = p.Price.ToString("0.00");
+
                     if (p.ProductID == 0)
                     {
                         arr[4] += $"Sufficient stock (infinite)"; 

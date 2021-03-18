@@ -14,17 +14,18 @@ namespace SomerenDAL
     {
 
         // Ruben Stoop
+        // Opdracht B
         // Data gets pulled from the database by the query from the 'Product' table
         public List<Product> Db_Get_All_Products()
         {
-            //string query = "SELECT [ProductID], [isAlcohol], [ProductNaam], [Prijs], [Voorraad] FROM Product;";
-            string query = "SELECT [ProductID], [isAlcohol], [ProductNaam], [Prijs], [Voorraad] FROM Product WHERE Voorraad > 1 ORDER BY Voorraad DESC, Prijs ASC;";
+            string query = "SELECT [ProductID], [isAlcohol], [ProductNaam], [Prijs], [Voorraad] FROM Product;";
 
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
 
         // Ruben Stoop
+        // Opdracht B
         // The returned data gets saved in a list
         private List<Product> ReadTables(DataTable dataTable)
         {

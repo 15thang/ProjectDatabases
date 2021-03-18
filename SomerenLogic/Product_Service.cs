@@ -14,6 +14,7 @@ namespace SomerenLogic
         Product_DAO product_db = new Product_DAO();
 
         // Ruben Stoop
+        // Opdracht B
         // The logic layer fetches the list with products, if something goes wrong a test user is made
         public List<Product> GetProducts()
         {
