@@ -220,14 +220,14 @@
             // orderDrinksToolStripMenuItem
             // 
             this.orderDrinksToolStripMenuItem.Name = "orderDrinksToolStripMenuItem";
-            this.orderDrinksToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.orderDrinksToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
             this.orderDrinksToolStripMenuItem.Text = "Order Drinks";
             this.orderDrinksToolStripMenuItem.Click += new System.EventHandler(this.orderDrinksToolStripMenuItem_Click);
             // 
             // stockToolStripMenuItem
             // 
             this.stockToolStripMenuItem.Name = "stockToolStripMenuItem";
-            this.stockToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.stockToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
             this.stockToolStripMenuItem.Text = "Stock";
             this.stockToolStripMenuItem.Click += new System.EventHandler(this.stockToolStripMenuItem_Click);
             // 
@@ -634,7 +634,7 @@
             this.pnl_Stock.Controls.Add(this.listViewStock);
             this.pnl_Stock.Controls.Add(this.pictureBox7);
             this.pnl_Stock.Controls.Add(this.lbl_Stock);
-            this.pnl_Stock.Location = new System.Drawing.Point(0, 0);
+            this.pnl_Stock.Location = new System.Drawing.Point(0, 24);
             this.pnl_Stock.Name = "pnl_Stock";
             this.pnl_Stock.Size = new System.Drawing.Size(938, 466);
             this.pnl_Stock.TabIndex = 11;

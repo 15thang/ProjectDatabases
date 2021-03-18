@@ -375,7 +375,7 @@ namespace SomerenUI
                 drinkLV.Columns.Add("DrinkID");
                 drinkLV.Columns.Add("Product Name");
                 drinkLV.Columns.Add("Contains Alcohol");
-                drinkLV.Columns.Add("Price");
+                drinkLV.Columns.Add("Price (€)");
                 drinkLV.Columns.Add("Stock");
 
                 foreach (SomerenModel.Product p in productlist)
@@ -438,13 +438,12 @@ namespace SomerenUI
                 listViewStock.View = View.Details;
                 listViewStock.GridLines = true;
                 listViewStock.FullRowSelect = true;
-                //listViewStock.Sorting = SortOrder.Ascending;
 
                 // add column header
                 listViewStock.Columns.Add("Drink ID");
                 listViewStock.Columns.Add("Product Name");
                 listViewStock.Columns.Add("Contains Alcohol");
-                listViewStock.Columns.Add("Price");
+                listViewStock.Columns.Add("Price (€)");
                 listViewStock.Columns.Add("Stock");
                 listViewStock.Columns.Add("Sold");
 
