@@ -30,8 +30,8 @@ namespace SomerenLogic
                 //something went wrong connecting to the database, so we will add a fake teacher to the list to make sure the rest of the application continues working!
                 List<Supervisor> supervisors = new List<Supervisor>();
                 Supervisor s = new Supervisor();
-                s.activityID = -1;
-                s.teacherID = -1; 
+                s.ActivityID = -1;
+                s.TeacherID = -1; 
                 return supervisors;
             }
         }
@@ -43,11 +43,11 @@ namespace SomerenLogic
             List<Supervisor> sups = new List<Supervisor>();
             List<Activity> acts = new List<Activity>();
 
-            if (supervisors[0].teacherID == -1) // if adding supervises failed print substitute message
+            if (supervisors[0].TeacherID == -1) // if adding supervises failed print substitute message
             {
                 return "Checking errors in code";
             }
-            foreach (Supervisor supervisor in supervisors.FindAll(item => item.teacherID == tId)) // find all items in supervisors matching teacherId
+            foreach (Supervisor supervisor in supervisors.FindAll(item => item.TeacherID == tId)) // find all items in supervisors matching teacherId
             {
                 sups.Add(supervisor); // add into list sups when found
             }
@@ -55,7 +55,7 @@ namespace SomerenLogic
             {
                 foreach (Activity activity in activities) // run through list activities
                 {
-                    if (supervisor.activityID == activity.ActivityId) // true if activityID matches for both the supervisor and activity
+                    if (supervisor.ActivityID == activity.ActivityId) // true if activityID matches for both the supervisor and activity
                     {   
                         if (activitiesString != "")
                         {

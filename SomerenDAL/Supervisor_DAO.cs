@@ -37,8 +37,8 @@ namespace SomerenDAL
             {
                 Supervisor supervisor = new Supervisor()
                 {
-                    teacherID = (int)dr["DocentID"],
-                    activityID = (int)dr["ActiviteitID"]
+                    TeacherID = (int)dr["DocentID"],
+                    ActivityID = (int)dr["ActiviteitID"]
                 };
                 supervisors.Add(supervisor);
             }

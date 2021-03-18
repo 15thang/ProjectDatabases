@@ -376,8 +376,8 @@ namespace SomerenUI
                 drinkLV.Columns.Add("Drink Id");
                 drinkLV.Columns.Add("Product Name");
                 drinkLV.Columns.Add("Contains Alcohol");
-                drinkLV.Columns.Add("Prijs");
-                drinkLV.Columns.Add("Voorraad");
+                drinkLV.Columns.Add("Price");
+                drinkLV.Columns.Add("Stock");
 
 
                 foreach (SomerenModel.Product p in productlist)
@@ -390,8 +390,26 @@ namespace SomerenUI
                     arr[0] = p.ProductID.ToString();
                     arr[1] = p.ProductName;
                     arr[2] = p.AlcoholString;
-                    arr[3] = p.Price.ToString("0.00");
-                    arr[4] = p.Stock.ToString();
+                    if (p.Price == 0)
+                    {
+                        arr[3] = "0.00";
+                    }
+                    else
+                    {
+                        arr[3] = p.Price.ToString("0.00");
+                    }
+                    if (p.ProductID == 0)
+                    {
+                        arr[4] += $"Sufficient stock (infinite)"; 
+                    }
+                    else if (p.Stock < 10)
+                    {
+                        arr[4] += $"Stock almost empty ({p.Stock.ToString()})";
+                    }
+                    else
+                    {
+                        arr[4] += $"Sufficient stock ({p.Stock.ToString()})";
+                    }
 
                     li = new ListViewItem(arr);
                     drinkLV.Items.Add(li);

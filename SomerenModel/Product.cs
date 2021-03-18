@@ -12,7 +12,7 @@ namespace SomerenModel
         public Product(int productID, bool isalcohol, string productName, double price, int stock)
         {
             this.ProductID = productID;
-            this.isAlcohol = isalcohol;
+            this.IsAlcohol = isalcohol;
             this.ProductName = productName;
             this.Price = price;
             this.Stock = stock;
@@ -28,7 +28,7 @@ namespace SomerenModel
         // Key
         public int ProductID { get; set; } 
         // Is alcoholic drink
-        public bool isAlcohol { get; set; }   
+        public bool IsAlcohol { get; set; }   
         // The name of the product
         public string ProductName { get; set; }
         // Price
