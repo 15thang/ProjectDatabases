@@ -628,14 +628,18 @@ namespace SomerenUI
                 order.StudentID = studentID;
 
                 order_Service.Insert_Order(order, orderProducts);
+                
+                //Shows messagebox and resets panel
                 MessageBox.Show("Order added.", "Succes");
+                studentLV.SelectedItems.Clear();
+                drinkLV.SelectedItems.Clear();
+                pnl_OrderDrinks.Refresh();
+                pnl_OrderDrinks.Update();
             }
             else
             {
                 MessageBox.Show("Select a student.");
             }
-
-
         }
     }
 }
