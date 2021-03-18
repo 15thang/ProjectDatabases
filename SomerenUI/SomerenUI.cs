@@ -10,7 +10,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-
 namespace SomerenUI
 {
     public partial class SomerenUI : Form
@@ -48,7 +47,6 @@ namespace SomerenUI
 
         private void showPanel(string panelName)
         {
-
             if(panelName == "Dashboard")
             {
                 // hide all other panels
@@ -379,30 +377,21 @@ namespace SomerenUI
                 drinkLV.Columns.Add("Price");
                 drinkLV.Columns.Add("Stock");
 
-
                 foreach (SomerenModel.Product p in productlist)
                 {
                     string[] arr = new string[5];
                     ListViewItem li;
 
-
                     // Add the items
-                    arr[0] = p.ProductID.ToString();
+                    arr[0] = p.ProductID.ToString("00");
                     arr[1] = p.ProductName;
                     arr[2] = p.AlcoholString;
-                    if (p.Price == 0)
-                    {
-                        arr[3] = "0.00";
-                    }
-                    else
-                    {
-                        arr[3] = p.Price.ToString("0.00");
-                    }
+                    arr[3] = p.Price.ToString("0.00");
                     if (p.ProductID == 0)
                     {
-                        arr[4] += $"Sufficient stock (infinite)"; 
+                        arr[4] += $"Sufficient stock (infinite)"; // if water set stock infinite
                     }
-                    else if (p.Stock < 10)
+                    else if (p.Stock < 10) // check stock amount
                     {
                         arr[4] += $"Stock almost empty ({p.Stock.ToString()})";
                     }
@@ -602,7 +591,5 @@ namespace SomerenUI
                 MessageBox.Show($"{service.ErrorText}", "Error!", MessageBoxButtons.OK);
             }
         }
-
-
     }
 }
