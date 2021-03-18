@@ -14,6 +14,7 @@ namespace SomerenDAL
     {
 
         // Ruben Stoop
+        // Opdracht B
         // Data gets pulled from the database by the query from the 'Product' table
         public List<Product> Db_Get_All_Products()
         {
@@ -31,6 +32,7 @@ namespace SomerenDAL
         }
 
         // Ruben Stoop
+        // Opdracht B
         // The returned data gets saved in a list
         private List<Product> ReadTables(DataTable dataTable)
         {
