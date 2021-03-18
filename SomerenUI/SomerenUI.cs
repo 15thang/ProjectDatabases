@@ -591,5 +591,13 @@ namespace SomerenUI
                 MessageBox.Show($"{service.ErrorText}", "Error!", MessageBoxButtons.OK);
             }
         }
+
+        public static int Counter = 0;
+
+        private void orderButton_Click(object sender, EventArgs e)
+        {
+                Counter++;
+                Console.WriteLine(Counter);
+        }
     }
 }

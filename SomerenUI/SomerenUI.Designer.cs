@@ -566,6 +566,7 @@
             this.orderButton.TabIndex = 8;
             this.orderButton.Text = "Order";
             this.orderButton.UseVisualStyleBackColor = true;
+            this.orderButton.Click += new System.EventHandler(this.orderButton_Click);
             // 
             // total
             // 
