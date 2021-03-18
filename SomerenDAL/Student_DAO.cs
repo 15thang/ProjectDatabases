@@ -19,6 +19,7 @@ namespace SomerenDAL
         {
             string query = "SELECT Student.StudentID, Persoon.Voornaam, Persoon.Achternaam FROM [Student] INNER JOIN[Persoon] ON Student.PersoonID = Persoon.PersoonID;";
             SqlParameter[] sqlParameters = new SqlParameter[0];
+
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
 

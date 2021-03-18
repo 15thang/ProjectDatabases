@@ -592,12 +592,33 @@ namespace SomerenUI
             }
         }
 
-        public static int Counter = 0;
-
+        // Ruben Stoop
         private void orderButton_Click(object sender, EventArgs e)
         {
-                Counter++;
-                Console.WriteLine(Counter);
+            //Makes The Order
+            SomerenLogic.Order_Service order_Service = new SomerenLogic.Order_Service();
+
+            int studentID = 0;
+            // Get the student
+            if (studentLV.SelectedItems != null)
+            {
+                string selectStudent = studentLV.SelectedItems[0].Text;
+                studentID = int.Parse(selectStudent);
+            } else
+            {
+                MessageBox.Show("Select a student.");
+                throw new Exception();
+            }
+            
+            //Get Date
+            DateTime date = DateTime.Now;
+
+            Order order = new Order();
+            order.OrderDate = date;
+            order.BarID = 100;
+            order.StudentID = studentID;
+
+            order_Service.Insert_Order(order);
         }
     }
 }
