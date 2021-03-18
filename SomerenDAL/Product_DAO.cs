@@ -18,15 +18,13 @@ namespace SomerenDAL
         // Data gets pulled from the database by the query from the 'Product' table
         public List<Product> Db_Get_All_Products()
         {
-            string query = "SELECT [ProductID], [isAlcohol], [ProductNaam], [Prijs], [Voorraad] FROM Product;";
-
+            string query = "SELECT [ProductID], [isAlcohol], [ProductNaam], [Prijs], [Voorraad], [Verkocht] FROM Product;";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
         public List<Product> Db_Get_All_Stock()
         {
-            string query = "SELECT [ProductID], [isAlcohol], [ProductNaam], [Prijs], [Voorraad] FROM Product WHERE Voorraad > 1 ORDER BY Voorraad DESC, Prijs ASC;";
-
+            string query = "SELECT [ProductID], [isAlcohol], [ProductNaam], [Prijs], [Voorraad], [Verkocht] FROM Product WHERE Voorraad > 1 ORDER BY Voorraad DESC, Prijs ASC, Verkocht DESC;";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
@@ -46,14 +44,15 @@ namespace SomerenDAL
 
             foreach (DataRow dr in dataTable.Rows)
             {
-                Product product = new Product(
+                Product product = new Product
+                    (
                     (int)dr["ProductID"],
                     (bool)dr["isAlcohol"],
                     (String)dr["ProductNaam"],
                     (double)dr["Prijs"],
-                    (int)dr["Voorraad"])
-                {
-                };
+                    (int)dr["Voorraad"],
+                    (int)dr["Verkocht"]
+                    );
 
                 products.Add(product);
             }

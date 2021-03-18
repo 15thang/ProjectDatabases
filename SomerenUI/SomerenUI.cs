@@ -43,6 +43,7 @@ namespace SomerenUI
             pnl_Activities.Hide();
             pnl_Roomslayout.Hide();
             pnl_OrderDrinks.Hide();
+            pnl_Stock.Hide();
         }
 
         private void showPanel(string panelName)
@@ -371,7 +372,7 @@ namespace SomerenUI
                 drinkLV.Sorting = SortOrder.Ascending;
                 drinkLV.MultiSelect = true;
                 // add column headers
-                drinkLV.Columns.Add("Drink Id");
+                drinkLV.Columns.Add("DrinkID");
                 drinkLV.Columns.Add("Product Name");
                 drinkLV.Columns.Add("Contains Alcohol");
                 drinkLV.Columns.Add("Price");
@@ -410,6 +411,66 @@ namespace SomerenUI
                 }
 
                 foreach (ColumnHeader ch in studentLV.Columns) // dynamically change column width
+                {
+                    ch.Width = -2;
+                }
+            }
+            else if (panelName == "Stock")
+            {
+                // Tim Roffelsen
+                // hide all other panels
+                HideAllPanels();
+
+                // show stock
+                pnl_Stock.Show();
+
+                // fill the students listview within the students panel with a list of teachers
+                SomerenLogic.Product_Service prodService = new SomerenLogic.Product_Service();
+                List<Product> stockList = prodService.GetStock();
+
+                // Shows message box if there is an error
+                Error_Show(prodService);
+
+                // clear the listview before filling it again
+                listViewStock.Clear();
+
+                // add grid lines, rows and enable sorting
+                listViewStock.View = View.Details;
+                listViewStock.GridLines = true;
+                listViewStock.FullRowSelect = true;
+                //listViewStock.Sorting = SortOrder.Ascending;
+
+                // add column header
+                listViewStock.Columns.Add("Drink ID");
+                listViewStock.Columns.Add("Product Name");
+                listViewStock.Columns.Add("Contains Alcohol");
+                listViewStock.Columns.Add("Price");
+                listViewStock.Columns.Add("Stock");
+                listViewStock.Columns.Add("Sold");
+
+                foreach (SomerenModel.Product p in stockList)
+                {
+                    string[] arr = new string[6];
+                    ListViewItem li;
+
+                    // Add the items
+                    arr[0] = p.ProductID.ToString("00");
+                    arr[1] = p.ProductName;
+                    arr[2] = p.AlcoholString;
+                    arr[3] = p.Price.ToString("0.00");
+                    if (p.Stock < 10) // check stock amount
+                    {
+                        arr[4] += $"Stock almost empty ({p.Stock.ToString()})";
+                    }
+                    else
+                    {
+                        arr[4] += $"Sufficient stock ({p.Stock.ToString()})";
+                    }
+                    arr[5] = p.Sold.ToString();
+                    li = new ListViewItem(arr);
+                    listViewStock.Items.Add(li);
+                }
+                foreach (ColumnHeader ch in listViewStock.Columns) // dynamically change column width
                 {
                     ch.Width = -2;
                 }
@@ -473,6 +534,10 @@ namespace SomerenUI
         private void orderDrinksToolStripMenuItem_Click(object sender, EventArgs e)
         {
             showPanel("OrderDrinks");
+        }
+        private void stockToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            showPanel("Stock");
         }
 
         private void listViewActivities_ColumnClick(object sender, ColumnClickEventArgs e)

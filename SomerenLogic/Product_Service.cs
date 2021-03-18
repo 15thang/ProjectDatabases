@@ -30,7 +30,7 @@ namespace SomerenLogic
                 // throw new Exception(e.Message);
                 // something went wrong connecting to the database, so we will add a fake student to the list to make sure the rest of the application continues working!
                 List<Product> products = new List<Product>();
-                Product a = new Product(100, true, "Test Product", 9.95, 25);
+                Product a = new Product(100, true, "Test Product", 9.95, 25, 404);
                 products.Add(a);
 
                 return products;
@@ -50,7 +50,7 @@ namespace SomerenLogic
                 // throw new Exception(e.Message);
                 // something went wrong connecting to the database, so we will add a fake student to the list to make sure the rest of the application continues working!
                 List<Product> products = new List<Product>();
-                Product a = new Product(100, true, "Test Product", 9.95, 25);
+                Product a = new Product(100, true, "Test Product", 9.95, 25, 404);
                 products.Add(a);
 
                 return products;
