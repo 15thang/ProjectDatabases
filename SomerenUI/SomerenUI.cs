@@ -596,32 +596,46 @@ namespace SomerenUI
         private void orderButton_Click(object sender, EventArgs e)
         {
             //Order
-            //Makes The Order
+            //Makes The order service
             SomerenLogic.Order_Service order_Service = new SomerenLogic.Order_Service();
 
+
+            List<Order_Product> orderProducts = new List<Order_Product>();
+
+            //Order Product
+            foreach (ListViewItem item in drinkLV.SelectedItems)
+            {
+                Order_Product order_Product = new Order_Product();
+                string selectProduct = item.Text;
+                order_Product.ProductID = int.Parse(selectProduct);
+                orderProducts.Add(order_Product);
+            }
+
             int studentID = 0;
+
             // Get the student
-            if (studentLV.SelectedItems != null)
+            if (studentLV.SelectedItems.Count > 0)
             {
                 string selectStudent = studentLV.SelectedItems[0].Text;
                 studentID = int.Parse(selectStudent);
-            } else
+
+                //Get Date
+                DateTime date = DateTime.Now;
+
+                Order order = new Order();
+                order.OrderDate = date;
+                order.BarID = 100;
+                order.StudentID = studentID;
+
+                order_Service.Insert_Order(order, orderProducts);
+                MessageBox.Show("Order added.", "Succes");
+            }
+            else
             {
                 MessageBox.Show("Select a student.");
-                throw new Exception();
             }
-            
-            //Get Date
-            DateTime date = DateTime.Now;
 
-            Order order = new Order();
-            order.OrderDate = date;
-            order.BarID = 100;
-            order.StudentID = studentID;
 
-            order_Service.Insert_Order(order);
-
-            //Order Product
         }
     }
 }

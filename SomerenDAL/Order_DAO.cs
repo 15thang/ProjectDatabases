@@ -13,7 +13,8 @@ namespace SomerenDAL
     public class Order_DAO : Base
     {
         // Ruben Stoop
-        public void Insert_Order(Order order)
+        // Opdracht B
+        public void Insert_Order(Order order, List<Order_Product> order_Product)
         {
             //Datetime to a format sql can understand
             string sqlDate = order.OrderDate.ToString("yyyy-MM-dd HH:mm:ss");
@@ -27,6 +28,16 @@ namespace SomerenDAL
             sqlParameters[1] = new SqlParameter("@barid", order.BarID);
             sqlParameters[2] = new SqlParameter("@studentid", order.StudentID);
             ExecuteEditQuery(query, sqlParameters);
+
+            //Ruben Stoop
+            //Fills the Order_Product Table
+            Order_Product_DAO order_product_dao = new Order_Product_DAO();
+            int recentOrder = GetLatest();
+            foreach(Order_Product op in order_Product)
+            {
+                op.OrderID = recentOrder;
+                order_product_dao.Insert_Order_Product(op);
+            }
         }
 
         // Ruben Stoop
@@ -50,6 +61,15 @@ namespace SomerenDAL
 
             DataRow dr = dataTable.Rows[0];
             return (int)dr["BestellingID"];
+        }
+
+        // Ruben Stoop
+        // Gets Latest Order for Order_Product
+        private int GetLatest()
+        {
+            string query = "SELECT TOP 1 BestellingID, [Datum] FROM Bestelling ORDER BY [Datum] DESC";
+            SqlParameter[] sqlParameters = new SqlParameter[0];
+            return ReadInt(ExecuteSelectQuery(query, sqlParameters));
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SomerenModel
 {
-    class Order_Product
+    public class Order_Product
     {
         public int OrderID { get; set; }
         public int ProductID { get; set; }
