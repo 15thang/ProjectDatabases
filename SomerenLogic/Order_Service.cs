@@ -16,11 +16,11 @@ namespace SomerenLogic
         // Ruben Stoop
         // Opdracht B
         // This gets the highest id of Bestellingen, return an id of 0 if the table is empty
-        public void Insert_Order(Order order)
+        public void Insert_Order(Order order, List<Order_Product> order_Products)
         {
             try
             {
-                order_db.Insert_Order(order);
+                order_db.Insert_Order(order, order_Products);
             }
             catch (Exception e)
             {
