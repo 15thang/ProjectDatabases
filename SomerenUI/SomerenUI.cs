@@ -475,6 +475,8 @@ namespace SomerenUI
                 }
             }
         }
+
+        //Ruben Stoop
         private void drinkLV_SelectedIndexChanged(object sender, EventArgs e)
         {
             double totalPrice = 0.00;
@@ -482,7 +484,7 @@ namespace SomerenUI
             {
                 totalPrice += Double.Parse(item.SubItems[3].Text);
             }
-            totalPriceLabel.Text = totalPrice.ToString("0.00");
+            totalPriceLabel.Text = "€" + totalPrice.ToString("0.00");
         }
 
         private void dashboardToolStripMenuItem_Click(object sender, EventArgs e)
