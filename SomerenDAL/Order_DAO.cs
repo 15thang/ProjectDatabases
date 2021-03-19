@@ -19,7 +19,7 @@ namespace SomerenDAL
             //Datetime to a format sql can understand
             string sqlDate = order.OrderDate.ToString("yyyy-MM-dd HH:mm:ss");
 
-            string query = "INSERT INTO Bestelling (Datum, BarID, StudentID) VALUES(@date, @barid, @studentid);";
+            string query = "USE prjdb4 INSERT INTO Bestelling (Datum, BarID, StudentID) VALUES(@date, @barid, @studentid);";
 
             //Setting the parameters from the parameter order
             SqlParameter[] sqlParameters = new SqlParameter[3];
@@ -44,7 +44,7 @@ namespace SomerenDAL
         // Gets the highest id of the table Bestelling
         public int Get_Highest_ID()
         {
-            string query = "SELECT MAX(BestellingID) as BestellingID FROM Bestelling;";
+            string query = "USE prjdb4 SELECT MAX(BestellingID) as BestellingID FROM Bestelling;";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadInt(ExecuteSelectQuery(query, sqlParameters));
         }
@@ -67,7 +67,7 @@ namespace SomerenDAL
         // Gets Latest Order for Order_Product
         private int GetLatest()
         {
-            string query = "SELECT TOP 1 BestellingID, [Datum] FROM Bestelling ORDER BY [Datum] DESC";
+            string query = "USE prjdb4 SELECT TOP 1 BestellingID, [Datum] FROM Bestelling ORDER BY [Datum] DESC";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadInt(ExecuteSelectQuery(query, sqlParameters));
         }

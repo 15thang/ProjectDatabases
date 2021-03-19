@@ -40,5 +40,9 @@ namespace SomerenModel
         public string AlcoholString { get; set; }
         // Amount sold
         public int Sold { get; set; }
+        public override string ToString()
+        {
+            return ProductName;
+        }
     }
 }

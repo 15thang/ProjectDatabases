@@ -323,7 +323,7 @@ namespace SomerenUI
                 // show Order drinks
                 pnl_OrderDrinks.Show();
 
-                // fill the students listview within the students panel with a list of students
+                // fill the products listview within the products panel with a list of products
                 SomerenLogic.Student_Service studService = new SomerenLogic.Student_Service();
                 List<Student> studentList = studService.GetStudents();
 
@@ -395,7 +395,14 @@ namespace SomerenUI
                     }
                     else if (p.Stock < 10) // check stock amount
                     {
-                        arr[4] += $"Stock almost empty ({p.Stock.ToString()})";
+                        if (p.Stock == 0)
+                        {
+                            arr[4] += $"Stock empty ({p.Stock.ToString()})";
+                        }
+                        else
+                        {
+                            arr[4] += $"Stock almost empty ({p.Stock.ToString()})";
+                        }
                     }
                     else
                     {
@@ -425,7 +432,7 @@ namespace SomerenUI
                 // show stock
                 pnl_Stock.Show();
 
-                // fill the students listview within the students panel with a list of teachers
+                // fill the stock listview within the stock panel with a list of products
                 SomerenLogic.Product_Service prodService = new SomerenLogic.Product_Service();
                 List<Product> stockList = prodService.GetStock();
 
@@ -460,7 +467,14 @@ namespace SomerenUI
                     arr[3] = p.Price.ToString("0.00");
                     if (p.Stock < 10) // check stock amount
                     {
-                        arr[4] += $"Stock almost empty ({p.Stock.ToString()})";
+                        if (p.Stock == 0)
+                        {
+                            arr[4] += $"Stock empty ({p.Stock.ToString()})";
+                        }
+                        else
+                        {
+                            arr[4] += $"Stock almost empty ({p.Stock.ToString()})";
+                        }
                     }
                     else
                     {
@@ -722,16 +736,16 @@ namespace SomerenUI
             if (e.KeyChar == '.')
             {
                 // Check if it's in the beginning of text not accept
-                if (tb_Price.Text.Length == 0) e.Handled = true;
+                if (tb_PriceAdd.Text.Length == 0) e.Handled = true;
                 // Check if it's in the beginning of text not accept
-                if (tb_Price.SelectionStart == 0) e.Handled = true;
+                if (tb_PriceAdd.SelectionStart == 0) e.Handled = true;
                 // Check if there is already exist a '.' , ','
-                if (alreadyExist(tb_Price.Text, ref sepratorChar)) e.Handled = true;
+                if (alreadyExist(tb_PriceAdd.Text, ref sepratorChar)) e.Handled = true;
                 // Check if '.' or ',' is in middle of a number and after it is not a number greater than 99
-                if (tb_Price.SelectionStart != tb_Price.Text.Length && e.Handled == false)
+                if (tb_PriceAdd.SelectionStart != tb_PriceAdd.Text.Length && e.Handled == false)
                 {
                     // '.' or ',' is in the middle
-                    string AfterDotString = tb_Price.Text.Substring(tb_Price.SelectionStart);
+                    string AfterDotString = tb_PriceAdd.Text.Substring(tb_PriceAdd.SelectionStart);
 
                     if (AfterDotString.Length > 2)
                     {
@@ -744,11 +758,11 @@ namespace SomerenUI
             if (Char.IsDigit(e.KeyChar))
             {
                 // Check if a dot exist
-                if (alreadyExist(tb_Price.Text, ref sepratorChar))
+                if (alreadyExist(tb_PriceAdd.Text, ref sepratorChar))
                 {
-                    int sepratorPosition = tb_Price.Text.IndexOf(sepratorChar);
-                    string afterSepratorString = tb_Price.Text.Substring(sepratorPosition + 1);
-                    if (tb_Price.SelectionStart > sepratorPosition && afterSepratorString.Length > 1)
+                    int sepratorPosition = tb_PriceAdd.Text.IndexOf(sepratorChar);
+                    string afterSepratorString = tb_PriceAdd.Text.Substring(sepratorPosition + 1);
+                    if (tb_PriceAdd.SelectionStart > sepratorPosition && afterSepratorString.Length > 1)
                     {
                         e.Handled = true;
                     }
@@ -758,6 +772,7 @@ namespace SomerenUI
         private bool alreadyExist(string _text, ref char KeyChar)
         {
             // Tim Roffelsen
+            // Check if textbox already contains a dot ('.')
             if (_text.IndexOf('.') > -1)
             {
                 KeyChar = '.';
@@ -770,16 +785,188 @@ namespace SomerenUI
         {
             // Tim Roffelsen
             Product_Service prodService = new Product_Service();
-            if ((!String.IsNullOrEmpty(tb_ProductName.Text)) && !String.IsNullOrEmpty(tb_Price.Text))
+            if ((!String.IsNullOrEmpty(tb_ProductNameAdd.Text)) && (!String.IsNullOrEmpty(tb_PriceAdd.Text)))
             {
-                Product product = new Product(0, cb_Alcohol.Checked, tb_ProductName.Text, Convert.ToDouble(tb_Price.Text), Convert.ToInt32(num_Amount.Value), 0);
-                prodService.Add_Product(product);
+                // Get product values from input
+                Product product = new Product(0, cb_AlcoholAdd.Checked, tb_ProductNameAdd.Text, Convert.ToDouble(tb_PriceAdd.Text), Convert.ToInt32(num_AmountAdd.Value), 0); 
+                // Show confirmation box
+                DialogResult confirm = MessageBox.Show($"The following item will be made:\n\nName:\t\t{tb_ProductNameAdd.Text}\nPrice:\t\t€ {tb_PriceAdd.Text}\nAlcoholic:\t{cb_AlcoholAdd.Checked}\nAmount:\t\t{Convert.ToInt32(num_AmountAdd.Value)}", "Confirmation", MessageBoxButtons.OKCancel);
+                // If confirmed, add item
+                if (confirm == DialogResult.OK)
+                {
+                    prodService.Add_Product(product);
+                }
             }
             else
             {
-                MessageBox.Show("Product name and Price can not be empty!", "Error!");
+                MessageBox.Show("Product Name and Price can not be empty!", "Error!");
             }
-            
+        }
+
+        private void cbox_ChangeProduct_DropDown(object sender, EventArgs e)
+        {
+            // Tim Roffelsen
+            SomerenLogic.Product_Service prodService = new SomerenLogic.Product_Service();
+            List<Product> stockList = prodService.GetProducts(); // Get all products
+            cbox_ChangeProduct.Items.Clear(); // Clear combobox
+
+            foreach (Product product in stockList) // Fill combobox
+            {
+                cbox_ChangeProduct.Items.Add(product);
+            }
+            cbox_ChangeProduct.Width = DropDownWidth(cbox_ChangeProduct); // Set width of combobox
+        }
+        int DropDownWidth(ComboBox myCombo)
+        {
+            // Get width of longest item in combobox
+            int maxWidth = 0, temp = 0;
+            foreach (var obj in myCombo.Items)
+            {
+                temp = TextRenderer.MeasureText(obj.ToString(), myCombo.Font).Width;
+                if (temp > maxWidth)
+                {
+                    maxWidth = temp;
+                }
+            }
+            return maxWidth;
+        }
+        private void cbox_ChangeProduct_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Tim Roffelsen
+            Product product = (Product)cbox_ChangeProduct.SelectedItem;
+
+            // Fill the textboxes with selected product
+            tb_ProductNameChange.Text = product.ProductName;
+            tb_PriceChange.Text = product.Price.ToString();
+            num_AmountChange.Value = product.Stock;
+            cb_AlcoholChange.Checked = product.IsAlcohol;
+        }
+
+        private void btn_Change_Click(object sender, EventArgs e)
+        {
+            // Tim Roffelsen
+            Product_Service prodService = new Product_Service();
+            Product p = (Product)cbox_ChangeProduct.SelectedItem;
+
+            if ((!String.IsNullOrEmpty(tb_ProductNameChange.Text)) && (!String.IsNullOrEmpty(tb_PriceChange.Text)))
+            {
+                // Get product values from input
+                Product product = new Product(p.ProductID, cb_AlcoholChange.Checked, tb_ProductNameChange.Text, Convert.ToDouble(tb_PriceChange.Text), Convert.ToInt32(num_AmountChange.Value), 0);
+                // Show confirmation box
+                DialogResult confirm = MessageBox.Show($"The selected product will be changed to have the values:\n\nName:\t\t{tb_ProductNameChange.Text}\nPrice:\t\t€ {tb_PriceChange.Text}\nAlcoholic:\t{cb_AlcoholChange.Checked}\nAmount:\t\t{Convert.ToInt32(num_AmountChange.Value)}", "Confirmation", MessageBoxButtons.OKCancel);
+                // If confirmed, change item
+                if (confirm == DialogResult.OK)
+                {
+                    prodService.Change_Product(product);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Product Name and Price can not be empty!", "Error!");
+            }
+        }
+
+        private void cbox_DeleteProduct_DropDown(object sender, EventArgs e)
+        {
+            // Tim Roffelsen
+            SomerenLogic.Product_Service prodService = new SomerenLogic.Product_Service();
+            List<Product> stockList = prodService.GetProducts(); // Get all products
+            cbox_DeleteProduct.Items.Clear(); // Clear combobox
+
+            foreach (Product product in stockList) // Fill combobox
+            {
+                cbox_DeleteProduct.Items.Add(product);
+            }
+            cbox_DeleteProduct.Width = DropDownWidth(cbox_DeleteProduct); // Set width of combobox
+        }
+
+        private void cbox_DeleteProduct_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Tim Roffelsen
+            Product product = (Product)cbox_DeleteProduct.SelectedItem;
+        }
+
+        private void btn_Remove_Click(object sender, EventArgs e)
+        {
+            // Tim Roffelsen
+            Product_Service prodService = new Product_Service();
+            Product product = (Product)cbox_DeleteProduct.SelectedItem;
+
+            if (cbox_DeleteProduct.SelectedItem != null)
+            {
+                // Show confirmation box
+                DialogResult confirm = MessageBox.Show($"Are you sure you want to remove the product with the properties:\n\nName:\t\t{product.ProductName}\nPrice:\t\t€ {product.Price}\nAlcoholic:\t{product.IsAlcohol}\nAmount:\t\t{product.Stock}\n\nThis action cannot be undone!", "Confirmation", MessageBoxButtons.OKCancel);
+                // If confirmed, change item
+                if (confirm == DialogResult.OK)
+                {
+                    prodService.Delete_Product(product);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select a product to remove.", "Error!");
+            }
+        }
+
+        private void btn_Refresh_Click(object sender, EventArgs e)
+        {
+            // Tim Roffelsen
+            // fill the stock listview within the stock panel with a list of products
+            SomerenLogic.Product_Service prodService = new SomerenLogic.Product_Service();
+            List<Product> stockList = prodService.GetStock();
+
+            // Shows message box if there is an error
+            Error_Show(prodService);
+
+            // clear the listview before filling it again
+            listViewStock.Clear();
+
+            // add grid lines, rows and enable sorting
+            listViewStock.View = View.Details;
+            listViewStock.GridLines = true;
+            listViewStock.FullRowSelect = true;
+
+            // add column header
+            listViewStock.Columns.Add("DrinkID");
+            listViewStock.Columns.Add("Product Name");
+            listViewStock.Columns.Add("Contains Alcohol");
+            listViewStock.Columns.Add("Price (€)");
+            listViewStock.Columns.Add("Stock");
+            listViewStock.Columns.Add("Sold");
+
+            foreach (SomerenModel.Product p in stockList)
+            {
+                string[] arr = new string[6];
+                ListViewItem li;
+
+                // Add the items
+                arr[0] = p.ProductID.ToString("00");
+                arr[1] = p.ProductName;
+                arr[2] = p.AlcoholString;
+                arr[3] = p.Price.ToString("0.00");
+                if (p.Stock < 10) // check stock amount
+                {
+                    if (p.Stock == 0)
+                    {
+                        arr[4] += $"Stock empty ({p.Stock.ToString()})";
+                    }
+                    else
+                    {
+                        arr[4] += $"Stock almost empty ({p.Stock.ToString()})";
+                    }
+                }
+                else
+                {
+                    arr[4] += $"Sufficient stock ({p.Stock.ToString()})";
+                }
+                arr[5] = p.Sold.ToString();
+                li = new ListViewItem(arr);
+                listViewStock.Items.Add(li);
+            }
+            foreach (ColumnHeader ch in listViewStock.Columns) // dynamically change column width
+            {
+                ch.Width = -2;
+            }
         }
     }
 }

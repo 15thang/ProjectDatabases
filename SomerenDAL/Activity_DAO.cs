@@ -16,7 +16,7 @@ namespace SomerenDAL
         // Data gets pulled from the database by the query
         public List<Activity> Db_Get_All_Activities()
         {
-            string query = "SELECT ActiviteitID, Soort, Begintijd, Eindtijd FROM [Activiteit]";
+            string query = "USE prjdb4 SELECT ActiviteitID, Soort, Begintijd, Eindtijd FROM [Activiteit]";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }

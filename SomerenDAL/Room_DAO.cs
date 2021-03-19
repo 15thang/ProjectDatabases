@@ -15,7 +15,7 @@ namespace SomerenDAL
         // Thomas Eddyson
         public List<Room> Db_Get_All_Rooms()
         {            
-            string query = "SELECT Kamer.KamerID, Kamer.isDocentenKamer, kamer.KamerGrootte FROM Kamer";
+            string query = "USE prjdb4 SELECT Kamer.KamerID, Kamer.isDocentenKamer, kamer.KamerGrootte FROM Kamer";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }

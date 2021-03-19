@@ -38,6 +38,7 @@ namespace SomerenLogic
         }
         public List<Product> GetStock()
         {
+            // Tim Roffelsen
             try
             {
                 List<Product> products = product_db.Db_Get_All_Stock();
@@ -58,9 +59,38 @@ namespace SomerenLogic
         }
         public void Add_Product(Product product)
         {
+            // Tim Roffelsen
             try
             {
                 product_db.Add_Product(product);
+            }
+            catch (Exception e)
+            {
+                ErrorText = e.Message;
+                Error = true;
+                // something went wrong connecting to the database, so we will add a fake student to the list to make sure the rest of the application continues working!
+            }
+        }
+        public void Change_Product(Product product)
+        {
+            // Tim Roffelsen
+            try
+            {
+                product_db.Change_Product(product);
+            }
+            catch (Exception e)
+            {
+                ErrorText = e.Message;
+                Error = true;
+                // something went wrong connecting to the database, so we will add a fake student to the list to make sure the rest of the application continues working!
+            }
+        }
+        public void Delete_Product(Product product)
+        {
+            // Tim Roffelsen
+            try
+            {
+                product_db.Delete_Product(product);
             }
             catch (Exception e)
             {

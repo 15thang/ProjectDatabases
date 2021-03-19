@@ -16,7 +16,7 @@ namespace SomerenDAL
         // Data gets pulled from the database by the query
         public List<Supervisor> Db_Get_All_Supervisors()
         {
-            string query = "SELECT D.DocentID, A.ActiviteitID FROM Docent AS D INNER JOIN Begeleider AS B ON B.DocentID = D.DocentID INNER JOIN Activiteit AS A ON A.ActiviteitID = B.ActiviteitID;";
+            string query = "USE prjdb4 SELECT D.DocentID, A.ActiviteitID FROM Docent AS D INNER JOIN Begeleider AS B ON B.DocentID = D.DocentID INNER JOIN Activiteit AS A ON A.ActiviteitID = B.ActiviteitID;";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }

@@ -17,7 +17,7 @@ namespace SomerenDAL
         // Data gets pulled from the database by the query, INNER JOIN is used to get data from 'Persoon' table
         public List<Student> Db_Get_All_Students()
         {
-            string query = "SELECT Student.StudentID, Persoon.Voornaam, Persoon.Achternaam FROM [Student] INNER JOIN[Persoon] ON Student.PersoonID = Persoon.PersoonID;";
+            string query = "USE prjdb4 SELECT Student.StudentID, Persoon.Voornaam, Persoon.Achternaam FROM [Student] INNER JOIN[Persoon] ON Student.PersoonID = Persoon.PersoonID;";
             SqlParameter[] sqlParameters = new SqlParameter[0];
 
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));

@@ -17,7 +17,7 @@ namespace SomerenDAL
 
         public List<RoomLayout> Db_Get_All_RoomLayout()
         {
-            string query = "SELECT Persoon.Voornaam, Persoon.Achternaam, Persoon.KamerID, Kamer.KamerID FROM[Persoon] INNER JOIN[Kamer] ON Persoon.KamerID = Kamer.KamerID";
+            string query = "USE prjdb4 SELECT Persoon.Voornaam, Persoon.Achternaam, Persoon.KamerID, Kamer.KamerID FROM[Persoon] INNER JOIN[Kamer] ON Persoon.KamerID = Kamer.KamerID";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }

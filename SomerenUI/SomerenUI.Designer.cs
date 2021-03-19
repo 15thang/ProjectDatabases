@@ -91,15 +91,27 @@
             this.studentsLabel = new System.Windows.Forms.Label();
             this.pnl_OrderDrinks = new System.Windows.Forms.Panel();
             this.pnl_Stock = new System.Windows.Forms.Panel();
+            this.cbox_ChangeProduct = new System.Windows.Forms.ComboBox();
+            this.btn_Change = new System.Windows.Forms.Button();
+            this.cb_AlcoholChange = new System.Windows.Forms.CheckBox();
+            this.lbl_AlcoholicChange = new System.Windows.Forms.Label();
+            this.num_AmountChange = new System.Windows.Forms.NumericUpDown();
+            this.lbl_AmountChange = new System.Windows.Forms.Label();
+            this.lbl_PriceChange = new System.Windows.Forms.Label();
+            this.tb_PriceChange = new System.Windows.Forms.TextBox();
+            this.lbl_ProductNameChange = new System.Windows.Forms.Label();
+            this.tb_ProductNameChange = new System.Windows.Forms.TextBox();
+            this.lbl_RemoveProduct = new System.Windows.Forms.Label();
+            this.lbl_ChangeProduct = new System.Windows.Forms.Label();
             this.btn_Add = new System.Windows.Forms.Button();
-            this.cb_Alcohol = new System.Windows.Forms.CheckBox();
-            this.lbl_Alcohol = new System.Windows.Forms.Label();
-            this.num_Amount = new System.Windows.Forms.NumericUpDown();
-            this.lbl_Amount = new System.Windows.Forms.Label();
-            this.lbl_Price = new System.Windows.Forms.Label();
-            this.tb_Price = new System.Windows.Forms.TextBox();
-            this.lbl_ProductName = new System.Windows.Forms.Label();
-            this.tb_ProductName = new System.Windows.Forms.TextBox();
+            this.cb_AlcoholAdd = new System.Windows.Forms.CheckBox();
+            this.lbl_AlcoholAdd = new System.Windows.Forms.Label();
+            this.num_AmountAdd = new System.Windows.Forms.NumericUpDown();
+            this.lbl_AmountAdd = new System.Windows.Forms.Label();
+            this.lbl_PriceAdd = new System.Windows.Forms.Label();
+            this.tb_PriceAdd = new System.Windows.Forms.TextBox();
+            this.lbl_ProductNameAdd = new System.Windows.Forms.Label();
+            this.tb_ProductNameAdd = new System.Windows.Forms.TextBox();
             this.lbl_AddDrink = new System.Windows.Forms.Label();
             this.listViewStock = new System.Windows.Forms.ListView();
             this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -107,6 +119,9 @@
             this.columnHeader15 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.lbl_Stock = new System.Windows.Forms.Label();
+            this.cbox_DeleteProduct = new System.Windows.Forms.ComboBox();
+            this.btn_Remove = new System.Windows.Forms.Button();
+            this.btn_Refresh = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.img_Dashboard)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.pnl_Dashboard.SuspendLayout();
@@ -123,7 +138,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.pnl_OrderDrinks.SuspendLayout();
             this.pnl_Stock.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.num_Amount)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num_AmountChange)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num_AmountAdd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             this.SuspendLayout();
             // 
@@ -642,15 +658,30 @@
             // 
             // pnl_Stock
             // 
+            this.pnl_Stock.Controls.Add(this.btn_Refresh);
+            this.pnl_Stock.Controls.Add(this.btn_Remove);
+            this.pnl_Stock.Controls.Add(this.cbox_DeleteProduct);
+            this.pnl_Stock.Controls.Add(this.cbox_ChangeProduct);
+            this.pnl_Stock.Controls.Add(this.btn_Change);
+            this.pnl_Stock.Controls.Add(this.cb_AlcoholChange);
+            this.pnl_Stock.Controls.Add(this.lbl_AlcoholicChange);
+            this.pnl_Stock.Controls.Add(this.num_AmountChange);
+            this.pnl_Stock.Controls.Add(this.lbl_AmountChange);
+            this.pnl_Stock.Controls.Add(this.lbl_PriceChange);
+            this.pnl_Stock.Controls.Add(this.tb_PriceChange);
+            this.pnl_Stock.Controls.Add(this.lbl_ProductNameChange);
+            this.pnl_Stock.Controls.Add(this.tb_ProductNameChange);
+            this.pnl_Stock.Controls.Add(this.lbl_RemoveProduct);
+            this.pnl_Stock.Controls.Add(this.lbl_ChangeProduct);
             this.pnl_Stock.Controls.Add(this.btn_Add);
-            this.pnl_Stock.Controls.Add(this.cb_Alcohol);
-            this.pnl_Stock.Controls.Add(this.lbl_Alcohol);
-            this.pnl_Stock.Controls.Add(this.num_Amount);
-            this.pnl_Stock.Controls.Add(this.lbl_Amount);
-            this.pnl_Stock.Controls.Add(this.lbl_Price);
-            this.pnl_Stock.Controls.Add(this.tb_Price);
-            this.pnl_Stock.Controls.Add(this.lbl_ProductName);
-            this.pnl_Stock.Controls.Add(this.tb_ProductName);
+            this.pnl_Stock.Controls.Add(this.cb_AlcoholAdd);
+            this.pnl_Stock.Controls.Add(this.lbl_AlcoholAdd);
+            this.pnl_Stock.Controls.Add(this.num_AmountAdd);
+            this.pnl_Stock.Controls.Add(this.lbl_AmountAdd);
+            this.pnl_Stock.Controls.Add(this.lbl_PriceAdd);
+            this.pnl_Stock.Controls.Add(this.tb_PriceAdd);
+            this.pnl_Stock.Controls.Add(this.lbl_ProductNameAdd);
+            this.pnl_Stock.Controls.Add(this.tb_ProductNameAdd);
             this.pnl_Stock.Controls.Add(this.lbl_AddDrink);
             this.pnl_Stock.Controls.Add(this.listViewStock);
             this.pnl_Stock.Controls.Add(this.pictureBox7);
@@ -659,6 +690,116 @@
             this.pnl_Stock.Name = "pnl_Stock";
             this.pnl_Stock.Size = new System.Drawing.Size(938, 466);
             this.pnl_Stock.TabIndex = 11;
+            // 
+            // cbox_ChangeProduct
+            // 
+            this.cbox_ChangeProduct.FormattingEnabled = true;
+            this.cbox_ChangeProduct.Location = new System.Drawing.Point(417, 279);
+            this.cbox_ChangeProduct.Name = "cbox_ChangeProduct";
+            this.cbox_ChangeProduct.Size = new System.Drawing.Size(100, 21);
+            this.cbox_ChangeProduct.TabIndex = 29;
+            this.cbox_ChangeProduct.DropDown += new System.EventHandler(this.cbox_ChangeProduct_DropDown);
+            this.cbox_ChangeProduct.SelectedIndexChanged += new System.EventHandler(this.cbox_ChangeProduct_SelectedIndexChanged);
+            // 
+            // btn_Change
+            // 
+            this.btn_Change.Location = new System.Drawing.Point(391, 414);
+            this.btn_Change.Name = "btn_Change";
+            this.btn_Change.Size = new System.Drawing.Size(75, 23);
+            this.btn_Change.TabIndex = 28;
+            this.btn_Change.Text = "Change";
+            this.btn_Change.UseVisualStyleBackColor = true;
+            this.btn_Change.Click += new System.EventHandler(this.btn_Change_Click);
+            // 
+            // cb_AlcoholChange
+            // 
+            this.cb_AlcoholChange.AutoSize = true;
+            this.cb_AlcoholChange.Location = new System.Drawing.Point(417, 377);
+            this.cb_AlcoholChange.Name = "cb_AlcoholChange";
+            this.cb_AlcoholChange.Size = new System.Drawing.Size(15, 14);
+            this.cb_AlcoholChange.TabIndex = 27;
+            this.cb_AlcoholChange.UseVisualStyleBackColor = true;
+            // 
+            // lbl_AlcoholicChange
+            // 
+            this.lbl_AlcoholicChange.AutoSize = true;
+            this.lbl_AlcoholicChange.Location = new System.Drawing.Point(336, 378);
+            this.lbl_AlcoholicChange.Name = "lbl_AlcoholicChange";
+            this.lbl_AlcoholicChange.Size = new System.Drawing.Size(50, 13);
+            this.lbl_AlcoholicChange.TabIndex = 26;
+            this.lbl_AlcoholicChange.Text = "Alcoholic";
+            // 
+            // num_AmountChange
+            // 
+            this.num_AmountChange.Location = new System.Drawing.Point(417, 352);
+            this.num_AmountChange.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.num_AmountChange.Name = "num_AmountChange";
+            this.num_AmountChange.Size = new System.Drawing.Size(100, 20);
+            this.num_AmountChange.TabIndex = 25;
+            this.num_AmountChange.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // lbl_AmountChange
+            // 
+            this.lbl_AmountChange.AutoSize = true;
+            this.lbl_AmountChange.Location = new System.Drawing.Point(336, 355);
+            this.lbl_AmountChange.Name = "lbl_AmountChange";
+            this.lbl_AmountChange.Size = new System.Drawing.Size(43, 13);
+            this.lbl_AmountChange.TabIndex = 24;
+            this.lbl_AmountChange.Text = "Amount";
+            // 
+            // lbl_PriceChange
+            // 
+            this.lbl_PriceChange.AutoSize = true;
+            this.lbl_PriceChange.Location = new System.Drawing.Point(336, 332);
+            this.lbl_PriceChange.Name = "lbl_PriceChange";
+            this.lbl_PriceChange.Size = new System.Drawing.Size(50, 13);
+            this.lbl_PriceChange.TabIndex = 23;
+            this.lbl_PriceChange.Text = "Price (€)*";
+            // 
+            // tb_PriceChange
+            // 
+            this.tb_PriceChange.Location = new System.Drawing.Point(417, 329);
+            this.tb_PriceChange.Name = "tb_PriceChange";
+            this.tb_PriceChange.Size = new System.Drawing.Size(100, 20);
+            this.tb_PriceChange.TabIndex = 22;
+            // 
+            // lbl_ProductNameChange
+            // 
+            this.lbl_ProductNameChange.AutoSize = true;
+            this.lbl_ProductNameChange.Location = new System.Drawing.Point(336, 309);
+            this.lbl_ProductNameChange.Name = "lbl_ProductNameChange";
+            this.lbl_ProductNameChange.Size = new System.Drawing.Size(79, 13);
+            this.lbl_ProductNameChange.TabIndex = 21;
+            this.lbl_ProductNameChange.Text = "Product Name*";
+            // 
+            // tb_ProductNameChange
+            // 
+            this.tb_ProductNameChange.Location = new System.Drawing.Point(417, 306);
+            this.tb_ProductNameChange.Name = "tb_ProductNameChange";
+            this.tb_ProductNameChange.Size = new System.Drawing.Size(100, 20);
+            this.tb_ProductNameChange.TabIndex = 20;
+            // 
+            // lbl_RemoveProduct
+            // 
+            this.lbl_RemoveProduct.AutoSize = true;
+            this.lbl_RemoveProduct.Location = new System.Drawing.Point(656, 282);
+            this.lbl_RemoveProduct.Name = "lbl_RemoveProduct";
+            this.lbl_RemoveProduct.Size = new System.Drawing.Size(89, 13);
+            this.lbl_RemoveProduct.TabIndex = 19;
+            this.lbl_RemoveProduct.Text = "Remove product:";
+            // 
+            // lbl_ChangeProduct
+            // 
+            this.lbl_ChangeProduct.AutoSize = true;
+            this.lbl_ChangeProduct.Location = new System.Drawing.Point(329, 282);
+            this.lbl_ChangeProduct.Name = "lbl_ChangeProduct";
+            this.lbl_ChangeProduct.Size = new System.Drawing.Size(86, 13);
+            this.lbl_ChangeProduct.TabIndex = 18;
+            this.lbl_ChangeProduct.Text = "Change product:";
             // 
             // btn_Add
             // 
@@ -670,78 +811,83 @@
             this.btn_Add.UseVisualStyleBackColor = true;
             this.btn_Add.Click += new System.EventHandler(this.btn_Add_Click);
             // 
-            // cb_Alcohol
+            // cb_AlcoholAdd
             // 
-            this.cb_Alcohol.AutoSize = true;
-            this.cb_Alcohol.Location = new System.Drawing.Point(97, 377);
-            this.cb_Alcohol.Name = "cb_Alcohol";
-            this.cb_Alcohol.Size = new System.Drawing.Size(15, 14);
-            this.cb_Alcohol.TabIndex = 16;
-            this.cb_Alcohol.UseVisualStyleBackColor = true;
+            this.cb_AlcoholAdd.AutoSize = true;
+            this.cb_AlcoholAdd.Location = new System.Drawing.Point(97, 377);
+            this.cb_AlcoholAdd.Name = "cb_AlcoholAdd";
+            this.cb_AlcoholAdd.Size = new System.Drawing.Size(15, 14);
+            this.cb_AlcoholAdd.TabIndex = 16;
+            this.cb_AlcoholAdd.UseVisualStyleBackColor = true;
             // 
-            // lbl_Alcohol
+            // lbl_AlcoholAdd
             // 
-            this.lbl_Alcohol.AutoSize = true;
-            this.lbl_Alcohol.Location = new System.Drawing.Point(16, 378);
-            this.lbl_Alcohol.Name = "lbl_Alcohol";
-            this.lbl_Alcohol.Size = new System.Drawing.Size(50, 13);
-            this.lbl_Alcohol.TabIndex = 15;
-            this.lbl_Alcohol.Text = "Alcoholic";
+            this.lbl_AlcoholAdd.AutoSize = true;
+            this.lbl_AlcoholAdd.Location = new System.Drawing.Point(16, 378);
+            this.lbl_AlcoholAdd.Name = "lbl_AlcoholAdd";
+            this.lbl_AlcoholAdd.Size = new System.Drawing.Size(50, 13);
+            this.lbl_AlcoholAdd.TabIndex = 15;
+            this.lbl_AlcoholAdd.Text = "Alcoholic";
             // 
-            // num_Amount
+            // num_AmountAdd
             // 
-            this.num_Amount.Location = new System.Drawing.Point(97, 352);
-            this.num_Amount.Name = "num_Amount";
-            this.num_Amount.Size = new System.Drawing.Size(100, 20);
-            this.num_Amount.TabIndex = 13;
-            this.num_Amount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.num_AmountAdd.Location = new System.Drawing.Point(97, 352);
+            this.num_AmountAdd.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.num_AmountAdd.Name = "num_AmountAdd";
+            this.num_AmountAdd.Size = new System.Drawing.Size(100, 20);
+            this.num_AmountAdd.TabIndex = 13;
+            this.num_AmountAdd.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // lbl_Amount
+            // lbl_AmountAdd
             // 
-            this.lbl_Amount.AutoSize = true;
-            this.lbl_Amount.Location = new System.Drawing.Point(16, 355);
-            this.lbl_Amount.Name = "lbl_Amount";
-            this.lbl_Amount.Size = new System.Drawing.Size(43, 13);
-            this.lbl_Amount.TabIndex = 12;
-            this.lbl_Amount.Text = "Amount";
+            this.lbl_AmountAdd.AutoSize = true;
+            this.lbl_AmountAdd.Location = new System.Drawing.Point(16, 355);
+            this.lbl_AmountAdd.Name = "lbl_AmountAdd";
+            this.lbl_AmountAdd.Size = new System.Drawing.Size(43, 13);
+            this.lbl_AmountAdd.TabIndex = 12;
+            this.lbl_AmountAdd.Text = "Amount";
             // 
-            // lbl_Price
+            // lbl_PriceAdd
             // 
-            this.lbl_Price.AutoSize = true;
-            this.lbl_Price.Location = new System.Drawing.Point(16, 332);
-            this.lbl_Price.Name = "lbl_Price";
-            this.lbl_Price.Size = new System.Drawing.Size(46, 13);
-            this.lbl_Price.TabIndex = 10;
-            this.lbl_Price.Text = "Price (€)";
+            this.lbl_PriceAdd.AutoSize = true;
+            this.lbl_PriceAdd.Location = new System.Drawing.Point(16, 332);
+            this.lbl_PriceAdd.Name = "lbl_PriceAdd";
+            this.lbl_PriceAdd.Size = new System.Drawing.Size(50, 13);
+            this.lbl_PriceAdd.TabIndex = 10;
+            this.lbl_PriceAdd.Text = "Price (€)*";
             // 
-            // tb_Price
+            // tb_PriceAdd
             // 
-            this.tb_Price.Location = new System.Drawing.Point(97, 329);
-            this.tb_Price.Name = "tb_Price";
-            this.tb_Price.Size = new System.Drawing.Size(100, 20);
-            this.tb_Price.TabIndex = 9;
-            this.tb_Price.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_Price_KeyPress);
+            this.tb_PriceAdd.Location = new System.Drawing.Point(97, 329);
+            this.tb_PriceAdd.Name = "tb_PriceAdd";
+            this.tb_PriceAdd.Size = new System.Drawing.Size(100, 20);
+            this.tb_PriceAdd.TabIndex = 9;
+            this.tb_PriceAdd.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_Price_KeyPress);
             // 
-            // lbl_ProductName
+            // lbl_ProductNameAdd
             // 
-            this.lbl_ProductName.AutoSize = true;
-            this.lbl_ProductName.Location = new System.Drawing.Point(16, 309);
-            this.lbl_ProductName.Name = "lbl_ProductName";
-            this.lbl_ProductName.Size = new System.Drawing.Size(75, 13);
-            this.lbl_ProductName.TabIndex = 8;
-            this.lbl_ProductName.Text = "Product Name";
+            this.lbl_ProductNameAdd.AutoSize = true;
+            this.lbl_ProductNameAdd.Location = new System.Drawing.Point(16, 309);
+            this.lbl_ProductNameAdd.Name = "lbl_ProductNameAdd";
+            this.lbl_ProductNameAdd.Size = new System.Drawing.Size(79, 13);
+            this.lbl_ProductNameAdd.TabIndex = 8;
+            this.lbl_ProductNameAdd.Text = "Product Name*";
             // 
-            // tb_ProductName
+            // tb_ProductNameAdd
             // 
-            this.tb_ProductName.Location = new System.Drawing.Point(97, 306);
-            this.tb_ProductName.Name = "tb_ProductName";
-            this.tb_ProductName.Size = new System.Drawing.Size(100, 20);
-            this.tb_ProductName.TabIndex = 7;
+            this.tb_ProductNameAdd.Location = new System.Drawing.Point(97, 306);
+            this.tb_ProductNameAdd.Name = "tb_ProductNameAdd";
+            this.tb_ProductNameAdd.Size = new System.Drawing.Size(100, 20);
+            this.tb_ProductNameAdd.TabIndex = 7;
             // 
             // lbl_AddDrink
             // 
             this.lbl_AddDrink.AutoSize = true;
-            this.lbl_AddDrink.Location = new System.Drawing.Point(16, 280);
+            this.lbl_AddDrink.Location = new System.Drawing.Point(16, 282);
             this.lbl_AddDrink.Name = "lbl_AddDrink";
             this.lbl_AddDrink.Size = new System.Drawing.Size(68, 13);
             this.lbl_AddDrink.TabIndex = 6;
@@ -792,6 +938,36 @@
             this.lbl_Stock.TabIndex = 3;
             this.lbl_Stock.Text = "Stock";
             // 
+            // cbox_DeleteProduct
+            // 
+            this.cbox_DeleteProduct.FormattingEnabled = true;
+            this.cbox_DeleteProduct.Location = new System.Drawing.Point(659, 301);
+            this.cbox_DeleteProduct.Name = "cbox_DeleteProduct";
+            this.cbox_DeleteProduct.Size = new System.Drawing.Size(100, 21);
+            this.cbox_DeleteProduct.TabIndex = 30;
+            this.cbox_DeleteProduct.DropDown += new System.EventHandler(this.cbox_DeleteProduct_DropDown);
+            this.cbox_DeleteProduct.SelectedIndexChanged += new System.EventHandler(this.cbox_DeleteProduct_SelectedIndexChanged);
+            // 
+            // btn_Remove
+            // 
+            this.btn_Remove.Location = new System.Drawing.Point(671, 332);
+            this.btn_Remove.Name = "btn_Remove";
+            this.btn_Remove.Size = new System.Drawing.Size(75, 23);
+            this.btn_Remove.TabIndex = 31;
+            this.btn_Remove.Text = "Remove";
+            this.btn_Remove.UseVisualStyleBackColor = true;
+            this.btn_Remove.Click += new System.EventHandler(this.btn_Remove_Click);
+            // 
+            // btn_Refresh
+            // 
+            this.btn_Refresh.Location = new System.Drawing.Point(707, 13);
+            this.btn_Refresh.Name = "btn_Refresh";
+            this.btn_Refresh.Size = new System.Drawing.Size(75, 23);
+            this.btn_Refresh.TabIndex = 32;
+            this.btn_Refresh.Text = "Refresh";
+            this.btn_Refresh.UseVisualStyleBackColor = true;
+            this.btn_Refresh.Click += new System.EventHandler(this.btn_Refresh_Click);
+            // 
             // SomerenUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -837,7 +1013,8 @@
             this.pnl_OrderDrinks.PerformLayout();
             this.pnl_Stock.ResumeLayout(false);
             this.pnl_Stock.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.num_Amount)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num_AmountChange)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num_AmountAdd)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -915,15 +1092,30 @@
         private System.Windows.Forms.PictureBox pictureBox7;
         private System.Windows.Forms.Label lbl_Stock;
         private System.Windows.Forms.Label lbl_AddDrink;
-        private System.Windows.Forms.NumericUpDown num_Amount;
-        private System.Windows.Forms.Label lbl_Amount;
-        private System.Windows.Forms.Label lbl_Price;
-        private System.Windows.Forms.TextBox tb_Price;
-        private System.Windows.Forms.Label lbl_ProductName;
-        private System.Windows.Forms.TextBox tb_ProductName;
+        private System.Windows.Forms.NumericUpDown num_AmountAdd;
+        private System.Windows.Forms.Label lbl_AmountAdd;
+        private System.Windows.Forms.Label lbl_PriceAdd;
+        private System.Windows.Forms.TextBox tb_PriceAdd;
+        private System.Windows.Forms.Label lbl_ProductNameAdd;
+        private System.Windows.Forms.TextBox tb_ProductNameAdd;
         private System.Windows.Forms.Button btn_Add;
-        private System.Windows.Forms.CheckBox cb_Alcohol;
-        private System.Windows.Forms.Label lbl_Alcohol;
+        private System.Windows.Forms.CheckBox cb_AlcoholAdd;
+        private System.Windows.Forms.Label lbl_AlcoholAdd;
+        private System.Windows.Forms.ComboBox cbox_ChangeProduct;
+        private System.Windows.Forms.Button btn_Change;
+        private System.Windows.Forms.CheckBox cb_AlcoholChange;
+        private System.Windows.Forms.Label lbl_AlcoholicChange;
+        private System.Windows.Forms.NumericUpDown num_AmountChange;
+        private System.Windows.Forms.Label lbl_AmountChange;
+        private System.Windows.Forms.Label lbl_PriceChange;
+        private System.Windows.Forms.TextBox tb_PriceChange;
+        private System.Windows.Forms.Label lbl_ProductNameChange;
+        private System.Windows.Forms.TextBox tb_ProductNameChange;
+        private System.Windows.Forms.Label lbl_RemoveProduct;
+        private System.Windows.Forms.Label lbl_ChangeProduct;
+        private System.Windows.Forms.ComboBox cbox_DeleteProduct;
+        private System.Windows.Forms.Button btn_Remove;
+        private System.Windows.Forms.Button btn_Refresh;
     }
 }
 
