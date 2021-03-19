@@ -697,6 +697,8 @@ namespace SomerenUI
                 Order_Product order_Product = new Order_Product();
                 string selectProduct = item.Text;
                 order_Product.ProductID = int.Parse(selectProduct);
+                
+                order_Product.Amount = 1;
                 orderProducts.Add(order_Product);
             }
 

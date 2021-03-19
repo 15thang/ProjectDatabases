@@ -60,7 +60,21 @@ namespace SomerenDAL
             }
             return products;
         }
-        
+        // Ruben Stoop
+        // Opdracht B
+        public void Update_Stock(Order_Product order_Product)
+        {
+            string query = "UPDATE Product SET Product.Voorraad = CASE WHEN Product.ProductID != 1 THEN Product.Voorraad - @amount ELSE Product.Voorraad - 0 END WHERE Product.ProductID = @productid; ";
+            // Setting the parameters from the parameter order
+            SqlParameter[] sqlParameters = new SqlParameter[2];
+
+            sqlParameters[0] = new SqlParameter("@amount", order_Product.Amount);
+            sqlParameters[1] = new SqlParameter("@productid", order_Product.ProductID);
+            
+            ExecuteEditQuery(query, sqlParameters);
+        }
+
+
         public void Add_Product(Product product)
         {
             // Tim Roffelsen

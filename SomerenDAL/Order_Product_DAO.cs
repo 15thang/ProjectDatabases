@@ -22,8 +22,12 @@ namespace SomerenDAL
 
             sqlParameters[0] = new SqlParameter("@orderid", order_Product.OrderID);
             sqlParameters[1] = new SqlParameter("@productid", order_Product.ProductID);
-            sqlParameters[2] = new SqlParameter("@aantal", 1);
+            sqlParameters[2] = new SqlParameter("@aantal", order_Product.Amount);
             ExecuteEditQuery(query, sqlParameters);
+
+            //Update products stock
+            Product_DAO product_dao = new Product_DAO();
+            product_dao.Update_Stock(order_Product);
         }
 
     }
