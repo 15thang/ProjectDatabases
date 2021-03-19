@@ -816,10 +816,6 @@ namespace SomerenUI
                 {
                     prodService.Add_Product(product);
                     Stock_Refresh();
-                    tb_ProductNameAdd.Clear();
-                    tb_PriceAdd.Clear();
-                    num_AmountAdd.ResetText();
-                    cb_AlcoholAdd.ResetText();
                 }
             }
             else
@@ -837,7 +833,10 @@ namespace SomerenUI
 
             foreach (Product product in stockList) // Fill combobox
             {
-                cbox_ChangeProduct.Items.Add(product);
+                if (product.Stock != -1)
+                {
+                    cbox_ChangeProduct.Items.Add(product);
+                }
             }
             cbox_ChangeProduct.Width = DropDownWidth(cbox_ChangeProduct); // Set width of combobox
         }
@@ -861,10 +860,13 @@ namespace SomerenUI
             Product product = (Product)cbox_ChangeProduct.SelectedItem;
 
             // Fill the textboxes with selected product
-            tb_ProductNameChange.Text = product.ProductName;
-            tb_PriceChange.Text = product.Price.ToString("0.00");
-            num_AmountChange.Value = product.Stock;
-            cb_AlcoholChange.Checked = product.IsAlcohol;
+            if (cbox_ChangeProduct.SelectedIndex != -1)
+            {
+                tb_ProductNameChange.Text = product.ProductName;
+                tb_PriceChange.Text = product.Price.ToString("0.00");
+                num_AmountChange.Value = product.Stock;
+                cb_AlcoholChange.Checked = product.IsAlcohol;
+            }
         }
 
         private void btn_Change_Click(object sender, EventArgs e)
@@ -887,10 +889,6 @@ namespace SomerenUI
                         {
                             prodService.Change_Product(product);
                             Stock_Refresh();
-                            tb_ProductNameChange.Clear();
-                            tb_PriceChange.Clear();
-                            num_AmountChange.ResetText();
-                            cb_AlcoholChange.ResetText();
                         }
                     }
                     else
@@ -918,7 +916,10 @@ namespace SomerenUI
 
             foreach (Product product in stockList) // Fill combobox
             {
-                cbox_DeleteProduct.Items.Add(product);
+                if (product.Stock != -1)
+                {
+                    cbox_DeleteProduct.Items.Add(product);
+                }
             }
             cbox_DeleteProduct.Width = DropDownWidth(cbox_DeleteProduct); // Set width of combobox
         }
@@ -961,9 +962,18 @@ namespace SomerenUI
             // Shows message box if there is an error
             Error_Show(prodService);
 
-            // clear the listview before filling it again
+            // clear the listview and comboboxes
             listViewStock.Clear();
-
+            cbox_ChangeProduct.SelectedIndex = -1;
+            cbox_DeleteProduct.SelectedIndex = -1;
+            tb_ProductNameChange.Clear();
+            tb_PriceChange.Clear();
+            num_AmountChange.ResetText();
+            cb_AlcoholChange.ResetText();
+            tb_ProductNameAdd.Clear();
+            tb_PriceAdd.Clear();
+            num_AmountAdd.ResetText();
+            cb_AlcoholAdd.ResetText();
             // add grid lines, rows and enable sorting
             listViewStock.View = View.Details;
             listViewStock.GridLines = true;
@@ -1020,7 +1030,6 @@ namespace SomerenUI
             }
             // Tim Roffelsen
             cbox_ChangeProduct.Items.Clear(); // Clear combobox
-
             foreach (Product product in stockList) // Fill combobox
             {
                 cbox_ChangeProduct.Items.Add(product);
