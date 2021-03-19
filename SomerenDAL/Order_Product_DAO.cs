@@ -15,7 +15,6 @@ namespace SomerenDAL
         // Ruben Stoop opdracht B
         public void Insert_Order_Product(Order_Product order_Product)
         {
-
             string query = "USE prjdb4 INSERT INTO Bestelling_Product (BestellingID, ProductID, Aantal) VALUES(@orderid, @productid, @aantal);";
 
             //Setting the parameters from the parameter order

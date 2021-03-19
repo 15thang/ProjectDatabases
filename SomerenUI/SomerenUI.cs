@@ -488,7 +488,7 @@ namespace SomerenUI
                 {
                     ch.Width = -2;
                 }
-                foreach (ListViewItem item in listViewStock.Items)
+                foreach (ListViewItem item in listViewStock.Items) // if stock is empty or almost empty make text red
                 {
                     if (listViewStock.Items[item.Index].SubItems[4].Text.Contains(("empty")))
                     {
@@ -793,7 +793,7 @@ namespace SomerenUI
         {
             // Tim Roffelsen
             Product_Service prodService = new Product_Service();
-            if ((!String.IsNullOrEmpty(tb_ProductNameAdd.Text)) && (!String.IsNullOrEmpty(tb_PriceAdd.Text)))
+            if ((!String.IsNullOrEmpty(tb_ProductNameAdd.Text)) && (!String.IsNullOrEmpty(tb_PriceAdd.Text))) // Product Name and Price can't be empty
             {
                 // Get product values from input
                 Product product = new Product(0, cb_AlcoholAdd.Checked, tb_ProductNameAdd.Text, Convert.ToDouble(tb_PriceAdd.Text), Convert.ToInt32(num_AmountAdd.Value), 0); 
@@ -856,7 +856,7 @@ namespace SomerenUI
             Product_Service prodService = new Product_Service();
             Product p = (Product)cbox_ChangeProduct.SelectedItem;
 
-            if ((!String.IsNullOrEmpty(tb_ProductNameChange.Text)) && (!String.IsNullOrEmpty(tb_PriceChange.Text)))
+            if ((!String.IsNullOrEmpty(tb_ProductNameChange.Text)) && (!String.IsNullOrEmpty(tb_PriceChange.Text))) // Product Name and Price can't be empty
             {
                 // Get product values from input
                 Product product = new Product(p.ProductID, cb_AlcoholChange.Checked, tb_ProductNameChange.Text, Convert.ToDouble(tb_PriceChange.Text), Convert.ToInt32(num_AmountChange.Value), 0);
@@ -975,7 +975,7 @@ namespace SomerenUI
             {
                 ch.Width = -2;
             }
-            foreach (ListViewItem item in listViewStock.Items)
+            foreach (ListViewItem item in listViewStock.Items) // if stock is empty or almost empty make text red
             {
                 if (listViewStock.Items[item.Index].SubItems[4].Text.Contains(("empty")))
                 {

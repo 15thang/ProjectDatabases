@@ -98,7 +98,7 @@ namespace SomerenDAL
         {
             // Tim Roffelsen
             // Data gets changed in database
-            string query = "DELETE FROM Product WHERE ProductID = @productid; ";
+            string query = "USE prjdb4 DELETE FROM Product WHERE ProductID = @productid; ";
 
             // Setting the parameters from the parameter order
             SqlParameter[] sqlParameters = new SqlParameter[1];
