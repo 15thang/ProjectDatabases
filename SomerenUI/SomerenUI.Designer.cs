@@ -766,6 +766,7 @@
             this.tb_PriceChange.Name = "tb_PriceChange";
             this.tb_PriceChange.Size = new System.Drawing.Size(100, 20);
             this.tb_PriceChange.TabIndex = 22;
+            this.tb_PriceChange.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_PriceChange_KeyPress);
             // 
             // lbl_ProductNameChange
             // 

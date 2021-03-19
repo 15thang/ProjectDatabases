@@ -984,5 +984,52 @@ namespace SomerenUI
                 }
             }
         }
+
+        private void tb_PriceChange_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Tim Roffelsen
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.')
+            {
+                e.Handled = true;
+            }
+
+            // Check if '.' pressed
+            char sepratorChar = 'a';
+            if (e.KeyChar == '.')
+            {
+                // Check if it's in the beginning of text not accept
+                if (tb_PriceChange.Text.Length == 0) e.Handled = true;
+                // Check if it's in the beginning of text not accept
+                if (tb_PriceChange.SelectionStart == 0) e.Handled = true;
+                // Check if there is already exist a '.' , ','
+                if (alreadyExist(tb_PriceChange.Text, ref sepratorChar)) e.Handled = true;
+                // Check if '.' or ',' is in middle of a number and after it is not a number greater than 99
+                if (tb_PriceChange.SelectionStart != tb_PriceChange.Text.Length && e.Handled == false)
+                {
+                    // '.' or ',' is in the middle
+                    string AfterDotString = tb_PriceChange.Text.Substring(tb_PriceChange.SelectionStart);
+
+                    if (AfterDotString.Length > 2)
+                    {
+                        e.Handled = true;
+                    }
+                }
+            }
+            // Check if a number pressed
+
+            if (Char.IsDigit(e.KeyChar))
+            {
+                // Check if a dot exist
+                if (alreadyExist(tb_PriceChange.Text, ref sepratorChar))
+                {
+                    int sepratorPosition = tb_PriceChange.Text.IndexOf(sepratorChar);
+                    string afterSepratorString = tb_PriceChange.Text.Substring(sepratorPosition + 1);
+                    if (tb_PriceChange.SelectionStart > sepratorPosition && afterSepratorString.Length > 1)
+                    {
+                        e.Handled = true;
+                    }
+                }
+            }
+        }
     }
 }
