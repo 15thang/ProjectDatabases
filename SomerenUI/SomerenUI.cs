@@ -497,6 +497,10 @@ namespace SomerenUI
                     }
                 }
             }
+            else if (panelName == "Vat")
+            {
+
+            }
         }
 
         //Ruben Stoop
@@ -562,6 +566,11 @@ namespace SomerenUI
         private void stockToolStripMenuItem_Click(object sender, EventArgs e)
         {
             showPanel("Stock");
+        }
+
+        private void btwToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            showPanel("Vat");
         }
 
         private void listViewActivities_ColumnClick(object sender, ColumnClickEventArgs e)
@@ -1086,6 +1095,6 @@ namespace SomerenUI
                     }
                 }
             }
-        }
+        }        
     }
 }
