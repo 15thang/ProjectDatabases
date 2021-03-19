@@ -45,6 +45,7 @@ namespace SomerenUI
             pnl_Roomslayout.Hide();
             pnl_OrderDrinks.Hide();
             pnl_Stock.Hide();
+            pnl_Vat.Hide();
         }
 
         private void showPanel(string panelName)
@@ -499,7 +500,52 @@ namespace SomerenUI
             }
             else if (panelName == "Vat")
             {
+                HideAllPanels();
 
+                pnl_Vat.Show();
+
+                SomerenLogic.Vat_Service vatService = new SomerenLogic.Vat_Service();
+                List<Vat> vatList = vatService.GetVats();
+
+                Error_Show(vatService);
+
+                foreach (SomerenModel.Vat v in vatList)
+                {
+                    string[] arr = new string[4];
+
+                    // Add the items
+                    arr[0] = v.VATSixPrcnt.ToString();
+                    arr[1] = v.VATTwntyOnePrcnt.ToString();
+                    arr[2] = v.TotalVAT.ToString();
+
+                    LblSixPrcntTaxResult.Text = arr[0];
+                    LblTwentOnePrcntTaxResult.Text = arr[1];
+                    LblTotalTaxResult.Text = arr[2];
+                }
+            }
+
+            switch (panelName)
+            {
+                case "Q1":
+                    Lbl_VatTarief.Text = "BTW Tarief Kwartaal 1";
+                    LblQrtlFirstMonth.Text = "Januari";
+                    LblQrtlLastMonth.Text = "Maart";
+                    break;
+                case "Q2":
+                    Lbl_VatTarief.Text = "BTW Tarief Kwartaal 2";
+                    LblQrtlFirstMonth.Text = "April";
+                    LblQrtlLastMonth.Text = "Juni";
+                    break;
+                case "Q3":
+                    Lbl_VatTarief.Text = "BTW Tarief Kwartaal 3";
+                    LblQrtlFirstMonth.Text = "Juli";
+                    LblQrtlLastMonth.Text = "September";
+                    break;
+                case "Q4":
+                    Lbl_VatTarief.Text = "BTW Tarief Kwartaal 4";
+                    LblQrtlFirstMonth.Text = "October";
+                    LblQrtlLastMonth.Text = "December";
+                    break;
             }
         }
 
@@ -571,6 +617,26 @@ namespace SomerenUI
         private void btwToolStripMenuItem_Click(object sender, EventArgs e)
         {
             showPanel("Vat");
+        }
+
+        private void kwartaal1ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            showPanel("Q1");
+        }
+
+        private void kwartaal1ToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            showPanel("Q2");
+        }
+
+        private void kwartaal1ToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            showPanel("Q3");
+        }
+
+        private void kwartaal1ToolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            showPanel("Q4");
         }
 
         private void listViewActivities_ColumnClick(object sender, ColumnClickEventArgs e)

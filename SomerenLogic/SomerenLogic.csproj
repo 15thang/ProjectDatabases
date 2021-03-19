@@ -49,6 +49,7 @@
     <Compile Include="RoomLayout_Service.cs" />
     <Compile Include="Room_Service.cs" />
     <Compile Include="Supervisor_Service.cs" />
+    <Compile Include="Vat_Service.cs" />
     <Compile Include="Teacher_Service.cs" />
     <Compile Include="Student_Service.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

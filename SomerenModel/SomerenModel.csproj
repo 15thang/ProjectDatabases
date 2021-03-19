@@ -54,6 +54,7 @@
     <Compile Include="Roomlayout.cs" />
     <Compile Include="Room.cs" />
     <Compile Include="Supervisor.cs" />
+    <Compile Include="Vat.cs" />
     <Compile Include="Teacher.cs" />
     <Compile Include="Student.cs" />
   </ItemGroup>
