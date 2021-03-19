@@ -488,6 +488,14 @@ namespace SomerenUI
                 {
                     ch.Width = -2;
                 }
+                foreach (ListViewItem item in listViewStock.Items)
+                {
+                    if (listViewStock.Items[item.Index].SubItems[4].Text.Contains(("empty")))
+                    {
+                        listViewStock.Items[item.Index].UseItemStyleForSubItems = false;
+                        listViewStock.Items[item.Index].SubItems[4].ForeColor = Color.Red;
+                    }
+                }
             }
         }
 
@@ -966,6 +974,14 @@ namespace SomerenUI
             foreach (ColumnHeader ch in listViewStock.Columns) // dynamically change column width
             {
                 ch.Width = -2;
+            }
+            foreach (ListViewItem item in listViewStock.Items)
+            {
+                if (listViewStock.Items[item.Index].SubItems[4].Text.Contains(("empty")))
+                {
+                    listViewStock.Items[item.Index].UseItemStyleForSubItems = false;
+                    listViewStock.Items[item.Index].SubItems[4].ForeColor = Color.Red;
+                }
             }
         }
     }
