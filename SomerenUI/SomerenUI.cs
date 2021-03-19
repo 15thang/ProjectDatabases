@@ -835,7 +835,10 @@ namespace SomerenUI
 
             foreach (Product product in stockList) // Fill combobox
             {
-                cbox_ChangeProduct.Items.Add(product);
+                if (product.Stock != -1)
+                {
+                    cbox_ChangeProduct.Items.Add(product);
+                }
             }
             cbox_ChangeProduct.Width = DropDownWidth(cbox_ChangeProduct); // Set width of combobox
         }
@@ -916,7 +919,10 @@ namespace SomerenUI
 
             foreach (Product product in stockList) // Fill combobox
             {
-                cbox_DeleteProduct.Items.Add(product);
+                if (product.Stock != -1)
+                {
+                    cbox_DeleteProduct.Items.Add(product);
+                }
             }
             cbox_DeleteProduct.Width = DropDownWidth(cbox_DeleteProduct); // Set width of combobox
         }
