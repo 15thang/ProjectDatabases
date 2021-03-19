@@ -862,10 +862,13 @@ namespace SomerenUI
             Product product = (Product)cbox_ChangeProduct.SelectedItem;
 
             // Fill the textboxes with selected product
-            tb_ProductNameChange.Text = product.ProductName;
-            tb_PriceChange.Text = product.Price.ToString("0.00");
-            num_AmountChange.Value = product.Stock;
-            cb_AlcoholChange.Checked = product.IsAlcohol;
+            if (cbox_ChangeProduct.SelectedIndex != -1)
+            {
+                tb_ProductNameChange.Text = product.ProductName;
+                tb_PriceChange.Text = product.Price.ToString("0.00");
+                num_AmountChange.Value = product.Stock;
+                cb_AlcoholChange.Checked = product.IsAlcohol;
+            }
         }
 
         private void btn_Change_Click(object sender, EventArgs e)
@@ -965,9 +968,10 @@ namespace SomerenUI
             // Shows message box if there is an error
             Error_Show(prodService);
 
-            // clear the listview before filling it again
+            // clear the listview and comboboxes
             listViewStock.Clear();
-
+            cbox_ChangeProduct.SelectedIndex = -1;
+            cbox_DeleteProduct.SelectedIndex = -1;
             // add grid lines, rows and enable sorting
             listViewStock.View = View.Details;
             listViewStock.GridLines = true;
@@ -1024,7 +1028,6 @@ namespace SomerenUI
             }
             // Tim Roffelsen
             cbox_ChangeProduct.Items.Clear(); // Clear combobox
-
             foreach (Product product in stockList) // Fill combobox
             {
                 cbox_ChangeProduct.Items.Add(product);
