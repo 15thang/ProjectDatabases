@@ -49,6 +49,7 @@ namespace SomerenUI
                 pnl_Rooms.Hide();
                 pnl_Activities.Hide();
                 pnl_Roomslayout.Hide();
+                pnl_BTWTarief.Hide();
 
                 // show dashboard
                 pnl_Dashboard.Show();
@@ -64,6 +65,7 @@ namespace SomerenUI
                 pnl_Rooms.Hide();
                 pnl_Activities.Hide();
                 pnl_Roomslayout.Hide();
+                pnl_BTWTarief.Hide();
 
                 // show students
                 pnl_Students.Show();
@@ -116,6 +118,7 @@ namespace SomerenUI
                 pnl_Rooms.Hide();
                 pnl_Activities.Hide();
                 pnl_Roomslayout.Hide();
+                pnl_BTWTarief.Hide();
 
                 // show teachers
                 pnl_Teachers.Show();
@@ -181,6 +184,7 @@ namespace SomerenUI
                 pnl_Students.Hide();
                 pnl_Activities.Hide();
                 pnl_Roomslayout.Hide();
+                pnl_BTWTarief.Hide();
 
                 // show rooms
                 pnl_Rooms.Show();
@@ -233,6 +237,7 @@ namespace SomerenUI
                 pnl_Rooms.Hide();
                 pnl_Teachers.Hide();
                 pnl_Roomslayout.Hide();
+                pnl_BTWTarief.Hide();
 
                 // show activities
                 pnl_Activities.Show();
@@ -288,6 +293,7 @@ namespace SomerenUI
                 pnl_Students.Hide();
                 pnl_Rooms.Hide();
                 pnl_Activities.Hide();
+                pnl_BTWTarief.Hide();
 
                 // show rooms
                 pnl_Roomslayout.Show();
@@ -328,12 +334,45 @@ namespace SomerenUI
                             listViewRoomLayout.Items.Add(itm);
                         }
                     }                    
-                }
+                }                
                    
                 foreach (ColumnHeader ch in listViewRoomLayout.Columns) // dynamically change column width
                 {
                     ch.Width = -2;
                 }
+            }
+
+            // Thomas Eddyson
+            // UI for the BTW tarief panel
+            else if (panelName == "BTW")
+            {
+                // hide all other panels
+                pnl_Dashboard.Hide();
+                img_Dashboard.Hide();
+                pnl_Teachers.Hide();
+                pnl_Students.Hide();
+                pnl_Rooms.Hide();
+                pnl_Activities.Hide();
+                pnl_Roomslayout.Hide();
+
+                // show rooms
+                pnl_BTWTarief.Show();                
+            }
+
+            switch (panelName)
+            {
+                case "Q1":
+                    label5.Text = "BTW Tarief Q1";
+                    break;
+                case "Q2":
+                    label5.Text = "BTW Tarief Q2";
+                    break;
+                case "Q3":
+                    label5.Text = "BTW Tarief Q3";
+                    break;
+                case "Q4":
+                    label5.Text = "BTW Tarief Q4";
+                    break;
             }
         }
 
@@ -380,6 +419,30 @@ namespace SomerenUI
         private void roomLayoutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             showPanel("RoomsLayout");
+        }        
+
+        private void bTWToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            showPanel("BTW");
+        }
+        private void q1ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            showPanel("Q1");
+        }
+
+        private void q2ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            showPanel("Q2");
+        }
+
+        private void q3ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            showPanel("Q3");
+        }
+
+        private void q4ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            showPanel("Q4");
         }
 
         private void listViewActivities_ColumnClick(object sender, ColumnClickEventArgs e)
@@ -497,6 +560,6 @@ namespace SomerenUI
             {
                 MessageBox.Show($"{service.ErrorText}", "Error!", MessageBoxButtons.OK);
             }
-        }
+        }        
     }
 }
