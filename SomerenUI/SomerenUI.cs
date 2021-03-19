@@ -814,10 +814,6 @@ namespace SomerenUI
                 {
                     prodService.Add_Product(product);
                     Stock_Refresh();
-                    tb_ProductNameAdd.Clear();
-                    tb_PriceAdd.Clear();
-                    num_AmountAdd.ResetText();
-                    cb_AlcoholAdd.ResetText();
                 }
             }
             else
@@ -891,10 +887,6 @@ namespace SomerenUI
                         {
                             prodService.Change_Product(product);
                             Stock_Refresh();
-                            tb_ProductNameChange.Clear();
-                            tb_PriceChange.Clear();
-                            num_AmountChange.ResetText();
-                            cb_AlcoholChange.ResetText();
                         }
                     }
                     else
@@ -972,6 +964,14 @@ namespace SomerenUI
             listViewStock.Clear();
             cbox_ChangeProduct.SelectedIndex = -1;
             cbox_DeleteProduct.SelectedIndex = -1;
+            tb_ProductNameChange.Clear();
+            tb_PriceChange.Clear();
+            num_AmountChange.ResetText();
+            cb_AlcoholChange.ResetText();
+            tb_ProductNameAdd.Clear();
+            tb_PriceAdd.Clear();
+            num_AmountAdd.ResetText();
+            cb_AlcoholAdd.ResetText();
             // add grid lines, rows and enable sorting
             listViewStock.View = View.Details;
             listViewStock.GridLines = true;
