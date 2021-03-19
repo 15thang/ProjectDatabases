@@ -500,6 +500,7 @@ namespace SomerenUI
             }
             else if (panelName == "Vat")
             {
+                // Thomas Eddyson
                 HideAllPanels();
 
                 pnl_Vat.Show();

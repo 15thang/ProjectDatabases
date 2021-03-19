@@ -12,10 +12,13 @@ namespace SomerenDAL
 {
     public class Vat_DAO : Base
     {
+        const double taxTwntyOnePrcnt = 0.21;
+        const double taxSixPrcnt = 0.06;
+
         // Thomas Eddyson
         public List<Vat> Db_Get_All_Vats()
         {
-            string query = "SELECT Bestelling.Datum, Bestelling_Product.Aantal, Product.Prijs, Product.isAlcohol FROM [Bestelling] JOIN [Bestelling_Product] ON Bestelling.BestellingID = Bestelling_Product.BestellingID JOIN [Product] ON Bestelling_Product.ProductID = Product.ProductID";
+            string query = "SELECT Bestelling.Datum, Bestelling_Product.Aantal, Product.Prijs, Product.isAlcohol FROM[Bestelling] JOIN [Bestelling_Product] ON Bestelling.BestellingID = Bestelling_Product.BestellingID JOIN[Product] ON Bestelling_Product.ProductID = Product.ProductID";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
@@ -23,6 +26,8 @@ namespace SomerenDAL
         private List<Vat> ReadTables(DataTable dataTable)
         {
             List<Vat> Vats = new List<Vat>();
+            List<double> TaxTwentyOne = new List<double>();
+            List<double> TaxSix = new List<double>();
 
             // Check if datatable is null
             if (dataTable == null)
@@ -32,27 +37,24 @@ namespace SomerenDAL
 
             foreach (DataRow dr in dataTable.Rows)
             {
+                double Price = double.Parse(dr["Prijs"].ToString());
 
-                Vat Result = new Vat();
-                int Amount;
-
-                Amount = (int)dr["Aantal"];
-
-                // Determines if the price is either taxed by 21% or 6%.
                 if ((bool)dr["isAlcohol"] == true)
                 {
-                    Result.VATTwntyOnePrcnt += (int)dr["Prijs"] * Amount;
+                    TaxTwentyOne.Add(Price);
                 }
                 else
                 {
-                    Result.VATSixPrcnt += (int)dr["Prijs"] * Amount;
+                    TaxSix.Add(Price);
                 }
+                double total = (TaxTwentyOne.Sum() * taxTwntyOnePrcnt) + (TaxSix.Sum() * taxSixPrcnt);
+
 
                 Vat vat = new Vat()
                 {
-                    VATSixPrcnt = Result.VATSixPrcnt,
-                    VATTwntyOnePrcnt = Result.VATTwntyOnePrcnt,
-                    TotalVAT = Result.VATSixPrcnt + Result.VATTwntyOnePrcnt
+                    VATTwntyOnePrcnt = TaxTwentyOne.Sum() * taxTwntyOnePrcnt,
+                    VATSixPrcnt = TaxSix.Sum() * taxSixPrcnt,
+                    TotalVAT = total
                 };
                 Vats.Add(vat);
             }
