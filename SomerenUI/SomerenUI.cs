@@ -793,8 +793,18 @@ namespace SomerenUI
         {
             // Tim Roffelsen
             Product_Service prodService = new Product_Service();
+            List<Product> stockList = prodService.GetProducts(); // Get all products
+
             if ((!String.IsNullOrEmpty(tb_ProductNameAdd.Text)) && (!String.IsNullOrEmpty(tb_PriceAdd.Text))) // Product Name and Price can't be empty
             {
+                foreach (Product p in stockList) // Check if product exists
+                {
+                    if (tb_ProductNameAdd.Text == p.ProductName)
+                    {
+                        MessageBox.Show("A product with that name already exists!", "Error!");
+                        return;
+                    }
+                }
                 // Get product values from input
                 Product product = new Product(0, cb_AlcoholAdd.Checked, tb_ProductNameAdd.Text, Convert.ToDouble(tb_PriceAdd.Text), Convert.ToInt32(num_AmountAdd.Value), 0); 
                 // Show confirmation box
@@ -803,6 +813,11 @@ namespace SomerenUI
                 if (confirm == DialogResult.OK)
                 {
                     prodService.Add_Product(product);
+                    Stock_Refresh();
+                    tb_ProductNameAdd.Clear();
+                    tb_PriceAdd.Clear();
+                    num_AmountAdd.ResetText();
+                    cb_AlcoholAdd.ResetText();
                 }
             }
             else
@@ -855,30 +870,40 @@ namespace SomerenUI
             // Tim Roffelsen
             Product_Service prodService = new Product_Service();
             Product p = (Product)cbox_ChangeProduct.SelectedItem;
-
-            if ((!String.IsNullOrEmpty(tb_ProductNameChange.Text)) && (!String.IsNullOrEmpty(tb_PriceChange.Text))) // Product Name and Price can't be empty
+            if (cbox_ChangeProduct.SelectedIndex > -1)
             {
-                
-                // Get product values from input
-                Product product = new Product(p.ProductID, cb_AlcoholChange.Checked, tb_ProductNameChange.Text, Convert.ToDouble(tb_PriceChange.Text), Convert.ToInt32(num_AmountChange.Value), p.Sold);
-                if (!product.Equals(p)) // Checks if values were changed
+                if ((!String.IsNullOrEmpty(tb_ProductNameChange.Text)) && (!String.IsNullOrEmpty(tb_PriceChange.Text))) // Product Name and Price can't be empty
                 {
-                    // Show confirmation box
-                    DialogResult confirm = MessageBox.Show($"The selected product will be changed to have the values:\n\nName:\t\t{tb_ProductNameChange.Text}\nPrice:\t\t€ {double.Parse(tb_PriceChange.Text).ToString("0.00")}\nAlcoholic:\t{cb_AlcoholChange.Checked}\nAmount:\t\t{Convert.ToInt32(num_AmountChange.Value)}\n\nThis action cannot be undone!", "Confirmation", MessageBoxButtons.OKCancel);
-                    // If confirmed, change item
-                    if (confirm == DialogResult.OK)
+                    // Get product values from input
+                    Product product = new Product(p.ProductID, cb_AlcoholChange.Checked, tb_ProductNameChange.Text, Convert.ToDouble(tb_PriceChange.Text), Convert.ToInt32(num_AmountChange.Value), p.Sold);
+                    if (!product.Equals(p)) // Checks if values were changed
                     {
-                        prodService.Change_Product(product);
+                        // Show confirmation box
+                        DialogResult confirm = MessageBox.Show($"The selected product will be changed to have the values:\n\nName:\t\t{tb_ProductNameChange.Text}\nPrice:\t\t€ {double.Parse(tb_PriceChange.Text).ToString("0.00")}\nAlcoholic:\t{cb_AlcoholChange.Checked}\nAmount:\t\t{Convert.ToInt32(num_AmountChange.Value)}\n\nThis action cannot be undone!", "Confirmation", MessageBoxButtons.OKCancel);
+                        // If confirmed, change item
+                        if (confirm == DialogResult.OK)
+                        {
+                            prodService.Change_Product(product);
+                            Stock_Refresh();
+                            tb_ProductNameChange.Clear();
+                            tb_PriceChange.Clear();
+                            num_AmountChange.ResetText();
+                            cb_AlcoholChange.ResetText();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Values were not changed!", "Error!");
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Values were not changed!", "Error!");
+                    MessageBox.Show("Product Name and Price can not be empty!", "Error!");
                 }
             }
             else
             {
-                MessageBox.Show("Product Name and Price can not be empty!", "Error!");
+                MessageBox.Show("Please select a product.", "Error!");
             }
         }
 
@@ -916,6 +941,7 @@ namespace SomerenUI
                 if (confirm == DialogResult.OK)
                 {
                     prodService.Delete_Product(product);
+                    Stock_Refresh();
                 }
             }
             else
@@ -923,8 +949,7 @@ namespace SomerenUI
                 MessageBox.Show("Please select a product to remove.", "Error!");
             }
         }
-
-        private void btn_Refresh_Click(object sender, EventArgs e)
+        void Stock_Refresh() // Refreshes listviews and dropdowns
         {
             // Tim Roffelsen
             // fill the stock listview within the stock panel with a list of products
@@ -991,6 +1016,18 @@ namespace SomerenUI
                     listViewStock.Items[item.Index].SubItems[4].ForeColor = Color.Red;
                 }
             }
+            // Tim Roffelsen
+            cbox_ChangeProduct.Items.Clear(); // Clear combobox
+
+            foreach (Product product in stockList) // Fill combobox
+            {
+                cbox_ChangeProduct.Items.Add(product);
+            }
+            cbox_ChangeProduct.Width = DropDownWidth(cbox_ChangeProduct); // Set width of combobox
+        }
+        private void btn_Refresh_Click(object sender, EventArgs e)
+        {
+            Stock_Refresh();
         }
 
         private void tb_PriceChange_KeyPress(object sender, KeyPressEventArgs e)
