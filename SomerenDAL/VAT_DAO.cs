@@ -10,12 +10,12 @@ using SomerenModel;
 
 namespace SomerenDAL
 {
-    public class VAT : Base
+    public class Vat_DAO : Base
     {
         // Thomas Eddyson
-        public List<Vat> Db_Get_All_Rooms()
+        public List<Vat> Db_Get_All_Vats()
         {
-            string query = "SELECT Bestelling.Datum, Bestelling_Product.Aantal, Product.Prijs, Product.isAlcohol FROM Bestelling JOIN Bestelling_Product ON Bestelling.BestellingID = Bestelling_Product.BestellingID JOIN Product ON Bestelling_Product.ProductID = Product.ProductID";
+            string query = "SELECT Bestelling.Datum, Bestelling_Product.Aantal, Product.Prijs, Product.isAlcohol FROM [Bestelling] JOIN [Bestelling_Product] ON Bestelling.BestellingID = Bestelling_Product.BestellingID JOIN [Product] ON Bestelling_Product.ProductID = Product.ProductID";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }

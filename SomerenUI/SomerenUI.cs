@@ -357,23 +357,39 @@ namespace SomerenUI
 
                 // show rooms
                 pnl_BTWTarief.Show();                
-            }
 
-            switch (panelName)
-            {
-                case "Q1":
-                    label5.Text = "BTW Tarief Q1";
-                    break;
-                case "Q2":
-                    label5.Text = "BTW Tarief Q2";
-                    break;
-                case "Q3":
-                    label5.Text = "BTW Tarief Q3";
-                    break;
-                case "Q4":
-                    label5.Text = "BTW Tarief Q4";
-                    break;
-            }
+                switch (panelName)
+                {
+                    case "Q1":
+                        Vat Tax = new Vat();
+                        string foo = Tax.VATSixPrcnt.ToString();
+                        string bar = Tax.VATTwntyOnePrcnt.ToString();
+
+                        LblSixPrcntTaxResult.Text = foo;
+                        LblTwentOnePrcntTaxResult.Text = bar;
+
+                        Lbl_BtwTarief.Text = "BTW Tarief Kwartaal 1";
+                        LblQrtlFirstMonth.Text = "Januari";
+                        LblQrtlLastMonth.Text = "Maart";
+                        break;
+                    case "Q2":
+                        Lbl_BtwTarief.Text = "BTW Tarief Kwartaal 2";
+                        LblQrtlFirstMonth.Text = "April";
+                        LblQrtlLastMonth.Text = "Juni";
+                        break;
+                    case "Q3":
+                        Lbl_BtwTarief.Text = "BTW Tarief Kwartaal 3";
+                        LblQrtlFirstMonth.Text = "Juli";
+                        LblQrtlLastMonth.Text = "September";
+                        break;
+                    case "Q4":
+                        Lbl_BtwTarief.Text = "BTW Tarief Kwartaal 4";
+                        LblQrtlFirstMonth.Text = "October";
+                        LblQrtlLastMonth.Text = "December";
+                        break;
+                }
+
+            }            
         }
 
         private void dashboardToolStripMenuItem_Click(object sender, EventArgs e)

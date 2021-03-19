@@ -88,7 +88,18 @@
             this.columnHeader14 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader15 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.Lbl_BtwTarief = new System.Windows.Forms.Label();
+            this.LblQrtlText = new System.Windows.Forms.Label();
+            this.LblQrtlFirstMonth = new System.Windows.Forms.Label();
+            this.LblQrtlTextTo = new System.Windows.Forms.Label();
+            this.LblQrtlLastMonth = new System.Windows.Forms.Label();
+            this.LblSixPrcntTaxText = new System.Windows.Forms.Label();
+            this.LblSixPrcntTaxResult = new System.Windows.Forms.Label();
+            this.LblTwentOnePrcntTaxResult = new System.Windows.Forms.Label();
+            this.LblTwentOnePrcntTaxText = new System.Windows.Forms.Label();
+            this.LblTotalTaxText = new System.Windows.Forms.Label();
+            this.LblTotalTaxResult = new System.Windows.Forms.Label();
+            this.LblTotalOfTwoTaxText = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.img_Dashboard)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.pnl_Dashboard.SuspendLayout();
@@ -130,7 +141,7 @@
             this.bTWToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1443, 33);
+            this.menuStrip1.Size = new System.Drawing.Size(1443, 36);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -141,7 +152,7 @@
             this.toolStripSeparator1,
             this.exitToolStripMenuItem});
             this.dashboardToolStripMenuItem.Name = "dashboardToolStripMenuItem";
-            this.dashboardToolStripMenuItem.Size = new System.Drawing.Size(118, 29);
+            this.dashboardToolStripMenuItem.Size = new System.Drawing.Size(118, 30);
             this.dashboardToolStripMenuItem.Text = "Application";
             this.dashboardToolStripMenuItem.Click += new System.EventHandler(this.dashboardToolStripMenuItem_Click);
             // 
@@ -167,35 +178,35 @@
             // studentsToolStripMenuItem
             // 
             this.studentsToolStripMenuItem.Name = "studentsToolStripMenuItem";
-            this.studentsToolStripMenuItem.Size = new System.Drawing.Size(97, 29);
+            this.studentsToolStripMenuItem.Size = new System.Drawing.Size(97, 30);
             this.studentsToolStripMenuItem.Text = "Students";
             this.studentsToolStripMenuItem.Click += new System.EventHandler(this.studentsToolStripMenuItem_Click);
             // 
             // lecturersToolStripMenuItem
             // 
             this.lecturersToolStripMenuItem.Name = "lecturersToolStripMenuItem";
-            this.lecturersToolStripMenuItem.Size = new System.Drawing.Size(98, 29);
+            this.lecturersToolStripMenuItem.Size = new System.Drawing.Size(98, 30);
             this.lecturersToolStripMenuItem.Text = "Lecturers";
             this.lecturersToolStripMenuItem.Click += new System.EventHandler(this.lecturersToolStripMenuItem_Click);
             // 
             // activitiesToolStripMenuItem
             // 
             this.activitiesToolStripMenuItem.Name = "activitiesToolStripMenuItem";
-            this.activitiesToolStripMenuItem.Size = new System.Drawing.Size(98, 29);
+            this.activitiesToolStripMenuItem.Size = new System.Drawing.Size(98, 30);
             this.activitiesToolStripMenuItem.Text = "Activities";
             this.activitiesToolStripMenuItem.Click += new System.EventHandler(this.activitiesToolStripMenuItem_Click);
             // 
             // roomsToolStripMenuItem
             // 
             this.roomsToolStripMenuItem.Name = "roomsToolStripMenuItem";
-            this.roomsToolStripMenuItem.Size = new System.Drawing.Size(84, 29);
+            this.roomsToolStripMenuItem.Size = new System.Drawing.Size(84, 30);
             this.roomsToolStripMenuItem.Text = "Rooms";
             this.roomsToolStripMenuItem.Click += new System.EventHandler(this.roomsToolStripMenuItem_Click);
             // 
             // roomLayoutToolStripMenuItem
             // 
             this.roomLayoutToolStripMenuItem.Name = "roomLayoutToolStripMenuItem";
-            this.roomLayoutToolStripMenuItem.Size = new System.Drawing.Size(134, 29);
+            this.roomLayoutToolStripMenuItem.Size = new System.Drawing.Size(134, 30);
             this.roomLayoutToolStripMenuItem.Text = "Room Layout";
             this.roomLayoutToolStripMenuItem.Click += new System.EventHandler(this.roomLayoutToolStripMenuItem_Click);
             // 
@@ -207,35 +218,35 @@
             this.q3ToolStripMenuItem,
             this.q4ToolStripMenuItem});
             this.bTWToolStripMenuItem.Name = "bTWToolStripMenuItem";
-            this.bTWToolStripMenuItem.Size = new System.Drawing.Size(63, 29);
+            this.bTWToolStripMenuItem.Size = new System.Drawing.Size(63, 30);
             this.bTWToolStripMenuItem.Text = "BTW";
             this.bTWToolStripMenuItem.Click += new System.EventHandler(this.bTWToolStripMenuItem_Click);
             // 
             // q1ToolStripMenuItem
             // 
             this.q1ToolStripMenuItem.Name = "q1ToolStripMenuItem";
-            this.q1ToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.q1ToolStripMenuItem.Size = new System.Drawing.Size(138, 34);
             this.q1ToolStripMenuItem.Text = "Q1";
             this.q1ToolStripMenuItem.Click += new System.EventHandler(this.q1ToolStripMenuItem_Click);
             // 
             // q2ToolStripMenuItem
             // 
             this.q2ToolStripMenuItem.Name = "q2ToolStripMenuItem";
-            this.q2ToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.q2ToolStripMenuItem.Size = new System.Drawing.Size(138, 34);
             this.q2ToolStripMenuItem.Text = "Q2";
             this.q2ToolStripMenuItem.Click += new System.EventHandler(this.q2ToolStripMenuItem_Click);
             // 
             // q3ToolStripMenuItem
             // 
             this.q3ToolStripMenuItem.Name = "q3ToolStripMenuItem";
-            this.q3ToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.q3ToolStripMenuItem.Size = new System.Drawing.Size(138, 34);
             this.q3ToolStripMenuItem.Text = "Q3";
             this.q3ToolStripMenuItem.Click += new System.EventHandler(this.q3ToolStripMenuItem_Click);
             // 
             // q4ToolStripMenuItem
             // 
             this.q4ToolStripMenuItem.Name = "q4ToolStripMenuItem";
-            this.q4ToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.q4ToolStripMenuItem.Size = new System.Drawing.Size(138, 34);
             this.q4ToolStripMenuItem.Text = "Q4";
             this.q4ToolStripMenuItem.Click += new System.EventHandler(this.q4ToolStripMenuItem_Click);
             // 
@@ -560,9 +571,20 @@
             // 
             // pnl_BTWTarief
             // 
+            this.pnl_BTWTarief.Controls.Add(this.LblTotalOfTwoTaxText);
+            this.pnl_BTWTarief.Controls.Add(this.LblTotalTaxResult);
+            this.pnl_BTWTarief.Controls.Add(this.LblTotalTaxText);
+            this.pnl_BTWTarief.Controls.Add(this.LblTwentOnePrcntTaxResult);
+            this.pnl_BTWTarief.Controls.Add(this.LblTwentOnePrcntTaxText);
+            this.pnl_BTWTarief.Controls.Add(this.LblSixPrcntTaxResult);
+            this.pnl_BTWTarief.Controls.Add(this.LblSixPrcntTaxText);
+            this.pnl_BTWTarief.Controls.Add(this.LblQrtlLastMonth);
+            this.pnl_BTWTarief.Controls.Add(this.LblQrtlTextTo);
+            this.pnl_BTWTarief.Controls.Add(this.LblQrtlFirstMonth);
+            this.pnl_BTWTarief.Controls.Add(this.LblQrtlText);
             this.pnl_BTWTarief.Controls.Add(this.listViewBTWTarief);
             this.pnl_BTWTarief.Controls.Add(this.pictureBox6);
-            this.pnl_BTWTarief.Controls.Add(this.label5);
+            this.pnl_BTWTarief.Controls.Add(this.Lbl_BtwTarief);
             this.pnl_BTWTarief.Location = new System.Drawing.Point(17, 32);
             this.pnl_BTWTarief.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pnl_BTWTarief.Name = "pnl_BTWTarief";
@@ -606,16 +628,120 @@
             this.pictureBox6.TabIndex = 0;
             this.pictureBox6.TabStop = false;
             // 
-            // label5
+            // Lbl_BtwTarief
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(15, 15);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(189, 39);
-            this.label5.TabIndex = 3;
-            this.label5.Text = "BTW Tarief";
+            this.Lbl_BtwTarief.AutoSize = true;
+            this.Lbl_BtwTarief.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_BtwTarief.Location = new System.Drawing.Point(15, 15);
+            this.Lbl_BtwTarief.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Lbl_BtwTarief.Name = "Lbl_BtwTarief";
+            this.Lbl_BtwTarief.Size = new System.Drawing.Size(189, 39);
+            this.Lbl_BtwTarief.TabIndex = 3;
+            this.Lbl_BtwTarief.Text = "BTW Tarief";
+            // 
+            // LblQrtlText
+            // 
+            this.LblQrtlText.AutoSize = true;
+            this.LblQrtlText.Location = new System.Drawing.Point(31, 98);
+            this.LblQrtlText.Name = "LblQrtlText";
+            this.LblQrtlText.Size = new System.Drawing.Size(142, 20);
+            this.LblQrtlText.TabIndex = 6;
+            this.LblQrtlText.Text = "Kwartaal loopt van:";
+            // 
+            // LblQrtlFirstMonth
+            // 
+            this.LblQrtlFirstMonth.AutoSize = true;
+            this.LblQrtlFirstMonth.Location = new System.Drawing.Point(179, 98);
+            this.LblQrtlFirstMonth.Name = "LblQrtlFirstMonth";
+            this.LblQrtlFirstMonth.Size = new System.Drawing.Size(99, 20);
+            this.LblQrtlFirstMonth.TabIndex = 7;
+            this.LblQrtlFirstMonth.Text = "__________";
+            this.LblQrtlFirstMonth.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // LblQrtlTextTo
+            // 
+            this.LblQrtlTextTo.AutoSize = true;
+            this.LblQrtlTextTo.Location = new System.Drawing.Point(284, 98);
+            this.LblQrtlTextTo.Name = "LblQrtlTextTo";
+            this.LblQrtlTextTo.Size = new System.Drawing.Size(32, 20);
+            this.LblQrtlTextTo.TabIndex = 8;
+            this.LblQrtlTextTo.Text = "tot:";
+            // 
+            // LblQrtlLastMonth
+            // 
+            this.LblQrtlLastMonth.AutoSize = true;
+            this.LblQrtlLastMonth.Location = new System.Drawing.Point(322, 98);
+            this.LblQrtlLastMonth.Name = "LblQrtlLastMonth";
+            this.LblQrtlLastMonth.Size = new System.Drawing.Size(99, 20);
+            this.LblQrtlLastMonth.TabIndex = 9;
+            this.LblQrtlLastMonth.Text = "__________";
+            this.LblQrtlLastMonth.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // LblSixPrcntTaxText
+            // 
+            this.LblSixPrcntTaxText.AutoSize = true;
+            this.LblSixPrcntTaxText.Location = new System.Drawing.Point(32, 136);
+            this.LblSixPrcntTaxText.Name = "LblSixPrcntTaxText";
+            this.LblSixPrcntTaxText.Size = new System.Drawing.Size(261, 20);
+            this.LblSixPrcntTaxText.TabIndex = 10;
+            this.LblSixPrcntTaxText.Text = "Total afdracht BTW Laag tarief 6%: ";
+            // 
+            // LblSixPrcntTaxResult
+            // 
+            this.LblSixPrcntTaxResult.AutoSize = true;
+            this.LblSixPrcntTaxResult.Location = new System.Drawing.Point(299, 136);
+            this.LblSixPrcntTaxResult.Name = "LblSixPrcntTaxResult";
+            this.LblSixPrcntTaxResult.Size = new System.Drawing.Size(99, 20);
+            this.LblSixPrcntTaxResult.TabIndex = 11;
+            this.LblSixPrcntTaxResult.Text = "__________";
+            this.LblSixPrcntTaxResult.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // LblTwentOnePrcntTaxResult
+            // 
+            this.LblTwentOnePrcntTaxResult.AutoSize = true;
+            this.LblTwentOnePrcntTaxResult.Location = new System.Drawing.Point(298, 174);
+            this.LblTwentOnePrcntTaxResult.Name = "LblTwentOnePrcntTaxResult";
+            this.LblTwentOnePrcntTaxResult.Size = new System.Drawing.Size(99, 20);
+            this.LblTwentOnePrcntTaxResult.TabIndex = 13;
+            this.LblTwentOnePrcntTaxResult.Text = "__________";
+            this.LblTwentOnePrcntTaxResult.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // LblTwentOnePrcntTaxText
+            // 
+            this.LblTwentOnePrcntTaxText.AutoSize = true;
+            this.LblTwentOnePrcntTaxText.Location = new System.Drawing.Point(30, 174);
+            this.LblTwentOnePrcntTaxText.Name = "LblTwentOnePrcntTaxText";
+            this.LblTwentOnePrcntTaxText.Size = new System.Drawing.Size(270, 20);
+            this.LblTwentOnePrcntTaxText.TabIndex = 12;
+            this.LblTwentOnePrcntTaxText.Text = "Total afdracht BTW hoog tarief 21%: ";
+            // 
+            // LblTotalTaxText
+            // 
+            this.LblTotalTaxText.AutoSize = true;
+            this.LblTotalTaxText.Location = new System.Drawing.Point(32, 233);
+            this.LblTotalTaxText.Name = "LblTotalTaxText";
+            this.LblTotalTaxText.Size = new System.Drawing.Size(150, 20);
+            this.LblTotalTaxText.TabIndex = 14;
+            this.LblTotalTaxText.Text = "Total afdracht BTW:";
+            // 
+            // LblTotalTaxResult
+            // 
+            this.LblTotalTaxResult.AutoSize = true;
+            this.LblTotalTaxResult.Location = new System.Drawing.Point(188, 233);
+            this.LblTotalTaxResult.Name = "LblTotalTaxResult";
+            this.LblTotalTaxResult.Size = new System.Drawing.Size(99, 20);
+            this.LblTotalTaxResult.TabIndex = 15;
+            this.LblTotalTaxResult.Text = "__________";
+            this.LblTotalTaxResult.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // LblTotalOfTwoTaxText
+            // 
+            this.LblTotalOfTwoTaxText.AutoSize = true;
+            this.LblTotalOfTwoTaxText.Location = new System.Drawing.Point(293, 233);
+            this.LblTotalOfTwoTaxText.Name = "LblTotalOfTwoTaxText";
+            this.LblTotalOfTwoTaxText.Size = new System.Drawing.Size(271, 20);
+            this.LblTotalOfTwoTaxText.TabIndex = 16;
+            this.LblTotalOfTwoTaxText.Text = "(totaal van bovenste twee bedragen).";
             // 
             // SomerenUI
             // 
@@ -726,7 +852,18 @@
         private System.Windows.Forms.ColumnHeader columnHeader14;
         private System.Windows.Forms.ColumnHeader columnHeader15;
         private System.Windows.Forms.PictureBox pictureBox6;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label Lbl_BtwTarief;
+        private System.Windows.Forms.Label LblQrtlLastMonth;
+        private System.Windows.Forms.Label LblQrtlTextTo;
+        private System.Windows.Forms.Label LblQrtlFirstMonth;
+        private System.Windows.Forms.Label LblQrtlText;
+        private System.Windows.Forms.Label LblTwentOnePrcntTaxResult;
+        private System.Windows.Forms.Label LblTwentOnePrcntTaxText;
+        private System.Windows.Forms.Label LblSixPrcntTaxResult;
+        private System.Windows.Forms.Label LblSixPrcntTaxText;
+        private System.Windows.Forms.Label LblTotalOfTwoTaxText;
+        private System.Windows.Forms.Label LblTotalTaxResult;
+        private System.Windows.Forms.Label LblTotalTaxText;
     }
 }
 

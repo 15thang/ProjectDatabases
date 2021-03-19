@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Vat.cs" />
     <Compile Include="Activity.cs" />
     <Compile Include="Month.cs" />
     <Compile Include="Person.cs" />
