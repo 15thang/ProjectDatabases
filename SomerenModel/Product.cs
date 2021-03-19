@@ -42,7 +42,25 @@ namespace SomerenModel
         public int Sold { get; set; }
         public override string ToString()
         {
+            // Tim Roffelsen
+            // Returns product name
             return ProductName;
+        }
+        public override bool Equals(object obj)
+        {
+            // Tim Roffelsen
+            // Makes two objects equal even if they aren't the same referenced object
+            var other = obj as Product;
+
+            if (other == null)
+            {
+                return false;
+            }
+            if (ProductID != other.ProductID || IsAlcohol != other.IsAlcohol || ProductName != other.ProductName || Price != other.Price || Stock != other.Stock || AlcoholString != other.AlcoholString || Sold != other.Sold)
+            {
+                return false;
+            }
+            return true;
         }
     }
 }

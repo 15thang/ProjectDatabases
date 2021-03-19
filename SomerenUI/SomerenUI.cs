@@ -798,7 +798,7 @@ namespace SomerenUI
                 // Get product values from input
                 Product product = new Product(0, cb_AlcoholAdd.Checked, tb_ProductNameAdd.Text, Convert.ToDouble(tb_PriceAdd.Text), Convert.ToInt32(num_AmountAdd.Value), 0); 
                 // Show confirmation box
-                DialogResult confirm = MessageBox.Show($"The following item will be made:\n\nName:\t\t{tb_ProductNameAdd.Text}\nPrice:\t\t€ {tb_PriceAdd.Text}\nAlcoholic:\t{cb_AlcoholAdd.Checked}\nAmount:\t\t{Convert.ToInt32(num_AmountAdd.Value)}", "Confirmation", MessageBoxButtons.OKCancel);
+                DialogResult confirm = MessageBox.Show($"The following item will be made:\n\nName:\t\t{tb_ProductNameAdd.Text}\nPrice:\t\t€ {double.Parse(tb_PriceAdd.Text).ToString("0.00")}\nAlcoholic:\t{cb_AlcoholAdd.Checked}\nAmount:\t\t{Convert.ToInt32(num_AmountAdd.Value)}", "Confirmation", MessageBoxButtons.OKCancel);
                 // If confirmed, add item
                 if (confirm == DialogResult.OK)
                 {
@@ -845,7 +845,7 @@ namespace SomerenUI
 
             // Fill the textboxes with selected product
             tb_ProductNameChange.Text = product.ProductName;
-            tb_PriceChange.Text = product.Price.ToString();
+            tb_PriceChange.Text = product.Price.ToString("0.00");
             num_AmountChange.Value = product.Stock;
             cb_AlcoholChange.Checked = product.IsAlcohol;
         }
@@ -858,14 +858,22 @@ namespace SomerenUI
 
             if ((!String.IsNullOrEmpty(tb_ProductNameChange.Text)) && (!String.IsNullOrEmpty(tb_PriceChange.Text))) // Product Name and Price can't be empty
             {
+                
                 // Get product values from input
-                Product product = new Product(p.ProductID, cb_AlcoholChange.Checked, tb_ProductNameChange.Text, Convert.ToDouble(tb_PriceChange.Text), Convert.ToInt32(num_AmountChange.Value), 0);
-                // Show confirmation box
-                DialogResult confirm = MessageBox.Show($"The selected product will be changed to have the values:\n\nName:\t\t{tb_ProductNameChange.Text}\nPrice:\t\t€ {tb_PriceChange.Text}\nAlcoholic:\t{cb_AlcoholChange.Checked}\nAmount:\t\t{Convert.ToInt32(num_AmountChange.Value)}", "Confirmation", MessageBoxButtons.OKCancel);
-                // If confirmed, change item
-                if (confirm == DialogResult.OK)
+                Product product = new Product(p.ProductID, cb_AlcoholChange.Checked, tb_ProductNameChange.Text, Convert.ToDouble(tb_PriceChange.Text), Convert.ToInt32(num_AmountChange.Value), p.Sold);
+                if (!product.Equals(p)) // Checks if values were changed
                 {
-                    prodService.Change_Product(product);
+                    // Show confirmation box
+                    DialogResult confirm = MessageBox.Show($"The selected product will be changed to have the values:\n\nName:\t\t{tb_ProductNameChange.Text}\nPrice:\t\t€ {double.Parse(tb_PriceChange.Text).ToString("0.00")}\nAlcoholic:\t{cb_AlcoholChange.Checked}\nAmount:\t\t{Convert.ToInt32(num_AmountChange.Value)}\n\nThis action cannot be undone!", "Confirmation", MessageBoxButtons.OKCancel);
+                    // If confirmed, change item
+                    if (confirm == DialogResult.OK)
+                    {
+                        prodService.Change_Product(product);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Values were not changed!", "Error!");
                 }
             }
             else
@@ -903,7 +911,7 @@ namespace SomerenUI
             if (cbox_DeleteProduct.SelectedItem != null)
             {
                 // Show confirmation box
-                DialogResult confirm = MessageBox.Show($"Are you sure you want to remove the product with the properties:\n\nName:\t\t{product.ProductName}\nPrice:\t\t€ {product.Price}\nAlcoholic:\t{product.IsAlcohol}\nAmount:\t\t{product.Stock}\n\nThis action cannot be undone!", "Confirmation", MessageBoxButtons.OKCancel);
+                DialogResult confirm = MessageBox.Show($"Are you sure you want to remove the product with the properties:\n\nName:\t\t{product.ProductName}\nPrice:\t\t€ {product.Price.ToString("0.00")}\nAlcoholic:\t{product.IsAlcohol}\nAmount:\t\t{product.Stock}\n\nThis action cannot be undone!", "Confirmation", MessageBoxButtons.OKCancel);
                 // If confirmed, change item
                 if (confirm == DialogResult.OK)
                 {
