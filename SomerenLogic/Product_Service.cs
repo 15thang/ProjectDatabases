@@ -56,5 +56,18 @@ namespace SomerenLogic
                 return products;
             }
         }
+        public void Add_Product(Product product)
+        {
+            try
+            {
+                product_db.Add_Product(product);
+            }
+            catch (Exception e)
+            {
+                ErrorText = e.Message;
+                Error = true;
+                // something went wrong connecting to the database, so we will add a fake student to the list to make sure the rest of the application continues working!
+            }
+        }
     }
 }

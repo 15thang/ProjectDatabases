@@ -91,6 +91,16 @@
             this.studentsLabel = new System.Windows.Forms.Label();
             this.pnl_OrderDrinks = new System.Windows.Forms.Panel();
             this.pnl_Stock = new System.Windows.Forms.Panel();
+            this.btn_Add = new System.Windows.Forms.Button();
+            this.cb_Alcohol = new System.Windows.Forms.CheckBox();
+            this.lbl_Alcohol = new System.Windows.Forms.Label();
+            this.num_Amount = new System.Windows.Forms.NumericUpDown();
+            this.lbl_Amount = new System.Windows.Forms.Label();
+            this.lbl_Price = new System.Windows.Forms.Label();
+            this.tb_Price = new System.Windows.Forms.TextBox();
+            this.lbl_ProductName = new System.Windows.Forms.Label();
+            this.tb_ProductName = new System.Windows.Forms.TextBox();
+            this.lbl_AddDrink = new System.Windows.Forms.Label();
             this.listViewStock = new System.Windows.Forms.ListView();
             this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader14 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -113,6 +123,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.pnl_OrderDrinks.SuspendLayout();
             this.pnl_Stock.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.num_Amount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             this.SuspendLayout();
             // 
@@ -631,6 +642,16 @@
             // 
             // pnl_Stock
             // 
+            this.pnl_Stock.Controls.Add(this.btn_Add);
+            this.pnl_Stock.Controls.Add(this.cb_Alcohol);
+            this.pnl_Stock.Controls.Add(this.lbl_Alcohol);
+            this.pnl_Stock.Controls.Add(this.num_Amount);
+            this.pnl_Stock.Controls.Add(this.lbl_Amount);
+            this.pnl_Stock.Controls.Add(this.lbl_Price);
+            this.pnl_Stock.Controls.Add(this.tb_Price);
+            this.pnl_Stock.Controls.Add(this.lbl_ProductName);
+            this.pnl_Stock.Controls.Add(this.tb_ProductName);
+            this.pnl_Stock.Controls.Add(this.lbl_AddDrink);
             this.pnl_Stock.Controls.Add(this.listViewStock);
             this.pnl_Stock.Controls.Add(this.pictureBox7);
             this.pnl_Stock.Controls.Add(this.lbl_Stock);
@@ -638,6 +659,93 @@
             this.pnl_Stock.Name = "pnl_Stock";
             this.pnl_Stock.Size = new System.Drawing.Size(938, 466);
             this.pnl_Stock.TabIndex = 11;
+            // 
+            // btn_Add
+            // 
+            this.btn_Add.Location = new System.Drawing.Point(71, 414);
+            this.btn_Add.Name = "btn_Add";
+            this.btn_Add.Size = new System.Drawing.Size(75, 23);
+            this.btn_Add.TabIndex = 17;
+            this.btn_Add.Text = "Add";
+            this.btn_Add.UseVisualStyleBackColor = true;
+            this.btn_Add.Click += new System.EventHandler(this.btn_Add_Click);
+            // 
+            // cb_Alcohol
+            // 
+            this.cb_Alcohol.AutoSize = true;
+            this.cb_Alcohol.Location = new System.Drawing.Point(97, 377);
+            this.cb_Alcohol.Name = "cb_Alcohol";
+            this.cb_Alcohol.Size = new System.Drawing.Size(15, 14);
+            this.cb_Alcohol.TabIndex = 16;
+            this.cb_Alcohol.UseVisualStyleBackColor = true;
+            // 
+            // lbl_Alcohol
+            // 
+            this.lbl_Alcohol.AutoSize = true;
+            this.lbl_Alcohol.Location = new System.Drawing.Point(16, 378);
+            this.lbl_Alcohol.Name = "lbl_Alcohol";
+            this.lbl_Alcohol.Size = new System.Drawing.Size(50, 13);
+            this.lbl_Alcohol.TabIndex = 15;
+            this.lbl_Alcohol.Text = "Alcoholic";
+            // 
+            // num_Amount
+            // 
+            this.num_Amount.Location = new System.Drawing.Point(97, 352);
+            this.num_Amount.Name = "num_Amount";
+            this.num_Amount.Size = new System.Drawing.Size(100, 20);
+            this.num_Amount.TabIndex = 13;
+            this.num_Amount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // lbl_Amount
+            // 
+            this.lbl_Amount.AutoSize = true;
+            this.lbl_Amount.Location = new System.Drawing.Point(16, 355);
+            this.lbl_Amount.Name = "lbl_Amount";
+            this.lbl_Amount.Size = new System.Drawing.Size(43, 13);
+            this.lbl_Amount.TabIndex = 12;
+            this.lbl_Amount.Text = "Amount";
+            // 
+            // lbl_Price
+            // 
+            this.lbl_Price.AutoSize = true;
+            this.lbl_Price.Location = new System.Drawing.Point(16, 332);
+            this.lbl_Price.Name = "lbl_Price";
+            this.lbl_Price.Size = new System.Drawing.Size(46, 13);
+            this.lbl_Price.TabIndex = 10;
+            this.lbl_Price.Text = "Price (€)";
+            // 
+            // tb_Price
+            // 
+            this.tb_Price.Location = new System.Drawing.Point(97, 329);
+            this.tb_Price.Name = "tb_Price";
+            this.tb_Price.Size = new System.Drawing.Size(100, 20);
+            this.tb_Price.TabIndex = 9;
+            this.tb_Price.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_Price_KeyPress);
+            // 
+            // lbl_ProductName
+            // 
+            this.lbl_ProductName.AutoSize = true;
+            this.lbl_ProductName.Location = new System.Drawing.Point(16, 309);
+            this.lbl_ProductName.Name = "lbl_ProductName";
+            this.lbl_ProductName.Size = new System.Drawing.Size(75, 13);
+            this.lbl_ProductName.TabIndex = 8;
+            this.lbl_ProductName.Text = "Product Name";
+            // 
+            // tb_ProductName
+            // 
+            this.tb_ProductName.Location = new System.Drawing.Point(97, 306);
+            this.tb_ProductName.Name = "tb_ProductName";
+            this.tb_ProductName.Size = new System.Drawing.Size(100, 20);
+            this.tb_ProductName.TabIndex = 7;
+            // 
+            // lbl_AddDrink
+            // 
+            this.lbl_AddDrink.AutoSize = true;
+            this.lbl_AddDrink.Location = new System.Drawing.Point(16, 280);
+            this.lbl_AddDrink.Name = "lbl_AddDrink";
+            this.lbl_AddDrink.Size = new System.Drawing.Size(68, 13);
+            this.lbl_AddDrink.TabIndex = 6;
+            this.lbl_AddDrink.Text = "Add product:";
             // 
             // listViewStock
             // 
@@ -648,7 +756,7 @@
             this.listViewStock.HideSelection = false;
             this.listViewStock.Location = new System.Drawing.Point(16, 42);
             this.listViewStock.Name = "listViewStock";
-            this.listViewStock.Size = new System.Drawing.Size(766, 307);
+            this.listViewStock.Size = new System.Drawing.Size(766, 231);
             this.listViewStock.TabIndex = 5;
             this.listViewStock.UseCompatibleStateImageBehavior = false;
             // 
@@ -729,6 +837,7 @@
             this.pnl_OrderDrinks.PerformLayout();
             this.pnl_Stock.ResumeLayout(false);
             this.pnl_Stock.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.num_Amount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -805,6 +914,16 @@
         private System.Windows.Forms.ColumnHeader columnHeader15;
         private System.Windows.Forms.PictureBox pictureBox7;
         private System.Windows.Forms.Label lbl_Stock;
+        private System.Windows.Forms.Label lbl_AddDrink;
+        private System.Windows.Forms.NumericUpDown num_Amount;
+        private System.Windows.Forms.Label lbl_Amount;
+        private System.Windows.Forms.Label lbl_Price;
+        private System.Windows.Forms.TextBox tb_Price;
+        private System.Windows.Forms.Label lbl_ProductName;
+        private System.Windows.Forms.TextBox tb_ProductName;
+        private System.Windows.Forms.Button btn_Add;
+        private System.Windows.Forms.CheckBox cb_Alcohol;
+        private System.Windows.Forms.Label lbl_Alcohol;
     }
 }
 

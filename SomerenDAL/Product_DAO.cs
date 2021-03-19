@@ -22,6 +22,8 @@ namespace SomerenDAL
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
+        // Tim Roffelsen
+        // Data gets pulled from the database and ordered by Stock, then Price, then Amount sold
         public List<Product> Db_Get_All_Stock()
         {
             string query = "SELECT DISTINCT P.ProductID, [ProductNaam], [isAlcohol], [Prijs], [Voorraad], SUM(CASE WHEN B.ProductID = P.ProductID THEN B.Aantal ELSE 0 END) AS 'Verkocht' FROM Product AS P, Bestelling_Product AS B WHERE[Voorraad] > 1 GROUP BY P.ProductID, [ProductNaam], [isAlcohol], [ProductNaam], [Prijs], [Voorraad] ORDER BY[Voorraad] DESC, Prijs ASC, Verkocht DESC; ";
@@ -57,6 +59,20 @@ namespace SomerenDAL
                 products.Add(product);
             }
             return products;
+        }
+        // Tim Roffelsen
+        public void Add_Product(Product product)
+        {
+            string query = "INSERT INTO Product (isAlcohol, ProductNaam, Prijs, Voorraad) VALUES(@isalcohol, @productname, @price, @stock)";
+
+            SqlParameter[] sqlParameters = new SqlParameter[4];
+
+            sqlParameters[0] = new SqlParameter("@isalcohol", Convert.ToInt32(product.IsAlcohol));
+            sqlParameters[1] = new SqlParameter("@productname", product.ProductName);
+            sqlParameters[2] = new SqlParameter("@price", product.Price);
+            sqlParameters[3] = new SqlParameter("@stock", product.ProductID);
+
+            ExecuteEditQuery(query, sqlParameters);
         }
     }
 }

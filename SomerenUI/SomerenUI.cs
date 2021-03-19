@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -388,9 +389,9 @@ namespace SomerenUI
                     arr[1] = p.ProductName;
                     arr[2] = p.AlcoholString;
                     arr[3] = p.Price.ToString("0.00");
-                    if (p.ProductID == 0)
+                    if (p.Stock == -1)
                     {
-                        arr[4] += $"Sufficient stock (infinite)"; // if water set stock infinite
+                        arr[4] += $"Sufficient stock (infinite)"; // if water (-1 stock) set stock infinite
                     }
                     else if (p.Stock < 10) // check stock amount
                     {
@@ -440,7 +441,7 @@ namespace SomerenUI
                 listViewStock.FullRowSelect = true;
 
                 // add column header
-                listViewStock.Columns.Add("Drink ID");
+                listViewStock.Columns.Add("DrinkID");
                 listViewStock.Columns.Add("Product Name");
                 listViewStock.Columns.Add("Contains Alcohol");
                 listViewStock.Columns.Add("Price (€)");
@@ -706,6 +707,79 @@ namespace SomerenUI
             {
                 MessageBox.Show("Select a student.");
             }
+        }
+
+        private void tb_Price_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Tim Roffelsen
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.')
+            {
+                e.Handled = true;
+            }
+
+            // Check if '.' pressed
+            char sepratorChar = 'a';
+            if (e.KeyChar == '.')
+            {
+                // Check if it's in the beginning of text not accept
+                if (tb_Price.Text.Length == 0) e.Handled = true;
+                // Check if it's in the beginning of text not accept
+                if (tb_Price.SelectionStart == 0) e.Handled = true;
+                // Check if there is already exist a '.' , ','
+                if (alreadyExist(tb_Price.Text, ref sepratorChar)) e.Handled = true;
+                // Check if '.' or ',' is in middle of a number and after it is not a number greater than 99
+                if (tb_Price.SelectionStart != tb_Price.Text.Length && e.Handled == false)
+                {
+                    // '.' or ',' is in the middle
+                    string AfterDotString = tb_Price.Text.Substring(tb_Price.SelectionStart);
+
+                    if (AfterDotString.Length > 2)
+                    {
+                        e.Handled = true;
+                    }
+                }
+            }
+            // Check if a number pressed
+
+            if (Char.IsDigit(e.KeyChar))
+            {
+                // Check if a dot exist
+                if (alreadyExist(tb_Price.Text, ref sepratorChar))
+                {
+                    int sepratorPosition = tb_Price.Text.IndexOf(sepratorChar);
+                    string afterSepratorString = tb_Price.Text.Substring(sepratorPosition + 1);
+                    if (tb_Price.SelectionStart > sepratorPosition && afterSepratorString.Length > 1)
+                    {
+                        e.Handled = true;
+                    }
+                }
+            }
+        }
+        private bool alreadyExist(string _text, ref char KeyChar)
+        {
+            // Tim Roffelsen
+            if (_text.IndexOf('.') > -1)
+            {
+                KeyChar = '.';
+                return true;
+            }
+            
+            return false;
+        }
+        private void btn_Add_Click(object sender, EventArgs e)
+        {
+            // Tim Roffelsen
+            Product_Service prodService = new Product_Service();
+            if ((!String.IsNullOrEmpty(tb_ProductName.Text)) && !String.IsNullOrEmpty(tb_Price.Text))
+            {
+                Product product = new Product(0, cb_Alcohol.Checked, tb_ProductName.Text, Convert.ToDouble(tb_Price.Text), Convert.ToInt32(num_Amount.Value), 0);
+                prodService.Add_Product(product);
+            }
+            else
+            {
+                MessageBox.Show("Product name and Price can not be empty!", "Error!");
+            }
+            
         }
     }
 }
