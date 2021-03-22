@@ -26,6 +26,13 @@ namespace SomerenModel
                 this.AlcoholString = "No";
             }
         }
+
+        public Product(int productID, string productName, double price)
+        {
+            this.ProductID = productID;
+            this.ProductName = productName;
+            this.Price = price;
+        }
         // Key
         public int ProductID { get; set; } 
         // Is alcoholic drink
