@@ -33,6 +33,7 @@ namespace SomerenUI
             this.AmountBox = new System.Windows.Forms.TextBox();
             this.AddProduct = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.cancelBTN = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // productLabel
@@ -70,11 +71,22 @@ namespace SomerenUI
             this.label1.TabIndex = 3;
             this.label1.Text = "Select the amount of items you want to add";
             // 
+            // cancelBTN
+            // 
+            this.cancelBTN.Location = new System.Drawing.Point(129, 102);
+            this.cancelBTN.Name = "cancelBTN";
+            this.cancelBTN.Size = new System.Drawing.Size(75, 23);
+            this.cancelBTN.TabIndex = 4;
+            this.cancelBTN.Text = "Cancel";
+            this.cancelBTN.UseVisualStyleBackColor = true;
+            this.cancelBTN.Click += new System.EventHandler(this.cancelBTN_Click);
+            // 
             // AddAmount
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(246, 171);
+            this.Controls.Add(this.cancelBTN);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.AddProduct);
             this.Controls.Add(this.AmountBox);
@@ -93,5 +105,6 @@ namespace SomerenUI
         private System.Windows.Forms.TextBox AmountBox;
         private System.Windows.Forms.Button AddProduct;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button cancelBTN;
     }
 }

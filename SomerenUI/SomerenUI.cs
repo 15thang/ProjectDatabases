@@ -419,9 +419,11 @@ namespace SomerenUI
                     li = new ListViewItem(arr);
                     drinkLV.Items.Add(li);
                 }
-                
+
                 // Ruben Stoop
                 // Selected Drinks
+                selectedDrinks_lv.Clear();
+
 
                 selectedDrinks_lv.View = View.Details;
                 selectedDrinks_lv.GridLines = true;
@@ -1219,44 +1221,51 @@ namespace SomerenUI
             List<Order_Product> orderProducts = new List<Order_Product>();
 
             //Order Product
-            foreach (ListViewItem item in selectedDrinks_lv.Items)
+            if(selectedDrinks_lv.Items.Count > 0)
             {
-                Order_Product order_Product = new Order_Product();
-                string selectProduct = item.Text;
-                order_Product.ProductID = int.Parse(selectProduct);
+                foreach (ListViewItem item in selectedDrinks_lv.Items)
+                {
+                    Order_Product order_Product = new Order_Product();
+                    string selectProduct = item.Text;
+                    order_Product.ProductID = int.Parse(selectProduct);
 
-                order_Product.Amount = int.Parse(item.SubItems[3].Text);
-                orderProducts.Add(order_Product);
-            }
+                    order_Product.Amount = int.Parse(item.SubItems[3].Text);
+                    orderProducts.Add(order_Product);
+                }
 
-            int studentID = 0;
+                int studentID = 0;
+                // Get the student
+                if (studentLV.SelectedItems.Count > 0)
+                {
+                    string selectStudent = studentLV.SelectedItems[0].Text;
+                    studentID = int.Parse(selectStudent);
 
-            // Get the student
-            if (studentLV.SelectedItems.Count > 0)
+                    //Get Date
+                    DateTime date = DateTime.Now;
+
+                    Order order = new Order();
+                    order.OrderDate = date;
+                    order.BarID = 100;
+                    order.StudentID = studentID;
+
+                    order_Service.Insert_Order(order, orderProducts);
+
+                    //Shows messagebox and resets panel
+                    MessageBox.Show("Order added.", "Succes");
+                    studentLV.SelectedItems.Clear();
+                    drinkLV.SelectedItems.Clear();
+                    selectedDrinks_lv.Items.Clear();
+                    pnl_OrderDrinks.Refresh();
+                    pnl_OrderDrinks.Update();
+                }
+                else
+                {
+                    MessageBox.Show("Select a student.", "Error!");
+                }
+
+            } else
             {
-                string selectStudent = studentLV.SelectedItems[0].Text;
-                studentID = int.Parse(selectStudent);
-
-                //Get Date
-                DateTime date = DateTime.Now;
-
-                Order order = new Order();
-                order.OrderDate = date;
-                order.BarID = 100;
-                order.StudentID = studentID;
-
-                order_Service.Insert_Order(order, orderProducts);
-
-                //Shows messagebox and resets panel
-                MessageBox.Show("Order added.", "Succes");
-                studentLV.SelectedItems.Clear();
-                drinkLV.SelectedItems.Clear();
-                pnl_OrderDrinks.Refresh();
-                pnl_OrderDrinks.Update();
-            }
-            else
-            {
-                MessageBox.Show("Select a student.", "Error!");
+                MessageBox.Show("There are no products in the order", "Error!");
             }
         }
     }

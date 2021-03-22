@@ -59,8 +59,14 @@ namespace SomerenUI
                 }
 
             }
-
-            int amount = int.Parse(AmountBox.Text);
+            int amount = 0;
+            try
+            {
+                amount = int.Parse(AmountBox.Text);
+            } catch
+            {
+                MessageBox.Show("Not the correct input", "Error!");
+            }
             if (amount == 0) {
                 MessageBox.Show("Order atleast one product.", "Error!");
                 return;
@@ -76,6 +82,11 @@ namespace SomerenUI
                 MessageBox.Show("There aren't enough products in stock.", "Error!");
                 return;
             }
+        }
+
+        private void cancelBTN_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
