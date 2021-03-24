@@ -13,6 +13,7 @@ namespace SomerenLogic
     {
         // Thomas Eddyson
         Vat_DAO vat_db = new Vat_DAO();
+        
 
         public List<Vat> GetVats()
         {
@@ -29,14 +30,25 @@ namespace SomerenLogic
                 // something went wrong connecting to the database, so we will add a fake room to the list to make sure the rest of the application continues working!
                 List<Vat> vat = new List<Vat>();
                 Vat a = new Vat();
+                a.QuarterName = "Q1";
                 a.VATSixPrcnt = 404;
                 a.VATTwntyOnePrcnt = 404;
                 vat.Add(a);
 
                 return vat;
-
             }
-
         }
+
+        public void SetQuaterString(string quarter)
+        {
+            try
+            {
+                vat_db.SetQuaterString(quarter);                
+            }
+            catch (Exception)
+            {
+                throw;
+            }            
+        }        
     }
 }

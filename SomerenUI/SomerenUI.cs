@@ -529,50 +529,65 @@ namespace SomerenUI
                 // Thomas Eddyson
                 HideAllPanels();
 
-                pnl_Vat.Show();
+                pnl_Vat.Show();                
 
-                SomerenLogic.Vat_Service vatService = new SomerenLogic.Vat_Service();
-                List<Vat> vatList = vatService.GetVats();
-
-                Error_Show(vatService);
-
-                foreach (SomerenModel.Vat v in vatList)
-                {
-                    string[] arr = new string[4];
-
-                    // Add the items
-                    arr[0] = v.VATSixPrcnt.ToString();
-                    arr[1] = v.VATTwntyOnePrcnt.ToString();
-                    arr[2] = v.TotalVAT.ToString();
-
-                    LblSixPrcntTaxResult.Text = arr[0];
-                    LblTwentOnePrcntTaxResult.Text = arr[1];
-                    LblTotalTaxResult.Text = arr[2];
-                }
+                Lbl_VatTarief.Text = "BTW Tarief Kwartaal";
+                LblQrtlFirstMonth.Text = "_____";
+                LblQrtlLastMonth.Text = "_____";
             }
 
             switch (panelName)
             {
-                case "Q1":
+                // Thomas Eddyson
+                case "Q1Click":
+                    get_Quarter("Q1");
                     Lbl_VatTarief.Text = "BTW Tarief Kwartaal 1";
                     LblQrtlFirstMonth.Text = "Januari";
                     LblQrtlLastMonth.Text = "Maart";
                     break;
-                case "Q2":
+                case "Q2Click":
+                    get_Quarter("Q2");
                     Lbl_VatTarief.Text = "BTW Tarief Kwartaal 2";
                     LblQrtlFirstMonth.Text = "April";
                     LblQrtlLastMonth.Text = "Juni";
                     break;
-                case "Q3":
+                case "Q3Click":
+                    get_Quarter("Q3");
                     Lbl_VatTarief.Text = "BTW Tarief Kwartaal 3";
                     LblQrtlFirstMonth.Text = "Juli";
                     LblQrtlLastMonth.Text = "September";
                     break;
-                case "Q4":
+                case "Q4Click":
+                    get_Quarter("Q4");
                     Lbl_VatTarief.Text = "BTW Tarief Kwartaal 4";
                     LblQrtlFirstMonth.Text = "October";
                     LblQrtlLastMonth.Text = "December";
                     break;
+            }
+        }
+
+        private void get_Quarter(string quarterName)
+        {
+            // Thomas Eddyson
+            SomerenLogic.Vat_Service vatService = new SomerenLogic.Vat_Service();
+            //string qName = quarterName;
+            vatService.SetQuaterString(quarterName);
+
+            List<Vat> vatList = vatService.GetVats();
+
+            foreach (SomerenModel.Vat a in vatList)
+            {
+                //Add items in the listview
+                string[] arr = new string[3];
+
+                //Add first item
+                arr[0] = a.VATTwntyOnePrcnt.ToString("0.00");
+                arr[1] = a.VATSixPrcnt.ToString("0.00");
+                arr[2] = a.TotalVAT.ToString("0.00");
+
+                LblTwentOnePrcntTaxResult.Text = arr[0];
+                LblSixPrcntTaxResult.Text = arr[1];
+                LblTotalTaxResult.Text = arr[2];
             }
         }
 
@@ -697,24 +712,24 @@ namespace SomerenUI
             showPanel("Vat");
         }
 
-        private void kwartaal1ToolStripMenuItem_Click(object sender, EventArgs e)
+        private void LblQ1Click_Click(object sender, EventArgs e)
         {
-            showPanel("Q1");
+            showPanel("Q1Click");
         }
 
-        private void kwartaal1ToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void LblQ2Click_Click(object sender, EventArgs e)
         {
-            showPanel("Q2");
+            showPanel("Q2Click");
         }
 
-        private void kwartaal1ToolStripMenuItem2_Click(object sender, EventArgs e)
+        private void LblQ3Click_Click(object sender, EventArgs e)
         {
-            showPanel("Q3");
+            showPanel("Q3Click");
         }
 
-        private void kwartaal1ToolStripMenuItem3_Click(object sender, EventArgs e)
+        private void LblQ4Click_Click(object sender, EventArgs e)
         {
-            showPanel("Q4");
+            showPanel("Q4Click");
         }
 
         private void listViewActivities_ColumnClick(object sender, ColumnClickEventArgs e)
@@ -1267,6 +1282,6 @@ namespace SomerenUI
             {
                 MessageBox.Show("There are no products in the order", "Error!");
             }
-        }
+        }        
     }
 }
