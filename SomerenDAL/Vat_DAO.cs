@@ -28,11 +28,12 @@ namespace SomerenDAL
         private List<Vat> ReadTables(DataTable dataTable)
         {
             List<Vat> Vats = new List<Vat>();
-            List<double> ResultTaxTwntyOne = new List<double>();
-            List<double> ResultTaxSix = new List<double>();
-            List<double> ResultTotal = new List<double>();
 
             string QMonth = Quarter;
+
+            double isAlcDrink = 0;
+            double isNotAlcDrink = 0;
+            double total;
 
             // Check if datatable is null
             if (dataTable == null)
@@ -43,76 +44,78 @@ namespace SomerenDAL
             foreach (DataRow dr in dataTable.Rows)
             {
                 double Price = double.Parse(dr["Prijs"].ToString());
+                double amount = double.Parse(dr["Aantal"].ToString());
                 DateTime date = (DateTime)dr["Datum"];
+                DateTime dateNow = DateTime.Now;
 
-                //Checks which quarter months needs to be calculated
+                //Checks which quarter months of the same year needs to be calculated
                 if (QMonth == "Q1")
                 {
-                    if (date.Month >= 1 && date.Month <= 3)
+                    if (date.Month >= 1 && date.Month <= 3 && date.Year == dateNow.Year)
                     {
                         if ((bool)dr["isAlcohol"] == true)
                         {
-                            ResultTaxTwntyOne.Add(Price);
+                            isAlcDrink = (Price * amount) + isAlcDrink;
                         }
                         else
                         {
-                            ResultTaxSix.Add(Price);
+                            isNotAlcDrink = (Price * amount) + isNotAlcDrink;
                         }
                     }
                 }
                 else if (QMonth == "Q2")
                 {
-                    if (date.Month >= 4 && date.Month <= 6)
+                    if (date.Month >= 4 && date.Month <= 6 && date.Year == dateNow.Year)
                     {
                         if ((bool)dr["isAlcohol"] == true)
                         {
-                            ResultTaxTwntyOne.Add(Price);
+                            isAlcDrink = (Price * amount) + isAlcDrink;
                         }
                         else
                         {
-                            ResultTaxSix.Add(Price);
+                            isNotAlcDrink = (Price * amount) + isNotAlcDrink;
                         }
                     }
                 }
                 else if (QMonth == "Q3")
                 {
-                    if (date.Month >= 7 && date.Month <= 9)
+                    if (date.Month >= 7 && date.Month <= 9 && date.Year == dateNow.Year)
                     {
                         if ((bool)dr["isAlcohol"] == true)
                         {
-                            ResultTaxTwntyOne.Add(Price);
+                            isAlcDrink = (Price * amount) + isAlcDrink;
                         }
                         else
                         {
-                            ResultTaxSix.Add(Price);
+                            isNotAlcDrink = (Price * amount) + isNotAlcDrink;
                         }
                     }
                 }
                 else if (QMonth == "Q4")
                 {
-                    if (date.Month >= 10 && date.Month <= 12)
+                    if (date.Month >= 10 && date.Month <= 12 && date.Year == dateNow.Year)
                     {
                         if ((bool)dr["isAlcohol"] == true)
                         {
-                            ResultTaxTwntyOne.Add(Price);
+                            isAlcDrink = (Price * amount) + isAlcDrink;
                         }
                         else
                         {
-                            ResultTaxSix.Add(Price);
+                            isNotAlcDrink = (Price * amount) + isNotAlcDrink;
                         }
                     }
-                }
+                }                
 
                 Vat vat = new Vat()
                 {
-                    VATTwntyOnePrcnt = ResultTaxTwntyOne.Sum() * taxTwntyOnePrcnt,
-                    VATSixPrcnt = ResultTaxSix.Sum() * taxSixPrcnt,
-                    TotalVAT = ResultTotal.Sum()
+                    VATTwntyOnePrcnt = isAlcDrink * taxTwntyOnePrcnt,
+                    VATSixPrcnt = isNotAlcDrink * taxSixPrcnt,
+                    TotalVAT = (isNotAlcDrink * taxSixPrcnt) + (isAlcDrink * taxTwntyOnePrcnt)
                 };
                 Vats.Add(vat);
             }
             return Vats;
-        }
+        }        
 
         //Sets the quarter
         public void SetQuaterString(string quarter)

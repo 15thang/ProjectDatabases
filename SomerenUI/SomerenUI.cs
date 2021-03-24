@@ -10,6 +10,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Globalization;
 
 namespace SomerenUI
 {
@@ -540,25 +541,25 @@ namespace SomerenUI
             {
                 // Thomas Eddyson
                 case "Q1Click":
-                    get_Quarter("Q1");
+                    get_QuarterTax("Q1");
                     Lbl_VatTarief.Text = "BTW Tarief Kwartaal 1";
                     LblQrtlFirstMonth.Text = "Januari";
                     LblQrtlLastMonth.Text = "Maart";
                     break;
                 case "Q2Click":
-                    get_Quarter("Q2");
+                    get_QuarterTax("Q2");
                     Lbl_VatTarief.Text = "BTW Tarief Kwartaal 2";
                     LblQrtlFirstMonth.Text = "April";
                     LblQrtlLastMonth.Text = "Juni";
                     break;
                 case "Q3Click":
-                    get_Quarter("Q3");
+                    get_QuarterTax("Q3");
                     Lbl_VatTarief.Text = "BTW Tarief Kwartaal 3";
                     LblQrtlFirstMonth.Text = "Juli";
                     LblQrtlLastMonth.Text = "September";
                     break;
                 case "Q4Click":
-                    get_Quarter("Q4");
+                    get_QuarterTax("Q4");
                     Lbl_VatTarief.Text = "BTW Tarief Kwartaal 4";
                     LblQrtlFirstMonth.Text = "October";
                     LblQrtlLastMonth.Text = "December";
@@ -566,7 +567,7 @@ namespace SomerenUI
             }
         }
 
-        private void get_Quarter(string quarterName)
+        private void get_QuarterTax(string quarterName)
         {
             // Thomas Eddyson
             SomerenLogic.Vat_Service vatService = new SomerenLogic.Vat_Service();
@@ -574,6 +575,9 @@ namespace SomerenUI
             vatService.SetQuaterString(quarterName);
 
             List<Vat> vatList = vatService.GetVats();
+            CultureInfo eu = new CultureInfo("fr-FR");
+            eu.NumberFormat.CurrencyPositivePattern = 0;
+            eu.NumberFormat.CurrencyNegativePattern = 2;
 
             foreach (SomerenModel.Vat a in vatList)
             {
@@ -581,9 +585,9 @@ namespace SomerenUI
                 string[] arr = new string[3];
 
                 //Add first item
-                arr[0] = a.VATTwntyOnePrcnt.ToString("0.00");
-                arr[1] = a.VATSixPrcnt.ToString("0.00");
-                arr[2] = a.TotalVAT.ToString("0.00");
+                arr[0] = a.VATTwntyOnePrcnt.ToString("C", eu);
+                arr[1] = a.VATSixPrcnt.ToString("C", eu);
+                arr[2] = a.TotalVAT.ToString("C", eu);
 
                 LblTwentOnePrcntTaxResult.Text = arr[0];
                 LblSixPrcntTaxResult.Text = arr[1];

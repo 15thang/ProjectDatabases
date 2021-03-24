@@ -29,8 +29,7 @@ namespace SomerenLogic
                 //throw new Exception(e.Message);
                 // something went wrong connecting to the database, so we will add a fake room to the list to make sure the rest of the application continues working!
                 List<Vat> vat = new List<Vat>();
-                Vat a = new Vat();
-                a.QuarterName = "Q1";
+                Vat a = new Vat();                
                 a.VATSixPrcnt = 404;
                 a.VATTwntyOnePrcnt = 404;
                 vat.Add(a);
@@ -45,9 +44,10 @@ namespace SomerenLogic
             {
                 vat_db.SetQuaterString(quarter);                
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                throw;
+                ErrorText = e.Message;
+                Error = true;
             }            
         }        
     }
