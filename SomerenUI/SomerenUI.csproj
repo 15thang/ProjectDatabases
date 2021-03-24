@@ -47,11 +47,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddActivity.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddActivity.Designer.cs">
+      <DependentUpon>AddActivity.cs</DependentUpon>
+    </Compile>
     <Compile Include="AddAmount.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="AddAmount.Designer.cs">
       <DependentUpon>AddAmount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChangeActivity.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChangeActivity.Designer.cs">
+      <DependentUpon>ChangeActivity.cs</DependentUpon>
     </Compile>
     <Compile Include="ListViewColumnSorter.cs" />
     <Compile Include="SomerenUI.cs">
@@ -68,8 +80,14 @@
     <Compile Include="SuperVisor.Designer.cs">
       <DependentUpon>SuperVisor.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AddActivity.resx">
+      <DependentUpon>AddActivity.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AddAmount.resx">
       <DependentUpon>AddAmount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChangeActivity.resx">
+      <DependentUpon>ChangeActivity.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SomerenUI.resx">
       <DependentUpon>SomerenUI.cs</DependentUpon>

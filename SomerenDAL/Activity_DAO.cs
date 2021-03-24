@@ -49,7 +49,6 @@ namespace SomerenDAL
             return activity;
         }
 
-
         // Tim Roffelsen
         // Data gets pulled from the database by the query
         public List<Activity> Db_Get_All_Activities()
@@ -58,7 +57,50 @@ namespace SomerenDAL
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
+        public void Change_Activity(Activity activity)
+        {
+            // Tim Roffelsen
+            // Data gets changed in database
+            string query = "USE prjdb4 UPDATE Activiteit SET Soort = @type, Begintijd = @begintime, Eindtijd = @endtime WHERE ActiviteitID = @activityid; ";
 
+            // Setting the parameters from the parameter order
+            SqlParameter[] sqlParameters = new SqlParameter[4];
+
+            sqlParameters[0] = new SqlParameter("@type", activity.Type);
+            sqlParameters[1] = new SqlParameter("@begintime", activity.BeginTime.ToString("yyyy-MM-dd HH:mm:ss.fff"));
+            sqlParameters[2] = new SqlParameter("@endtime", activity.EndTime.ToString("yyyy-MM-dd HH:mm:ss.fff"));
+            sqlParameters[3] = new SqlParameter("@activityid", activity.ActivityId);
+
+            ExecuteEditQuery(query, sqlParameters);
+        }
+        public void Delete_Activity(Activity activity)
+        {
+            // Tim Roffelsen
+            // Data gets changed in database
+            string query = "USE prjdb4 DELETE FROM Activiteit WHERE ActiviteitID = @activityid; ";
+
+            // Setting the parameters from the parameter order
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+
+            sqlParameters[0] = new SqlParameter("@activityid", activity.ActivityId);
+
+            ExecuteEditQuery(query, sqlParameters);
+        }
+        public void Add_Activity(Activity activity)
+        {
+            // Tim Roffelsen
+            // Data gets written to database, primary key is automatically made
+            string query = "USE prjdb4 INSERT INTO Activiteit (Soort, Begintijd, Eindtijd) VALUES(@type, @begintime, @endtime); ";
+
+            // Setting the parameters from the parameter order
+            SqlParameter[] sqlParameters = new SqlParameter[3];
+
+            sqlParameters[0] = new SqlParameter("@type", activity.Type);
+            sqlParameters[1] = new SqlParameter("@begintime", activity.BeginTime.ToString("yyyy-MM-dd HH:mm:ss.fff"));
+            sqlParameters[2] = new SqlParameter("@endtime", activity.EndTime.ToString("yyyy-MM-dd HH:mm:ss.fff"));
+
+            ExecuteEditQuery(query, sqlParameters);
+        }
         // Tim Roffelsen
         // The returned data gets saved in a list
         private List<Activity> ReadTables(DataTable dataTable)

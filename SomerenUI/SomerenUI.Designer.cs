@@ -43,6 +43,7 @@
             this.orderDrinksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btwToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.supervisorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnl_Dashboard = new System.Windows.Forms.Panel();
             this.lbl_Dashboard = new System.Windows.Forms.Label();
             this.img_Dashboard = new System.Windows.Forms.PictureBox();
@@ -58,7 +59,7 @@
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxTeachers = new System.Windows.Forms.PictureBox();
             this.lbl_Lecturers = new System.Windows.Forms.Label();
             this.pnl_Rooms = new System.Windows.Forms.Panel();
             this.listViewRooms = new System.Windows.Forms.ListView();
@@ -68,11 +69,14 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.lbl_Rooms = new System.Windows.Forms.Label();
             this.pnl_Activities = new System.Windows.Forms.Panel();
+            this.lbl_ActivityInstructions = new System.Windows.Forms.Label();
+            this.btn_AddActivity = new System.Windows.Forms.Button();
+            this.btn_ActivityRefresh = new System.Windows.Forms.Button();
             this.listViewActivities = new System.Windows.Forms.ListView();
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxActivities = new System.Windows.Forms.PictureBox();
             this.lbl_Activities = new System.Windows.Forms.Label();
             this.pnl_Roomslayout = new System.Windows.Forms.Panel();
             this.listViewRoomLayout = new System.Windows.Forms.ListView();
@@ -122,8 +126,8 @@
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.Lbl_VatTarief = new System.Windows.Forms.Label();
             this.pnl_Stock = new System.Windows.Forms.Panel();
-            this.btn_Refresh = new System.Windows.Forms.Button();
-            this.btn_Remove = new System.Windows.Forms.Button();
+            this.btn_StockRefresh = new System.Windows.Forms.Button();
+            this.btn_StockRemove = new System.Windows.Forms.Button();
             this.cbox_DeleteProduct = new System.Windows.Forms.ComboBox();
             this.cbox_ChangeProduct = new System.Windows.Forms.ComboBox();
             this.btn_Change = new System.Windows.Forms.Button();
@@ -151,28 +155,27 @@
             this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader14 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader15 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.pictureBox7 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxStock = new System.Windows.Forms.PictureBox();
             this.lbl_Stock = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.SuperVisor_LV = new System.Windows.Forms.ListView();
             this.ActivitySuperVisor_LV = new System.Windows.Forms.ListView();
             this.label12 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.pnl_Supervisors = new System.Windows.Forms.Panel();
-            this.supervisorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.menuStrip1.SuspendLayout();
             this.pnl_Dashboard.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.img_Dashboard)).BeginInit();
             this.pnl_Students.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnl_Teachers.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTeachers)).BeginInit();
             this.pnl_Rooms.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.pnl_Activities.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxActivities)).BeginInit();
             this.pnl_Roomslayout.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.pnl_OrderDrinks.SuspendLayout();
@@ -182,9 +185,9 @@
             this.pnl_Stock.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.num_AmountChange)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.num_AmountAdd)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStock)).BeginInit();
             this.pnl_Supervisors.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -302,6 +305,13 @@
             this.btwToolStripMenuItem.Text = "BTW";
             this.btwToolStripMenuItem.Click += new System.EventHandler(this.btwToolStripMenuItem_Click);
             // 
+            // supervisorToolStripMenuItem
+            // 
+            this.supervisorToolStripMenuItem.Name = "supervisorToolStripMenuItem";
+            this.supervisorToolStripMenuItem.Size = new System.Drawing.Size(74, 22);
+            this.supervisorToolStripMenuItem.Text = "Supervisor";
+            this.supervisorToolStripMenuItem.Click += new System.EventHandler(this.supervisorToolStripMenuItem_Click);
+            // 
             // pnl_Dashboard
             // 
             this.pnl_Dashboard.Controls.Add(this.lbl_Dashboard);
@@ -389,7 +399,7 @@
             // pnl_Teachers
             // 
             this.pnl_Teachers.Controls.Add(this.listViewTeachers);
-            this.pnl_Teachers.Controls.Add(this.pictureBox2);
+            this.pnl_Teachers.Controls.Add(this.pictureBoxTeachers);
             this.pnl_Teachers.Controls.Add(this.lbl_Lecturers);
             this.pnl_Teachers.Location = new System.Drawing.Point(12, 24);
             this.pnl_Teachers.Name = "pnl_Teachers";
@@ -422,15 +432,15 @@
             // 
             this.columnHeader3.Text = "Date of Birth";
             // 
-            // pictureBox2
+            // pictureBoxTeachers
             // 
-            this.pictureBox2.Image = global::SomerenUI.Properties.Resources.someren;
-            this.pictureBox2.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.InitialImage")));
-            this.pictureBox2.Location = new System.Drawing.Point(805, 0);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(130, 123);
-            this.pictureBox2.TabIndex = 0;
-            this.pictureBox2.TabStop = false;
+            this.pictureBoxTeachers.Image = global::SomerenUI.Properties.Resources.someren;
+            this.pictureBoxTeachers.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBoxTeachers.InitialImage")));
+            this.pictureBoxTeachers.Location = new System.Drawing.Point(805, 0);
+            this.pictureBoxTeachers.Name = "pictureBoxTeachers";
+            this.pictureBoxTeachers.Size = new System.Drawing.Size(130, 123);
+            this.pictureBoxTeachers.TabIndex = 0;
+            this.pictureBoxTeachers.TabStop = false;
             // 
             // lbl_Lecturers
             // 
@@ -500,13 +510,45 @@
             // 
             // pnl_Activities
             // 
+            this.pnl_Activities.Controls.Add(this.lbl_ActivityInstructions);
+            this.pnl_Activities.Controls.Add(this.btn_AddActivity);
+            this.pnl_Activities.Controls.Add(this.btn_ActivityRefresh);
             this.pnl_Activities.Controls.Add(this.listViewActivities);
-            this.pnl_Activities.Controls.Add(this.pictureBox4);
+            this.pnl_Activities.Controls.Add(this.pictureBoxActivities);
             this.pnl_Activities.Controls.Add(this.lbl_Activities);
-            this.pnl_Activities.Location = new System.Drawing.Point(0, 24);
+            this.pnl_Activities.Location = new System.Drawing.Point(0, 0);
             this.pnl_Activities.Name = "pnl_Activities";
             this.pnl_Activities.Size = new System.Drawing.Size(938, 442);
             this.pnl_Activities.TabIndex = 8;
+            // 
+            // lbl_ActivityInstructions
+            // 
+            this.lbl_ActivityInstructions.AutoSize = true;
+            this.lbl_ActivityInstructions.Location = new System.Drawing.Point(122, 22);
+            this.lbl_ActivityInstructions.Name = "lbl_ActivityInstructions";
+            this.lbl_ActivityInstructions.Size = new System.Drawing.Size(260, 13);
+            this.lbl_ActivityInstructions.TabIndex = 8;
+            this.lbl_ActivityInstructions.Text = "Double click an Activity in the list to Change or Delete";
+            // 
+            // btn_AddActivity
+            // 
+            this.btn_AddActivity.Location = new System.Drawing.Point(626, 15);
+            this.btn_AddActivity.Name = "btn_AddActivity";
+            this.btn_AddActivity.Size = new System.Drawing.Size(75, 23);
+            this.btn_AddActivity.TabIndex = 7;
+            this.btn_AddActivity.Text = "Add Activity";
+            this.btn_AddActivity.UseVisualStyleBackColor = true;
+            this.btn_AddActivity.Click += new System.EventHandler(this.btn_AddActivity_Click);
+            // 
+            // btn_ActivityRefresh
+            // 
+            this.btn_ActivityRefresh.Location = new System.Drawing.Point(707, 15);
+            this.btn_ActivityRefresh.Name = "btn_ActivityRefresh";
+            this.btn_ActivityRefresh.Size = new System.Drawing.Size(75, 23);
+            this.btn_ActivityRefresh.TabIndex = 6;
+            this.btn_ActivityRefresh.Text = "Refresh";
+            this.btn_ActivityRefresh.UseVisualStyleBackColor = true;
+            this.btn_ActivityRefresh.Click += new System.EventHandler(this.btn_ActivityRefresh_Click);
             // 
             // listViewActivities
             // 
@@ -516,11 +558,13 @@
             this.columnHeader9});
             this.listViewActivities.HideSelection = false;
             this.listViewActivities.Location = new System.Drawing.Point(16, 42);
+            this.listViewActivities.MultiSelect = false;
             this.listViewActivities.Name = "listViewActivities";
             this.listViewActivities.Size = new System.Drawing.Size(766, 307);
             this.listViewActivities.TabIndex = 5;
             this.listViewActivities.UseCompatibleStateImageBehavior = false;
             this.listViewActivities.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.listViewActivities_ColumnClick);
+            this.listViewActivities.DoubleClick += new System.EventHandler(this.listViewActivities_DoubleClick);
             // 
             // columnHeader7
             // 
@@ -534,15 +578,15 @@
             // 
             this.columnHeader9.Text = "Date of Birth";
             // 
-            // pictureBox4
+            // pictureBoxActivities
             // 
-            this.pictureBox4.Image = global::SomerenUI.Properties.Resources.someren;
-            this.pictureBox4.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox4.InitialImage")));
-            this.pictureBox4.Location = new System.Drawing.Point(805, 0);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(130, 123);
-            this.pictureBox4.TabIndex = 0;
-            this.pictureBox4.TabStop = false;
+            this.pictureBoxActivities.Image = global::SomerenUI.Properties.Resources.someren;
+            this.pictureBoxActivities.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBoxActivities.InitialImage")));
+            this.pictureBoxActivities.Location = new System.Drawing.Point(805, 0);
+            this.pictureBoxActivities.Name = "pictureBoxActivities";
+            this.pictureBoxActivities.Size = new System.Drawing.Size(130, 123);
+            this.pictureBoxActivities.TabIndex = 0;
+            this.pictureBoxActivities.TabStop = false;
             // 
             // lbl_Activities
             // 
@@ -1021,8 +1065,8 @@
             // 
             // pnl_Stock
             // 
-            this.pnl_Stock.Controls.Add(this.btn_Refresh);
-            this.pnl_Stock.Controls.Add(this.btn_Remove);
+            this.pnl_Stock.Controls.Add(this.btn_StockRefresh);
+            this.pnl_Stock.Controls.Add(this.btn_StockRemove);
             this.pnl_Stock.Controls.Add(this.cbox_DeleteProduct);
             this.pnl_Stock.Controls.Add(this.cbox_ChangeProduct);
             this.pnl_Stock.Controls.Add(this.btn_Change);
@@ -1047,32 +1091,32 @@
             this.pnl_Stock.Controls.Add(this.tb_ProductNameAdd);
             this.pnl_Stock.Controls.Add(this.lbl_AddDrink);
             this.pnl_Stock.Controls.Add(this.listViewStock);
-            this.pnl_Stock.Controls.Add(this.pictureBox7);
+            this.pnl_Stock.Controls.Add(this.pictureBoxStock);
             this.pnl_Stock.Controls.Add(this.lbl_Stock);
             this.pnl_Stock.Location = new System.Drawing.Point(0, 24);
             this.pnl_Stock.Name = "pnl_Stock";
             this.pnl_Stock.Size = new System.Drawing.Size(938, 466);
             this.pnl_Stock.TabIndex = 11;
             // 
-            // btn_Refresh
+            // btn_StockRefresh
             // 
-            this.btn_Refresh.Location = new System.Drawing.Point(707, 13);
-            this.btn_Refresh.Name = "btn_Refresh";
-            this.btn_Refresh.Size = new System.Drawing.Size(75, 23);
-            this.btn_Refresh.TabIndex = 32;
-            this.btn_Refresh.Text = "Refresh";
-            this.btn_Refresh.UseVisualStyleBackColor = true;
-            this.btn_Refresh.Click += new System.EventHandler(this.btn_Refresh_Click);
+            this.btn_StockRefresh.Location = new System.Drawing.Point(707, 13);
+            this.btn_StockRefresh.Name = "btn_StockRefresh";
+            this.btn_StockRefresh.Size = new System.Drawing.Size(75, 23);
+            this.btn_StockRefresh.TabIndex = 32;
+            this.btn_StockRefresh.Text = "Refresh";
+            this.btn_StockRefresh.UseVisualStyleBackColor = true;
+            this.btn_StockRefresh.Click += new System.EventHandler(this.btn_StockRefresh_Click);
             // 
-            // btn_Remove
+            // btn_StockRemove
             // 
-            this.btn_Remove.Location = new System.Drawing.Point(671, 332);
-            this.btn_Remove.Name = "btn_Remove";
-            this.btn_Remove.Size = new System.Drawing.Size(75, 23);
-            this.btn_Remove.TabIndex = 31;
-            this.btn_Remove.Text = "Remove";
-            this.btn_Remove.UseVisualStyleBackColor = true;
-            this.btn_Remove.Click += new System.EventHandler(this.btn_Remove_Click);
+            this.btn_StockRemove.Location = new System.Drawing.Point(671, 332);
+            this.btn_StockRemove.Name = "btn_StockRemove";
+            this.btn_StockRemove.Size = new System.Drawing.Size(75, 23);
+            this.btn_StockRemove.TabIndex = 31;
+            this.btn_StockRemove.Text = "Remove";
+            this.btn_StockRemove.UseVisualStyleBackColor = true;
+            this.btn_StockRemove.Click += new System.EventHandler(this.btn_StockRemove_Click);
             // 
             // cbox_DeleteProduct
             // 
@@ -1102,7 +1146,7 @@
             this.btn_Change.TabIndex = 28;
             this.btn_Change.Text = "Change";
             this.btn_Change.UseVisualStyleBackColor = true;
-            this.btn_Change.Click += new System.EventHandler(this.btn_Change_Click);
+            this.btn_Change.Click += new System.EventHandler(this.btn_StockChange_Click);
             // 
             // cb_AlcoholChange
             // 
@@ -1312,15 +1356,15 @@
             // 
             this.columnHeader15.Text = "Date of Birth";
             // 
-            // pictureBox7
+            // pictureBoxStock
             // 
-            this.pictureBox7.Image = global::SomerenUI.Properties.Resources.someren;
-            this.pictureBox7.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox7.InitialImage")));
-            this.pictureBox7.Location = new System.Drawing.Point(805, 0);
-            this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(130, 123);
-            this.pictureBox7.TabIndex = 0;
-            this.pictureBox7.TabStop = false;
+            this.pictureBoxStock.Image = global::SomerenUI.Properties.Resources.someren;
+            this.pictureBoxStock.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBoxStock.InitialImage")));
+            this.pictureBoxStock.Location = new System.Drawing.Point(805, 0);
+            this.pictureBoxStock.Name = "pictureBoxStock";
+            this.pictureBoxStock.Size = new System.Drawing.Size(130, 123);
+            this.pictureBoxStock.TabIndex = 0;
+            this.pictureBoxStock.TabStop = false;
             // 
             // lbl_Stock
             // 
@@ -1343,22 +1387,11 @@
             this.label14.TabIndex = 3;
             this.label14.Text = "Super visors";
             // 
-            // pictureBox8
-            // 
-            this.pictureBox8.Image = global::SomerenUI.Properties.Resources.someren;
-            this.pictureBox8.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox8.InitialImage")));
-            this.pictureBox8.Location = new System.Drawing.Point(805, 0);
-            this.pictureBox8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(128, 115);
-            this.pictureBox8.TabIndex = 0;
-            this.pictureBox8.TabStop = false;
-            // 
             // SuperVisor_LV
             // 
             this.SuperVisor_LV.HideSelection = false;
             this.SuperVisor_LV.Location = new System.Drawing.Point(28, 280);
-            this.SuperVisor_LV.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.SuperVisor_LV.Margin = new System.Windows.Forms.Padding(2);
             this.SuperVisor_LV.Name = "SuperVisor_LV";
             this.SuperVisor_LV.Size = new System.Drawing.Size(650, 159);
             this.SuperVisor_LV.TabIndex = 6;
@@ -1368,7 +1401,7 @@
             // 
             this.ActivitySuperVisor_LV.HideSelection = false;
             this.ActivitySuperVisor_LV.Location = new System.Drawing.Point(28, 70);
-            this.ActivitySuperVisor_LV.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ActivitySuperVisor_LV.Margin = new System.Windows.Forms.Padding(2);
             this.ActivitySuperVisor_LV.Name = "ActivitySuperVisor_LV";
             this.ActivitySuperVisor_LV.Size = new System.Drawing.Size(522, 117);
             this.ActivitySuperVisor_LV.TabIndex = 7;
@@ -1414,23 +1447,28 @@
             this.pnl_Supervisors.Controls.Add(this.pictureBox8);
             this.pnl_Supervisors.Controls.Add(this.label14);
             this.pnl_Supervisors.Location = new System.Drawing.Point(0, 0);
-            this.pnl_Supervisors.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnl_Supervisors.Margin = new System.Windows.Forms.Padding(2);
             this.pnl_Supervisors.Name = "pnl_Supervisors";
             this.pnl_Supervisors.Size = new System.Drawing.Size(938, 468);
             this.pnl_Supervisors.TabIndex = 34;
             // 
-            // supervisorToolStripMenuItem
+            // pictureBox8
             // 
-            this.supervisorToolStripMenuItem.Name = "supervisorToolStripMenuItem";
-            this.supervisorToolStripMenuItem.Size = new System.Drawing.Size(74, 22);
-            this.supervisorToolStripMenuItem.Text = "Supervisor";
-            this.supervisorToolStripMenuItem.Click += new System.EventHandler(this.supervisorToolStripMenuItem_Click);
+            this.pictureBox8.Image = global::SomerenUI.Properties.Resources.someren;
+            this.pictureBox8.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox8.InitialImage")));
+            this.pictureBox8.Location = new System.Drawing.Point(805, 0);
+            this.pictureBox8.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox8.Name = "pictureBox8";
+            this.pictureBox8.Size = new System.Drawing.Size(128, 115);
+            this.pictureBox8.TabIndex = 0;
+            this.pictureBox8.TabStop = false;
             // 
             // SomerenUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(962, 505);
+            this.Controls.Add(this.pnl_Activities);
             this.Controls.Add(this.pnl_Supervisors);
             this.Controls.Add(this.pnl_Vat);
             this.Controls.Add(this.pnl_Stock);
@@ -1438,7 +1476,6 @@
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.pnl_Roomslayout);
             this.Controls.Add(this.pnl_Rooms);
-            this.Controls.Add(this.pnl_Activities);
             this.Controls.Add(this.pnl_Teachers);
             this.Controls.Add(this.pnl_Students);
             this.Controls.Add(this.pnl_Dashboard);
@@ -1458,13 +1495,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.pnl_Teachers.ResumeLayout(false);
             this.pnl_Teachers.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTeachers)).EndInit();
             this.pnl_Rooms.ResumeLayout(false);
             this.pnl_Rooms.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.pnl_Activities.ResumeLayout(false);
             this.pnl_Activities.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxActivities)).EndInit();
             this.pnl_Roomslayout.ResumeLayout(false);
             this.pnl_Roomslayout.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
@@ -1478,10 +1515,10 @@
             this.pnl_Stock.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.num_AmountChange)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.num_AmountAdd)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStock)).EndInit();
             this.pnl_Supervisors.ResumeLayout(false);
             this.pnl_Supervisors.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1513,7 +1550,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pictureBoxTeachers;
         private System.Windows.Forms.Label lbl_Lecturers;
         private System.Windows.Forms.Panel pnl_Rooms;
         private System.Windows.Forms.ListView listViewRooms;
@@ -1527,7 +1564,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader7;
         private System.Windows.Forms.ColumnHeader columnHeader8;
         private System.Windows.Forms.ColumnHeader columnHeader9;
-        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.PictureBox pictureBoxActivities;
         private System.Windows.Forms.Label lbl_Activities;
         private System.Windows.Forms.Panel pnl_Roomslayout;
         private System.Windows.Forms.ListView listViewRoomLayout;
@@ -1555,7 +1592,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader13;
         private System.Windows.Forms.ColumnHeader columnHeader14;
         private System.Windows.Forms.ColumnHeader columnHeader15;
-        private System.Windows.Forms.PictureBox pictureBox7;
+        private System.Windows.Forms.PictureBox pictureBoxStock;
         private System.Windows.Forms.Label lbl_Stock;
         private System.Windows.Forms.Label lbl_AddDrink;
         private System.Windows.Forms.NumericUpDown num_AmountAdd;
@@ -1580,8 +1617,8 @@
         private System.Windows.Forms.Label lbl_RemoveProduct;
         private System.Windows.Forms.Label lbl_ChangeProduct;
         private System.Windows.Forms.ComboBox cbox_DeleteProduct;
-        private System.Windows.Forms.Button btn_Remove;
-        private System.Windows.Forms.Button btn_Refresh;
+        private System.Windows.Forms.Button btn_StockRemove;
+        private System.Windows.Forms.Button btn_StockRefresh;
         private System.Windows.Forms.ToolStripMenuItem btwToolStripMenuItem;
         private System.Windows.Forms.Panel pnl_Vat;
         private System.Windows.Forms.ListView listView2;
@@ -1622,6 +1659,9 @@
         private System.Windows.Forms.Label LblQuartelYearText;
         private System.Windows.Forms.Label LblQuartelOfText;
         private System.Windows.Forms.ToolStripMenuItem supervisorToolStripMenuItem;
+        private System.Windows.Forms.Button btn_ActivityRefresh;
+        private System.Windows.Forms.Button btn_AddActivity;
+        private System.Windows.Forms.Label lbl_ActivityInstructions;
     }
 }
 
