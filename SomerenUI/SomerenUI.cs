@@ -39,8 +39,25 @@ namespace SomerenUI
         {
             showPanel("Dashboard");
         }
+        private void AlignPanels()
+        {
+            Point point = new Point(10, 30);
+            pnl_Supervisors.Location = point;
+            pnl_Dashboard.Location = point;
+            pnl_Teachers.Location = point;
+            pnl_Students.Location = point;
+            pnl_Rooms.Location = point;
+            pnl_Activities.Location = point;
+            pnl_Roomslayout.Location = point;
+            pnl_OrderDrinks.Location = point;
+            pnl_Stock.Location = point;
+            pnl_Vat.Location = point;
+            pnl_Supervisors.Location = point;
+        }
+
         private void HideAllPanels()
         {
+            AlignPanels();
             pnl_Dashboard.Hide();
             img_Dashboard.Hide();
             pnl_Teachers.Hide();
@@ -724,6 +741,11 @@ namespace SomerenUI
             showPanel("Supervisors");
         }
 
+        private void supervisorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            showPanel("Supervisors");
+        }
+
         private void SuperVisor_LV_ColumnClick(object sender, ColumnClickEventArgs e)
         {
             // Tim Roffelsen
@@ -1298,69 +1320,6 @@ namespace SomerenUI
             } else
             {
                 MessageBox.Show("There are no products in the order", "Error!");
-            }
-        }
-
-
-        // Ruben Stoop
-        private void update_TotalPrice()
-        {
-            // Total price
-            double totalPrice = 0.00;
-            foreach (ListViewItem item in selectedDrinks_lv.Items)
-            {
-                totalPrice += (Double.Parse(item.SubItems[2].Text) * int.Parse(item.SubItems[3].Text));
-            }
-            totalPriceLabel.Text = "€" + totalPrice.ToString("0.00");
-        }
-
-        //Ruben Stoop
-        private void drinkLV_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            // Adds the item to selected items
-            if (drinkLV.SelectedItems.Count > 0)
-            {
-
-
-                int ProductID = int.Parse(drinkLV.SelectedItems[0].Text);
-
-                // Checks if product already exists in Selected drinks
-                foreach (ListViewItem item in selectedDrinks_lv.Items)
-                {
-                    int CProductID = int.Parse(item.Text);
-                    if (ProductID == CProductID)
-                    {
-                        MessageBox.Show("Product already exists in Selected product. To add the product again remove the products first from selected products.", "Error!");
-                        return;
-                    }
-                }
-
-                string ProductName = drinkLV.SelectedItems[0].SubItems[1].Text;
-                double Price = double.Parse(drinkLV.SelectedItems[0].SubItems[3].Text);
-                Product selectProduct = new Product(ProductID, ProductName, Price);
-                using (var form = new AddAmount(selectProduct, ProductsList))
-                {
-                    var result = form.ShowDialog();
-                    if (result == DialogResult.OK)
-                    {
-                        string[] arr = new string[5];
-                        ListViewItem li;
-
-                        // Add the items
-                        arr[0] = form.ProductID.ToString("00");
-                        arr[1] = form.ProductName;
-                        arr[2] = form.Price.ToString("0.00");
-                        arr[3] = form.Amount.ToString();
-
-                        li = new ListViewItem(arr);
-                        selectedDrinks_lv.Items.Add(li);
-                    }
-                }
-                update_TotalPrice();
-            }
-            else
-            {
-                return;
             }
         }
 
