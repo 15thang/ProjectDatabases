@@ -12,6 +12,46 @@ namespace SomerenDAL
 {
     public class Supervisor_DAO : Base
     {
+
+        // Ruben Stoop
+        // Opdracht B Week 4
+        // Gets all Supervisors with activities ID
+        public List<Supervisor> Db_Get_All_Supervisors_With_ActivitiesID()
+        {
+            string query = "SELECT B.BegeleiderID, P.Voornaam, P.Achternaam, B.ActiviteitID FROM Begeleider AS B INNER JOIN Docent AS D on B.DocentID = D.DocentID INNER JOIN Persoon AS P on D.PersoonID = P.PersoonID;";
+            SqlParameter[] sqlParameters = new SqlParameter[0];
+            return ReadSuperVisors(ExecuteSelectQuery(query, sqlParameters));
+        }
+
+
+        // Ruben Stoop
+        // Opdracht B Week 4
+        // Reads all supervisors
+        public List<Supervisor> ReadSuperVisors(DataTable dataTable)
+        {
+            List<Supervisor> supervisors = new List<Supervisor>();
+            
+            // Check if datatable is null
+            if (dataTable == null)
+            {
+                throw new Exception("Datatable is null");
+            }
+
+            foreach (DataRow dr in dataTable.Rows)
+            {
+                Supervisor supervisor = new Supervisor()
+                {
+                    SuperVisorID = (int)dr["BegeleiderID"],
+                    FirstName = (string)dr["Voornaam"],
+                    LastName = (string)dr["Achternaam"],
+                    ActivityID = (int)dr["ActiviteitID"],
+                };
+                supervisors.Add(supervisor);
+            }
+            return supervisors;
+
+        }
+
         // Tim Roffelsen
         // Data gets pulled from the database by the query
         public List<Supervisor> Db_Get_All_Supervisors()

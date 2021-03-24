@@ -13,6 +13,32 @@ namespace SomerenLogic
     {
         Supervisor_DAO supervisor_db = new Supervisor_DAO();
 
+        // Ruben Stoop
+        // Opdracht B Week 4
+        // Retrieves List with a row for each supervisor for a event
+        public List<Supervisor> GetSupervisorsWithActivitiesID()
+        {
+            try
+            {
+                List<Supervisor> supervisors = supervisor_db.Db_Get_All_Supervisors_With_ActivitiesID();
+                return supervisors;
+            }
+            catch (Exception e)
+            {
+                ErrorText = e.Message;
+                Error = true;
+                //throw new Exception(e.Message);
+                //something went wrong with the query. A fake supervisor is made and returned.
+                List<Supervisor> supervisors = new List<Supervisor>();
+                Supervisor s = new Supervisor();
+                s.ActivityID = -1;
+                s.FirstName = "TestVoornaam";
+                s.LastName = "TestAchternaam";
+                s.TeacherID = -1;
+                return supervisors;
+            }
+        }
+
         // Tim Roffelsen
         // The logic layer fetches the list with supervisors, if something goes wrong a test supervisor is made
         public List<Supervisor> GetSupervisors()

@@ -12,6 +12,44 @@ namespace SomerenDAL
 {
     public class Activity_DAO : Base
     {
+        // Ruben Stoop
+        // Opdracht B Week 4
+        // Gets activity for the supervisors
+        public Activity Db_Get_Activity(int ID)
+        {
+            string query = "SELECT ActiviteitID, Soort, Begintijd, Eindtijd  FROM Activiteit WHERE ActiviteitID = @id;";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@id", ID);
+            return ReadActivity(ExecuteSelectQuery(query, sqlParameters));
+        }
+
+        // Ruben Stoop
+        // Opdracht B Week 4
+        // Gets activity for the supervisors
+        private Activity ReadActivity(DataTable dataTable)
+        {
+            List<Activity> activities = new List<Activity>();
+
+            // Check if datatable is null
+            if (dataTable == null)
+            {
+                throw new Exception("Datatable is null");
+            }
+
+            DataRow dr = dataTable.Rows[0];
+
+            Activity activity = new Activity()
+            {
+                    ActivityId = (int)dr["ActiviteitID"],
+                    Type = (String)dr["Soort"],
+                    BeginTime = (DateTime)dr["Begintijd"],
+                    EndTime = (DateTime)dr["Eindtijd"]
+            };
+
+            return activity;
+        }
+
+
         // Tim Roffelsen
         // Data gets pulled from the database by the query
         public List<Activity> Db_Get_All_Activities()

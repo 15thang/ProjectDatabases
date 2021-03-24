@@ -47,6 +47,7 @@
             this.kwartaal1ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.kwartaal1ToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.kwartaal1ToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.superVisorsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnl_Dashboard = new System.Windows.Forms.Panel();
             this.lbl_Dashboard = new System.Windows.Forms.Label();
             this.img_Dashboard = new System.Windows.Forms.PictureBox();
@@ -149,6 +150,14 @@
             this.columnHeader21 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.Lbl_VatTarief = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.pictureBox8 = new System.Windows.Forms.PictureBox();
+            this.SuperVisor_LV = new System.Windows.Forms.ListView();
+            this.ActivitySuperVisor_LV = new System.Windows.Forms.ListView();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.pnl_Supervisors = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
             this.pnl_Dashboard.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.img_Dashboard)).BeginInit();
@@ -170,6 +179,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             this.pnl_Vat.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
+            this.pnl_Supervisors.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -183,7 +194,8 @@
             this.roomsToolStripMenuItem,
             this.roomLayoutToolStripMenuItem,
             this.BarToolStripMenuItem,
-            this.btwToolStripMenuItem});
+            this.btwToolStripMenuItem,
+            this.superVisorsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 1, 0, 1);
@@ -318,6 +330,13 @@
             this.kwartaal1ToolStripMenuItem3.Size = new System.Drawing.Size(128, 22);
             this.kwartaal1ToolStripMenuItem3.Text = "Kwartaal 4";
             this.kwartaal1ToolStripMenuItem3.Click += new System.EventHandler(this.kwartaal1ToolStripMenuItem3_Click);
+            // 
+            // superVisorsToolStripMenuItem
+            // 
+            this.superVisorsToolStripMenuItem.Name = "superVisorsToolStripMenuItem";
+            this.superVisorsToolStripMenuItem.Size = new System.Drawing.Size(79, 22);
+            this.superVisorsToolStripMenuItem.Text = "Supervisors";
+            this.superVisorsToolStripMenuItem.Click += new System.EventHandler(this.superVisorsToolStripMenuItem_Click);
             // 
             // pnl_Dashboard
             // 
@@ -1257,11 +1276,91 @@
             this.Lbl_VatTarief.TabIndex = 3;
             this.Lbl_VatTarief.Text = "BTW Tarief";
             // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(20, 3);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(147, 29);
+            this.label14.TabIndex = 3;
+            this.label14.Text = "Super visors";
+            // 
+            // pictureBox8
+            // 
+            this.pictureBox8.Image = global::SomerenUI.Properties.Resources.someren;
+            this.pictureBox8.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox8.InitialImage")));
+            this.pictureBox8.Location = new System.Drawing.Point(805, 0);
+            this.pictureBox8.Name = "pictureBox8";
+            this.pictureBox8.Size = new System.Drawing.Size(130, 123);
+            this.pictureBox8.TabIndex = 0;
+            this.pictureBox8.TabStop = false;
+            // 
+            // SuperVisor_LV
+            // 
+            this.SuperVisor_LV.HideSelection = false;
+            this.SuperVisor_LV.Location = new System.Drawing.Point(25, 213);
+            this.SuperVisor_LV.Name = "SuperVisor_LV";
+            this.SuperVisor_LV.Size = new System.Drawing.Size(640, 127);
+            this.SuperVisor_LV.TabIndex = 6;
+            this.SuperVisor_LV.UseCompatibleStateImageBehavior = false;
+            // 
+            // ActivitySuperVisor_LV
+            // 
+            this.ActivitySuperVisor_LV.HideSelection = false;
+            this.ActivitySuperVisor_LV.Location = new System.Drawing.Point(25, 58);
+            this.ActivitySuperVisor_LV.Name = "ActivitySuperVisor_LV";
+            this.ActivitySuperVisor_LV.Size = new System.Drawing.Size(427, 127);
+            this.ActivitySuperVisor_LV.TabIndex = 7;
+            this.ActivitySuperVisor_LV.UseCompatibleStateImageBehavior = false;
+            this.ActivitySuperVisor_LV.SelectedIndexChanged += new System.EventHandler(this.ActivitySuperVisor_LV_SelectedIndexChanged);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(97, 352);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(0, 13);
+            this.label12.TabIndex = 10;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(22, 197);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(76, 13);
+            this.label10.TabIndex = 11;
+            this.label10.Text = "All Supervisors";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(22, 42);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(299, 13);
+            this.label7.TabIndex = 12;
+            this.label7.Text = "Activities (Select an activity to add, edit or delete a supervisor)";
+            // 
+            // pnl_Supervisors
+            // 
+            this.pnl_Supervisors.Controls.Add(this.label7);
+            this.pnl_Supervisors.Controls.Add(this.label10);
+            this.pnl_Supervisors.Controls.Add(this.label12);
+            this.pnl_Supervisors.Controls.Add(this.ActivitySuperVisor_LV);
+            this.pnl_Supervisors.Controls.Add(this.SuperVisor_LV);
+            this.pnl_Supervisors.Controls.Add(this.pictureBox8);
+            this.pnl_Supervisors.Controls.Add(this.label14);
+            this.pnl_Supervisors.Location = new System.Drawing.Point(14, 31);
+            this.pnl_Supervisors.Name = "pnl_Supervisors";
+            this.pnl_Supervisors.Size = new System.Drawing.Size(935, 442);
+            this.pnl_Supervisors.TabIndex = 34;
+            // 
             // SomerenUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(962, 505);
+            this.Controls.Add(this.pnl_Supervisors);
             this.Controls.Add(this.pnl_OrderDrinks);
             this.Controls.Add(this.pnl_Vat);
             this.Controls.Add(this.pnl_Stock);
@@ -1309,6 +1408,9 @@
             this.pnl_Vat.ResumeLayout(false);
             this.pnl_Vat.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
+            this.pnl_Supervisors.ResumeLayout(false);
+            this.pnl_Supervisors.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1436,6 +1538,15 @@
         private System.Windows.Forms.ListView selectedDrinks_lv;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button removeBTN;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.PictureBox pictureBox8;
+        private System.Windows.Forms.ListView SuperVisor_LV;
+        private System.Windows.Forms.ListView ActivitySuperVisor_LV;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Panel pnl_Supervisors;
+        private System.Windows.Forms.ToolStripMenuItem superVisorsToolStripMenuItem;
     }
 }
 

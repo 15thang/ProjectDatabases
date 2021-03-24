@@ -31,6 +31,7 @@ namespace SomerenUI
             this.listViewTeachers.ListViewItemSorter = lvwColumnSorter;
             this.listViewRooms.ListViewItemSorter = lvwColumnSorter;
             this.listViewActivities.ListViewItemSorter = lvwColumnSorter;
+            this.SuperVisor_LV.ListViewItemSorter = lvwColumnSorter;
         }
 
         private void SomerenUI_Load(object sender, EventArgs e)
@@ -49,11 +50,13 @@ namespace SomerenUI
             pnl_OrderDrinks.Hide();
             pnl_Stock.Hide();
             pnl_Vat.Hide();
+            pnl_Supervisors.Hide();
+
         }
 
         private void showPanel(string panelName)
         {
-            if(panelName == "Dashboard")
+            if (panelName == "Dashboard")
             {
                 // hide all other panels
                 HideAllPanels();
@@ -62,7 +65,7 @@ namespace SomerenUI
                 pnl_Dashboard.Show();
                 img_Dashboard.Show();
             }
-            else if(panelName == "Students")
+            else if (panelName == "Students")
             {
                 // Ruben Stoop
                 // hide all other panels
@@ -70,7 +73,7 @@ namespace SomerenUI
 
                 // show students
                 pnl_Students.Show();
-                
+
                 // fill the students listview within the students panel with a list of students
                 SomerenLogic.Student_Service studService = new SomerenLogic.Student_Service();
                 List<Student> studentList = studService.GetStudents();
@@ -199,7 +202,7 @@ namespace SomerenUI
                 listViewRooms.Columns.Add("Beds");
 
                 foreach (SomerenModel.Room r in roomList)
-                {                    
+                {
                     //Add items in the listview
                     string[] arr = new string[4];
                     ListViewItem itm;
@@ -289,12 +292,12 @@ namespace SomerenUI
                 List<int> UniqueRoom = new List<int>();
                 foreach (SomerenModel.RoomLayout o in roomLayoutList)
                 {
-                    if(UniqueRoom.Contains(o.Number) == false)
+                    if (UniqueRoom.Contains(o.Number) == false)
                     {
                         UniqueRoom.Add(o.Number);
                     }
                 }
-                
+
                 foreach (int i in UniqueRoom)
                 {
                     listViewRoomLayout.Items.Add("");
@@ -310,146 +313,117 @@ namespace SomerenUI
                             ListViewItem itm = new ListViewItem(arr);
                             listViewRoomLayout.Items.Add(itm);
                         }
-                    }                    
+                    }
                 }
-                   
+
                 foreach (ColumnHeader ch in listViewRoomLayout.Columns) // dynamically change column width
                 {
                     ch.Width = -2;
                 }
-            } 
-            else if(panelName == "OrderDrinks")
+            }
+            else if (panelName == "OrderDrinks")
+            {
+                FillOrderDrink();
+            }
+            else if (panelName == "Supervisors")
             {
                 // Ruben Stoop
-                // hide all other panels
+                // Opdracht B Week 4
+
+                //Hides all panels
                 HideAllPanels();
-                
-                // show Order drinks
-                pnl_OrderDrinks.Show();
+                // show Supervisors
+                pnl_Supervisors.Show();
+                SomerenLogic.Supervisor_Service supService = new SomerenLogic.Supervisor_Service();
+                List<Supervisor> supervisors = supService.GetSupervisorsWithActivitiesID();
 
-                // fill the products listview within the products panel with a list of products
-                SomerenLogic.Student_Service studService = new SomerenLogic.Student_Service();
-                List<Student> studentList = studService.GetStudents();
+                //Used to get activity linked with supervisor and all activities
+                SomerenLogic.Activity_Service actService = new SomerenLogic.Activity_Service();
+                List<Activity> activities = actService.GetActivities();
 
-                // Shows message box if there is an error
-                Error_Show(studService);
-
+                Error_Show(supService);
+                Error_Show(actService);
                 // clear the listview before filling it again
-                studentLV.Clear();
+                SuperVisor_LV.Clear();
+                ActivitySuperVisor_LV.Clear();
 
-                // add grid lines, rows and enable sorting
-                studentLV.View = View.Details;
-                studentLV.GridLines = true;
-                studentLV.FullRowSelect = true;
-                studentLV.Sorting = SortOrder.Ascending;
-                studentLV.MultiSelect = false;
+                //Setting up Activity listview
+                ActivitySuperVisor_LV.View = View.Details;
+                ActivitySuperVisor_LV.GridLines = true;
+                ActivitySuperVisor_LV.FullRowSelect = true;
+                ActivitySuperVisor_LV.MultiSelect = false;
 
-                // add column headers
-                studentLV.Columns.Add("StudentID");
-                studentLV.Columns.Add("Name");
+                ActivitySuperVisor_LV.Columns.Add("Activity ID");
+                ActivitySuperVisor_LV.Columns.Add("Activity Description");
+                ActivitySuperVisor_LV.Columns.Add("Start time");
+                ActivitySuperVisor_LV.Columns.Add("End time");
 
-                foreach (SomerenModel.Student s in studentList)
+                foreach(SomerenModel.Activity a in activities)
                 {
                     string[] arr = new string[4];
                     ListViewItem li;
 
-                    //Add first item
-                    arr[0] = s.StudentID.ToString();
-                    arr[1] = s.FirstName + " " + s.LastName;
+                    // Add the items
+                    arr[0] = a.ActivityId.ToString();
+                    arr[1] = a.Type.ToString();
+                    arr[2] = a.BeginTime.ToString("dd/MM/yyyy HH:mm");
+                    arr[3] = a.EndTime.ToString("dd/MM/yyyy HH:mm");
 
                     li = new ListViewItem(arr);
-                    studentLV.Items.Add(li);
+                    ActivitySuperVisor_LV.Items.Add(li);
                 }
 
-                // Ruben Stoop
-                //get The product from the database
-                SomerenLogic.Product_Service prodService = new SomerenLogic.Product_Service();
-                List<Product> productlist = prodService.GetProducts();
+                //Setting up Supervisor listview
+                SuperVisor_LV.View = View.Details;
+                SuperVisor_LV.GridLines = true;
+                SuperVisor_LV.FullRowSelect = true;
 
-                Error_Show(prodService);
+                // add column header
+                SuperVisor_LV.Columns.Add("Supervisor ID");
+                SuperVisor_LV.Columns.Add("Supervisor Name");
+                SuperVisor_LV.Columns.Add("Activity ID");
+                SuperVisor_LV.Columns.Add("Activity Description");
+                SuperVisor_LV.Columns.Add("Start time");
+                SuperVisor_LV.Columns.Add("End time");
 
-                drinkLV.Clear();
-
-                // add grid lines, rows and enable sorting
-                drinkLV.View = View.Details;
-                drinkLV.GridLines = true;
-                drinkLV.FullRowSelect = true;
-                drinkLV.Sorting = SortOrder.Ascending;
-                drinkLV.MultiSelect = false;
-                // add column headers
-                drinkLV.Columns.Add("DrinkID");
-                drinkLV.Columns.Add("Product Name");
-                drinkLV.Columns.Add("Contains Alcohol");
-                drinkLV.Columns.Add("Price (€)");
-                drinkLV.Columns.Add("Stock");
-
-                foreach (SomerenModel.Product p in productlist)
+                foreach (SomerenModel.Supervisor sv in supervisors)
                 {
-                    string[] arr = new string[5];
+                    Activity activity = new Activity();
+                    foreach(Activity a in activities)
+                    {
+                        if(a.ActivityId == sv.ActivityID)
+                        {
+                            activity = a;
+                        }
+                    }
+                   
+
+                    string[] arr = new string[6];
                     ListViewItem li;
 
-                    // Add to 
-                    Product listProd = new Product(p.ProductID, p.IsAlcohol, p.ProductName, p.Price, p.Stock, 0);
-                    ProductsList.Add(listProd);
                     // Add the items
-                    arr[0] = p.ProductID.ToString("00");
-                    arr[1] = p.ProductName;
-                    arr[2] = p.AlcoholString;
-                    arr[3] = p.Price.ToString("0.00");
-                    if (p.Stock == -1)
-                    {
-                        arr[4] += $"Sufficient stock (infinite)"; // if water (-1 stock) set stock infinite
-                    }
-                    else if (p.Stock < 10) // check stock amount
-                    {
-                        if (p.Stock == 0)
-                        {
-                            arr[4] += $"Stock empty ({p.Stock.ToString()})";
-                        }
-                        else
-                        {
-                            arr[4] += $"Stock almost empty ({p.Stock.ToString()})";
-                        }
-                    }
-                    else
-                    {
-                        arr[4] += $"Sufficient stock ({p.Stock.ToString()})";
-                    }
+                    arr[0] = sv.SuperVisorID.ToString();
+                    arr[1] = sv.FirstName + " " + sv.LastName;
+                    arr[2] = sv.ActivityID.ToString();
+                    arr[3] = activity.Type.ToString();
+                    arr[4] = activity.BeginTime.ToString("dd/MM/yyyy HH:mm");
+                    arr[5] = activity.EndTime.ToString("dd/MM/yyyy HH:mm");
 
                     li = new ListViewItem(arr);
-                    drinkLV.Items.Add(li);
+                    SuperVisor_LV.Items.Add(li);
+
+
                 }
-
-                // Ruben Stoop
-                // Selected Drinks
-                selectedDrinks_lv.Clear();
-
-
-                selectedDrinks_lv.View = View.Details;
-                selectedDrinks_lv.GridLines = true;
-                selectedDrinks_lv.FullRowSelect = true;
-                selectedDrinks_lv.Sorting = SortOrder.Ascending;
-                selectedDrinks_lv.MultiSelect = true;
-                // add column headers
-                selectedDrinks_lv.Columns.Add("DrinkID");
-                selectedDrinks_lv.Columns.Add("Product Name");
-                selectedDrinks_lv.Columns.Add("Price (€)");
-                selectedDrinks_lv.Columns.Add("Amount ordered");
-
-                foreach (ColumnHeader ch in drinkLV.Columns) // dynamically change column width
+                foreach (ColumnHeader ch in SuperVisor_LV.Columns) // dynamically change column width
                 {
                     ch.Width = -2;
                 }
-
-                foreach (ColumnHeader ch in studentLV.Columns) // dynamically change column width
-                {
-                    ch.Width = -2;
-                }
-                foreach (ColumnHeader ch in selectedDrinks_lv.Columns) // dynamically change column width
+                foreach (ColumnHeader ch in ActivitySuperVisor_LV.Columns) // dynamically change column width
                 {
                     ch.Width = -2;
                 }
             }
+
             else if (panelName == "Stock")
             {
                 // Tim Roffelsen
@@ -576,68 +550,6 @@ namespace SomerenUI
             }
         }
 
-        // Ruben Stoop
-        private void update_TotalPrice()
-        {
-            // Total price
-            double totalPrice = 0.00;
-            foreach (ListViewItem item in selectedDrinks_lv.Items)
-            {
-                totalPrice += (Double.Parse(item.SubItems[2].Text) * int.Parse(item.SubItems[3].Text));
-            }
-            totalPriceLabel.Text = "€" + totalPrice.ToString("0.00");
-        }
-
-        //Ruben Stoop
-        private void drinkLV_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            // Adds the item to selected items
-            if (drinkLV.SelectedItems.Count > 0) 
-            {
-
-
-                int ProductID = int.Parse(drinkLV.SelectedItems[0].Text);
-                
-                // Checks if product already exists in Selected drinks
-                foreach (ListViewItem item in selectedDrinks_lv.Items)
-                {
-                    int CProductID = int.Parse(item.Text);
-                    if (ProductID == CProductID)
-                    {
-                        MessageBox.Show("Product already exists in Selected product. To add the product again remove the products first from selected products.", "Error!");
-                        return;
-                    }
-                }
-
-                string ProductName = drinkLV.SelectedItems[0].SubItems[1].Text;
-                double Price = double.Parse(drinkLV.SelectedItems[0].SubItems[3].Text);
-                Product selectProduct = new Product(ProductID, ProductName, Price);
-                using (var form = new AddAmount(selectProduct, ProductsList))
-                {
-                    var result = form.ShowDialog();
-                    if (result == DialogResult.OK)
-                    {
-                        string[] arr = new string[5];
-                        ListViewItem li;
-
-                        // Add the items
-                        arr[0] = form.ProductID.ToString("00");
-                        arr[1] = form.ProductName;
-                        arr[2] = form.Price.ToString("0.00") ;
-                        arr[3] = form.Amount.ToString();
-
-                        li = new ListViewItem(arr);
-                        selectedDrinks_lv.Items.Add(li);
-                    }
-                }
-                update_TotalPrice();
-            }
-            else
-            {
-                return;
-            }
-        }
-
         private void dashboardToolStripMenuItem_Click(object sender, EventArgs e)
         {
            //
@@ -716,6 +628,39 @@ namespace SomerenUI
         {
             showPanel("Q4");
         }
+
+        private void superVisorsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            showPanel("Supervisors");
+        }
+
+        private void SuperVisor_LV_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            // Tim Roffelsen
+            // Determine if clicked column is already the column that is being sorted.
+            if (e.Column == lvwColumnSorter.SortColumn)
+            {
+                // Reverse the current sort direction for this column.
+                if (lvwColumnSorter.Order == SortOrder.Ascending)
+                {
+                    lvwColumnSorter.Order = SortOrder.Descending;
+                }
+                else
+                {
+                    lvwColumnSorter.Order = SortOrder.Ascending;
+                }
+            }
+            else
+            {
+                // Set the column number that is to be sorted; default to ascending.
+                lvwColumnSorter.SortColumn = e.Column;
+                lvwColumnSorter.Order = SortOrder.Ascending;
+            }
+
+            // Perform the sort with these new sort options.
+            this.SuperVisor_LV.Sort();
+        }
+
 
         private void listViewActivities_ColumnClick(object sender, ColumnClickEventArgs e)
         {
@@ -1252,11 +1197,8 @@ namespace SomerenUI
 
                     //Shows messagebox and resets panel
                     MessageBox.Show("Order added.", "Succes");
-                    studentLV.SelectedItems.Clear();
-                    drinkLV.SelectedItems.Clear();
-                    selectedDrinks_lv.Items.Clear();
-                    pnl_OrderDrinks.Refresh();
-                    pnl_OrderDrinks.Update();
+
+                    FillOrderDrink();
                 }
                 else
                 {
@@ -1266,6 +1208,219 @@ namespace SomerenUI
             } else
             {
                 MessageBox.Show("There are no products in the order", "Error!");
+            }
+        }
+
+
+        // Ruben Stoop
+        private void update_TotalPrice()
+        {
+            // Total price
+            double totalPrice = 0.00;
+            foreach (ListViewItem item in selectedDrinks_lv.Items)
+            {
+                totalPrice += (Double.Parse(item.SubItems[2].Text) * int.Parse(item.SubItems[3].Text));
+            }
+            totalPriceLabel.Text = "€" + totalPrice.ToString("0.00");
+        }
+
+        //Ruben Stoop
+        private void drinkLV_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Adds the item to selected items
+            if (drinkLV.SelectedItems.Count > 0)
+            {
+
+
+                int ProductID = int.Parse(drinkLV.SelectedItems[0].Text);
+
+                // Checks if product already exists in Selected drinks
+                foreach (ListViewItem item in selectedDrinks_lv.Items)
+                {
+                    int CProductID = int.Parse(item.Text);
+                    if (ProductID == CProductID)
+                    {
+                        MessageBox.Show("Product already exists in Selected product. To add the product again remove the products first from selected products.", "Error!");
+                        return;
+                    }
+                }
+
+                string ProductName = drinkLV.SelectedItems[0].SubItems[1].Text;
+                double Price = double.Parse(drinkLV.SelectedItems[0].SubItems[3].Text);
+                Product selectProduct = new Product(ProductID, ProductName, Price);
+                using (var form = new AddAmount(selectProduct, ProductsList))
+                {
+                    var result = form.ShowDialog();
+                    if (result == DialogResult.OK)
+                    {
+                        string[] arr = new string[5];
+                        ListViewItem li;
+
+                        // Add the items
+                        arr[0] = form.ProductID.ToString("00");
+                        arr[1] = form.ProductName;
+                        arr[2] = form.Price.ToString("0.00");
+                        arr[3] = form.Amount.ToString();
+
+                        li = new ListViewItem(arr);
+                        selectedDrinks_lv.Items.Add(li);
+                    }
+                }
+                update_TotalPrice();
+            }
+            else
+            {
+                return;
+            }
+        }
+
+        private void FillOrderDrink()
+        {
+            // Ruben Stoop
+            // hide all other panels
+            HideAllPanels();
+
+            // show Order drinks
+            pnl_OrderDrinks.Show();
+
+            // fill the products listview within the products panel with a list of products
+            SomerenLogic.Student_Service studService = new SomerenLogic.Student_Service();
+            List<Student> studentList = studService.GetStudents();
+
+            // Shows message box if there is an error
+            Error_Show(studService);
+
+            // clear the listview before filling it again
+            studentLV.Clear();
+
+            // add grid lines, rows and enable sorting
+            studentLV.View = View.Details;
+            studentLV.GridLines = true;
+            studentLV.FullRowSelect = true;
+            studentLV.Sorting = SortOrder.Ascending;
+            studentLV.MultiSelect = false;
+
+            // add column headers
+            studentLV.Columns.Add("StudentID");
+            studentLV.Columns.Add("Name");
+
+            foreach (SomerenModel.Student s in studentList)
+            {
+                string[] arr = new string[4];
+                ListViewItem li;
+
+                //Add first item
+                arr[0] = s.StudentID.ToString();
+                arr[1] = s.FirstName + " " + s.LastName;
+
+                li = new ListViewItem(arr);
+                studentLV.Items.Add(li);
+            }
+
+            // Ruben Stoop
+            //get The product from the database
+            SomerenLogic.Product_Service prodService = new SomerenLogic.Product_Service();
+            List<Product> productlist = prodService.GetProducts();
+
+            Error_Show(prodService);
+
+            drinkLV.Clear();
+
+            // add grid lines, rows and enable sorting
+            drinkLV.View = View.Details;
+            drinkLV.GridLines = true;
+            drinkLV.FullRowSelect = true;
+            drinkLV.Sorting = SortOrder.Ascending;
+            drinkLV.MultiSelect = false;
+            // add column headers
+            drinkLV.Columns.Add("DrinkID");
+            drinkLV.Columns.Add("Product Name");
+            drinkLV.Columns.Add("Contains Alcohol");
+            drinkLV.Columns.Add("Price (€)");
+            drinkLV.Columns.Add("Stock");
+
+            foreach (SomerenModel.Product p in productlist)
+            {
+                string[] arr = new string[5];
+                ListViewItem li;
+
+                // Add to 
+                Product listProd = new Product(p.ProductID, p.IsAlcohol, p.ProductName, p.Price, p.Stock, 0);
+                ProductsList.Add(listProd);
+                // Add the items
+                arr[0] = p.ProductID.ToString("00");
+                arr[1] = p.ProductName;
+                arr[2] = p.AlcoholString;
+                arr[3] = p.Price.ToString("0.00");
+                if (p.Stock == -1)
+                {
+                    arr[4] += $"Sufficient stock (infinite)"; // if water (-1 stock) set stock infinite
+                }
+                else if (p.Stock < 10) // check stock amount
+                {
+                    if (p.Stock == 0)
+                    {
+                        arr[4] += $"Stock empty ({p.Stock.ToString()})";
+                    }
+                    else
+                    {
+                        arr[4] += $"Stock almost empty ({p.Stock.ToString()})";
+                    }
+                }
+                else
+                {
+                    arr[4] += $"Sufficient stock ({p.Stock.ToString()})";
+                }
+
+                li = new ListViewItem(arr);
+                drinkLV.Items.Add(li);
+            }
+
+            // Ruben Stoop
+            // Selected Drinks
+            selectedDrinks_lv.Clear();
+
+
+            selectedDrinks_lv.View = View.Details;
+            selectedDrinks_lv.GridLines = true;
+            selectedDrinks_lv.FullRowSelect = true;
+            selectedDrinks_lv.Sorting = SortOrder.Ascending;
+            selectedDrinks_lv.MultiSelect = true;
+            // add column headers
+            selectedDrinks_lv.Columns.Add("DrinkID");
+            selectedDrinks_lv.Columns.Add("Product Name");
+            selectedDrinks_lv.Columns.Add("Price (€)");
+            selectedDrinks_lv.Columns.Add("Amount ordered");
+
+            foreach (ColumnHeader ch in drinkLV.Columns) // dynamically change column width
+            {
+                ch.Width = -2;
+            }
+
+            foreach (ColumnHeader ch in studentLV.Columns) // dynamically change column width
+            {
+                ch.Width = -2;
+            }
+            foreach (ColumnHeader ch in selectedDrinks_lv.Columns) // dynamically change column width
+            {
+                ch.Width = -2;
+            }
+        }
+
+        private void ActivitySuperVisor_LV_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Gets activity FROM Listview
+            if (ActivitySuperVisor_LV.SelectedItems.Count > 0)
+            {
+                int ActivityID = int.Parse(ActivitySuperVisor_LV.SelectedItems[0].Text);
+
+                using (var form = new SuperVisor(ActivityID))
+                {
+                    var result = form.ShowDialog();
+                    if (result == DialogResult.OK)
+                    {
+                    }
+                }
             }
         }
     }
