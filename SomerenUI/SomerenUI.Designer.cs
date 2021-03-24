@@ -717,7 +717,7 @@
             this.pnl_OrderDrinks.Controls.Add(this.drinkLV);
             this.pnl_OrderDrinks.Controls.Add(this.pictureBox6);
             this.pnl_OrderDrinks.Controls.Add(this.lbl_OrderDrinks);
-            this.pnl_OrderDrinks.Location = new System.Drawing.Point(1, 1);
+            this.pnl_OrderDrinks.Location = new System.Drawing.Point(0, 32);
             this.pnl_OrderDrinks.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pnl_OrderDrinks.Name = "pnl_OrderDrinks";
             this.pnl_OrderDrinks.Size = new System.Drawing.Size(1402, 680);
@@ -800,7 +800,7 @@
             this.pnl_Vat.Controls.Add(this.listView2);
             this.pnl_Vat.Controls.Add(this.pictureBox9);
             this.pnl_Vat.Controls.Add(this.Lbl_VatTarief);
-            this.pnl_Vat.Location = new System.Drawing.Point(1, 33);
+            this.pnl_Vat.Location = new System.Drawing.Point(0, 29);
             this.pnl_Vat.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pnl_Vat.Name = "pnl_Vat";
             this.pnl_Vat.Size = new System.Drawing.Size(1407, 680);
@@ -1006,7 +1006,6 @@
             // 
             this.pnl_Stock.Controls.Add(this.btn_Refresh);
             this.pnl_Stock.Controls.Add(this.btn_Remove);
-            this.pnl_Stock.Controls.Add(this.pnl_OrderDrinks);
             this.pnl_Stock.Controls.Add(this.cbox_DeleteProduct);
             this.pnl_Stock.Controls.Add(this.cbox_ChangeProduct);
             this.pnl_Stock.Controls.Add(this.btn_Change);
@@ -1379,6 +1378,7 @@
             this.ClientSize = new System.Drawing.Size(1443, 777);
             this.Controls.Add(this.pnl_Vat);
             this.Controls.Add(this.pnl_Stock);
+            this.Controls.Add(this.pnl_OrderDrinks);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.pnl_Roomslayout);
             this.Controls.Add(this.pnl_Rooms);
