@@ -10,6 +10,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Globalization;
 
 namespace SomerenUI
 {
@@ -503,50 +504,139 @@ namespace SomerenUI
                 // Thomas Eddyson
                 HideAllPanels();
 
-                pnl_Vat.Show();
+                pnl_Vat.Show();                
 
-                SomerenLogic.Vat_Service vatService = new SomerenLogic.Vat_Service();
-                List<Vat> vatList = vatService.GetVats();
-
-                Error_Show(vatService);
-
-                foreach (SomerenModel.Vat v in vatList)
-                {
-                    string[] arr = new string[4];
-
-                    // Add the items
-                    arr[0] = v.VATSixPrcnt.ToString();
-                    arr[1] = v.VATTwntyOnePrcnt.ToString();
-                    arr[2] = v.TotalVAT.ToString();
-
-                    LblSixPrcntTaxResult.Text = arr[0];
-                    LblTwentOnePrcntTaxResult.Text = arr[1];
-                    LblTotalTaxResult.Text = arr[2];
-                }
+                Lbl_VatTarief.Text = "BTW Tarief Kwartaal";
+                LblQrtlFirstMonth.Text = "_____";
+                LblQrtlLastMonth.Text = "_____";
             }
 
             switch (panelName)
             {
-                case "Q1":
+                // Thomas Eddyson
+                case "Q1Click":
+                    get_QuarterTaxResult("Q1");
                     Lbl_VatTarief.Text = "BTW Tarief Kwartaal 1";
+                    LblQuartelYearText.Text = "Kwartaal 1";
                     LblQrtlFirstMonth.Text = "Januari";
                     LblQrtlLastMonth.Text = "Maart";
                     break;
-                case "Q2":
+                case "Q2Click":
+                    get_QuarterTaxResult("Q2");
                     Lbl_VatTarief.Text = "BTW Tarief Kwartaal 2";
+                    LblQuartelYearText.Text = "Kwartaal 4";
                     LblQrtlFirstMonth.Text = "April";
                     LblQrtlLastMonth.Text = "Juni";
                     break;
-                case "Q3":
+                case "Q3Click":
+                    get_QuarterTaxResult("Q3");
                     Lbl_VatTarief.Text = "BTW Tarief Kwartaal 3";
+                    LblQuartelYearText.Text = "Kwartaal 3";
                     LblQrtlFirstMonth.Text = "Juli";
                     LblQrtlLastMonth.Text = "September";
                     break;
-                case "Q4":
+                case "Q4Click":
+                    get_QuarterTaxResult("Q4");
                     Lbl_VatTarief.Text = "BTW Tarief Kwartaal 4";
+                    LblQuartelYearText.Text = "Kwartaal 4";
                     LblQrtlFirstMonth.Text = "October";
                     LblQrtlLastMonth.Text = "December";
                     break;
+            }
+        }
+
+        private void get_QuarterTaxResult(string quarterName)
+        {
+            // Thomas Eddyson
+
+            // Money formating
+            CultureInfo eu = new CultureInfo("fr-FR");
+            eu.NumberFormat.CurrencyPositivePattern = 0;
+            eu.NumberFormat.CurrencyNegativePattern = 2;
+
+            SomerenLogic.Vat_Service vatService = new SomerenLogic.Vat_Service();
+
+            vatService.SetQuaterString(quarterName);
+
+            List<Vat> vatList = vatService.GetVats();            
+
+            foreach (SomerenModel.Vat a in vatList)
+            {
+                //Add items in the listview
+                string[] arr = new string[4];
+
+                //Add first item
+                arr[0] = a.CurrentYear.ToString();
+                arr[1] = a.VATTwntyOnePrcnt.ToString("C", eu);
+                arr[2] = a.VATSixPrcnt.ToString("C", eu);
+                arr[3] = a.TotalVAT.ToString("C", eu);
+
+                LblYearResult.Text = arr[0];
+                LblTwentOnePrcntTaxResult.Text = arr[1];
+                LblSixPrcntTaxResult.Text = arr[2];
+                LblTotalTaxResult.Text = arr[3];
+            }
+        }
+
+        // Ruben Stoop
+        private void update_TotalPrice()
+        {
+            // Total price
+            double totalPrice = 0.00;
+            foreach (ListViewItem item in selectedDrinks_lv.Items)
+            {
+                totalPrice += (Double.Parse(item.SubItems[2].Text) * int.Parse(item.SubItems[3].Text));
+            }
+            totalPriceLabel.Text = "€" + totalPrice.ToString("0.00");
+        }
+
+        //Ruben Stoop
+        private void drinkLV_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Adds the item to selected items
+            if (drinkLV.SelectedItems.Count > 0) 
+            {
+
+
+                int ProductID = int.Parse(drinkLV.SelectedItems[0].Text);
+                
+                // Checks if product already exists in Selected drinks
+                foreach (ListViewItem item in selectedDrinks_lv.Items)
+                {
+                    int CProductID = int.Parse(item.Text);
+                    if (ProductID == CProductID)
+                    {
+                        MessageBox.Show("Product already exists in Selected product. To add the product again remove the products first from selected products.", "Error!");
+                        return;
+                    }
+                }
+
+                string ProductName = drinkLV.SelectedItems[0].SubItems[1].Text;
+                double Price = double.Parse(drinkLV.SelectedItems[0].SubItems[3].Text);
+                Product selectProduct = new Product(ProductID, ProductName, Price);
+                using (var form = new AddAmount(selectProduct, ProductsList))
+                {
+                    var result = form.ShowDialog();
+                    if (result == DialogResult.OK)
+                    {
+                        string[] arr = new string[5];
+                        ListViewItem li;
+
+                        // Add the items
+                        arr[0] = form.ProductID.ToString("00");
+                        arr[1] = form.ProductName;
+                        arr[2] = form.Price.ToString("0.00") ;
+                        arr[3] = form.Amount.ToString();
+
+                        li = new ListViewItem(arr);
+                        selectedDrinks_lv.Items.Add(li);
+                    }
+                }
+                update_TotalPrice();
+            }
+            else
+            {
+                return;
             }
         }
 
@@ -609,24 +699,24 @@ namespace SomerenUI
             showPanel("Vat");
         }
 
-        private void kwartaal1ToolStripMenuItem_Click(object sender, EventArgs e)
+        private void LblQ1Click_Click(object sender, EventArgs e)
         {
-            showPanel("Q1");
+            showPanel("Q1Click");
         }
 
-        private void kwartaal1ToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void LblQ2Click_Click(object sender, EventArgs e)
         {
-            showPanel("Q2");
+            showPanel("Q2Click");
         }
 
-        private void kwartaal1ToolStripMenuItem2_Click(object sender, EventArgs e)
+        private void LblQ3Click_Click(object sender, EventArgs e)
         {
-            showPanel("Q3");
+            showPanel("Q3Click");
         }
 
-        private void kwartaal1ToolStripMenuItem3_Click(object sender, EventArgs e)
+        private void LblQ4Click_Click(object sender, EventArgs e)
         {
-            showPanel("Q4");
+            showPanel("Q4Click");
         }
 
         private void superVisorsToolStripMenuItem_Click(object sender, EventArgs e)

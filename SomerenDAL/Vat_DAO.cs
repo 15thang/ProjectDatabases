@@ -15,6 +15,8 @@ namespace SomerenDAL
         const double taxTwntyOnePrcnt = 0.21;
         const double taxSixPrcnt = 0.06;
 
+        private string Quarter;
+
         // Thomas Eddyson
         public List<Vat> Db_Get_All_Vats()
         {
@@ -26,8 +28,11 @@ namespace SomerenDAL
         private List<Vat> ReadTables(DataTable dataTable)
         {
             List<Vat> Vats = new List<Vat>();
-            List<double> TaxTwentyOne = new List<double>();
-            List<double> TaxSix = new List<double>();
+
+            string QMonth = Quarter;
+
+            double isAlcDrink = 0;
+            double isNotAlcDrink = 0;            
 
             // Check if datatable is null
             if (dataTable == null)
@@ -38,28 +43,84 @@ namespace SomerenDAL
             foreach (DataRow dr in dataTable.Rows)
             {
                 double Price = double.Parse(dr["Prijs"].ToString());
+                double amount = double.Parse(dr["Aantal"].ToString());
+                DateTime date = (DateTime)dr["Datum"];
+                DateTime dateNow = DateTime.Now;
 
-                if ((bool)dr["isAlcohol"] == true)
+                //Checks which quarter months of the same year needs to be calculated
+                if (QMonth == "Q1")
                 {
-                    TaxTwentyOne.Add(Price);
+                    if (date.Month >= 1 && date.Month <= 3 && date.Year == dateNow.Year)
+                    {
+                        if ((bool)dr["isAlcohol"] == true)
+                        {
+                            isAlcDrink = (Price * amount) + isAlcDrink;
+                        }
+                        else
+                        {
+                            isNotAlcDrink = (Price * amount) + isNotAlcDrink;
+                        }                        
+                    }
                 }
-                else
+                else if (QMonth == "Q2")
                 {
-                    TaxSix.Add(Price);
+                    if (date.Month >= 4 && date.Month <= 6 && date.Year == dateNow.Year)
+                    {
+                        if ((bool)dr["isAlcohol"] == true)
+                        {
+                            isAlcDrink = (Price * amount) + isAlcDrink;
+                        }
+                        else
+                        {
+                            isNotAlcDrink = (Price * amount) + isNotAlcDrink;
+                        }
+                    }
                 }
-                double total = (TaxTwentyOne.Sum() * taxTwntyOnePrcnt) + (TaxSix.Sum() * taxSixPrcnt);
-
+                else if (QMonth == "Q3")
+                {
+                    if (date.Month >= 7 && date.Month <= 9 && date.Year == dateNow.Year)
+                    {
+                        if ((bool)dr["isAlcohol"] == true)
+                        {
+                            isAlcDrink = (Price * amount) + isAlcDrink;
+                        }
+                        else
+                        {
+                            isNotAlcDrink = (Price * amount) + isNotAlcDrink;
+                        }
+                    }
+                }
+                else if (QMonth == "Q4")
+                {
+                    if (date.Month >= 10 && date.Month <= 12 && date.Year == dateNow.Year)
+                    {
+                        if ((bool)dr["isAlcohol"] == true)
+                        {
+                            isAlcDrink = (Price * amount) + isAlcDrink;
+                        }
+                        else
+                        {
+                            isNotAlcDrink = (Price * amount) + isNotAlcDrink;
+                        }
+                    }
+                }                
 
                 Vat vat = new Vat()
                 {
-                    VATTwntyOnePrcnt = TaxTwentyOne.Sum() * taxTwntyOnePrcnt,
-                    VATSixPrcnt = TaxSix.Sum() * taxSixPrcnt,
-                    TotalVAT = total
+                    CurrentYear = dateNow.Year.ToString(),
+                    VATTwntyOnePrcnt = isAlcDrink * taxTwntyOnePrcnt,
+                    VATSixPrcnt = isNotAlcDrink * taxSixPrcnt,
+                    TotalVAT = (isNotAlcDrink * taxSixPrcnt) + (isAlcDrink * taxTwntyOnePrcnt)
                 };
                 Vats.Add(vat);
             }
             return Vats;
         }
 
+        //Sets the quarter
+        public void SetQuaterString(string quarter)
+        {
+            Quarter = quarter;
+        }
     }
 }
