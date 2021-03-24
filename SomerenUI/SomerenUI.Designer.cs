@@ -43,6 +43,7 @@
             this.orderDrinksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btwToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.supervisorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnl_Dashboard = new System.Windows.Forms.Panel();
             this.lbl_Dashboard = new System.Windows.Forms.Label();
             this.img_Dashboard = new System.Windows.Forms.PictureBox();
@@ -161,7 +162,6 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.pnl_Supervisors = new System.Windows.Forms.Panel();
-            this.supervisorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.pnl_Dashboard.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.img_Dashboard)).BeginInit();
@@ -301,6 +301,13 @@
             this.btwToolStripMenuItem.Size = new System.Drawing.Size(42, 22);
             this.btwToolStripMenuItem.Text = "BTW";
             this.btwToolStripMenuItem.Click += new System.EventHandler(this.btwToolStripMenuItem_Click);
+            // 
+            // supervisorToolStripMenuItem
+            // 
+            this.supervisorToolStripMenuItem.Name = "supervisorToolStripMenuItem";
+            this.supervisorToolStripMenuItem.Size = new System.Drawing.Size(74, 22);
+            this.supervisorToolStripMenuItem.Text = "Supervisor";
+            this.supervisorToolStripMenuItem.Click += new System.EventHandler(this.supervisorToolStripMenuItem_Click);
             // 
             // pnl_Dashboard
             // 
@@ -1339,16 +1346,16 @@
             this.label14.Location = new System.Drawing.Point(23, 9);
             this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(147, 29);
+            this.label14.Size = new System.Drawing.Size(141, 29);
             this.label14.TabIndex = 3;
-            this.label14.Text = "Super visors";
+            this.label14.Text = "Supervisors";
             // 
             // pictureBox8
             // 
             this.pictureBox8.Image = global::SomerenUI.Properties.Resources.someren;
             this.pictureBox8.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox8.InitialImage")));
             this.pictureBox8.Location = new System.Drawing.Point(805, 0);
-            this.pictureBox8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox8.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox8.Name = "pictureBox8";
             this.pictureBox8.Size = new System.Drawing.Size(128, 115);
             this.pictureBox8.TabIndex = 0;
@@ -1358,17 +1365,18 @@
             // 
             this.SuperVisor_LV.HideSelection = false;
             this.SuperVisor_LV.Location = new System.Drawing.Point(28, 280);
-            this.SuperVisor_LV.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.SuperVisor_LV.Margin = new System.Windows.Forms.Padding(2);
             this.SuperVisor_LV.Name = "SuperVisor_LV";
             this.SuperVisor_LV.Size = new System.Drawing.Size(650, 159);
             this.SuperVisor_LV.TabIndex = 6;
             this.SuperVisor_LV.UseCompatibleStateImageBehavior = false;
+            this.SuperVisor_LV.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.SuperVisor_LV_ColumnClick);
             // 
             // ActivitySuperVisor_LV
             // 
             this.ActivitySuperVisor_LV.HideSelection = false;
             this.ActivitySuperVisor_LV.Location = new System.Drawing.Point(28, 70);
-            this.ActivitySuperVisor_LV.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ActivitySuperVisor_LV.Margin = new System.Windows.Forms.Padding(2);
             this.ActivitySuperVisor_LV.Name = "ActivitySuperVisor_LV";
             this.ActivitySuperVisor_LV.Size = new System.Drawing.Size(522, 117);
             this.ActivitySuperVisor_LV.TabIndex = 7;
@@ -1414,17 +1422,10 @@
             this.pnl_Supervisors.Controls.Add(this.pictureBox8);
             this.pnl_Supervisors.Controls.Add(this.label14);
             this.pnl_Supervisors.Location = new System.Drawing.Point(0, 0);
-            this.pnl_Supervisors.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnl_Supervisors.Margin = new System.Windows.Forms.Padding(2);
             this.pnl_Supervisors.Name = "pnl_Supervisors";
             this.pnl_Supervisors.Size = new System.Drawing.Size(938, 468);
             this.pnl_Supervisors.TabIndex = 34;
-            // 
-            // supervisorToolStripMenuItem
-            // 
-            this.supervisorToolStripMenuItem.Name = "supervisorToolStripMenuItem";
-            this.supervisorToolStripMenuItem.Size = new System.Drawing.Size(74, 22);
-            this.supervisorToolStripMenuItem.Text = "Supervisor";
-            this.supervisorToolStripMenuItem.Click += new System.EventHandler(this.supervisorToolStripMenuItem_Click);
             // 
             // SomerenUI
             // 
