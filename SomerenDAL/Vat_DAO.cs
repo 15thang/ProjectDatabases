@@ -32,8 +32,7 @@ namespace SomerenDAL
             string QMonth = Quarter;
 
             double isAlcDrink = 0;
-            double isNotAlcDrink = 0;
-            double total;
+            double isNotAlcDrink = 0;            
 
             // Check if datatable is null
             if (dataTable == null)
@@ -60,7 +59,7 @@ namespace SomerenDAL
                         else
                         {
                             isNotAlcDrink = (Price * amount) + isNotAlcDrink;
-                        }
+                        }                        
                     }
                 }
                 else if (QMonth == "Q2")
@@ -108,6 +107,7 @@ namespace SomerenDAL
 
                 Vat vat = new Vat()
                 {
+                    CurrentYear = dateNow.Year.ToString(),
                     VATTwntyOnePrcnt = isAlcDrink * taxTwntyOnePrcnt,
                     VATSixPrcnt = isNotAlcDrink * taxSixPrcnt,
                     TotalVAT = (isNotAlcDrink * taxSixPrcnt) + (isAlcDrink * taxTwntyOnePrcnt)
@@ -115,7 +115,7 @@ namespace SomerenDAL
                 Vats.Add(vat);
             }
             return Vats;
-        }        
+        }
 
         //Sets the quarter
         public void SetQuaterString(string quarter)

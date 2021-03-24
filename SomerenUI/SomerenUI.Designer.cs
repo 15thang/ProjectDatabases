@@ -91,6 +91,10 @@
             this.studentsLabel = new System.Windows.Forms.Label();
             this.pnl_OrderDrinks = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
+            this.removeBTN = new System.Windows.Forms.Button();
+            this.Selectdrenk = new System.Windows.Forms.Label();
+            this.selectedDrinks_lv = new System.Windows.Forms.ListView();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.pnl_Vat = new System.Windows.Forms.Panel();
             this.LblQ4Click = new System.Windows.Forms.Label();
             this.LblQ3Click = new System.Windows.Forms.Label();
@@ -114,10 +118,6 @@
             this.columnHeader21 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.Lbl_VatTarief = new System.Windows.Forms.Label();
-            this.removeBTN = new System.Windows.Forms.Button();
-            this.Selectdrenk = new System.Windows.Forms.Label();
-            this.selectedDrinks_lv = new System.Windows.Forms.ListView();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.pnl_Stock = new System.Windows.Forms.Panel();
             this.btn_Refresh = new System.Windows.Forms.Button();
             this.btn_Remove = new System.Windows.Forms.Button();
@@ -150,6 +150,9 @@
             this.columnHeader15 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.lbl_Stock = new System.Windows.Forms.Label();
+            this.LblQuartelOfText = new System.Windows.Forms.Label();
+            this.LblQuartelYearText = new System.Windows.Forms.Label();
+            this.LblYearResult = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.pnl_Dashboard.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.img_Dashboard)).BeginInit();
@@ -164,9 +167,9 @@
             this.pnl_Roomslayout.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.pnl_OrderDrinks.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.pnl_Vat.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.pnl_Stock.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.num_AmountChange)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.num_AmountAdd)).BeginInit();
@@ -714,7 +717,7 @@
             this.pnl_OrderDrinks.Controls.Add(this.drinkLV);
             this.pnl_OrderDrinks.Controls.Add(this.pictureBox6);
             this.pnl_OrderDrinks.Controls.Add(this.lbl_OrderDrinks);
-            this.pnl_OrderDrinks.Location = new System.Drawing.Point(0, 37);
+            this.pnl_OrderDrinks.Location = new System.Drawing.Point(1, 1);
             this.pnl_OrderDrinks.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pnl_OrderDrinks.Name = "pnl_OrderDrinks";
             this.pnl_OrderDrinks.Size = new System.Drawing.Size(1402, 680);
@@ -731,8 +734,53 @@
             this.label2.Text = "(Select a drink and press the remove drink button to renove the drink from the Se" +
     "lected drinks)";
             // 
+            // removeBTN
+            // 
+            this.removeBTN.Location = new System.Drawing.Point(573, 546);
+            this.removeBTN.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.removeBTN.Name = "removeBTN";
+            this.removeBTN.Size = new System.Drawing.Size(162, 35);
+            this.removeBTN.TabIndex = 15;
+            this.removeBTN.Text = "Remove Drink";
+            this.removeBTN.UseVisualStyleBackColor = true;
+            this.removeBTN.Click += new System.EventHandler(this.removeBTN_Click);
+            // 
+            // Selectdrenk
+            // 
+            this.Selectdrenk.AutoSize = true;
+            this.Selectdrenk.Location = new System.Drawing.Point(576, 303);
+            this.Selectdrenk.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Selectdrenk.Name = "Selectdrenk";
+            this.Selectdrenk.Size = new System.Drawing.Size(121, 20);
+            this.Selectdrenk.TabIndex = 14;
+            this.Selectdrenk.Text = "Selected Drinks";
+            // 
+            // selectedDrinks_lv
+            // 
+            this.selectedDrinks_lv.HideSelection = false;
+            this.selectedDrinks_lv.Location = new System.Drawing.Point(573, 328);
+            this.selectedDrinks_lv.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.selectedDrinks_lv.Name = "selectedDrinks_lv";
+            this.selectedDrinks_lv.Size = new System.Drawing.Size(418, 193);
+            this.selectedDrinks_lv.TabIndex = 13;
+            this.selectedDrinks_lv.UseCompatibleStateImageBehavior = false;
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.Image = global::SomerenUI.Properties.Resources.someren;
+            this.pictureBox6.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox6.InitialImage")));
+            this.pictureBox6.Location = new System.Drawing.Point(1208, 0);
+            this.pictureBox6.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(195, 189);
+            this.pictureBox6.TabIndex = 0;
+            this.pictureBox6.TabStop = false;
+            // 
             // pnl_Vat
             // 
+            this.pnl_Vat.Controls.Add(this.LblYearResult);
+            this.pnl_Vat.Controls.Add(this.LblQuartelYearText);
+            this.pnl_Vat.Controls.Add(this.LblQuartelOfText);
             this.pnl_Vat.Controls.Add(this.LblQ4Click);
             this.pnl_Vat.Controls.Add(this.LblQ3Click);
             this.pnl_Vat.Controls.Add(this.LblQ2Click);
@@ -752,7 +800,7 @@
             this.pnl_Vat.Controls.Add(this.listView2);
             this.pnl_Vat.Controls.Add(this.pictureBox9);
             this.pnl_Vat.Controls.Add(this.Lbl_VatTarief);
-            this.pnl_Vat.Location = new System.Drawing.Point(0, 32);
+            this.pnl_Vat.Location = new System.Drawing.Point(1, 33);
             this.pnl_Vat.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pnl_Vat.Name = "pnl_Vat";
             this.pnl_Vat.Size = new System.Drawing.Size(1407, 680);
@@ -954,52 +1002,11 @@
             this.Lbl_VatTarief.TabIndex = 3;
             this.Lbl_VatTarief.Text = "BTW Tarief";
             // 
-            // removeBTN
-            // 
-            this.removeBTN.Location = new System.Drawing.Point(573, 546);
-            this.removeBTN.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.removeBTN.Name = "removeBTN";
-            this.removeBTN.Size = new System.Drawing.Size(162, 35);
-            this.removeBTN.TabIndex = 15;
-            this.removeBTN.Text = "Remove Drink";
-            this.removeBTN.UseVisualStyleBackColor = true;
-            this.removeBTN.Click += new System.EventHandler(this.removeBTN_Click);
-            // 
-            // Selectdrenk
-            // 
-            this.Selectdrenk.AutoSize = true;
-            this.Selectdrenk.Location = new System.Drawing.Point(576, 303);
-            this.Selectdrenk.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.Selectdrenk.Name = "Selectdrenk";
-            this.Selectdrenk.Size = new System.Drawing.Size(121, 20);
-            this.Selectdrenk.TabIndex = 14;
-            this.Selectdrenk.Text = "Selected Drinks";
-            // 
-            // selectedDrinks_lv
-            // 
-            this.selectedDrinks_lv.HideSelection = false;
-            this.selectedDrinks_lv.Location = new System.Drawing.Point(573, 328);
-            this.selectedDrinks_lv.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.selectedDrinks_lv.Name = "selectedDrinks_lv";
-            this.selectedDrinks_lv.Size = new System.Drawing.Size(418, 193);
-            this.selectedDrinks_lv.TabIndex = 13;
-            this.selectedDrinks_lv.UseCompatibleStateImageBehavior = false;
-            // 
-            // pictureBox6
-            // 
-            this.pictureBox6.Image = global::SomerenUI.Properties.Resources.someren;
-            this.pictureBox6.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox6.InitialImage")));
-            this.pictureBox6.Location = new System.Drawing.Point(1208, 0);
-            this.pictureBox6.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(195, 189);
-            this.pictureBox6.TabIndex = 0;
-            this.pictureBox6.TabStop = false;
-            // 
             // pnl_Stock
             // 
             this.pnl_Stock.Controls.Add(this.btn_Refresh);
             this.pnl_Stock.Controls.Add(this.btn_Remove);
+            this.pnl_Stock.Controls.Add(this.pnl_OrderDrinks);
             this.pnl_Stock.Controls.Add(this.cbox_DeleteProduct);
             this.pnl_Stock.Controls.Add(this.cbox_ChangeProduct);
             this.pnl_Stock.Controls.Add(this.btn_Change);
@@ -1338,12 +1345,38 @@
             this.lbl_Stock.TabIndex = 3;
             this.lbl_Stock.Text = "Stock";
             // 
+            // LblQuartelOfText
+            // 
+            this.LblQuartelOfText.AutoSize = true;
+            this.LblQuartelOfText.Location = new System.Drawing.Point(459, 88);
+            this.LblQuartelOfText.Name = "LblQuartelOfText";
+            this.LblQuartelOfText.Size = new System.Drawing.Size(38, 20);
+            this.LblQuartelOfText.TabIndex = 22;
+            this.LblQuartelOfText.Text = " van";
+            // 
+            // LblQuartelYearText
+            // 
+            this.LblQuartelYearText.AutoSize = true;
+            this.LblQuartelYearText.Location = new System.Drawing.Point(374, 88);
+            this.LblQuartelYearText.Name = "LblQuartelYearText";
+            this.LblQuartelYearText.Size = new System.Drawing.Size(54, 20);
+            this.LblQuartelYearText.TabIndex = 23;
+            this.LblQuartelYearText.Text = "_____";
+            // 
+            // LblYearResult
+            // 
+            this.LblYearResult.AutoSize = true;
+            this.LblYearResult.Location = new System.Drawing.Point(503, 88);
+            this.LblYearResult.Name = "LblYearResult";
+            this.LblYearResult.Size = new System.Drawing.Size(54, 20);
+            this.LblYearResult.TabIndex = 24;
+            this.LblYearResult.Text = "_____";
+            // 
             // SomerenUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1443, 777);
-            this.Controls.Add(this.pnl_OrderDrinks);
             this.Controls.Add(this.pnl_Vat);
             this.Controls.Add(this.pnl_Stock);
             this.Controls.Add(this.menuStrip1);
@@ -1382,10 +1415,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.pnl_OrderDrinks.ResumeLayout(false);
             this.pnl_OrderDrinks.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.pnl_Vat.ResumeLayout(false);
             this.pnl_Vat.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.pnl_Stock.ResumeLayout(false);
             this.pnl_Stock.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.num_AmountChange)).EndInit();
@@ -1519,6 +1552,9 @@
         private System.Windows.Forms.Label LblQ2Click;
         private System.Windows.Forms.Label LblQ1Click;
         private System.Windows.Forms.Label LblQuarterText;
+        private System.Windows.Forms.Label LblYearResult;
+        private System.Windows.Forms.Label LblQuartelYearText;
+        private System.Windows.Forms.Label LblQuartelOfText;
     }
 }
 
