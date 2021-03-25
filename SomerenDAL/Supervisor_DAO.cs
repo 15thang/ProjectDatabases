@@ -14,6 +14,18 @@ namespace SomerenDAL
     {
         // Ruben Stoop
         // Opdracht B Week 4
+        // Inserts supervisor for activity
+        public void InsertSupervisor(Supervisor supervisor)
+        {
+            string query = "INSERT INTO Begeleider (ActiviteitID, DocentID) VALUES (@activiteitid, @docentid);";
+            SqlParameter[] sqlParameters = new SqlParameter[2];
+            sqlParameters[0] = new SqlParameter("@activiteitid", supervisor.ActivityID);
+            sqlParameters[1] = new SqlParameter("@docentid", supervisor.TeacherID);
+            ExecuteEditQuery(query, sqlParameters);
+        }
+
+        // Ruben Stoop
+        // Opdracht B Week 4
         // Gets all Supervisors with one specific activity ID
         public List<Supervisor> Db_Get_All_Supervisors_For_Activity(int ID)
         {
