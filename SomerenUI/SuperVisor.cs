@@ -157,13 +157,10 @@ namespace SomerenUI
                         break;
                     }
                 }
-                if(!Checktime)
-                {
-                    break;
-                } else
+                if(Checktime)
                 {
                     SuperSelectedTeachers.Add(t);
-                }
+                } 
             }
             return SuperSelectedTeachers;
         }
@@ -172,6 +169,7 @@ namespace SomerenUI
         {   
             bool Check = true;
 
+            
             if (activity.BeginTime < ActCheck.EndTime && ActCheck.BeginTime < activity.EndTime)
             {
                 Check = false;
