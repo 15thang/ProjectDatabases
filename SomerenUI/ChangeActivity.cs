@@ -35,49 +35,57 @@ namespace SomerenUI
             DateTime beginTime = dtp_ActivityBeginDate.Value.Date + dtp_ActivityBeginTime.Value.TimeOfDay; // Add Date and Time values together
             DateTime endTime = dtp_ActivityEndDate.Value.Date + dtp_ActivityEndTime.Value.TimeOfDay;
             string type = tb_type.Text;
-            if (beginTime < endTime && beginTime > DateTime.Now)
-            {
-                Activity activity = new Activity() // Makes new activity object
-                {
-                    ActivityId = Activity.ActivityId,
-                    Type = type,
-                    BeginTime = beginTime,
-                    EndTime = endTime
-                };
 
-                if (!Activity.Equals(activity)) // Checks if values were changed
+            if (tb_type.Text != "") // Checks if name isn't empty
+            {
+                if (beginTime < endTime && beginTime > DateTime.Now)
                 {
-                    bool exists = false;
-                    foreach (var item in ActivityList)
+                    Activity activity = new Activity() // Makes new activity object
                     {
-                        if (item.Type == type && item.ActivityId != activity.ActivityId)
+                        ActivityId = Activity.ActivityId,
+                        Type = type,
+                        BeginTime = beginTime,
+                        EndTime = endTime
+                    };
+
+                    if (!Activity.Equals(activity)) // Checks if values were changed
+                    {
+                        bool exists = false;
+                        foreach (var item in ActivityList)
                         {
-                            exists = true;
+                            if (item.Type == type && item.ActivityId != activity.ActivityId) // Checks if name doesn't already exist
+                            {
+                                exists = true;
+                            }
                         }
-                    }
-                    if (exists == false)
-                    {
-                        DialogResult confirm = MessageBox.Show($"The selected activity will be changed to have the values:\n\nActivity Name:\t{activity.Type}\nBegin Time:\t{activity.BeginTime.ToString("dd/MM/yyyy HH:mm")}\nEnd Time:\t{activity.EndTime.ToString("dd/MM/yyyy HH:mm")}", "Confirmation", MessageBoxButtons.OKCancel);
-                        if (confirm == DialogResult.OK) // If confirmed, change item
+                        if (exists == false) 
                         {
-                            Activity_Service actServ = new Activity_Service();
-                            actServ.Change_Activity(activity); // Change activity
-                            this.Close();
+                            DialogResult confirm = MessageBox.Show($"The selected activity will be changed to have the values:\n\nActivity Name:\t{activity.Type}\nBegin Time:\t{activity.BeginTime.ToString("dd/MM/yyyy HH:mm")}\nEnd Time:\t{activity.EndTime.ToString("dd/MM/yyyy HH:mm")}", "Confirmation", MessageBoxButtons.OKCancel);
+                            if (confirm == DialogResult.OK) // If confirmed, change item
+                            {
+                                Activity_Service actServ = new Activity_Service();
+                                actServ.Change_Activity(activity); // Change activity
+                                this.Close();
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("An activity with that name already exists!", "Error!");
                         }
                     }
                     else
                     {
-                        MessageBox.Show("An activity with that name already exists!", "Error!");
+                        MessageBox.Show("Values were not changed!", "Error!");
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Values were not changed!", "Error!");
+                    MessageBox.Show("Begin Time can not be later or equal to End Time, and not be in the past!", "Error!");
                 }
             }
             else
             {
-                MessageBox.Show("Begin Time can not be later or equal to End Time, and not be in the past!", "Error!");
+                MessageBox.Show("Activity Name can not be empty!", "Error!");
             }
         }
 
