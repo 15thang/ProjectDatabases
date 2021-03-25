@@ -181,7 +181,7 @@ namespace SomerenUI
                     arr[0] = t.TeacherID.ToString();
                     arr[1] = t.FirstName;
                     arr[2] = t.LastName;
-                    arr[3] = supService.FindType(t.TeacherID, activityList, supList); // find type of activities
+                    arr[3] = supService.FindActivities(t.TeacherID, activityList, supList); // find type of activities
                     itm = new ListViewItem(arr);
                     listViewTeachers.Items.Add(itm);
                 }
@@ -1382,6 +1382,10 @@ namespace SomerenUI
             SomerenLogic.Activity_Service actService = new SomerenLogic.Activity_Service();
             List<Activity> activityList = actService.GetActivities();
 
+            //list supervisors
+            SomerenLogic.Supervisor_Service supService = new SomerenLogic.Supervisor_Service();
+            List<Supervisor> supList = supService.GetSupervisorsWithActivitiesID();
+
             // Shows message box if there is an error
             Error_Show(actService);
 
@@ -1399,11 +1403,12 @@ namespace SomerenUI
             listViewActivities.Columns.Add("Type");
             listViewActivities.Columns.Add("Begin Time");
             listViewActivities.Columns.Add("End Time");
+            listViewActivities.Columns.Add("Supervised by");
 
             foreach (SomerenModel.Activity a in activityList)
             {
                 //Add items in the listview
-                string[] arr = new string[4];
+                string[] arr = new string[5];
                 ListViewItem itm;
 
                 //Add first item
@@ -1411,6 +1416,7 @@ namespace SomerenUI
                 arr[1] = a.Type;
                 arr[2] = a.BeginTime.ToString("dd/MM/yyyy (dddd) HH:mm");
                 arr[3] = a.EndTime.ToString("dd/MM/yyyy (dddd) HH:mm");
+                arr[4] = supService.FindSupervisors(a.ActivityId, supList);
                 itm = new ListViewItem(arr);
                 listViewActivities.Items.Add(itm);
             }

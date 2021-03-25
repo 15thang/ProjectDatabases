@@ -121,7 +121,7 @@ namespace SomerenLogic
         }
         // Tim Roffelsen
         // Searches for activities supervised by the teacher with given teacherID
-        public string FindType(int tId, List<Activity> activities, List<Supervisor> supervisors)
+        public string FindActivities(int tId, List<Activity> activities, List<Supervisor> supervisors)
         {
             string activitiesString = "";
             List<Supervisor> sups = new List<Supervisor>();
@@ -131,7 +131,7 @@ namespace SomerenLogic
             {
                 return "Checking errors in code";
             }
-            foreach (Supervisor supervisor in supervisors.FindAll(item => item.TeacherID == tId)) // find all items in supervisors matching teacherId
+            foreach (Supervisor supervisor in supervisors.FindAll(item => item.TeacherID == tId)) // find all items in supervisors matching TeacherID
             {
                 sups.Add(supervisor); // add into list sups when found
             }
@@ -150,6 +150,25 @@ namespace SomerenLogic
                 }
             }
             return activitiesString; // return string with all activities
+        }
+        // Tim Roffelsen
+        // Searches for supervisors matching activityId
+        public string FindSupervisors(int aId, List<Supervisor> supervisors)
+        {
+            string supervisorsString = "";
+
+            foreach (Supervisor supervisor in supervisors) // run through list supervisors
+            {
+                if (supervisor.ActivityID == aId) // if match with activityId add to list
+                {
+                    if (supervisorsString != "")
+                    {
+                        supervisorsString += ", "; // add comma after first word, but not after last
+                    }
+                    supervisorsString += supervisor.FirstName + " " + supervisor.LastName; // add to string
+                }
+            }
+            return supervisorsString;// return string with all supervisors
         }
     }
 }
