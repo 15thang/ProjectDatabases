@@ -15,6 +15,22 @@ namespace SomerenLogic
 
         // Ruben Stoop
         // Opdracht B Week 4
+        // Deletes supervisor for activty
+        public void DeleteSupervisorForActivity(int SupervisorID)
+        {
+            try
+            {
+                supervisor_db.DeleteSupervisor(SupervisorID);
+            }
+            catch (Exception e)
+            {
+                ErrorText = e.Message;
+                Error = true;
+            }
+        }
+
+        // Ruben Stoop
+        // Opdracht B Week 4
         // Inserts supervisor for activty
         public void Insert_Supervisor(Supervisor supervisor)
         {

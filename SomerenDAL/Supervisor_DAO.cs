@@ -14,6 +14,17 @@ namespace SomerenDAL
     {
         // Ruben Stoop
         // Opdracht B Week 4
+        // Deletes supervisor for activity
+        public void DeleteSupervisor(int SupervisorID)
+        {
+            string query = "DELETE FROM Begeleider WHERE BegeleiderID = @supervisor;";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@supervisor", SupervisorID);
+            ExecuteEditQuery(query, sqlParameters);
+        }
+
+        // Ruben Stoop
+        // Opdracht B Week 4
         // Inserts supervisor for activity
         public void InsertSupervisor(Supervisor supervisor)
         {

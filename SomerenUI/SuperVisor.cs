@@ -61,19 +61,21 @@ namespace SomerenUI
             Supervisor_LV.FullRowSelect = true;
 
             // add column header
+            Supervisor_LV.Columns.Add("Teacher ID");
             Supervisor_LV.Columns.Add("Supervisor ID");
             Supervisor_LV.Columns.Add("Supervisor First name");
             Supervisor_LV.Columns.Add("Supervisor Last name");
 
             foreach (SomerenModel.Supervisor sv in supervisors)
             {
-                string[] arr = new string[3];
+                string[] arr = new string[4];
                 ListViewItem li;
 
                 // Add the items
-                arr[0] = sv.SuperVisorID.ToString();
-                arr[1] = sv.FirstName;
-                arr[2] = sv.LastName;
+                arr[0] = sv.TeacherID.ToString();
+                arr[1] = sv.SuperVisorID.ToString();
+                arr[2] = sv.FirstName;
+                arr[3] = sv.LastName;
 
                 li = new ListViewItem(arr);
                 Supervisor_LV.Items.Add(li);
@@ -143,28 +145,51 @@ namespace SomerenUI
             //Makes The order service
             SomerenLogic.Supervisor_Service sup_Service = new SomerenLogic.Supervisor_Service();
 
+            int teacherID = 0;
+            // Get the student
+            if (TeacherListView.SelectedItems.Count > 0)
+            {
+                string selectTeacher = TeacherListView.SelectedItems[0].Text;
+                teacherID = int.Parse(selectTeacher);
 
-                int teacherID = 0;
-                // Get the student
-                if (TeacherListView.SelectedItems.Count > 0)
-                {
-                    string selectTeacher = TeacherListView.SelectedItems[0].Text;
-                    teacherID = int.Parse(selectTeacher);
+                Supervisor supervisor = new Supervisor();
+                supervisor.TeacherID = teacherID;
+                supervisor.ActivityID = Activity.ActivityId;
+                sup_Service.Insert_Supervisor(supervisor);
 
-                    Supervisor supervisor = new Supervisor();
-                    supervisor.TeacherID = teacherID;
-                    supervisor.ActivityID = Activity.ActivityId;
-                    sup_Service.Insert_Supervisor(supervisor);
+                //Shows messagebox and resets panel
+                FillListViews();
+                MessageBox.Show("Teacher added to supervisors for this activity", "Succes");
 
-                    //Shows messagebox and resets panel
-                    MessageBox.Show("Order added.", "Succes");
 
-                    FillListViews();
-                }
-                else
-                {
-                    MessageBox.Show("Select a teacher to add to the supervisor for this activity", "Error!");
-                }
+            }
+            else
+            {
+                MessageBox.Show("Select a teacher to add to the supervisor for this activity", "Error!");
+            }
+        }
+
+        private void removeBTN_Click(object sender, EventArgs e)
+        {
+            SomerenLogic.Supervisor_Service sup_Service = new SomerenLogic.Supervisor_Service();
+
+            int SupervisorID = 0;
+            // Get the student
+            if (Supervisor_LV.SelectedItems.Count > 0)
+            {
+                string selectSupervisor = Supervisor_LV.SelectedItems[0].SubItems[1].Text;
+                SupervisorID = int.Parse(selectSupervisor);
+
+                sup_Service.DeleteSupervisorForActivity(SupervisorID);
+
+                //Shows messagebox and resets panel
+                FillListViews();
+                MessageBox.Show("Supervisor succesfully deleted from activity", "Succes");
+            }
+            else
+            {
+                MessageBox.Show("Select a teacher to add to the supervisor for this activity", "Error!");
+            }
         }
     }
 }

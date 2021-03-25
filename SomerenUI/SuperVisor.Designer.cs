@@ -113,6 +113,7 @@ namespace SomerenUI
             this.removeBTN.TabIndex = 7;
             this.removeBTN.Text = "Remove Supervisor";
             this.removeBTN.UseVisualStyleBackColor = true;
+            this.removeBTN.Click += new System.EventHandler(this.removeBTN_Click);
             // 
             // label2
             // 
