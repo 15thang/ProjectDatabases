@@ -35,6 +35,9 @@ namespace SomerenUI
             this.endTimeLbl = new System.Windows.Forms.Label();
             this.Supervisor_LV = new System.Windows.Forms.ListView();
             this.label1 = new System.Windows.Forms.Label();
+            this.TeacherListView = new System.Windows.Forms.ListView();
+            this.removeBTN = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // ActivityTitleLabel
@@ -92,11 +95,41 @@ namespace SomerenUI
             this.label1.TabIndex = 5;
             this.label1.Text = "Supervisors for this activity";
             // 
+            // TeacherListView
+            // 
+            this.TeacherListView.HideSelection = false;
+            this.TeacherListView.Location = new System.Drawing.Point(28, 275);
+            this.TeacherListView.Name = "TeacherListView";
+            this.TeacherListView.Size = new System.Drawing.Size(434, 97);
+            this.TeacherListView.TabIndex = 6;
+            this.TeacherListView.UseCompatibleStateImageBehavior = false;
+            // 
+            // removeBTN
+            // 
+            this.removeBTN.Location = new System.Drawing.Point(28, 216);
+            this.removeBTN.Name = "removeBTN";
+            this.removeBTN.Size = new System.Drawing.Size(129, 23);
+            this.removeBTN.TabIndex = 7;
+            this.removeBTN.Text = "Remove Supervisor";
+            this.removeBTN.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(25, 259);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(167, 13);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "Available teachers for Supervision";
+            // 
             // SuperVisor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.removeBTN);
+            this.Controls.Add(this.TeacherListView);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Supervisor_LV);
             this.Controls.Add(this.endTimeLbl);
@@ -119,5 +152,8 @@ namespace SomerenUI
         private System.Windows.Forms.Label endTimeLbl;
         private System.Windows.Forms.ListView Supervisor_LV;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ListView TeacherListView;
+        private System.Windows.Forms.Button removeBTN;
+        private System.Windows.Forms.Label label2;
     }
 }

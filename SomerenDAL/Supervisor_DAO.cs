@@ -17,7 +17,7 @@ namespace SomerenDAL
         // Gets all Supervisors with one specific activity ID
         public List<Supervisor> Db_Get_All_Supervisors_For_Activity(int ID)
         {
-            string query = "SELECT B.BegeleiderID, P.Voornaam, P.Achternaam FROM Begeleider AS B INNER JOIN Docent AS D on B.DocentID = D.DocentID INNER JOIN Persoon AS P on D.PersoonID = P.PersoonID WHERE B.ActiviteitID = @id;";
+            string query = "SELECT B.BegeleiderID, P.Voornaam, P.Achternaam, D.DocentID FROM Begeleider AS B INNER JOIN Docent AS D on B.DocentID = D.DocentID INNER JOIN Persoon AS P on D.PersoonID = P.PersoonID WHERE B.ActiviteitID = @id;";
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@id", ID);
             return ReadSupervisorWithID(ExecuteSelectQuery(query, sqlParameters));
@@ -25,7 +25,7 @@ namespace SomerenDAL
 
         // Ruben Stoop
         // Opdracht B Week 4
-        //puts all supervisors into a list
+        // puts all supervisors into a list
         public List<Supervisor> ReadSupervisorWithID(DataTable dataTable)
         {
             List<Supervisor> supervisors = new List<Supervisor>();
@@ -43,6 +43,7 @@ namespace SomerenDAL
                     SuperVisorID = (int)dr["BegeleiderID"],
                     FirstName = (string)dr["Voornaam"],
                     LastName = (string)dr["Achternaam"],
+                    TeacherID = (int)dr["DocentID"],
                 };
                 supervisors.Add(supervisor);
             }

@@ -34,6 +34,7 @@ namespace SomerenLogic
                 s.ActivityID = -1;
                 s.FirstName = "TestVoornaam";
                 s.LastName = "TestAchternaam";
+                s.TeacherID = -1;
                 return supervisors;
             }
         }

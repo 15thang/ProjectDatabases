@@ -13,6 +13,8 @@ using System.Windows.Forms;
 
 namespace SomerenUI
 {
+    //Ruben Stoop
+    // Opdracht B Week 4
     public partial class SuperVisor : Form
     {
         public Activity Activity;
@@ -20,6 +22,9 @@ namespace SomerenUI
         SomerenLogic.Activity_Service actService = new SomerenLogic.Activity_Service();
 
         SomerenLogic.Supervisor_Service supService = new SomerenLogic.Supervisor_Service();
+
+        SomerenLogic.Teacher_Service teachService = new SomerenLogic.Teacher_Service();
+
 
         public SuperVisor(int ID)
         {
@@ -30,7 +35,7 @@ namespace SomerenUI
         private void SuperVisor_Load(object sender, EventArgs e)
         {
             SetLabels();
-            FillListView();
+            FillListViews();
         }
 
         private void SetLabels()
@@ -41,8 +46,7 @@ namespace SomerenUI
             endTimeLbl.Text += Activity.EndTime.ToString("dd/MM/yyyy HH:mm");
         }
 
-
-        private void FillListView()
+        private void FillListViews()
         {
             List<Supervisor> supervisors = supService.GetSupervisorsForOneActicity(Activity.ActivityId);
 
@@ -76,6 +80,56 @@ namespace SomerenUI
             {
                 ch.Width = -2;
             }
+
+            //Teachers listview
+            List<Teacher> Allteachers = teachService.GetTeachers();
+            List<Teacher> selectedTeachers = checkAvailableTeachers(Allteachers, supervisors);
+
+
+            TeacherListView.View = View.Details;
+            TeacherListView.GridLines = true;
+            TeacherListView.FullRowSelect = true;
+
+            // add column header
+            TeacherListView.Columns.Add("Teacher ID");
+            TeacherListView.Columns.Add("Teacher First name");
+            TeacherListView.Columns.Add("Teacher Last name");
+
+            foreach (SomerenModel.Teacher t in selectedTeachers)
+            {
+                string[] arr = new string[3];
+                ListViewItem li;
+
+                // Add the items
+                arr[0] = t.TeacherID.ToString();
+                arr[1] = t.FirstName;
+                arr[2] = t.LastName;
+
+                li = new ListViewItem(arr);
+                TeacherListView.Items.Add(li);
+            }
+
+            foreach (ColumnHeader ch in TeacherListView.Columns) // dynamically change column width
+            {
+                ch.Width = -2;
+            }
+        }
+
+
+        public List<Teacher> checkAvailableTeachers(List<Teacher> teacher, List<Supervisor> supervisors)
+        {
+            List<Teacher> selectedTeachers = new List<Teacher>();
+
+            foreach (Teacher t in teacher)
+            {
+                bool contains = supervisors.Any(p => p.TeacherID == t.TeacherID);
+                if (!contains)
+                {
+                    Console.WriteLine(t.FirstName);
+                    selectedTeachers.Add(t);
+                }
+            }
+            return selectedTeachers;
         }
 
     }

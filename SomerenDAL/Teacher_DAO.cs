@@ -12,6 +12,8 @@ namespace SomerenDAL
 {
     public class Teacher_DAO : Base
     {
+        // Ruben Stoop
+        // Opdracht B Week 4 Also uses this method
         // Tim Roffelsen
         // Data gets pulled from the database by the query, INNER JOIN is used to get data from 'Persoon' table
         public List<Teacher> Db_Get_All_Teachers()
