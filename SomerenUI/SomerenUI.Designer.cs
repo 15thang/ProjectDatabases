@@ -1383,9 +1383,9 @@
             this.label14.Location = new System.Drawing.Point(23, 9);
             this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(147, 29);
+            this.label14.Size = new System.Drawing.Size(141, 29);
             this.label14.TabIndex = 3;
-            this.label14.Text = "Super visors";
+            this.label14.Text = "Supervisors";
             // 
             // SuperVisor_LV
             // 
@@ -1396,6 +1396,7 @@
             this.SuperVisor_LV.Size = new System.Drawing.Size(650, 159);
             this.SuperVisor_LV.TabIndex = 6;
             this.SuperVisor_LV.UseCompatibleStateImageBehavior = false;
+            this.SuperVisor_LV.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.SuperVisor_LV_ColumnClick);
             // 
             // ActivitySuperVisor_LV
             // 
