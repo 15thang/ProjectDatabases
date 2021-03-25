@@ -13,7 +13,7 @@ namespace SomerenDAL
     public class Order_DAO : Base
     {
         // Ruben Stoop
-        // Opdracht B
+        // Opdracht B Week 4
         public void Insert_Order(Order order, List<Order_Product> order_Product)
         {
             //Datetime to a format sql can understand

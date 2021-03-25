@@ -13,7 +13,11 @@ using System.Windows.Forms;
 
 namespace SomerenUI
 {
-    //Ruben Stoop
+    // Ruben Stoop
+
+    // Because of our database a supervisor cannot exist without a Activity.
+    // Thats why we consider this exercise B.
+
     // Opdracht B Week 4
     public partial class SuperVisor : Form
     {
@@ -25,19 +29,24 @@ namespace SomerenUI
 
         SomerenLogic.Teacher_Service teachService = new SomerenLogic.Teacher_Service();
 
-
+        //Ruben Stoop
+        // Opdracht B Week 4
         public SuperVisor(int ID)
         {
             InitializeComponent();
             this.Activity = actService.GetActivity(ID);
         }
 
+        //Ruben Stoop
+        // Opdracht B Week 4
         private void SuperVisor_Load(object sender, EventArgs e)
         {
             SetLabels();
             FillListViews();
         }
 
+        //Ruben Stoop
+        // Opdracht B Week 4
         private void SetLabels()
         {
             idLbl.Text += Activity.ActivityId.ToString();
@@ -87,8 +96,10 @@ namespace SomerenUI
                 ch.Width = -2;
             }
 
-            //Teachers listview
-            //VALIDATION
+            // Ruben Stoop
+            // Opdracht B Week 4
+            // Teachers listview
+            // Checks if time overlapses and if teacher is already assigned to the activity
             List<Teacher> Allteachers = teachService.GetTeachers();
             List<Supervisor> Allsupervisors = supService.GetSupervisors();
             List<Activity> Allactivities = actService.GetActivities();
@@ -126,6 +137,7 @@ namespace SomerenUI
         }
 
 
+        //Checks the available teachers
         public List<Teacher> checkAvailableTeachers(List<Teacher> teacher, List<Supervisor> supervisors, List<Supervisor> Allsupervisors, List<Activity> Allactivities)
         {
 
@@ -141,8 +153,8 @@ namespace SomerenUI
                 }
             }
 
+            //Checks if the teacher already has a activity where the date and time overlapses.
             List<Teacher> SuperSelectedTeachers = new List<Teacher>();
-
             foreach (Teacher t in selectedTeachers)
             {
                 List<Activity> activitiesTeacher = GetActivitiesForTeacher(Allactivities, Allsupervisors, t.TeacherID);
@@ -165,6 +177,10 @@ namespace SomerenUI
             return SuperSelectedTeachers;
         }
 
+
+        // Ruben Stoop
+        // Opdracht B week 4
+        // Checks activities time
         public bool CheckTime(Activity ActCheck, Activity activity )
         {   
             bool Check = true;
@@ -177,6 +193,7 @@ namespace SomerenUI
             return Check;
         }
 
+        // Gets all the actvities for one specific teacher.
         public List<Activity> GetActivitiesForTeacher(List<Activity> Allactivities, List<Supervisor> Allsupervisors, int TeacherID)
         {
             List<Activity> activities = new List<Activity>();
@@ -200,11 +217,13 @@ namespace SomerenUI
             return activities;
         }
 
+        // This removes the Supervisor from the database and the listview
+        // The teacher still exists
         private void AddTeacherBTN_Click(object sender, EventArgs e)
         {
 
-            //Order
-            //Makes The order service
+            //Supervisor service
+            //Makes The sup service
             SomerenLogic.Supervisor_Service sup_Service = new SomerenLogic.Supervisor_Service();
 
             int teacherID = 0;
@@ -223,7 +242,6 @@ namespace SomerenUI
                 FillListViews();
                 MessageBox.Show("Teacher added to supervisors for this activity", "Succes");
 
-
             }
             else
             {
@@ -231,6 +249,9 @@ namespace SomerenUI
             }
         }
 
+
+        // This removes the Supervisor from the database and the listview
+        // The teacher still exists
         private void removeBTN_Click(object sender, EventArgs e)
         {
             SomerenLogic.Supervisor_Service sup_Service = new SomerenLogic.Supervisor_Service();
