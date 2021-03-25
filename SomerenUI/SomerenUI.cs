@@ -246,46 +246,8 @@ namespace SomerenUI
                 // show activities
                 pnl_Activities.Show();
 
-                // fill the students listview within the students panel with a list of teachers
-                SomerenLogic.Activity_Service actService = new SomerenLogic.Activity_Service();
-                List<Activity> activityList = actService.GetActivities();
-
-                // Shows message box if there is an error
-                Error_Show(actService);
-
-                // clear the listview before filling it again
-                listViewActivities.Clear();
-
-                // add grid lines, rows and enable sorting
-                listViewActivities.View = View.Details;
-                listViewActivities.GridLines = true;
-                listViewActivities.FullRowSelect = true;
-                listViewActivities.Sorting = SortOrder.Ascending;
-
-                // add column header
-                listViewActivities.Columns.Add("ActivityID");
-                listViewActivities.Columns.Add("Type");
-                listViewActivities.Columns.Add("Begin Time");
-                listViewActivities.Columns.Add("End Time");
-
-                foreach (SomerenModel.Activity a in activityList)
-                {
-                    //Add items in the listview
-                    string[] arr = new string[4];
-                    ListViewItem itm;
-
-                    //Add first item
-                    arr[0] = a.ActivityId.ToString();
-                    arr[1] = a.Type;
-                    arr[2] = a.BeginTime.ToString("dd/MM/yyyy (dddd) HH:mm");
-                    arr[3] = a.EndTime.ToString("dd/MM/yyyy (dddd) HH:mm");
-                    itm = new ListViewItem(arr);
-                    listViewActivities.Items.Add(itm);
-                }
-                foreach (ColumnHeader ch in listViewActivities.Columns) // dynamically change column width
-                {
-                    ch.Width = -2;
-                }
+                // refresh list
+                Activity_Refresh();
             }
             else if (panelName == "RoomsLayout")
             {
@@ -376,7 +338,7 @@ namespace SomerenUI
                 ActivitySuperVisor_LV.Columns.Add("Start time");
                 ActivitySuperVisor_LV.Columns.Add("End time");
 
-                foreach(SomerenModel.Activity a in activities)
+                foreach (SomerenModel.Activity a in activities)
                 {
                     string[] arr = new string[4];
                     ListViewItem li;
@@ -407,14 +369,14 @@ namespace SomerenUI
                 foreach (SomerenModel.Supervisor sv in supervisors)
                 {
                     Activity activity = new Activity();
-                    foreach(Activity a in activities)
+                    foreach (Activity a in activities)
                     {
-                        if(a.ActivityId == sv.ActivityID)
+                        if (a.ActivityId == sv.ActivityID)
                         {
                             activity = a;
                         }
                     }
-                   
+
 
                     string[] arr = new string[6];
                     ListViewItem li;
@@ -451,77 +413,16 @@ namespace SomerenUI
                 // show stock
                 pnl_Stock.Show();
 
-                // fill the stock listview within the stock panel with a list of products
-                SomerenLogic.Product_Service prodService = new SomerenLogic.Product_Service();
-                List<Product> stockList = prodService.GetStock();
-
-                // Shows message box if there is an error
-                Error_Show(prodService);
-
-                // clear the listview before filling it again
-                listViewStock.Clear();
-
-                // add grid lines, rows and enable sorting
-                listViewStock.View = View.Details;
-                listViewStock.GridLines = true;
-                listViewStock.FullRowSelect = true;
-
-                // add column header
-                listViewStock.Columns.Add("DrinkID");
-                listViewStock.Columns.Add("Product Name");
-                listViewStock.Columns.Add("Contains Alcohol");
-                listViewStock.Columns.Add("Price (€)");
-                listViewStock.Columns.Add("Stock");
-                listViewStock.Columns.Add("Sold");
-
-                foreach (SomerenModel.Product p in stockList)
-                {
-                    string[] arr = new string[6];
-                    ListViewItem li;
-
-                    // Add the items
-                    arr[0] = p.ProductID.ToString("00");
-                    arr[1] = p.ProductName;
-                    arr[2] = p.AlcoholString;
-                    arr[3] = p.Price.ToString("0.00");
-                    if (p.Stock < 10) // check stock amount
-                    {
-                        if (p.Stock == 0)
-                        {
-                            arr[4] += $"Stock empty ({p.Stock.ToString()})";
-                        }
-                        else
-                        {
-                            arr[4] += $"Stock almost empty ({p.Stock.ToString()})";
-                        }
-                    }
-                    else
-                    {
-                        arr[4] += $"Sufficient stock ({p.Stock.ToString()})";
-                    }
-                    arr[5] = p.Sold.ToString();
-                    li = new ListViewItem(arr);
-                    listViewStock.Items.Add(li);
-                }
-                foreach (ColumnHeader ch in listViewStock.Columns) // dynamically change column width
-                {
-                    ch.Width = -2;
-                }
-                foreach (ListViewItem item in listViewStock.Items) // if stock is empty or almost empty make text red
-                {
-                    if (listViewStock.Items[item.Index].SubItems[4].Text.Contains(("empty")))
-                    {
-                        listViewStock.Items[item.Index].UseItemStyleForSubItems = false;
-                        listViewStock.Items[item.Index].SubItems[4].ForeColor = Color.Red;
-                    }
-                }
+                // refresh stock
+                Stock_Refresh();
             }
+
             else if (panelName == "Vat")
             {
                 // Thomas Eddyson
                 HideAllPanels();
 
-                pnl_Vat.Show();                
+                pnl_Vat.Show();
 
                 Lbl_VatTarief.Text = "BTW Tarief Kwartaal";
                 LblQrtlFirstMonth.Text = "_____";
@@ -1027,7 +928,7 @@ namespace SomerenUI
             }
         }
 
-        private void btn_Change_Click(object sender, EventArgs e)
+        private void btn_StockChange_Click(object sender, EventArgs e)
         {
             // Tim Roffelsen
             Product_Service prodService = new Product_Service();
@@ -1088,7 +989,7 @@ namespace SomerenUI
             Product product = (Product)cbox_DeleteProduct.SelectedItem;
         }
 
-        private void btn_Remove_Click(object sender, EventArgs e)
+        private void btn_StockRemove_Click(object sender, EventArgs e)
         {
             // Tim Roffelsen
             Product_Service prodService = new Product_Service();
@@ -1194,8 +1095,10 @@ namespace SomerenUI
             }
             cbox_ChangeProduct.Width = DropDownWidth(cbox_ChangeProduct); // Set width of combobox
         }
-        private void btn_Refresh_Click(object sender, EventArgs e)
+        private void btn_StockRefresh_Click(object sender, EventArgs e)
         {
+            // Tim Roffelsen
+            // Refresh stock list
             Stock_Refresh();
         }
 
@@ -1471,6 +1374,83 @@ namespace SomerenUI
                     }
                 }
             }
+        }
+        public void Activity_Refresh() // Refresh listview
+        {
+            // Tim Roffelsen
+            // fill the students listview within the students panel with a list of teachers
+            SomerenLogic.Activity_Service actService = new SomerenLogic.Activity_Service();
+            List<Activity> activityList = actService.GetActivities();
+
+            // Shows message box if there is an error
+            Error_Show(actService);
+
+            // clear the listview before filling it again
+            listViewActivities.Clear();
+
+            // add grid lines, rows and enable sorting
+            listViewActivities.View = View.Details;
+            listViewActivities.GridLines = true;
+            listViewActivities.FullRowSelect = true;
+            listViewActivities.Sorting = SortOrder.Ascending;
+
+            // add column header
+            listViewActivities.Columns.Add("ActivityID");
+            listViewActivities.Columns.Add("Type");
+            listViewActivities.Columns.Add("Begin Time");
+            listViewActivities.Columns.Add("End Time");
+
+            foreach (SomerenModel.Activity a in activityList)
+            {
+                //Add items in the listview
+                string[] arr = new string[4];
+                ListViewItem itm;
+
+                //Add first item
+                arr[0] = a.ActivityId.ToString();
+                arr[1] = a.Type;
+                arr[2] = a.BeginTime.ToString("dd/MM/yyyy (dddd) HH:mm");
+                arr[3] = a.EndTime.ToString("dd/MM/yyyy (dddd) HH:mm");
+                itm = new ListViewItem(arr);
+                listViewActivities.Items.Add(itm);
+            }
+            foreach (ColumnHeader ch in listViewActivities.Columns) // dynamically change column width
+            {
+                ch.Width = -2;
+            }
+        }
+        private void listViewActivities_DoubleClick(object sender, EventArgs e)
+        {
+            // Tim Roffelsen
+            // Change or Delete an activity
+            int activityId = int.Parse(listViewActivities.SelectedItems[0].Text);
+
+            SomerenLogic.Activity_Service actService = new SomerenLogic.Activity_Service();
+            List<Activity> activityList = actService.GetActivities();
+
+            Activity activity = activityList.Find(x => x.ActivityId == activityId); // find activity in list
+            var ChangeActivity = new ChangeActivity(activity, activityList);
+
+            ChangeActivity.ShowDialog();
+        }
+
+        private void btn_ActivityRefresh_Click(object sender, EventArgs e)
+        {
+            // Tim Roffelsen
+            // Refresh activity list
+            Activity_Refresh();
+        }
+
+        private void btn_AddActivity_Click(object sender, EventArgs e)
+        {
+            // Tim Roffelsen
+            // Add an activity
+            SomerenLogic.Activity_Service actService = new SomerenLogic.Activity_Service();
+            List<Activity> activityList = actService.GetActivities();
+
+            var AddActivity = new AddActivity(activityList); // adds list to check for duplicate names
+
+            AddActivity.ShowDialog();
         }
     }
 }
