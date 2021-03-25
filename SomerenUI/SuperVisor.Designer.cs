@@ -120,9 +120,9 @@ namespace SomerenUI
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(25, 259);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(167, 13);
+            this.label2.Size = new System.Drawing.Size(306, 13);
             this.label2.TabIndex = 8;
-            this.label2.Text = "Available teachers for Supervision";
+            this.label2.Text = "Available teachers for Supervision (This is filtered on availability)";
             // 
             // AddTeacherBTN
             // 
