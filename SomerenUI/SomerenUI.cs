@@ -1432,6 +1432,7 @@ namespace SomerenUI
             var ChangeActivity = new ChangeActivity(activity, activityList);
 
             ChangeActivity.ShowDialog();
+            Activity_Refresh();
         }
 
         private void btn_ActivityRefresh_Click(object sender, EventArgs e)
@@ -1451,6 +1452,7 @@ namespace SomerenUI
             var AddActivity = new AddActivity(activityList); // adds list to check for duplicate names
 
             AddActivity.ShowDialog();
+            Activity_Refresh();
         }
     }
 }
