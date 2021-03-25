@@ -88,8 +88,11 @@ namespace SomerenUI
             }
 
             //Teachers listview
+            //VALIDATION
             List<Teacher> Allteachers = teachService.GetTeachers();
-            List<Teacher> selectedTeachers = checkAvailableTeachers(Allteachers, supervisors);
+            List<Supervisor> Allsupervisors = supService.GetSupervisors();
+            List<Activity> Allactivities = actService.GetActivities();
+            List<Teacher> selectedTeachers = checkAvailableTeachers(Allteachers, supervisors, Allsupervisors, Allactivities);
 
 
             TeacherListView.View = View.Details;
@@ -123,10 +126,12 @@ namespace SomerenUI
         }
 
 
-        public List<Teacher> checkAvailableTeachers(List<Teacher> teacher, List<Supervisor> supervisors)
+        public List<Teacher> checkAvailableTeachers(List<Teacher> teacher, List<Supervisor> supervisors, List<Supervisor> Allsupervisors, List<Activity> Allactivities)
         {
+
             List<Teacher> selectedTeachers = new List<Teacher>();
 
+            //Checks if teacher is already supervising activity
             foreach (Teacher t in teacher)
             {
                 bool contains = supervisors.Any(p => p.TeacherID == t.TeacherID);
@@ -135,7 +140,66 @@ namespace SomerenUI
                     selectedTeachers.Add(t);
                 }
             }
-            return selectedTeachers;
+
+            List<Teacher> SuperSelectedTeachers = new List<Teacher>();
+
+            foreach (Teacher t in selectedTeachers)
+            {
+                List<Activity> activitiesTeacher = GetActivitiesForTeacher(Allactivities, Allsupervisors, t.TeacherID);
+
+                bool Checktime = true;
+                foreach (Activity a in activitiesTeacher)
+                {
+                    Checktime = CheckTime(a, Activity);
+
+                    if(!Checktime)
+                    {
+                        break;
+                    }
+                }
+                if(!Checktime)
+                {
+                    break;
+                } else
+                {
+                    SuperSelectedTeachers.Add(t);
+                }
+            }
+            return SuperSelectedTeachers;
+        }
+
+        public bool CheckTime(Activity ActCheck, Activity activity )
+        {   
+            bool Check = true;
+
+            if (activity.BeginTime < ActCheck.EndTime && ActCheck.BeginTime < activity.EndTime)
+            {
+                Check = false;
+            }
+            return Check;
+        }
+
+        public List<Activity> GetActivitiesForTeacher(List<Activity> Allactivities, List<Supervisor> Allsupervisors, int TeacherID)
+        {
+            List<Activity> activities = new List<Activity>();
+            List<Supervisor> SelectSupervisors = new List<Supervisor>();
+            foreach(Supervisor sv in Allsupervisors)
+            {
+                if(sv.TeacherID == TeacherID)
+                {
+                    SelectSupervisors.Add(sv);
+                }
+            }
+
+            foreach(Activity a in Allactivities)
+            {
+                bool contains = SelectSupervisors.Any(p => p.ActivityID == a.ActivityId);
+                if(contains)
+                {
+                    activities.Add(a);
+                }
+            }
+            return activities;
         }
 
         private void AddTeacherBTN_Click(object sender, EventArgs e)
