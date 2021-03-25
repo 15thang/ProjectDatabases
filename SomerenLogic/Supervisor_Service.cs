@@ -15,6 +15,22 @@ namespace SomerenLogic
 
         // Ruben Stoop
         // Opdracht B Week 4
+        // Inserts supervisor for activty
+        public void Insert_Supervisor(Supervisor supervisor)
+        {
+            try
+            {
+                supervisor_db.InsertSupervisor(supervisor);
+            }
+            catch (Exception e)
+            {
+                ErrorText = e.Message;
+                Error = true;
+            }
+        }
+
+        // Ruben Stoop
+        // Opdracht B Week 4
         // Retrieves List with the Supervisors for 1 activity
         public List<Supervisor> GetSupervisorsForOneActicity(int ID)
         {

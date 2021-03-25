@@ -50,6 +50,10 @@ namespace SomerenUI
         {
             List<Supervisor> supervisors = supService.GetSupervisorsForOneActicity(Activity.ActivityId);
 
+            // clear the listview and comboboxes
+            Supervisor_LV.Clear();
+            TeacherListView.Clear();
+
 
             //Setting up Supervisor listview
             Supervisor_LV.View = View.Details;
@@ -89,6 +93,7 @@ namespace SomerenUI
             TeacherListView.View = View.Details;
             TeacherListView.GridLines = true;
             TeacherListView.FullRowSelect = true;
+            TeacherListView.MultiSelect = false;
 
             // add column header
             TeacherListView.Columns.Add("Teacher ID");
@@ -125,12 +130,41 @@ namespace SomerenUI
                 bool contains = supervisors.Any(p => p.TeacherID == t.TeacherID);
                 if (!contains)
                 {
-                    Console.WriteLine(t.FirstName);
                     selectedTeachers.Add(t);
                 }
             }
             return selectedTeachers;
         }
 
+        private void AddTeacherBTN_Click(object sender, EventArgs e)
+        {
+
+            //Order
+            //Makes The order service
+            SomerenLogic.Supervisor_Service sup_Service = new SomerenLogic.Supervisor_Service();
+
+
+                int teacherID = 0;
+                // Get the student
+                if (TeacherListView.SelectedItems.Count > 0)
+                {
+                    string selectTeacher = TeacherListView.SelectedItems[0].Text;
+                    teacherID = int.Parse(selectTeacher);
+
+                    Supervisor supervisor = new Supervisor();
+                    supervisor.TeacherID = teacherID;
+                    supervisor.ActivityID = Activity.ActivityId;
+                    sup_Service.Insert_Supervisor(supervisor);
+
+                    //Shows messagebox and resets panel
+                    MessageBox.Show("Order added.", "Succes");
+
+                    FillListViews();
+                }
+                else
+                {
+                    MessageBox.Show("Select a teacher to add to the supervisor for this activity", "Error!");
+                }
+        }
     }
 }
