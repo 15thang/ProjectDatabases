@@ -1405,11 +1405,17 @@ namespace SomerenUI
             Activity_Refresh();
         }
 
+        // Ruben Stoop
+        // Opdracht B Week 4
+        // Add, edit and delete functions Teacher
         private void GoToTeachersBTN_Click(object sender, EventArgs e)
         {
             showPanel("Teachers");
         }
 
+        // Ruben Stoop
+        // Opdracht B Week 4
+        // Opens form to add teacher
         private void addTeacherBTN_Click(object sender, EventArgs e)
         {
             string panelName = "Addteacher";
@@ -1417,6 +1423,10 @@ namespace SomerenUI
             form.ShowDialog();
             FillTeachersPanel();
         }
+
+        // Ruben Stoop
+        // Opdracht B Week 4
+        // Removes the teacher
         private void removeTbtn_Click(object sender, EventArgs e)
         {
             SomerenLogic.Teacher_Service teach_Service = new SomerenLogic.Teacher_Service();
