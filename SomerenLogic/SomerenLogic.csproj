@@ -47,6 +47,7 @@
     <Compile Include="Order_Service.cs" />
     <Compile Include="Product_Service.cs" />
     <Compile Include="RoomLayout_Service.cs" />
+    <Compile Include="WeekRoster_Service.cs" />
     <Compile Include="Room_Service.cs" />
     <Compile Include="Supervisor_Service.cs" />
     <Compile Include="Vat_Service.cs" />
