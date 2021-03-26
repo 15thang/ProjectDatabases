@@ -18,9 +18,12 @@ namespace SomerenUI
     // Because of our database a supervisor cannot exist without a Activity.
     // Thats why we consider this exercise B.
 
+
     // Opdracht B Week 4
     public partial class SuperVisor : Form
     {
+        private ListViewColumnSorter lvwColumnSorter;
+
         public Activity Activity;
 
         SomerenLogic.Activity_Service actService = new SomerenLogic.Activity_Service();
@@ -35,6 +38,10 @@ namespace SomerenUI
         {
             InitializeComponent();
             this.Activity = actService.GetActivity(ID);
+
+            lvwColumnSorter = new ListViewColumnSorter();
+            this.TeacherListView.ListViewItemSorter = lvwColumnSorter;
+            this.Supervisor_LV.ListViewItemSorter = lvwColumnSorter;
         }
 
         //Ruben Stoop
@@ -68,6 +75,8 @@ namespace SomerenUI
             Supervisor_LV.View = View.Details;
             Supervisor_LV.GridLines = true;
             Supervisor_LV.FullRowSelect = true;
+            Supervisor_LV.Sorting = SortOrder.Ascending;
+
 
             // add column header
             Supervisor_LV.Columns.Add("Teacher ID");
@@ -105,7 +114,7 @@ namespace SomerenUI
             List<Activity> Allactivities = actService.GetActivities();
             List<Teacher> selectedTeachers = checkAvailableTeachers(Allteachers, supervisors, Allsupervisors, Allactivities);
 
-
+            TeacherListView.Sorting = SortOrder.Ascending;
             TeacherListView.View = View.Details;
             TeacherListView.GridLines = true;
             TeacherListView.FullRowSelect = true;
@@ -273,6 +282,65 @@ namespace SomerenUI
             {
                 MessageBox.Show("Select a teacher to add to the supervisor for this activity", "Error!");
             }
+        }
+
+        private void toTeachersBTN_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+        }
+
+        private void Supervisor_LV_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            // Tim Roffelsen
+            // Determine if clicked column is already the column that is being sorted.
+            if (e.Column == lvwColumnSorter.SortColumn)
+            {
+                // Reverse the current sort direction for this column.
+                if (lvwColumnSorter.Order == SortOrder.Ascending)
+                {
+                    lvwColumnSorter.Order = SortOrder.Descending;
+                }
+                else
+                {
+                    lvwColumnSorter.Order = SortOrder.Ascending;
+                }
+            }
+            else
+            {
+                // Set the column number that is to be sorted; default to ascending.
+                lvwColumnSorter.SortColumn = e.Column;
+                lvwColumnSorter.Order = SortOrder.Ascending;
+            }
+
+            // Perform the sort with these new sort options.
+            this.Supervisor_LV.Sort();
+        }
+
+        private void TeacherListView_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            // Tim Roffelsen
+            // Determine if clicked column is already the column that is being sorted.
+            if (e.Column == lvwColumnSorter.SortColumn)
+            {
+                // Reverse the current sort direction for this column.
+                if (lvwColumnSorter.Order == SortOrder.Ascending)
+                {
+                    lvwColumnSorter.Order = SortOrder.Descending;
+                }
+                else
+                {
+                    lvwColumnSorter.Order = SortOrder.Ascending;
+                }
+            }
+            else
+            {
+                // Set the column number that is to be sorted; default to ascending.
+                lvwColumnSorter.SortColumn = e.Column;
+                lvwColumnSorter.Order = SortOrder.Ascending;
+            }
+
+            // Perform the sort with these new sort options.
+            this.TeacherListView.Sort();
         }
     }
 }

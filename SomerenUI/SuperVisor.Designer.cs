@@ -39,6 +39,7 @@ namespace SomerenUI
             this.removeBTN = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.AddTeacherBTN = new System.Windows.Forms.Button();
+            this.CancelBTN = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // ActivityTitleLabel
@@ -86,6 +87,7 @@ namespace SomerenUI
             this.Supervisor_LV.Size = new System.Drawing.Size(434, 97);
             this.Supervisor_LV.TabIndex = 4;
             this.Supervisor_LV.UseCompatibleStateImageBehavior = false;
+            this.Supervisor_LV.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.Supervisor_LV_ColumnClick);
             // 
             // label1
             // 
@@ -104,6 +106,7 @@ namespace SomerenUI
             this.TeacherListView.Size = new System.Drawing.Size(434, 97);
             this.TeacherListView.TabIndex = 6;
             this.TeacherListView.UseCompatibleStateImageBehavior = false;
+            this.TeacherListView.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.TeacherListView_ColumnClick);
             // 
             // removeBTN
             // 
@@ -134,11 +137,22 @@ namespace SomerenUI
             this.AddTeacherBTN.UseVisualStyleBackColor = true;
             this.AddTeacherBTN.Click += new System.EventHandler(this.AddTeacherBTN_Click);
             // 
+            // CancelBTN
+            // 
+            this.CancelBTN.Location = new System.Drawing.Point(534, 296);
+            this.CancelBTN.Name = "CancelBTN";
+            this.CancelBTN.Size = new System.Drawing.Size(169, 55);
+            this.CancelBTN.TabIndex = 10;
+            this.CancelBTN.Text = "Cancel ";
+            this.CancelBTN.UseVisualStyleBackColor = true;
+            this.CancelBTN.Click += new System.EventHandler(this.toTeachersBTN_Click);
+            // 
             // SuperVisor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.CancelBTN);
             this.Controls.Add(this.AddTeacherBTN);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.removeBTN);
@@ -169,5 +183,6 @@ namespace SomerenUI
         private System.Windows.Forms.Button removeBTN;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button AddTeacherBTN;
+        private System.Windows.Forms.Button CancelBTN;
     }
 }
