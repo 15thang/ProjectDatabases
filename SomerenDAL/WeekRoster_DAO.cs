@@ -34,7 +34,7 @@ namespace SomerenDAL
             foreach (DataRow dr in dataTable.Rows)
             {
                 date.Date = (DateTime)dr["Begintijd"];
-                date.DayOfWeek = (int)date.Date.DayOfWeek;
+                date.DayOfWeek = (int)date.Date.DayOfWeek;                
 
                 WeekRoster activityRoster = new WeekRoster()
                 {
