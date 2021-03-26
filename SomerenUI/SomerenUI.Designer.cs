@@ -56,6 +56,9 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lbl_Students = new System.Windows.Forms.Label();
             this.pnl_Teachers = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.editBTN = new System.Windows.Forms.Button();
+            this.removeTbtn = new System.Windows.Forms.Button();
             this.addTeacherBTN = new System.Windows.Forms.Button();
             this.listViewTeachers = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -168,9 +171,6 @@
             this.pnl_Supervisors = new System.Windows.Forms.Panel();
             this.GoToTeachersBTN = new System.Windows.Forms.Button();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
-            this.removeTbtn = new System.Windows.Forms.Button();
-            this.editBTN = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
             this.pnl_WeekRoster = new System.Windows.Forms.Panel();
             this.listViewWeekRoster = new System.Windows.Forms.ListView();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -219,7 +219,7 @@
             this.weekRoosterToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1443, 33);
+            this.menuStrip1.Size = new System.Drawing.Size(1443, 36);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -436,6 +436,35 @@
             this.pnl_Teachers.Name = "pnl_Teachers";
             this.pnl_Teachers.Size = new System.Drawing.Size(1407, 717);
             this.pnl_Teachers.TabIndex = 6;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(19, 352);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(255, 20);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "Select a teacher to edit or delete it.";
+            // 
+            // editBTN
+            // 
+            this.editBTN.Location = new System.Drawing.Point(287, 379);
+            this.editBTN.Name = "editBTN";
+            this.editBTN.Size = new System.Drawing.Size(89, 23);
+            this.editBTN.TabIndex = 8;
+            this.editBTN.Text = "Edit teacher";
+            this.editBTN.UseVisualStyleBackColor = true;
+            this.editBTN.Click += new System.EventHandler(this.editBTN_Click);
+            // 
+            // removeTbtn
+            // 
+            this.removeTbtn.Location = new System.Drawing.Point(156, 379);
+            this.removeTbtn.Name = "removeTbtn";
+            this.removeTbtn.Size = new System.Drawing.Size(99, 23);
+            this.removeTbtn.TabIndex = 7;
+            this.removeTbtn.Text = "Remove teacher";
+            this.removeTbtn.UseVisualStyleBackColor = true;
+            this.removeTbtn.Click += new System.EventHandler(this.removeTbtn_Click);
             // 
             // addTeacherBTN
             // 
@@ -1518,7 +1547,7 @@
             this.label7.Location = new System.Drawing.Point(27, 49);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(400, 17);
+            this.label7.Size = new System.Drawing.Size(608, 25);
             this.label7.TabIndex = 12;
             this.label7.Text = "Activities (Select an activity to add, edit or delete a supervisor)";
             // 
@@ -1557,41 +1586,12 @@
             this.pictureBox8.TabIndex = 0;
             this.pictureBox8.TabStop = false;
             // 
-            // removeTbtn
-            // 
-            this.removeTbtn.Location = new System.Drawing.Point(156, 379);
-            this.removeTbtn.Name = "removeTbtn";
-            this.removeTbtn.Size = new System.Drawing.Size(99, 23);
-            this.removeTbtn.TabIndex = 7;
-            this.removeTbtn.Text = "Remove teacher";
-            this.removeTbtn.UseVisualStyleBackColor = true;
-            this.removeTbtn.Click += new System.EventHandler(this.removeTbtn_Click);
-            // 
-            // editBTN
-            // 
-            this.editBTN.Location = new System.Drawing.Point(287, 379);
-            this.editBTN.Name = "editBTN";
-            this.editBTN.Size = new System.Drawing.Size(89, 23);
-            this.editBTN.TabIndex = 8;
-            this.editBTN.Text = "Edit teacher";
-            this.editBTN.UseVisualStyleBackColor = true;
-            this.editBTN.Click += new System.EventHandler(this.editBTN_Click);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(19, 352);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(172, 13);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "Select a teacher to edit or delete it.";
-            // 
             // pnl_WeekRoster
             // 
             this.pnl_WeekRoster.Controls.Add(this.listViewWeekRoster);
             this.pnl_WeekRoster.Controls.Add(this.pictureBox2);
             this.pnl_WeekRoster.Controls.Add(this.Lbl_WeekRoster);
-            this.pnl_WeekRoster.Location = new System.Drawing.Point(34, 0);
+            this.pnl_WeekRoster.Location = new System.Drawing.Point(0, 0);
             this.pnl_WeekRoster.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pnl_WeekRoster.Name = "pnl_WeekRoster";
             this.pnl_WeekRoster.Size = new System.Drawing.Size(1407, 680);
@@ -1607,7 +1607,9 @@
             this.listViewWeekRoster.Name = "listViewWeekRoster";
             this.listViewWeekRoster.Size = new System.Drawing.Size(1147, 470);
             this.listViewWeekRoster.TabIndex = 6;
+            this.listViewWeekRoster.TileSize = new System.Drawing.Size(300, 44);
             this.listViewWeekRoster.UseCompatibleStateImageBehavior = false;
+            this.listViewWeekRoster.View = System.Windows.Forms.View.Tile;
             // 
             // pictureBox2
             // 
@@ -1635,11 +1637,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(962, 505);
-            this.Controls.Add(this.pnl_Supervisors);
-            this.Controls.Add(this.pnl_Teachers);
             this.ClientSize = new System.Drawing.Size(1443, 777);
             this.Controls.Add(this.pnl_WeekRoster);
+            this.Controls.Add(this.pnl_Supervisors);
+            this.Controls.Add(this.pnl_Teachers);
             this.Controls.Add(this.pnl_Activities);
             this.Controls.Add(this.pnl_Vat);
             this.Controls.Add(this.pnl_Stock);

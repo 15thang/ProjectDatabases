@@ -386,70 +386,46 @@ namespace SomerenUI
                 pnl_WeekRoster.Show();
 
                 SomerenLogic.WeekRoster_Service weekRosterService = new SomerenLogic.WeekRoster_Service();
-                List<WeekRoster> weekRosters = weekRosterService.GetWeekRosters();                
+                List<WeekRoster> weekRosters = weekRosterService.GetWeekRosters();
 
                 ListViewGroup monday = new ListViewGroup("Maandag", HorizontalAlignment.Left);
                 ListViewGroup tuesday = new ListViewGroup("Dinsdag", HorizontalAlignment.Left);
                 ListViewGroup wednesday = new ListViewGroup("Woensdag", HorizontalAlignment.Left);
                 ListViewGroup thursday = new ListViewGroup("Donderdag", HorizontalAlignment.Left);
-                ListViewGroup friday = new ListViewGroup("Vrijdag", HorizontalAlignment.Left);                
+                ListViewGroup friday = new ListViewGroup("Vrijdag", HorizontalAlignment.Left);
 
-                listViewWeekRoster.Groups.Add(monday);
-                listViewWeekRoster.Groups.Add(tuesday);
-                listViewWeekRoster.Groups.Add(wednesday);
-                listViewWeekRoster.Groups.Add(thursday);
-                listViewWeekRoster.Groups.Add(friday);
+                listViewWeekRoster.Width = listViewWeekRoster.Width - 2;
 
                 foreach (SomerenModel.WeekRoster wkr in weekRosters)
-                {
-                    string[] arr = new string[4];
-                    
-                    arr[0] = wkr.ActivityName.ToString();
-                    arr[1] = wkr.FirstName + wkr.LastName;
-                    arr[2] = wkr.BeginTime.ToString("HH:mm");
-                    arr[3] = wkr.EndTime.ToString("HH:mm");
+                {                    
 
                     switch (wkr.DayOfWeek)
                     {
-                        case 1:
-                            listViewWeekRoster.Items.Add(new ListViewItem(arr[0], monday));
-                            listViewWeekRoster.Items.Add(new ListViewItem(arr[1], monday));
-                            listViewWeekRoster.Items.Add(new ListViewItem(arr[2], monday));
-                            listViewWeekRoster.Items.Add(new ListViewItem(arr[3], monday));
+                        case 1:                            
+                            listViewWeekRoster.Items.Add(new ListViewItem(string.Format("Activiteit: {0}, \nBegeleider: {1}, \nBegin tijd: {2}, \n Eind tijd: {3}", wkr.ActivityName, wkr.FirstName + " " + wkr.LastName, wkr.BeginTime.ToString("HH:mm"), wkr.EndTime.ToString("HH:mm"), -2), monday));
                             break;
-                        case 2:
-                            listViewWeekRoster.Items.Add(new ListViewItem(arr[0], tuesday));
-                            listViewWeekRoster.Items.Add(new ListViewItem(arr[1], tuesday));
-                            listViewWeekRoster.Items.Add(new ListViewItem(arr[2], tuesday));
-                            listViewWeekRoster.Items.Add(new ListViewItem(arr[3], tuesday));
+                        case 2:                            
+                            listViewWeekRoster.Items.Add(new ListViewItem(string.Format("Activiteit: {0}, \nBegeleider: {1}, \nBegin tijd: {2}, \n Eind tijd: {3}", wkr.ActivityName, wkr.FirstName + " " + wkr.LastName, wkr.BeginTime.ToString("HH:mm"), wkr.EndTime.ToString("HH:mm"), -2), tuesday));
                             break;
-                        case 3:
-                            listViewWeekRoster.Items.Add(new ListViewItem(arr[0], wednesday));
-                            listViewWeekRoster.Items.Add(new ListViewItem(arr[1], wednesday));
-                            listViewWeekRoster.Items.Add(new ListViewItem(arr[2], wednesday));
-                            listViewWeekRoster.Items.Add(new ListViewItem(arr[3], wednesday));
+                        case 3:                            
+                            listViewWeekRoster.Items.Add(new ListViewItem(string.Format("Activiteit: {0}, \nBegeleider: {1}, \nBegin tijd: {2}, \n Eind tijd: {3}", wkr.ActivityName, wkr.FirstName + " " + wkr.LastName, wkr.BeginTime.ToString("HH:mm"), wkr.EndTime.ToString("HH:mm"), -2), wednesday));
                             break;
-                        case 4:
-                            listViewWeekRoster.Items.Add(new ListViewItem(arr[0], thursday));
-                            listViewWeekRoster.Items.Add(new ListViewItem(arr[1], thursday));
-                            listViewWeekRoster.Items.Add(new ListViewItem(arr[2], thursday));
-                            listViewWeekRoster.Items.Add(new ListViewItem(arr[3], thursday));
+                        case 4:                            
+                            listViewWeekRoster.Items.Add(new ListViewItem(string.Format("Activiteit: {0}, \nBegeleider: {1}, \nBegin tijd: {2}, \n Eind tijd: {3}", wkr.ActivityName, wkr.FirstName + " " + wkr.LastName, wkr.BeginTime.ToString("HH:mm"), wkr.EndTime.ToString("HH:mm"), -2), thursday));                            
                             break;
-                        case 5:
-                            listViewWeekRoster.Items.Add(new ListViewItem(arr[0], friday));
-                            listViewWeekRoster.Items.Add(new ListViewItem(arr[1], friday));
-                            listViewWeekRoster.Items.Add(new ListViewItem(arr[2], friday));
-                            listViewWeekRoster.Items.Add(new ListViewItem(arr[3], friday));
+                        case 5:                            
+                            listViewWeekRoster.Items.Add(new ListViewItem(string.Format("Activiteit: {0}, \nBegeleider: {1}, \nBegin tijd: {2}, \n Eind tijd: {3}", wkr.ActivityName, wkr.FirstName + " " + wkr.LastName, wkr.BeginTime.ToString("HH:mm"), wkr.EndTime.ToString("HH:mm"), -2), friday));                            
                             break;
                         default:
                             break;
                     }
                 }
 
-                foreach (ColumnHeader ch in listViewWeekRoster.Columns) // dynamically change column width
-                {
-                    ch.Width = -2;
-                }
+                listViewWeekRoster.Groups.Add(monday);
+                listViewWeekRoster.Groups.Add(tuesday);
+                listViewWeekRoster.Groups.Add(wednesday);
+                listViewWeekRoster.Groups.Add(thursday);
+                listViewWeekRoster.Groups.Add(friday);                
             }
 
             switch (panelName)
