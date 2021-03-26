@@ -74,5 +74,42 @@ namespace SomerenLogic
                 // something went wrong connecting to the database, so we will add a fake student to the list to make sure the rest of the application continues working!
             }
         }
+
+        public Teacher GetTeacher(int ID)
+        {
+            try
+            {
+                Teacher teacher = teacher_db.Db_Get_Teacher(ID);
+                return teacher;
+            }
+            catch (Exception e)
+            {
+                ErrorText = e.Message;
+                Error = true;
+                //throw new Exception(e.Message);
+                // something went wrong connecting to the database, so we will add a fake teacher to the list to make sure the rest of the application continues working!
+                Teacher a = new Teacher();
+                a.FirstName = "Error";
+                return a;
+            }
+        }
+
+        // Ruben Stoop
+        // Opdracht B
+        // Week 4
+        // Updates the teacher
+        public void Update_Teacher(Teacher teacher)
+        {
+            try
+            {
+                teacher_db.UpdateTeacher(teacher);
+            }
+            catch (Exception e)
+            {
+                ErrorText = e.Message;
+                Error = true;
+                // something went wrong connecting to the database, so we will add a fake student to the list to make sure the rest of the application continues working!
+            }
+        }
     }
 }

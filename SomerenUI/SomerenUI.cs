@@ -1319,6 +1319,7 @@ namespace SomerenUI
                 }
             }
         }
+
         public void Activity_Refresh() // Refresh listview
         {
             // Tim Roffelsen
@@ -1510,6 +1511,34 @@ namespace SomerenUI
             foreach (ColumnHeader ch in listViewTeachers.Columns) // dynamically change column width
             {
                 ch.Width = -2;
+            }
+        }
+
+        private void editBTN_Click(object sender, EventArgs e)
+        {
+
+            int teacherID = 0;
+            string panelName = "EditTeacher";
+            // Get the student
+            if (listViewTeachers.SelectedItems.Count > 0)
+            {
+                string selectTeacher = listViewTeachers.SelectedItems[0].Text;
+                teacherID = int.Parse(selectTeacher);
+
+                using (var form = new TeacherForm(panelName, teacherID))
+                {
+                    var result = form.ShowDialog();
+                    if (result == DialogResult.OK)
+                    {
+                        MessageBox.Show("Teacher succesfully edited", "Succes");
+                    }
+                }
+                //Shows messagebox and resets panel
+                FillTeachersPanel();
+            }
+            else
+            {
+                MessageBox.Show("Select a teacher to edit", "Error!");
             }
         }
     }

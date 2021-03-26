@@ -168,6 +168,8 @@
             this.GoToTeachersBTN = new System.Windows.Forms.Button();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.removeTbtn = new System.Windows.Forms.Button();
+            this.editBTN = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.pnl_Dashboard.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.img_Dashboard)).BeginInit();
@@ -401,6 +403,8 @@
             // 
             // pnl_Teachers
             // 
+            this.pnl_Teachers.Controls.Add(this.label3);
+            this.pnl_Teachers.Controls.Add(this.editBTN);
             this.pnl_Teachers.Controls.Add(this.removeTbtn);
             this.pnl_Teachers.Controls.Add(this.addTeacherBTN);
             this.pnl_Teachers.Controls.Add(this.listViewTeachers);
@@ -413,7 +417,7 @@
             // 
             // addTeacherBTN
             // 
-            this.addTeacherBTN.Location = new System.Drawing.Point(28, 373);
+            this.addTeacherBTN.Location = new System.Drawing.Point(28, 379);
             this.addTeacherBTN.Name = "addTeacherBTN";
             this.addTeacherBTN.Size = new System.Drawing.Size(95, 23);
             this.addTeacherBTN.TabIndex = 6;
@@ -1493,13 +1497,32 @@
             // 
             // removeTbtn
             // 
-            this.removeTbtn.Location = new System.Drawing.Point(156, 373);
+            this.removeTbtn.Location = new System.Drawing.Point(156, 379);
             this.removeTbtn.Name = "removeTbtn";
             this.removeTbtn.Size = new System.Drawing.Size(99, 23);
             this.removeTbtn.TabIndex = 7;
             this.removeTbtn.Text = "Remove teacher";
             this.removeTbtn.UseVisualStyleBackColor = true;
             this.removeTbtn.Click += new System.EventHandler(this.removeTbtn_Click);
+            // 
+            // editBTN
+            // 
+            this.editBTN.Location = new System.Drawing.Point(287, 379);
+            this.editBTN.Name = "editBTN";
+            this.editBTN.Size = new System.Drawing.Size(89, 23);
+            this.editBTN.TabIndex = 8;
+            this.editBTN.Text = "Edit teacher";
+            this.editBTN.UseVisualStyleBackColor = true;
+            this.editBTN.Click += new System.EventHandler(this.editBTN_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(19, 352);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(172, 13);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "Select a teacher to edit or delete it.";
             // 
             // SomerenUI
             // 
@@ -1703,6 +1726,8 @@
         private System.Windows.Forms.Button GoToTeachersBTN;
         private System.Windows.Forms.Button addTeacherBTN;
         private System.Windows.Forms.Button removeTbtn;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button editBTN;
     }
 }
 

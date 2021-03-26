@@ -39,7 +39,18 @@ namespace SomerenUI
             this.Lastnamelbl = new System.Windows.Forms.Label();
             this.FirstNamelbl = new System.Windows.Forms.Label();
             this.birthdatePicker = new System.Windows.Forms.DateTimePicker();
+            this.pnl_EditTeacher = new System.Windows.Forms.Panel();
+            this.cancelEditBTN = new System.Windows.Forms.Button();
+            this.editBTN = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.editLastNameBox = new System.Windows.Forms.TextBox();
+            this.editFirstNameBox = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.editDateTimeBox = new System.Windows.Forms.DateTimePicker();
             this.pnl_AddTeacher.SuspendLayout();
+            this.pnl_EditTeacher.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnl_AddTeacher
@@ -136,17 +147,114 @@ namespace SomerenUI
             this.birthdatePicker.Size = new System.Drawing.Size(200, 20);
             this.birthdatePicker.TabIndex = 0;
             // 
+            // pnl_EditTeacher
+            // 
+            this.pnl_EditTeacher.Controls.Add(this.cancelEditBTN);
+            this.pnl_EditTeacher.Controls.Add(this.editBTN);
+            this.pnl_EditTeacher.Controls.Add(this.label2);
+            this.pnl_EditTeacher.Controls.Add(this.editLastNameBox);
+            this.pnl_EditTeacher.Controls.Add(this.editFirstNameBox);
+            this.pnl_EditTeacher.Controls.Add(this.label3);
+            this.pnl_EditTeacher.Controls.Add(this.label4);
+            this.pnl_EditTeacher.Controls.Add(this.label5);
+            this.pnl_EditTeacher.Controls.Add(this.editDateTimeBox);
+            this.pnl_EditTeacher.Location = new System.Drawing.Point(11, 30);
+            this.pnl_EditTeacher.Name = "pnl_EditTeacher";
+            this.pnl_EditTeacher.Size = new System.Drawing.Size(262, 257);
+            this.pnl_EditTeacher.TabIndex = 1;
+            // 
+            // cancelEditBTN
+            // 
+            this.cancelEditBTN.Location = new System.Drawing.Point(162, 203);
+            this.cancelEditBTN.Name = "cancelEditBTN";
+            this.cancelEditBTN.Size = new System.Drawing.Size(75, 23);
+            this.cancelEditBTN.TabIndex = 8;
+            this.cancelEditBTN.Text = "Cancel";
+            this.cancelEditBTN.UseVisualStyleBackColor = true;
+            this.cancelEditBTN.Click += new System.EventHandler(this.cancelEditBTN_Click);
+            // 
+            // editBTN
+            // 
+            this.editBTN.Location = new System.Drawing.Point(37, 203);
+            this.editBTN.Name = "editBTN";
+            this.editBTN.Size = new System.Drawing.Size(75, 23);
+            this.editBTN.TabIndex = 7;
+            this.editBTN.Text = "Edit teacher";
+            this.editBTN.UseVisualStyleBackColor = true;
+            this.editBTN.Click += new System.EventHandler(this.editBTN_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(34, 24);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(118, 24);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Edit Teacher";
+            // 
+            // editLastNameBox
+            // 
+            this.editLastNameBox.Location = new System.Drawing.Point(37, 122);
+            this.editLastNameBox.Name = "editLastNameBox";
+            this.editLastNameBox.Size = new System.Drawing.Size(200, 20);
+            this.editLastNameBox.TabIndex = 5;
+            // 
+            // editFirstNameBox
+            // 
+            this.editFirstNameBox.Location = new System.Drawing.Point(37, 83);
+            this.editFirstNameBox.Name = "editFirstNameBox";
+            this.editFirstNameBox.Size = new System.Drawing.Size(200, 20);
+            this.editFirstNameBox.TabIndex = 4;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(37, 145);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(54, 13);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Birth Date";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(37, 106);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(58, 13);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "Last Name";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(35, 67);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(57, 13);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "First Name";
+            // 
+            // editDateTimeBox
+            // 
+            this.editDateTimeBox.Location = new System.Drawing.Point(37, 161);
+            this.editDateTimeBox.Name = "editDateTimeBox";
+            this.editDateTimeBox.Size = new System.Drawing.Size(200, 20);
+            this.editDateTimeBox.TabIndex = 0;
+            // 
             // TeacherForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 316);
+            this.Controls.Add(this.pnl_EditTeacher);
             this.Controls.Add(this.pnl_AddTeacher);
             this.Name = "TeacherForm";
             this.Text = "Teacher";
             this.Load += new System.EventHandler(this.TeacherForm_Load);
             this.pnl_AddTeacher.ResumeLayout(false);
             this.pnl_AddTeacher.PerformLayout();
+            this.pnl_EditTeacher.ResumeLayout(false);
+            this.pnl_EditTeacher.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -163,5 +271,15 @@ namespace SomerenUI
         private System.Windows.Forms.Label Birthdatelbl;
         private System.Windows.Forms.Label Lastnamelbl;
         private System.Windows.Forms.Label FirstNamelbl;
+        private System.Windows.Forms.Panel pnl_EditTeacher;
+        private System.Windows.Forms.Button cancelEditBTN;
+        private System.Windows.Forms.Button editBTN;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox editLastNameBox;
+        private System.Windows.Forms.TextBox editFirstNameBox;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.DateTimePicker editDateTimeBox;
     }
 }

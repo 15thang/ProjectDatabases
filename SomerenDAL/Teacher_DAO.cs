@@ -13,6 +13,41 @@ namespace SomerenDAL
     public class Teacher_DAO : Base
     {
         // Ruben Stoop
+        // Opdracht B Week 4
+        // Gets teacher for the edit function
+        public Teacher Db_Get_Teacher(int ID)
+        {
+            string query = "SELECT DocentID, D.PersoonID, Geboortedatum, Voornaam, Achternaam FROM Persoon as P INNER JOIN Docent AS D ON P.PersoonID = D.PersoonID WHERE D.DocentID = @id;";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@id", ID);
+            return ReadTeacher(ExecuteSelectQuery(query, sqlParameters));
+        }
+
+        // Ruben Stoop
+        // Opdracht B Week 4
+        // Gets activity for the supervisors
+        private Teacher ReadTeacher(DataTable dataTable)
+        {
+            // Check if datatable is null
+            if (dataTable == null)
+            {
+                throw new Exception("Datatable is null");
+            }
+
+            DataRow dr = dataTable.Rows[0];
+            Teacher teacher = new Teacher()
+            {
+                TeacherID = (int)dr["DocentID"],
+                PersonID = (int)dr["PersoonID"],
+                BirthDate = (DateTime)dr["Geboortedatum"],
+                FirstName = (string)dr["Voornaam"],
+                LastName = (string)dr["Achternaam"]
+            };
+            return teacher;
+        }
+
+
+        // Ruben Stoop
         // Opdracht B Week 4 Also uses this method
         // Tim Roffelsen
         // Data gets pulled from the database by the query, INNER JOIN is used to get data from 'Persoon' table
@@ -156,6 +191,21 @@ namespace SomerenDAL
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@teacherid", TeacherID);
             return ReadInt(ExecuteSelectQuery(query, sqlParameters));
+        }
+
+        // Ruben Stoop
+        // Update Teachers
+        public void UpdateTeacher(Teacher teacher)
+        {
+            string sqlDate = teacher.BirthDate.ToString("yyyy-MM-dd");
+
+            string query = "UPDATE Persoon SET Geboortedatum = @geboortedatum, Voornaam = @voornaam, Achternaam = @achternaam WHERE PersoonID = @persoonid; ";
+            SqlParameter[] sqlParameters = new SqlParameter[4];
+            sqlParameters[0] = new SqlParameter("@persoonid", teacher.PersonID);
+            sqlParameters[1] = new SqlParameter("@voornaam", teacher.FirstName);
+            sqlParameters[2] = new SqlParameter("@achternaam", teacher.LastName);
+            sqlParameters[3] = new SqlParameter("@geboortedatum", sqlDate);
+            ExecuteEditQuery(query, sqlParameters);
         }
     }
 }

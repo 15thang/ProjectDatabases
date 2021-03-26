@@ -18,6 +18,7 @@ namespace SomerenUI
     // Opdracht B
     public partial class TeacherForm : Form
     {
+        Teacher editTeacher { get; set; }
 
         SomerenLogic.Teacher_Service teachService = new SomerenLogic.Teacher_Service();
         public string panelName { get; set; }
@@ -25,6 +26,13 @@ namespace SomerenUI
         {
             InitializeComponent();
             this.panelName = panelName;
+        }
+
+        public TeacherForm(string panelName, int TeacherID)
+        {
+            InitializeComponent();
+            this.panelName = panelName;
+            this.editTeacher = teachService.GetTeacher(TeacherID);
         }
 
         private void TeacherForm_Load(object sender, EventArgs e)
@@ -35,8 +43,22 @@ namespace SomerenUI
         {
             if (panelName == "Addteacher")
             {
+                pnl_EditTeacher.Hide();
                 pnl_AddTeacher.Show();
+            } else if(panelName == "EditTeacher")
+            {
+                pnl_EditTeacher.Show();
+                pnl_AddTeacher.Hide();
+
+                FillTeacher();
             }
+        }
+
+        private void FillTeacher()
+        {
+            editFirstNameBox.Text = editTeacher.FirstName;
+            editLastNameBox.Text = editTeacher.LastName;
+            editDateTimeBox.Text = editTeacher.BirthDate.ToString();
         }
 
         // Inserts teach into database
@@ -77,6 +99,22 @@ namespace SomerenUI
         }
 
         private void cancelBTN_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void editBTN_Click(object sender, EventArgs e)
+        {
+            editTeacher.FirstName = editFirstNameBox.Text;
+            editTeacher.LastName = editLastNameBox.Text;
+            editTeacher.BirthDate = editDateTimeBox.Value;
+
+            teachService.Update_Teacher(editTeacher);
+            this.DialogResult = DialogResult.OK;
+            this.Close();
+        }
+
+        private void cancelEditBTN_Click(object sender, EventArgs e)
         {
             this.Close();
         }
