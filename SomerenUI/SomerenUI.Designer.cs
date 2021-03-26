@@ -1501,7 +1501,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(18, 32);
+            this.label7.Location = new System.Drawing.Point(27, 43);
             this.label7.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(400, 17);
@@ -1594,8 +1594,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(962, 505);
-            this.Controls.Add(this.pnl_Supervisors);
             this.Controls.Add(this.pnl_Teachers);
+            this.Controls.Add(this.pnl_Supervisors);
             this.Controls.Add(this.pnl_WeekRoster);
             this.Controls.Add(this.pnl_Activities);
             this.Controls.Add(this.pnl_Vat);
