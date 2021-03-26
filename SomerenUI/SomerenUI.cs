@@ -33,6 +33,8 @@ namespace SomerenUI
             this.listViewRooms.ListViewItemSorter = lvwColumnSorter;
             this.listViewActivities.ListViewItemSorter = lvwColumnSorter;
             this.SuperVisor_LV.ListViewItemSorter = lvwColumnSorter;
+            this.SuperVisor_LV.ListViewItemSorter = lvwColumnSorter;
+            this.ActivitySuperVisor_LV.ListViewItemSorter = lvwColumnSorter;
         }
 
         private void SomerenUI_Load(object sender, EventArgs e)
@@ -589,6 +591,35 @@ namespace SomerenUI
         private void supervisorToolStripMenuItem_Click(object sender, EventArgs e)
         {
             showPanel("Supervisors");
+        }
+
+
+        private void ActivitySuperVisor_LV_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+
+            // Tim Roffelsen
+            // Determine if clicked column is already the column that is being sorted.
+            if (e.Column == lvwColumnSorter.SortColumn)
+            {
+                // Reverse the current sort direction for this column.
+                if (lvwColumnSorter.Order == SortOrder.Ascending)
+                {
+                    lvwColumnSorter.Order = SortOrder.Descending;
+                }
+                else
+                {
+                    lvwColumnSorter.Order = SortOrder.Ascending;
+                }
+            }
+            else
+            {
+                // Set the column number that is to be sorted; default to ascending.
+                lvwColumnSorter.SortColumn = e.Column;
+                lvwColumnSorter.Order = SortOrder.Ascending;
+            }
+
+            // Perform the sort with these new sort options.
+            this.ActivitySuperVisor_LV.Sort();
         }
 
         private void SuperVisor_LV_ColumnClick(object sender, ColumnClickEventArgs e)
@@ -1541,5 +1572,6 @@ namespace SomerenUI
                 MessageBox.Show("Select a teacher to edit", "Error!");
             }
         }
+
     }
 }

@@ -1426,6 +1426,7 @@
             this.ActivitySuperVisor_LV.Size = new System.Drawing.Size(522, 117);
             this.ActivitySuperVisor_LV.TabIndex = 7;
             this.ActivitySuperVisor_LV.UseCompatibleStateImageBehavior = false;
+            this.ActivitySuperVisor_LV.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.ActivitySuperVisor_LV_ColumnClick);
             this.ActivitySuperVisor_LV.SelectedIndexChanged += new System.EventHandler(this.ActivitySuperVisor_LV_SelectedIndexChanged);
             // 
             // label12
@@ -1529,8 +1530,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(962, 505);
-            this.Controls.Add(this.pnl_Teachers);
             this.Controls.Add(this.pnl_Supervisors);
+            this.Controls.Add(this.pnl_Teachers);
             this.Controls.Add(this.pnl_Activities);
             this.Controls.Add(this.pnl_Vat);
             this.Controls.Add(this.pnl_Stock);

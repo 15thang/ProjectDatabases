@@ -87,6 +87,7 @@ namespace SomerenUI
             this.Supervisor_LV.Size = new System.Drawing.Size(434, 97);
             this.Supervisor_LV.TabIndex = 4;
             this.Supervisor_LV.UseCompatibleStateImageBehavior = false;
+            this.Supervisor_LV.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.Supervisor_LV_ColumnClick);
             // 
             // label1
             // 
@@ -105,6 +106,7 @@ namespace SomerenUI
             this.TeacherListView.Size = new System.Drawing.Size(434, 97);
             this.TeacherListView.TabIndex = 6;
             this.TeacherListView.UseCompatibleStateImageBehavior = false;
+            this.TeacherListView.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.TeacherListView_ColumnClick);
             // 
             // removeBTN
             // 
