@@ -132,63 +132,7 @@ namespace SomerenUI
             }
             else if (panelName == "Teachers")
             {
-                // Tim Roffelsen
-                // hide all other panels
-                HideAllPanels();
-
-                // show teachers
-                pnl_Teachers.Show();
-
-                // fill the teachers listview within the teachers panel with a list of teachers
-                SomerenLogic.Teacher_Service teachService = new SomerenLogic.Teacher_Service();
-                List<Teacher> teacherList = teachService.GetTeachers();
-
-                //list supervisors
-                SomerenLogic.Supervisor_Service supService = new SomerenLogic.Supervisor_Service();
-                List<Supervisor> supList = supService.GetSupervisors();
-
-                //list activities
-                SomerenLogic.Activity_Service actService = new SomerenLogic.Activity_Service();
-                List<Activity> activityList = actService.GetActivities();
-
-                // Shows message box if there is an error
-                Error_Show(teachService);
-                Error_Show(actService);
-                Error_Show(supService);
-
-                // clear the listview before filling it again
-                listViewTeachers.Clear();
-
-                // add grid lines, rows and enable sorting
-                listViewTeachers.View = View.Details;
-                listViewTeachers.GridLines = true;
-                listViewTeachers.FullRowSelect = true;
-                listViewTeachers.Sorting = SortOrder.Ascending;
-
-                // add column header
-                listViewTeachers.Columns.Add("TeacherID");
-                listViewTeachers.Columns.Add("First Name");
-                listViewTeachers.Columns.Add("Last Name");
-                listViewTeachers.Columns.Add("Supervises");
-
-                foreach (SomerenModel.Teacher t in teacherList)
-                {
-                    //Add items in the listview
-                    string[] arr = new string[4];
-                    ListViewItem itm;
-
-                    //Add first item
-                    arr[0] = t.TeacherID.ToString();
-                    arr[1] = t.FirstName;
-                    arr[2] = t.LastName;
-                    arr[3] = supService.FindActivities(t.TeacherID, activityList, supList); // find type of activities
-                    itm = new ListViewItem(arr);
-                    listViewTeachers.Items.Add(itm);
-                }
-                foreach (ColumnHeader ch in listViewTeachers.Columns) // dynamically change column width
-                {
-                    ch.Width = -2;
-                }
+                FillTeachersPanel();
             }
             else if (panelName == "Rooms")
             {
@@ -1459,6 +1403,104 @@ namespace SomerenUI
 
             AddActivity.ShowDialog();
             Activity_Refresh();
+        }
+
+        private void GoToTeachersBTN_Click(object sender, EventArgs e)
+        {
+            showPanel("Teachers");
+        }
+
+        private void addTeacherBTN_Click(object sender, EventArgs e)
+        {
+            string panelName = "Addteacher";
+            TeacherForm form = new TeacherForm(panelName);
+            form.ShowDialog();
+            FillTeachersPanel();
+        }
+        private void removeTbtn_Click(object sender, EventArgs e)
+        {
+            SomerenLogic.Teacher_Service teach_Service = new SomerenLogic.Teacher_Service();
+
+            int teacherID = 0;
+            // Get the student
+            if (listViewTeachers.SelectedItems.Count > 0)
+            {
+                string selectTeacher = listViewTeachers.SelectedItems[0].Text;
+                teacherID = int.Parse(selectTeacher);
+
+                teach_Service.Delete_Teacher(teacherID);
+                Error_Show(teach_Service);
+                //Shows messagebox and resets panel
+                FillTeachersPanel();
+                MessageBox.Show("Teacher succesfully deleted", "Succes");
+            }
+            else
+            {
+                MessageBox.Show("Select a teacher to remove", "Error!");
+            }
+        }
+
+        public void FillTeachersPanel()
+        {
+            // Tim Roffelsen
+            // hide all other panels
+            HideAllPanels();
+
+            // show teachers
+            pnl_Teachers.Show();
+
+            // fill the teachers listview within the teachers panel with a list of teachers
+            SomerenLogic.Teacher_Service teachService = new SomerenLogic.Teacher_Service();
+            List<Teacher> teacherList = teachService.GetTeachers();
+
+            //list supervisors
+            SomerenLogic.Supervisor_Service supService = new SomerenLogic.Supervisor_Service();
+            List<Supervisor> supList = supService.GetSupervisors();
+
+            //list activities
+            SomerenLogic.Activity_Service actService = new SomerenLogic.Activity_Service();
+            List<Activity> activityList = actService.GetActivities();
+
+            // Shows message box if there is an error
+            Error_Show(teachService);
+            Error_Show(actService);
+            Error_Show(supService);
+
+            // clear the listview before filling it again
+            listViewTeachers.Clear();
+
+            // add grid lines, rows and enable sorting
+            listViewTeachers.View = View.Details;
+            listViewTeachers.GridLines = true;
+            listViewTeachers.FullRowSelect = true;
+            listViewTeachers.Sorting = SortOrder.Ascending;
+            listViewTeachers.MultiSelect = false;
+
+
+            // add column header
+            listViewTeachers.Columns.Add("TeacherID");
+            listViewTeachers.Columns.Add("First Name");
+            listViewTeachers.Columns.Add("Last Name");
+            listViewTeachers.Columns.Add("Supervises");
+
+            foreach (SomerenModel.Teacher t in teacherList)
+            {
+                //Add items in the listview
+                string[] arr = new string[4];
+                ListViewItem itm;
+
+                //Add first item
+                arr[0] = t.TeacherID.ToString();
+                arr[1] = t.FirstName;
+                arr[2] = t.LastName;
+                arr[3] = supService.FindActivities(t.TeacherID, activityList, supList); // find type of activities
+                itm = new ListViewItem(arr);
+                listViewTeachers.Items.Add(itm);
+            }
+            foreach (ColumnHeader ch in listViewTeachers.Columns) // dynamically change column width
+            {
+                ch.Width = -2;
+            }
         }
     }
 }

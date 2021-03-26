@@ -274,5 +274,10 @@ namespace SomerenUI
                 MessageBox.Show("Select a teacher to add to the supervisor for this activity", "Error!");
             }
         }
+
+        private void toTeachersBTN_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+        }
     }
 }

@@ -47,5 +47,115 @@ namespace SomerenDAL
             }
             return teachers;
         }
+
+        // Ruben Stoop
+        // Gets the highest id of the table Teacher
+        public int Get_Highest_ID_For_Teacher()
+        {
+            string query = "SELECT MAX(DocentID) as DocentID FROM Docent;";
+            SqlParameter[] sqlParameters = new SqlParameter[0];
+            return ReadIntDocent(ExecuteSelectQuery(query, sqlParameters));
+        }
+
+        // Ruben Stoop
+        // INSERT Teacher
+        public void Insert_Teacher(Teacher teacher)
+        {
+            //Datetime to a format sql can understand
+            string sqlDate = teacher.BirthDate.ToString("yyyy-MM-dd");
+
+            //Fills the person table
+            string query = "INSERT INTO Persoon (PersoonID, Geboortedatum, GroepID, Voornaam, Achternaam) VALUES(@personid, @birthdate, @groupid, @firstname, @lastname);";
+
+            teacher.PersonID = Get_Highest_ID_For_Person() + 1;
+            teacher.TeacherID = Get_Highest_ID_For_Teacher() + 1;
+            //Setting the parameters from the parameter Teacher
+            SqlParameter[] sqlParameters = new SqlParameter[5];
+
+            sqlParameters[0] = new SqlParameter("@personid", teacher.PersonID);
+            sqlParameters[1] = new SqlParameter("@birthdate", sqlDate);
+            sqlParameters[2] = new SqlParameter("@groupid", 1);
+            sqlParameters[3] = new SqlParameter("@firstname", teacher.FirstName);
+            sqlParameters[4] = new SqlParameter("@lastname", teacher.LastName);
+            ExecuteEditQuery(query, sqlParameters);
+
+            //Ruben Stoop
+            //Fills the Teacher Table
+            string query2 = "INSERT INTO Docent (DocentID, PersoonID) VALUES(@docentid, @personid);";
+
+            SqlParameter[] sqlParameters2 = new SqlParameter[2];
+            sqlParameters2[0] = new SqlParameter("@docentid", teacher.TeacherID);
+            sqlParameters2[1] = new SqlParameter("@personid", teacher.PersonID);
+            ExecuteEditQuery(query2, sqlParameters2);
+        }
+
+        // Ruben Stoop
+        // Gets the highest id of the table Person
+        public int Get_Highest_ID_For_Person()
+        {
+            string query = "SELECT MAX(PersoonID) as PersonID FROM Persoon;";
+            SqlParameter[] sqlParameters = new SqlParameter[0];
+            return ReadInt(ExecuteSelectQuery(query, sqlParameters));
+        }
+
+        // Ruben Stoop
+        // Reads the datatable and returns the PersonID
+        private int ReadInt(DataTable dataTable)
+        {
+            // Check if datatable is null
+            if (dataTable == null)
+            {
+                throw new Exception("Datatable is null");
+            }
+
+            DataRow dr = dataTable.Rows[0];
+            return (int)dr["PersonID"];
+        }        
+        
+        // Ruben Stoop
+        // Reads the datatable and returns the DocentID
+        private int ReadIntDocent(DataTable dataTable)
+        {
+            // Check if datatable is null
+            if (dataTable == null)
+            {
+                throw new Exception("Datatable is null");
+            }
+
+            DataRow dr = dataTable.Rows[0];
+            return (int)dr["DocentID"];
+        }
+
+        // Ruben Stoop
+        // Deletes the teacher
+        public void DeleteTeacher(int TeacherID)
+        {
+            int PersonID = GetPersonIDWithTeacherID(TeacherID);
+
+            string query = "DELETE FROM Begeleider WHERE DocentID = @teacherid;";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@teacherid", TeacherID);
+            ExecuteEditQuery(query, sqlParameters);
+
+            string query2= "DELETE FROM Docent WHERE DocentID = @teacherid;";
+            SqlParameter[] sqlParameters2 = new SqlParameter[1];
+            sqlParameters2[0] = new SqlParameter("@teacherid", TeacherID);
+            ExecuteEditQuery(query2, sqlParameters2);
+
+            string query3 = "DELETE FROM Persoon WHERE PersoonID = @personid;";
+            SqlParameter[] sqlParameters3 = new SqlParameter[1];
+            sqlParameters3[0] = new SqlParameter("@personid", PersonID);
+            ExecuteEditQuery(query3, sqlParameters3);
+        }
+
+        // Ruben Stoop
+        // Gets the id for the Deleteteacher method
+        public int GetPersonIDWithTeacherID(int TeacherID)
+        {
+            string query = "SELECT PersoonID as PersonID FROM Docent WHERE DocentID = @teacherid; ";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@teacherid", TeacherID);
+            return ReadInt(ExecuteSelectQuery(query, sqlParameters));
+        }
     }
 }

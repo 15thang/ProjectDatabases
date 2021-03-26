@@ -55,6 +55,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lbl_Students = new System.Windows.Forms.Label();
             this.pnl_Teachers = new System.Windows.Forms.Panel();
+            this.addTeacherBTN = new System.Windows.Forms.Button();
             this.listViewTeachers = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -164,7 +165,9 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.pnl_Supervisors = new System.Windows.Forms.Panel();
+            this.GoToTeachersBTN = new System.Windows.Forms.Button();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
+            this.removeTbtn = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.pnl_Dashboard.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.img_Dashboard)).BeginInit();
@@ -398,13 +401,25 @@
             // 
             // pnl_Teachers
             // 
+            this.pnl_Teachers.Controls.Add(this.removeTbtn);
+            this.pnl_Teachers.Controls.Add(this.addTeacherBTN);
             this.pnl_Teachers.Controls.Add(this.listViewTeachers);
             this.pnl_Teachers.Controls.Add(this.pictureBoxTeachers);
             this.pnl_Teachers.Controls.Add(this.lbl_Lecturers);
-            this.pnl_Teachers.Location = new System.Drawing.Point(12, 24);
+            this.pnl_Teachers.Location = new System.Drawing.Point(0, 0);
             this.pnl_Teachers.Name = "pnl_Teachers";
             this.pnl_Teachers.Size = new System.Drawing.Size(938, 466);
             this.pnl_Teachers.TabIndex = 6;
+            // 
+            // addTeacherBTN
+            // 
+            this.addTeacherBTN.Location = new System.Drawing.Point(28, 373);
+            this.addTeacherBTN.Name = "addTeacherBTN";
+            this.addTeacherBTN.Size = new System.Drawing.Size(95, 23);
+            this.addTeacherBTN.TabIndex = 6;
+            this.addTeacherBTN.Text = "Add Teacher";
+            this.addTeacherBTN.UseVisualStyleBackColor = true;
+            this.addTeacherBTN.Click += new System.EventHandler(this.addTeacherBTN_Click);
             // 
             // listViewTeachers
             // 
@@ -1431,15 +1446,17 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(26, 43);
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(27, 49);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(299, 13);
+            this.label7.Size = new System.Drawing.Size(400, 17);
             this.label7.TabIndex = 12;
             this.label7.Text = "Activities (Select an activity to add, edit or delete a supervisor)";
             // 
             // pnl_Supervisors
             // 
+            this.pnl_Supervisors.Controls.Add(this.GoToTeachersBTN);
             this.pnl_Supervisors.Controls.Add(this.label7);
             this.pnl_Supervisors.Controls.Add(this.label10);
             this.pnl_Supervisors.Controls.Add(this.label12);
@@ -1453,6 +1470,16 @@
             this.pnl_Supervisors.Size = new System.Drawing.Size(938, 468);
             this.pnl_Supervisors.TabIndex = 34;
             // 
+            // GoToTeachersBTN
+            // 
+            this.GoToTeachersBTN.Location = new System.Drawing.Point(721, 322);
+            this.GoToTeachersBTN.Name = "GoToTeachersBTN";
+            this.GoToTeachersBTN.Size = new System.Drawing.Size(159, 70);
+            this.GoToTeachersBTN.TabIndex = 13;
+            this.GoToTeachersBTN.Text = "Go to the teachers overview to Add, Edit, Delete teachers";
+            this.GoToTeachersBTN.UseVisualStyleBackColor = true;
+            this.GoToTeachersBTN.Click += new System.EventHandler(this.GoToTeachersBTN_Click);
+            // 
             // pictureBox8
             // 
             this.pictureBox8.Image = global::SomerenUI.Properties.Resources.someren;
@@ -1464,20 +1491,30 @@
             this.pictureBox8.TabIndex = 0;
             this.pictureBox8.TabStop = false;
             // 
+            // removeTbtn
+            // 
+            this.removeTbtn.Location = new System.Drawing.Point(156, 373);
+            this.removeTbtn.Name = "removeTbtn";
+            this.removeTbtn.Size = new System.Drawing.Size(99, 23);
+            this.removeTbtn.TabIndex = 7;
+            this.removeTbtn.Text = "Remove teacher";
+            this.removeTbtn.UseVisualStyleBackColor = true;
+            this.removeTbtn.Click += new System.EventHandler(this.removeTbtn_Click);
+            // 
             // SomerenUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(962, 505);
-            this.Controls.Add(this.pnl_Activities);
+            this.Controls.Add(this.pnl_Teachers);
             this.Controls.Add(this.pnl_Supervisors);
+            this.Controls.Add(this.pnl_Activities);
             this.Controls.Add(this.pnl_Vat);
             this.Controls.Add(this.pnl_Stock);
             this.Controls.Add(this.pnl_OrderDrinks);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.pnl_Roomslayout);
             this.Controls.Add(this.pnl_Rooms);
-            this.Controls.Add(this.pnl_Teachers);
             this.Controls.Add(this.pnl_Students);
             this.Controls.Add(this.pnl_Dashboard);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -1663,6 +1700,9 @@
         private System.Windows.Forms.Button btn_ActivityRefresh;
         private System.Windows.Forms.Button btn_AddActivity;
         private System.Windows.Forms.Label lbl_ActivityInstructions;
+        private System.Windows.Forms.Button GoToTeachersBTN;
+        private System.Windows.Forms.Button addTeacherBTN;
+        private System.Windows.Forms.Button removeTbtn;
     }
 }
 
