@@ -373,7 +373,6 @@
             // 
             // pnl_Dashboard
             // 
-            this.pnl_Dashboard.Controls.Add(this.btn_Logout);
             this.pnl_Dashboard.Controls.Add(this.lbl_Dashboard);
             this.pnl_Dashboard.Controls.Add(this.img_Dashboard);
             this.pnl_Dashboard.Location = new System.Drawing.Point(0, 0);
@@ -1324,7 +1323,7 @@
             this.cbox_ChangeProduct.Location = new System.Drawing.Point(417, 279);
             this.cbox_ChangeProduct.Name = "cbox_ChangeProduct";
             this.cbox_ChangeProduct.Size = new System.Drawing.Size(100, 21);
-            this.cbox_ChangeProduct.TabIndex = 29;
+            this.cbox_ChangeProduct.TabIndex = 18;
             this.cbox_ChangeProduct.DropDown += new System.EventHandler(this.cbox_ChangeProduct_DropDown);
             this.cbox_ChangeProduct.SelectedIndexChanged += new System.EventHandler(this.cbox_ChangeProduct_SelectedIndexChanged);
             // 
@@ -1682,6 +1681,7 @@
             // 
             // pnl_User
             // 
+            this.pnl_User.Controls.Add(this.btn_Logout);
             this.pnl_User.Controls.Add(this.pnl_UserAdmin);
             this.pnl_User.Controls.Add(this.pnl_UserUser);
             this.pnl_User.Controls.Add(this.label16);
@@ -1820,11 +1820,11 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(962, 505);
+            this.Controls.Add(this.pnl_Stock);
             this.Controls.Add(this.pnl_User);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.pnl_Supervisors);
             this.Controls.Add(this.pnl_Activities);
-            this.Controls.Add(this.pnl_Stock);
             this.Controls.Add(this.pnl_Dashboard);
             this.Controls.Add(this.pnl_Teachers);
             this.Controls.Add(this.pnl_WeekRoster);

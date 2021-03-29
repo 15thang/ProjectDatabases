@@ -73,14 +73,14 @@ namespace SomerenUI
             this.passwordBOX.Location = new System.Drawing.Point(92, 145);
             this.passwordBOX.Name = "passwordBOX";
             this.passwordBOX.Size = new System.Drawing.Size(203, 20);
-            this.passwordBOX.TabIndex = 3;
+            this.passwordBOX.TabIndex = 2;
             // 
             // usernameBOX
             // 
             this.usernameBOX.Location = new System.Drawing.Point(92, 109);
             this.usernameBOX.Name = "usernameBOX";
             this.usernameBOX.Size = new System.Drawing.Size(203, 20);
-            this.usernameBOX.TabIndex = 4;
+            this.usernameBOX.TabIndex = 1;
             // 
             // label1
             // 
@@ -144,7 +144,7 @@ namespace SomerenUI
             this.licenceBOX.Location = new System.Drawing.Point(92, 179);
             this.licenceBOX.Name = "licenceBOX";
             this.licenceBOX.Size = new System.Drawing.Size(203, 20);
-            this.licenceBOX.TabIndex = 11;
+            this.licenceBOX.TabIndex = 3;
             // 
             // RegisterForm
             // 
