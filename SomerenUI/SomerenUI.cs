@@ -1691,18 +1691,18 @@ namespace SomerenUI
         private void askAdminBTN_Click(object sender, EventArgs e)
         {
             SomerenLogic.AdminRequest_Service adminrequest = new SomerenLogic.AdminRequest_Service();
-            if (user.AdminRequest)
+            if (User.AdminRequest)
             {
                 MessageBox.Show("U have already requested to be an admin!", "Error!");
             } else
             {
-                adminrequest.InsertAdminRequest(user.UserID);
+                adminrequest.InsertAdminRequest(User.UserID);
                 if(adminrequest.Error)
                 {
                     MessageBox.Show(adminrequest.ErrorText, "Error!");
                 } else
                 {
-                    user.AdminRequest = true;
+                    User.AdminRequest = true;
                     MessageBox.Show("Your request to become an admin has been sent", "Succes!");
                     LoadUserPanel();
                 }
@@ -1759,16 +1759,16 @@ namespace SomerenUI
             HideAllPanels();
             pnl_User.Show();
 
-            userNamelbl.Text = "Username: " + user.UserName;
-            profileNamelbl.Text = "Name: " + user.Name;
-            if (user.IsAdmin == true)
+            userNamelbl.Text = "Username: " + User.UserName;
+            profileNamelbl.Text = "Name: " + User.Name;
+            if (User.IsAdmin == true)
             {
                 pnl_UserUser.Hide();
                 pnl_UserAdmin.Show();
                 LoadUserAdminRequestLV();
 
             }
-            else if (user.IsAdmin == false)
+            else if (User.IsAdmin == false)
             {
                 pnl_UserUser.Show();
                 pnl_UserAdmin.Hide();
