@@ -1,17 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data.SqlClient;
+﻿using SomerenModel;
+using System;
 using System.Data;
-using System.Collections.ObjectModel;
-using SomerenModel;
+using System.Data.SqlClient;
 
 namespace SomerenDAL
 {
     public class Login_DAO : Base
     {
+        // Tim Roffelsen
+        // Login functionality to database
         public User User_Login(string Username, string Password)
         {
             string query = "SELECT GebruikerID, Gebruikersnaam, Wachtwoord, IsAdmin FROM Gebruiker WHERE Gebruikersnaam = @username AND Wachtwoord = @password;";
@@ -20,6 +17,7 @@ namespace SomerenDAL
             sqlParameters[1] = new SqlParameter("@password", Password);
             return ReadUser(ExecuteSelectQuery(query, sqlParameters));
         }
+
         private User ReadUser(DataTable dataTable)
         {
             // Check if datatable is null
