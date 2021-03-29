@@ -17,6 +17,24 @@ namespace SomerenLogic
         // Ruben Stoop
         // Opdracht B Week 5
         // Sets the admin request to true for gebruiker
+        public bool CheckRequests()
+        {
+            try
+            {
+                return adminrequest_db.Check_Requests();
+            }
+            catch (Exception e)
+            {
+                ErrorText = e.Message;
+                Error = true;
+                return false;
+            }
+        }
+
+
+        // Ruben Stoop
+        // Opdracht B Week 5
+        // Sets the admin request to true for gebruiker
         public void InsertAdminRequest(int ID)
         {
             try

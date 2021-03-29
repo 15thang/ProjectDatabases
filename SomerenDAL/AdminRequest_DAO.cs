@@ -14,6 +14,39 @@ namespace SomerenDAL
     {
         // Ruben Stoop
         // Opdracht B Week 5
+        // Checks if there are any makeadmin requests.
+        public bool Check_Requests()
+        {
+            string query = "SELECT Count(GebruikerID) as Checkcount FROM Gebruiker WHERE AdminRequest = 1;";
+            //Setting the parameters from the parameter order
+            SqlParameter[] sqlParameters = new SqlParameter[0];
+            return CheckReq(ExecuteSelectQuery(query, sqlParameters));
+        }
+
+        private bool CheckReq(DataTable dataTable)
+        {
+            // Check if datatable is null
+            if (dataTable == null)
+            {
+                throw new Exception("Datatable is null");
+            }
+
+            DataRow dr = dataTable.Rows[0];
+            int checkint = (int)dr["Checkcount"];
+
+            if (checkint != 0)
+            {
+                return true;
+            } else
+            {
+                return false;
+            }
+        }
+
+
+
+        // Ruben Stoop
+        // Opdracht B Week 5
         // sets the admin to true
         public void Make_Admin(int ID)
         {

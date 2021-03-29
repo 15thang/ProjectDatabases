@@ -47,11 +47,16 @@ namespace SomerenUI
         }
         private void SomerenUI_Shown(object sender, EventArgs e)
         {
+            SomerenLogic.AdminRequest_Service adminrequest = new SomerenLogic.AdminRequest_Service();
+            bool Checkexistance = adminrequest.CheckRequests();
             // Ruben Stoop
             // Week 5
             // Opdracht B
-            //Sends admin users a notification
-            AdminNotification();
+            // Sends admin users a notification
+            if(Checkexistance)
+            {
+                AdminNotification();
+            }
         }
 
         public void SetUser(User user)
