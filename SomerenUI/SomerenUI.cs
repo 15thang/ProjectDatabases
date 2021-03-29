@@ -39,7 +39,11 @@ namespace SomerenUI
             this.SuperVisor_LV.ListViewItemSorter = lvwColumnSorter;
             this.ActivitySuperVisor_LV.ListViewItemSorter = lvwColumnSorter;
 
+
+            //Ruben Stoop
             this.Shown += new System.EventHandler(this.SomerenUI_Shown);
+            //Centers the form when loaded
+            this.StartPosition = FormStartPosition.CenterParent;
         }
         private void SomerenUI_Shown(object sender, EventArgs e)
         {
