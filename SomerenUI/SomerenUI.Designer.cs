@@ -185,17 +185,17 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.pnl_User = new System.Windows.Forms.Panel();
             this.pnl_UserAdmin = new System.Windows.Forms.Panel();
-            this.pnl_UserUser = new System.Windows.Forms.Panel();
             this.rejectadminBTN = new System.Windows.Forms.Button();
             this.acceptadminBTN = new System.Windows.Forms.Button();
             this.adminRequest_LV = new System.Windows.Forms.ListView();
             this.adminreqlbl = new System.Windows.Forms.Label();
+            this.pnl_UserUser = new System.Windows.Forms.Panel();
+            this.askAdminBTN = new System.Windows.Forms.Button();
             this.label16 = new System.Windows.Forms.Label();
             this.profileNamelbl = new System.Windows.Forms.Label();
             this.userNamelbl = new System.Windows.Forms.Label();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.profilelbl = new System.Windows.Forms.Label();
-            this.askAdminBTN = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.pnl_Dashboard.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.img_Dashboard)).BeginInit();
@@ -1706,14 +1706,6 @@
             this.pnl_UserAdmin.Size = new System.Drawing.Size(559, 288);
             this.pnl_UserAdmin.TabIndex = 15;
             // 
-            // pnl_UserUser
-            // 
-            this.pnl_UserUser.Controls.Add(this.askAdminBTN);
-            this.pnl_UserUser.Location = new System.Drawing.Point(24, 175);
-            this.pnl_UserUser.Name = "pnl_UserUser";
-            this.pnl_UserUser.Size = new System.Drawing.Size(556, 287);
-            this.pnl_UserUser.TabIndex = 16;
-            // 
             // rejectadminBTN
             // 
             this.rejectadminBTN.Location = new System.Drawing.Point(184, 256);
@@ -1722,6 +1714,7 @@
             this.rejectadminBTN.TabIndex = 14;
             this.rejectadminBTN.Text = "Reject Admin request";
             this.rejectadminBTN.UseVisualStyleBackColor = true;
+            this.rejectadminBTN.Click += new System.EventHandler(this.rejectadminBTN_Click);
             // 
             // acceptadminBTN
             // 
@@ -1731,6 +1724,7 @@
             this.acceptadminBTN.TabIndex = 13;
             this.acceptadminBTN.Text = "Accept Admin request";
             this.acceptadminBTN.UseVisualStyleBackColor = true;
+            this.acceptadminBTN.Click += new System.EventHandler(this.acceptadminBTN_Click);
             // 
             // adminRequest_LV
             // 
@@ -1750,6 +1744,25 @@
             this.adminreqlbl.Size = new System.Drawing.Size(96, 13);
             this.adminreqlbl.TabIndex = 11;
             this.adminreqlbl.Text = "All Admin requests:";
+            // 
+            // pnl_UserUser
+            // 
+            this.pnl_UserUser.Controls.Add(this.askAdminBTN);
+            this.pnl_UserUser.Location = new System.Drawing.Point(24, 175);
+            this.pnl_UserUser.Name = "pnl_UserUser";
+            this.pnl_UserUser.Size = new System.Drawing.Size(556, 287);
+            this.pnl_UserUser.TabIndex = 16;
+            // 
+            // askAdminBTN
+            // 
+            this.askAdminBTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.askAdminBTN.Location = new System.Drawing.Point(12, 174);
+            this.askAdminBTN.Name = "askAdminBTN";
+            this.askAdminBTN.Size = new System.Drawing.Size(211, 96);
+            this.askAdminBTN.TabIndex = 0;
+            this.askAdminBTN.Text = "Ask for permission to be an admin";
+            this.askAdminBTN.UseVisualStyleBackColor = true;
+            this.askAdminBTN.Click += new System.EventHandler(this.askAdminBTN_Click);
             // 
             // label16
             // 
@@ -1800,17 +1813,6 @@
             this.profilelbl.Size = new System.Drawing.Size(83, 29);
             this.profilelbl.TabIndex = 3;
             this.profilelbl.Text = "Profile";
-            // 
-            // askAdminBTN
-            // 
-            this.askAdminBTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.askAdminBTN.Location = new System.Drawing.Point(12, 174);
-            this.askAdminBTN.Name = "askAdminBTN";
-            this.askAdminBTN.Size = new System.Drawing.Size(211, 96);
-            this.askAdminBTN.TabIndex = 0;
-            this.askAdminBTN.Text = "Ask for permission to be an admin";
-            this.askAdminBTN.UseVisualStyleBackColor = true;
-            this.askAdminBTN.Click += new System.EventHandler(this.askAdminBTN_Click);
             // 
             // SomerenUI
             // 

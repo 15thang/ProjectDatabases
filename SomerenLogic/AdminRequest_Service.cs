@@ -31,6 +31,38 @@ namespace SomerenLogic
         }
 
         // Ruben Stoop
+        // Opdracht B Week 5
+        // Sets the admin to true for gebruiker
+        public void MakeAdmin(int ID)
+        {
+            try
+            {
+                adminrequest_db.Make_Admin(ID);
+            }
+            catch (Exception e)
+            {
+                ErrorText = e.Message;
+                Error = true;
+            }
+        }
+
+        // Ruben Stoop
+        // Opdracht B Week 5
+        // Sets the admin to false for and deletes request for user
+        public void RejectAdmin(int ID)
+        {
+            try
+            {
+                adminrequest_db.Reject_Admin(ID);
+            }
+            catch (Exception e)
+            {
+                ErrorText = e.Message;
+                Error = true;
+            }
+        }
+
+        // Ruben Stoop
         // The logic layer fetches the list with Users, if something goes wrong a test User is made
         public List<User> GetUsersWithRequest()
         {

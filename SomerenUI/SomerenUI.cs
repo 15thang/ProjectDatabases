@@ -11,6 +11,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Globalization;
+using System.Threading;
 
 namespace SomerenUI
 {
@@ -37,7 +38,18 @@ namespace SomerenUI
             this.SuperVisor_LV.ListViewItemSorter = lvwColumnSorter;
             this.SuperVisor_LV.ListViewItemSorter = lvwColumnSorter;
             this.ActivitySuperVisor_LV.ListViewItemSorter = lvwColumnSorter;
+
+            this.Shown += new System.EventHandler(this.SomerenUI_Shown);
         }
+        private void SomerenUI_Shown(object sender, EventArgs e)
+        {
+            // Ruben Stoop
+            // Week 5
+            // Opdracht B
+            //Sends admin users a notification
+            AdminNotification();
+        }
+
         public void SetUser(User user)
         {
             // Tim Roffelsen
@@ -79,6 +91,27 @@ namespace SomerenUI
         private void SomerenUI_Load(object sender, EventArgs e)
         {
             showPanel("Dashboard");
+        }
+
+        // Ruben Stoop
+        // Opdracht B
+        // Week 5
+        private void AdminNotification()
+        {
+            if(User.IsAdmin)
+            {
+                SomerenLogic.AdminRequest_Service adminrequest = new SomerenLogic.AdminRequest_Service();
+                List<User> Usersadminreq = adminrequest.GetUsersWithRequest();
+
+                string users = "";
+
+                foreach(User u in Usersadminreq)
+                {
+                    users += u.UserName + "\n";
+                }
+                MessageBox.Show("These users have requested the admin role: \n" + users, "Notifcation");
+
+            }
         }
         private void AlignPanels()
         {
@@ -1772,6 +1805,70 @@ namespace SomerenUI
             {
                 pnl_UserUser.Show();
                 pnl_UserAdmin.Hide();
+            }
+        }
+
+        // Makes the user an admin
+        // Ruben Stoop
+        // Week 5
+        // Opdracht B
+        private void acceptadminBTN_Click(object sender, EventArgs e)
+        {
+            SomerenLogic.AdminRequest_Service adminrequest = new SomerenLogic.AdminRequest_Service();
+
+            int UserID = 0;
+            // Get the student
+            if (adminRequest_LV.SelectedItems.Count > 0)
+            {
+                string selectUserID = adminRequest_LV.SelectedItems[0].Text;
+                UserID = int.Parse(selectUserID);
+
+                adminrequest.MakeAdmin(UserID);
+
+                if(adminrequest.Error)
+                {
+                    MessageBox.Show(adminrequest.ErrorText);
+                } else
+                {
+                    //Shows messagebox and resets panel
+                    LoadUserAdminRequestLV();
+                    MessageBox.Show("User was succesfully made into an admin.", "Succes");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Select a User to make Admin.", "Error!");
+            }
+        }
+
+        private void rejectadminBTN_Click(object sender, EventArgs e)
+        {
+            SomerenLogic.AdminRequest_Service adminrequest = new SomerenLogic.AdminRequest_Service();
+
+
+            int UserID = 0;
+            // Get the student
+            if (adminRequest_LV.SelectedItems.Count > 0)
+            {
+                string selectUserID = adminRequest_LV.SelectedItems[0].Text;
+                UserID = int.Parse(selectUserID);
+
+                adminrequest.RejectAdmin(UserID);
+
+                if (adminrequest.Error)
+                {
+                    MessageBox.Show(adminrequest.ErrorText);
+                }
+                else
+                {
+                    //Shows messagebox and resets panel
+                    LoadUserAdminRequestLV();
+                    MessageBox.Show("User was denied the Admin role", "Succes");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Select a User to reject the admin role.", "Error!");
             }
         }
     }

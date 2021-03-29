@@ -14,6 +14,34 @@ namespace SomerenDAL
     {
         // Ruben Stoop
         // Opdracht B Week 5
+        // sets the admin to true
+        public void Make_Admin(int ID)
+        {
+            string query = "UPDATE Gebruiker SET IsAdmin = 1, AdminRequest = 0 WHERE GebruikerID = @id;";
+
+            //Setting the parameters from the parameter order
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+
+            sqlParameters[0] = new SqlParameter("@id", ID);
+            ExecuteEditQuery(query, sqlParameters);
+        }
+
+        // Ruben Stoop
+        // Opdracht B week 5
+        // sets the admin request to false
+        public void Reject_Admin(int ID)
+        {
+            string query = "UPDATE Gebruiker SET IsAdmin = 0, AdminRequest = 0 WHERE GebruikerID = @id;";
+
+            //Setting the parameters from the parameter order
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+
+            sqlParameters[0] = new SqlParameter("@id", ID);
+            ExecuteEditQuery(query, sqlParameters);
+        }
+
+        // Ruben Stoop
+        // Opdracht B Week 5
         // sets the adminrequest to true
         public void Insert_AdminRequest(int ID)
         {
