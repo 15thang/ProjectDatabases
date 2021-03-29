@@ -18,7 +18,7 @@ namespace SomerenUI
     {
         // Tim Roffelsen
         private ListViewColumnSorter lvwColumnSorter; // column sort functionality
-        private User user; // user perms
+        private User User; // user perms
 
         // Ruben Stoop
         // Important list to check amounts
@@ -41,9 +41,9 @@ namespace SomerenUI
         public void SetUser(User user)
         {
             // Tim Roffelsen
-            this.user = user; // saves user
+            this.User = user; // saves user
             string userLevel;
-            if (user.IsAdmin == true) // set permissions text
+            if (User.IsAdmin == true) // set permissions text
             {
                 userLevel = "admin";
             }
@@ -68,7 +68,7 @@ namespace SomerenUI
         private void btn_Logout_Click(object sender, EventArgs e)
         {
             // Tim Roffelsen
-            this.user = null; // sets user to null
+            this.User = null; // sets user to null
             LoginForm loginForm = new LoginForm(); // logout
             
             this.Hide();

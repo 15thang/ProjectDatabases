@@ -80,5 +80,10 @@ namespace SomerenUI
         {
 
         }
+
+        private void lbl_ForgotPassword_Click(object sender, EventArgs e)
+        {
+            // Forgot password code here
+        }
     }
 }
