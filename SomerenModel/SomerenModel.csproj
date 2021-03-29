@@ -43,6 +43,7 @@
     <Compile Include="Activity.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="Order_Product.cs" />
+    <Compile Include="User.cs" />
     <Compile Include="WeekRoster.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="Product.cs" />

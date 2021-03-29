@@ -17,6 +17,7 @@ namespace SomerenUI
     public partial class SomerenUI : Form
     {
         private ListViewColumnSorter lvwColumnSorter;
+        private User user;
 
         // Ruben Stoop
         // Important list to check amounts
@@ -35,6 +36,38 @@ namespace SomerenUI
             this.SuperVisor_LV.ListViewItemSorter = lvwColumnSorter;
             this.SuperVisor_LV.ListViewItemSorter = lvwColumnSorter;
             this.ActivitySuperVisor_LV.ListViewItemSorter = lvwColumnSorter;
+        }
+        public void SetUser(User user)
+        {
+            this.user = user;
+            string userLevel;
+            if (user.IsAdmin == true)
+            {
+                userLevel = "admin";
+            }
+            else
+            {
+                userLevel = "user";
+            }
+            // hide admin panels
+            if (user.IsAdmin == false)
+            {
+                pnl_TeachersChange.Hide();
+                pnl_ActivityChange.Hide();
+                orderDrinksToolStripMenuItem.Visible = false;
+                pnl_StockChange.Hide();
+                pnl_SupervisorsChange.Hide();
+            }
+            lbl_Dashboard.Text = $"Welcome to the Someren Application! You are logged in as '{user.UserName}' with {userLevel} level permissions.";
+        }
+        private void btn_Logout_Click(object sender, EventArgs e)
+        {
+            this.user = null;
+            LoginForm loginForm = new LoginForm();
+            
+            this.Hide();
+            loginForm.ShowDialog();
+            this.Close();
         }
 
         private void SomerenUI_Load(object sender, EventArgs e)
@@ -189,7 +222,7 @@ namespace SomerenUI
                 // Tim Roffelsen
                 // hide all other panels
                 HideAllPanels();
-
+                
                 // show activities
                 pnl_Activities.Show();
 
@@ -1636,6 +1669,5 @@ namespace SomerenUI
                 MessageBox.Show("Select a teacher to edit", "Error!");
             }
         }
-
     }
 }
