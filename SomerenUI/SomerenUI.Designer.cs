@@ -1701,14 +1701,14 @@
             this.pnl_UserAdmin.Controls.Add(this.acceptadminBTN);
             this.pnl_UserAdmin.Controls.Add(this.adminRequest_LV);
             this.pnl_UserAdmin.Controls.Add(this.adminreqlbl);
-            this.pnl_UserAdmin.Location = new System.Drawing.Point(24, 177);
+            this.pnl_UserAdmin.Location = new System.Drawing.Point(3, 123);
             this.pnl_UserAdmin.Name = "pnl_UserAdmin";
-            this.pnl_UserAdmin.Size = new System.Drawing.Size(559, 288);
+            this.pnl_UserAdmin.Size = new System.Drawing.Size(635, 352);
             this.pnl_UserAdmin.TabIndex = 15;
             // 
             // rejectadminBTN
             // 
-            this.rejectadminBTN.Location = new System.Drawing.Point(184, 256);
+            this.rejectadminBTN.Location = new System.Drawing.Point(183, 299);
             this.rejectadminBTN.Name = "rejectadminBTN";
             this.rejectadminBTN.Size = new System.Drawing.Size(124, 23);
             this.rejectadminBTN.TabIndex = 14;
@@ -1718,7 +1718,7 @@
             // 
             // acceptadminBTN
             // 
-            this.acceptadminBTN.Location = new System.Drawing.Point(24, 256);
+            this.acceptadminBTN.Location = new System.Drawing.Point(19, 299);
             this.acceptadminBTN.Name = "acceptadminBTN";
             this.acceptadminBTN.Size = new System.Drawing.Size(132, 23);
             this.acceptadminBTN.TabIndex = 13;
@@ -1729,19 +1729,20 @@
             // adminRequest_LV
             // 
             this.adminRequest_LV.HideSelection = false;
-            this.adminRequest_LV.Location = new System.Drawing.Point(24, 37);
+            this.adminRequest_LV.Location = new System.Drawing.Point(19, 37);
             this.adminRequest_LV.Name = "adminRequest_LV";
-            this.adminRequest_LV.Size = new System.Drawing.Size(521, 210);
+            this.adminRequest_LV.Size = new System.Drawing.Size(526, 245);
             this.adminRequest_LV.TabIndex = 12;
             this.adminRequest_LV.UseCompatibleStateImageBehavior = false;
             // 
             // adminreqlbl
             // 
             this.adminreqlbl.AutoSize = true;
-            this.adminreqlbl.Location = new System.Drawing.Point(21, 16);
+            this.adminreqlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.adminreqlbl.Location = new System.Drawing.Point(18, 14);
             this.adminreqlbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.adminreqlbl.Name = "adminreqlbl";
-            this.adminreqlbl.Size = new System.Drawing.Size(96, 13);
+            this.adminreqlbl.Size = new System.Drawing.Size(129, 17);
             this.adminreqlbl.TabIndex = 11;
             this.adminreqlbl.Text = "All Admin requests:";
             // 
@@ -1775,20 +1776,20 @@
             // profileNamelbl
             // 
             this.profileNamelbl.AutoSize = true;
-            this.profileNamelbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.profileNamelbl.Location = new System.Drawing.Point(317, 69);
+            this.profileNamelbl.Font = new System.Drawing.Font("Marlett", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.profileNamelbl.Location = new System.Drawing.Point(413, 69);
             this.profileNamelbl.Name = "profileNamelbl";
-            this.profileNamelbl.Size = new System.Drawing.Size(53, 17);
+            this.profileNamelbl.Size = new System.Drawing.Size(52, 16);
             this.profileNamelbl.TabIndex = 13;
             this.profileNamelbl.Text = "Name: ";
             // 
             // userNamelbl
             // 
             this.userNamelbl.AutoSize = true;
-            this.userNamelbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.userNamelbl.Font = new System.Drawing.Font("Marlett", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.userNamelbl.Location = new System.Drawing.Point(19, 69);
             this.userNamelbl.Name = "userNamelbl";
-            this.userNamelbl.Size = new System.Drawing.Size(81, 17);
+            this.userNamelbl.Size = new System.Drawing.Size(80, 16);
             this.userNamelbl.TabIndex = 12;
             this.userNamelbl.Text = "Username: ";
             // 
