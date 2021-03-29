@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SomerenUI));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.dashboardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -45,6 +46,7 @@
             this.btwToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.supervisorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.weekRoosterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.userToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnl_Dashboard = new System.Windows.Forms.Panel();
             this.btn_Logout = new System.Windows.Forms.Button();
             this.lbl_Dashboard = new System.Windows.Forms.Label();
@@ -173,13 +175,27 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.pnl_Supervisors = new System.Windows.Forms.Panel();
+            this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.pnl_SupervisorsChange = new System.Windows.Forms.Panel();
             this.GoToTeachersBTN = new System.Windows.Forms.Button();
-            this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.pnl_WeekRoster = new System.Windows.Forms.Panel();
             this.listViewWeekRoster = new System.Windows.Forms.ListView();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.Lbl_WeekRoster = new System.Windows.Forms.Label();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.pnl_User = new System.Windows.Forms.Panel();
+            this.pnl_UserAdmin = new System.Windows.Forms.Panel();
+            this.pnl_UserUser = new System.Windows.Forms.Panel();
+            this.rejectadminBTN = new System.Windows.Forms.Button();
+            this.acceptadminBTN = new System.Windows.Forms.Button();
+            this.adminRequest_LV = new System.Windows.Forms.ListView();
+            this.adminreqlbl = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.profileNamelbl = new System.Windows.Forms.Label();
+            this.userNamelbl = new System.Windows.Forms.Label();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.profilelbl = new System.Windows.Forms.Label();
+            this.askAdminBTN = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.pnl_Dashboard.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.img_Dashboard)).BeginInit();
@@ -205,10 +221,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.num_AmountChange)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.num_AmountAdd)).BeginInit();
             this.pnl_Supervisors.SuspendLayout();
-            this.pnl_SupervisorsChange.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
+            this.pnl_SupervisorsChange.SuspendLayout();
             this.pnl_WeekRoster.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.pnl_User.SuspendLayout();
+            this.pnl_UserAdmin.SuspendLayout();
+            this.pnl_UserUser.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -224,7 +244,8 @@
             this.BarToolStripMenuItem,
             this.btwToolStripMenuItem,
             this.supervisorToolStripMenuItem,
-            this.weekRoosterToolStripMenuItem});
+            this.weekRoosterToolStripMenuItem,
+            this.userToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 1, 0, 1);
@@ -340,6 +361,15 @@
             this.weekRoosterToolStripMenuItem.Size = new System.Drawing.Size(91, 22);
             this.weekRoosterToolStripMenuItem.Text = "Week Rooster";
             this.weekRoosterToolStripMenuItem.Click += new System.EventHandler(this.weekRoosterToolStripMenuItem_Click);
+            // 
+            // userToolStripMenuItem
+            // 
+            this.userToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.userToolStripMenuItem.Name = "userToolStripMenuItem";
+            this.userToolStripMenuItem.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.userToolStripMenuItem.Size = new System.Drawing.Size(42, 22);
+            this.userToolStripMenuItem.Text = "User";
+            this.userToolStripMenuItem.Click += new System.EventHandler(this.userToolStripMenuItem_Click);
             // 
             // pnl_Dashboard
             // 
@@ -1568,6 +1598,17 @@
             this.pnl_Supervisors.Size = new System.Drawing.Size(938, 468);
             this.pnl_Supervisors.TabIndex = 34;
             // 
+            // pictureBox8
+            // 
+            this.pictureBox8.Image = global::SomerenUI.Properties.Resources.someren;
+            this.pictureBox8.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox8.InitialImage")));
+            this.pictureBox8.Location = new System.Drawing.Point(805, 0);
+            this.pictureBox8.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox8.Name = "pictureBox8";
+            this.pictureBox8.Size = new System.Drawing.Size(128, 115);
+            this.pictureBox8.TabIndex = 0;
+            this.pictureBox8.TabStop = false;
+            // 
             // pnl_SupervisorsChange
             // 
             this.pnl_SupervisorsChange.Controls.Add(this.GoToTeachersBTN);
@@ -1590,17 +1631,6 @@
             this.GoToTeachersBTN.Text = "Go to the teachers overview to Add, Edit, Delete teachers";
             this.GoToTeachersBTN.UseVisualStyleBackColor = true;
             this.GoToTeachersBTN.Click += new System.EventHandler(this.GoToTeachersBTN_Click);
-            // 
-            // pictureBox8
-            // 
-            this.pictureBox8.Image = global::SomerenUI.Properties.Resources.someren;
-            this.pictureBox8.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox8.InitialImage")));
-            this.pictureBox8.Location = new System.Drawing.Point(805, 0);
-            this.pictureBox8.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(128, 115);
-            this.pictureBox8.TabIndex = 0;
-            this.pictureBox8.TabStop = false;
             // 
             // pnl_WeekRoster
             // 
@@ -1645,11 +1675,150 @@
             this.Lbl_WeekRoster.TabIndex = 3;
             this.Lbl_WeekRoster.Text = "Week Rooster";
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
+            // pnl_User
+            // 
+            this.pnl_User.Controls.Add(this.pnl_UserAdmin);
+            this.pnl_User.Controls.Add(this.pnl_UserUser);
+            this.pnl_User.Controls.Add(this.label16);
+            this.pnl_User.Controls.Add(this.profileNamelbl);
+            this.pnl_User.Controls.Add(this.userNamelbl);
+            this.pnl_User.Controls.Add(this.pictureBox4);
+            this.pnl_User.Controls.Add(this.profilelbl);
+            this.pnl_User.Location = new System.Drawing.Point(12, 18);
+            this.pnl_User.Margin = new System.Windows.Forms.Padding(2);
+            this.pnl_User.Name = "pnl_User";
+            this.pnl_User.Size = new System.Drawing.Size(938, 468);
+            this.pnl_User.TabIndex = 36;
+            // 
+            // pnl_UserAdmin
+            // 
+            this.pnl_UserAdmin.Controls.Add(this.rejectadminBTN);
+            this.pnl_UserAdmin.Controls.Add(this.acceptadminBTN);
+            this.pnl_UserAdmin.Controls.Add(this.adminRequest_LV);
+            this.pnl_UserAdmin.Controls.Add(this.adminreqlbl);
+            this.pnl_UserAdmin.Location = new System.Drawing.Point(24, 177);
+            this.pnl_UserAdmin.Name = "pnl_UserAdmin";
+            this.pnl_UserAdmin.Size = new System.Drawing.Size(559, 288);
+            this.pnl_UserAdmin.TabIndex = 15;
+            // 
+            // pnl_UserUser
+            // 
+            this.pnl_UserUser.Controls.Add(this.askAdminBTN);
+            this.pnl_UserUser.Location = new System.Drawing.Point(24, 175);
+            this.pnl_UserUser.Name = "pnl_UserUser";
+            this.pnl_UserUser.Size = new System.Drawing.Size(556, 287);
+            this.pnl_UserUser.TabIndex = 16;
+            // 
+            // rejectadminBTN
+            // 
+            this.rejectadminBTN.Location = new System.Drawing.Point(184, 256);
+            this.rejectadminBTN.Name = "rejectadminBTN";
+            this.rejectadminBTN.Size = new System.Drawing.Size(124, 23);
+            this.rejectadminBTN.TabIndex = 14;
+            this.rejectadminBTN.Text = "Reject Admin request";
+            this.rejectadminBTN.UseVisualStyleBackColor = true;
+            // 
+            // acceptadminBTN
+            // 
+            this.acceptadminBTN.Location = new System.Drawing.Point(24, 256);
+            this.acceptadminBTN.Name = "acceptadminBTN";
+            this.acceptadminBTN.Size = new System.Drawing.Size(132, 23);
+            this.acceptadminBTN.TabIndex = 13;
+            this.acceptadminBTN.Text = "Accept Admin request";
+            this.acceptadminBTN.UseVisualStyleBackColor = true;
+            // 
+            // adminRequest_LV
+            // 
+            this.adminRequest_LV.HideSelection = false;
+            this.adminRequest_LV.Location = new System.Drawing.Point(24, 37);
+            this.adminRequest_LV.Name = "adminRequest_LV";
+            this.adminRequest_LV.Size = new System.Drawing.Size(521, 210);
+            this.adminRequest_LV.TabIndex = 12;
+            this.adminRequest_LV.UseCompatibleStateImageBehavior = false;
+            // 
+            // adminreqlbl
+            // 
+            this.adminreqlbl.AutoSize = true;
+            this.adminreqlbl.Location = new System.Drawing.Point(21, 16);
+            this.adminreqlbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.adminreqlbl.Name = "adminreqlbl";
+            this.adminreqlbl.Size = new System.Drawing.Size(96, 13);
+            this.adminreqlbl.TabIndex = 11;
+            this.adminreqlbl.Text = "All Admin requests:";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(413, 69);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(0, 13);
+            this.label16.TabIndex = 14;
+            // 
+            // profileNamelbl
+            // 
+            this.profileNamelbl.AutoSize = true;
+            this.profileNamelbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.profileNamelbl.Location = new System.Drawing.Point(317, 69);
+            this.profileNamelbl.Name = "profileNamelbl";
+            this.profileNamelbl.Size = new System.Drawing.Size(53, 17);
+            this.profileNamelbl.TabIndex = 13;
+            this.profileNamelbl.Text = "Name: ";
+            // 
+            // userNamelbl
+            // 
+            this.userNamelbl.AutoSize = true;
+            this.userNamelbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.userNamelbl.Location = new System.Drawing.Point(19, 69);
+            this.userNamelbl.Name = "userNamelbl";
+            this.userNamelbl.Size = new System.Drawing.Size(81, 17);
+            this.userNamelbl.TabIndex = 12;
+            this.userNamelbl.Text = "Username: ";
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Image = global::SomerenUI.Properties.Resources.someren;
+            this.pictureBox4.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox4.InitialImage")));
+            this.pictureBox4.Location = new System.Drawing.Point(805, 0);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(128, 115);
+            this.pictureBox4.TabIndex = 0;
+            this.pictureBox4.TabStop = false;
+            // 
+            // profilelbl
+            // 
+            this.profilelbl.AutoSize = true;
+            this.profilelbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.profilelbl.Location = new System.Drawing.Point(10, 10);
+            this.profilelbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.profilelbl.Name = "profilelbl";
+            this.profilelbl.Size = new System.Drawing.Size(83, 29);
+            this.profilelbl.TabIndex = 3;
+            this.profilelbl.Text = "Profile";
+            // 
+            // askAdminBTN
+            // 
+            this.askAdminBTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.askAdminBTN.Location = new System.Drawing.Point(12, 174);
+            this.askAdminBTN.Name = "askAdminBTN";
+            this.askAdminBTN.Size = new System.Drawing.Size(211, 96);
+            this.askAdminBTN.TabIndex = 0;
+            this.askAdminBTN.Text = "Ask for permission to be an admin";
+            this.askAdminBTN.UseVisualStyleBackColor = true;
+            this.askAdminBTN.Click += new System.EventHandler(this.askAdminBTN_Click);
+            // 
             // SomerenUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(962, 505);
+            this.Controls.Add(this.pnl_User);
+            this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.pnl_Supervisors);
             this.Controls.Add(this.pnl_Activities);
             this.Controls.Add(this.pnl_Stock);
@@ -1658,7 +1827,6 @@
             this.Controls.Add(this.pnl_WeekRoster);
             this.Controls.Add(this.pnl_Vat);
             this.Controls.Add(this.pnl_OrderDrinks);
-            this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.pnl_Roomslayout);
             this.Controls.Add(this.pnl_Rooms);
             this.Controls.Add(this.pnl_Students);
@@ -1707,12 +1875,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.num_AmountAdd)).EndInit();
             this.pnl_Supervisors.ResumeLayout(false);
             this.pnl_Supervisors.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             this.pnl_SupervisorsChange.ResumeLayout(false);
             this.pnl_SupervisorsChange.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             this.pnl_WeekRoster.ResumeLayout(false);
             this.pnl_WeekRoster.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.pnl_User.ResumeLayout(false);
+            this.pnl_User.PerformLayout();
+            this.pnl_UserAdmin.ResumeLayout(false);
+            this.pnl_UserAdmin.PerformLayout();
+            this.pnl_UserUser.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1871,6 +2045,21 @@
         private System.Windows.Forms.TextBox tb_ProductNameAdd;
         private System.Windows.Forms.Label lbl_AddDrink;
         private System.Windows.Forms.Panel pnl_SupervisorsChange;
+        private System.Windows.Forms.ToolStripMenuItem userToolStripMenuItem;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.Panel pnl_User;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label profileNamelbl;
+        private System.Windows.Forms.Label userNamelbl;
+        private System.Windows.Forms.Label adminreqlbl;
+        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.Label profilelbl;
+        private System.Windows.Forms.Panel pnl_UserAdmin;
+        private System.Windows.Forms.Button rejectadminBTN;
+        private System.Windows.Forms.Button acceptadminBTN;
+        private System.Windows.Forms.ListView adminRequest_LV;
+        private System.Windows.Forms.Panel pnl_UserUser;
+        private System.Windows.Forms.Button askAdminBTN;
     }
 }
 

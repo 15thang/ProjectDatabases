@@ -45,7 +45,7 @@ namespace SomerenUI
             };
 
             // Checks licence
-            if(string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+            if(string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(name))
             {
                 MessageBox.Show("Username or password is empty", "Error!");
             } else

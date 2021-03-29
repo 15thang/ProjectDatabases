@@ -32,7 +32,7 @@ namespace SomerenUI
                 {
                     SomerenApp.SetUser(loginService.User_Login(tb_UserName.Text, tb_Password.Text));
                 }
-                catch (Exception) // if failed give error
+                catch (Exception err) // if failed give error
                 {
                     MessageBox.Show("Login failed!", "Error!");
                     return; // if failed stop

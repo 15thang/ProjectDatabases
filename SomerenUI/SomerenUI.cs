@@ -60,8 +60,11 @@ namespace SomerenUI
                 pnl_StockChange.Hide();
                 pnl_SupervisorsChange.Hide();
             }
+
+            userToolStripMenuItem.Text = "Welcome! " + user.UserName;
             lbl_Dashboard.Text = $"Welcome to the Someren Application! You are logged in as '{user.UserName}' with {userLevel} level permissions."; // change welcome message
         }
+
         private void btn_Logout_Click(object sender, EventArgs e)
         {
             // Tim Roffelsen
@@ -92,6 +95,8 @@ namespace SomerenUI
             pnl_Vat.Location = point;
             pnl_Supervisors.Location = point;
             pnl_WeekRoster.Location = point;
+            pnl_User.Location = point;
+
         }
 
         private void HideAllPanels()
@@ -109,6 +114,7 @@ namespace SomerenUI
             pnl_Vat.Hide();
             pnl_Supervisors.Hide();
             pnl_WeekRoster.Hide();
+            pnl_User.Hide();
         }
 
         private void showPanel(string panelName)
@@ -398,6 +404,9 @@ namespace SomerenUI
 
                 // refresh stock
                 Stock_Refresh();
+            } else if (panelName == "User")
+            {
+                LoadUserPanel();
             }
             else if (panelName == "Vat")
             {
@@ -689,6 +698,11 @@ namespace SomerenUI
         private void weekRoosterToolStripMenuItem_Click(object sender, EventArgs e)
         {
             showPanel("WeekRoster");
+        }
+
+        private void userToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            showPanel("User");
         }
 
 
@@ -1670,6 +1684,94 @@ namespace SomerenUI
             else
             {
                 MessageBox.Show("Select a teacher to edit", "Error!");
+            }
+        }
+
+        //Ask for admin permission button
+        private void askAdminBTN_Click(object sender, EventArgs e)
+        {
+            SomerenLogic.AdminRequest_Service adminrequest = new SomerenLogic.AdminRequest_Service();
+            if (user.AdminRequest)
+            {
+                MessageBox.Show("U have already requested to be an admin!", "Error!");
+            } else
+            {
+                adminrequest.InsertAdminRequest(user.UserID);
+                if(adminrequest.Error)
+                {
+                    MessageBox.Show(adminrequest.ErrorText, "Error!");
+                } else
+                {
+                    user.AdminRequest = true;
+                    MessageBox.Show("Your request to become an admin has been sent", "Succes!");
+                    LoadUserPanel();
+                }
+            }
+        }
+
+        // Ruben Stoop
+        // Loads the admin request listview
+
+        public void LoadUserAdminRequestLV()
+        {
+            SomerenLogic.AdminRequest_Service adminrequest = new SomerenLogic.AdminRequest_Service();
+            List<User> Usersadminreq = adminrequest.GetUsersWithRequest();
+
+            // clear the listview and comboboxes
+            adminRequest_LV.Clear();
+
+
+            //Setting up Supervisor listview
+            adminRequest_LV.View = View.Details;
+            adminRequest_LV.GridLines = true;
+            adminRequest_LV.FullRowSelect = true;
+            adminRequest_LV.Sorting = SortOrder.Ascending;
+
+
+            // add column header
+            adminRequest_LV.Columns.Add("User ID");
+            adminRequest_LV.Columns.Add("UserName");
+            adminRequest_LV.Columns.Add("Name");
+
+            foreach (SomerenModel.User ua in Usersadminreq)
+            {
+                string[] arr = new string[3];
+                ListViewItem li;
+
+                // Add the items
+                arr[0] = ua.UserID.ToString();
+                arr[1] = ua.UserName;
+                arr[2] = ua.Name;
+
+                li = new ListViewItem(arr);
+                adminRequest_LV.Items.Add(li);
+            }
+
+            foreach (ColumnHeader ch in adminRequest_LV.Columns) // dynamically change column width
+            {
+                ch.Width = -2;
+            }
+        }
+
+        //Load two different panels if user is admin or not
+        public void LoadUserPanel()
+        {
+            HideAllPanels();
+            pnl_User.Show();
+
+            userNamelbl.Text = "Username: " + user.UserName;
+            profileNamelbl.Text = "Name: " + user.Name;
+            if (user.IsAdmin == true)
+            {
+                pnl_UserUser.Hide();
+                pnl_UserAdmin.Show();
+                LoadUserAdminRequestLV();
+
+            }
+            else if (user.IsAdmin == false)
+            {
+                pnl_UserUser.Show();
+                pnl_UserAdmin.Hide();
             }
         }
     }

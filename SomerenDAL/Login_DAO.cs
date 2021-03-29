@@ -11,7 +11,7 @@ namespace SomerenDAL
         // Login functionality to database
         public User User_Login(string Username, string Password)
         {
-            string query = "SELECT GebruikerID, Gebruikersnaam, Wachtwoord, IsAdmin FROM Gebruiker WHERE Gebruikersnaam = @username AND Wachtwoord = @password;";
+            string query = "SELECT GebruikerID, Gebruikersnaam, Wachtwoord, IsAdmin, Naam, AdminRequest FROM Gebruiker WHERE Gebruikersnaam = @username AND Wachtwoord = @password;";
             SqlParameter[] sqlParameters = new SqlParameter[2];
             sqlParameters[0] = new SqlParameter("@username", Username);
             sqlParameters[1] = new SqlParameter("@password", Password);
@@ -33,7 +33,9 @@ namespace SomerenDAL
                 UserID = (int)dr["GebruikerID"],
                 UserName = (String)dr["Gebruikersnaam"],
                 Password = (String)dr["Wachtwoord"],
-                IsAdmin = (bool)dr["IsAdmin"]
+                IsAdmin = (bool)dr["IsAdmin"],
+                Name = (string)dr["Naam"],
+                AdminRequest = (bool)dr["AdminRequest"],
             };
 
             return user;
