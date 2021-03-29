@@ -25,19 +25,19 @@ namespace SomerenUI
             Login_Service loginService = new Login_Service();
             SomerenUI SomerenApp = new SomerenUI();
 
-            if (tb_UserName.Text != "" && tb_Password.Text != "")
+            if (tb_UserName.Text != "" && tb_Password.Text != "") // check if login info is empty
             {
-                try
+                try // try logging in
                 {
                     SomerenApp.SetUser(loginService.User_Login(tb_UserName.Text, tb_Password.Text));
                 }
-                catch (Exception)
+                catch (Exception) // if failed give error
                 {
                     MessageBox.Show("Login failed!", "Error!");
-                    return;
+                    return; // if failed stop
                 }
-                this.Hide();
-                SomerenApp.ShowDialog();
+                this.Hide(); // if success open the app
+                SomerenApp.ShowDialog(); 
                 this.Close();
             }
             else
@@ -48,7 +48,7 @@ namespace SomerenUI
 
         private void tb_Password_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter) // enter key press register
             {
                 btn_Login_Click(this, new EventArgs());
             }
@@ -56,7 +56,7 @@ namespace SomerenUI
 
         private void tb_UserName_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter) // enter key press register
             {
                 btn_Login_Click(this, new EventArgs());
             }
