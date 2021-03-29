@@ -61,5 +61,10 @@ namespace SomerenUI
                 btn_Login_Click(this, new EventArgs());
             }
         }
+
+        private void btn_Register_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
