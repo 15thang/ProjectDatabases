@@ -126,9 +126,9 @@ namespace SomerenUI
             this.registerlbl.AutoSize = true;
             this.registerlbl.Location = new System.Drawing.Point(12, 44);
             this.registerlbl.Name = "registerlbl";
-            this.registerlbl.Size = new System.Drawing.Size(224, 13);
+            this.registerlbl.Size = new System.Drawing.Size(229, 13);
             this.registerlbl.TabIndex = 9;
-            this.registerlbl.Text = "Register here to gain acces to the application!";
+            this.registerlbl.Text = "Register here to gain access to the application!";
             // 
             // label3
             // 

@@ -100,6 +100,7 @@ namespace SomerenUI
             // lbl_ForgotPassword
             // 
             this.lbl_ForgotPassword.AutoSize = true;
+            this.lbl_ForgotPassword.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lbl_ForgotPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_ForgotPassword.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.lbl_ForgotPassword.Location = new System.Drawing.Point(92, 135);
@@ -107,6 +108,7 @@ namespace SomerenUI
             this.lbl_ForgotPassword.Size = new System.Drawing.Size(91, 13);
             this.lbl_ForgotPassword.TabIndex = 6;
             this.lbl_ForgotPassword.Text = "Forgot password?";
+            this.lbl_ForgotPassword.Click += new System.EventHandler(this.lbl_ForgotPassword_Click);
             // 
             // lbl_Welcome
             // 
