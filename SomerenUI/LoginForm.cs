@@ -67,6 +67,17 @@ namespace SomerenUI
 
         private void btn_Register_Click(object sender, EventArgs e)
         {
+            RegisterForm registerForm = new RegisterForm(); // logout
+
+            registerForm.StartPosition = FormStartPosition.CenterParent;
+
+            this.Hide();
+            registerForm.ShowDialog(); // open login form
+            this.Close();
+        }
+
+        private void LoginForm_Load(object sender, EventArgs e)
+        {
 
         }
     }

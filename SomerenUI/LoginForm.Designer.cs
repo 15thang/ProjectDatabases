@@ -144,6 +144,7 @@ namespace SomerenUI
             this.Controls.Add(this.lbl_UserName);
             this.Name = "LoginForm";
             this.Text = "Welcome!";
+            this.Load += new System.EventHandler(this.LoginForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStock)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
