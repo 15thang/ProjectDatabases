@@ -1,7 +1,7 @@
 ﻿using System;
-using System.Data.SqlClient;
 using System.Configuration;
 using System.Data;
+using System.Data.SqlClient;
 
 namespace SomerenDAL
 {
@@ -9,10 +9,11 @@ namespace SomerenDAL
     {
         private SqlDataAdapter adapter;
         private SqlConnection conn;
+
         public Base()
         {
-                conn = new SqlConnection(ConfigurationManager.ConnectionStrings["SomerenDatabase"].ConnectionString);
-                adapter = new SqlDataAdapter();
+            conn = new SqlConnection(ConfigurationManager.ConnectionStrings["SomerenDatabase"].ConnectionString);
+            adapter = new SqlDataAdapter();
         }
 
         protected SqlConnection OpenConnection()
@@ -30,6 +31,7 @@ namespace SomerenDAL
         }
 
         /* For Insert/Update/Delete Queries with transaction */
+
         protected void ExecuteEditTranQuery(String query, SqlParameter[] sqlParameters, SqlTransaction sqlTransaction)
         {
             SqlCommand command = new SqlCommand(query, conn, sqlTransaction);
@@ -47,6 +49,7 @@ namespace SomerenDAL
         }
 
         /* For Insert/Update/Delete Queries */
+
         protected void ExecuteEditQuery(String query, SqlParameter[] sqlParameters)
         {
             SqlCommand command = new SqlCommand();
@@ -71,9 +74,8 @@ namespace SomerenDAL
             }
         }
 
-
-
         /* For Select Queries */
+
         protected DataTable ExecuteSelectQuery(String query, params SqlParameter[] sqlParameters)
         {
             SqlCommand command = new SqlCommand();
@@ -92,7 +94,7 @@ namespace SomerenDAL
             }
             catch (SqlException e)
             {
-               // Print.ErrorLog(e);
+                // Print.ErrorLog(e);
                 return null;
                 throw;
             }

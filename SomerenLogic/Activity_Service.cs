@@ -2,16 +2,12 @@
 using SomerenModel;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SomerenLogic
 {
     public class Activity_Service : Base_Service
     {
-        Activity_DAO activity_db = new Activity_DAO();
+        private Activity_DAO activity_db = new Activity_DAO();
 
         public Activity GetActivity(int ID)
         {
@@ -35,6 +31,7 @@ namespace SomerenLogic
                 return a;
             }
         }
+
         // Tim Roffelsen
         // The logic layer fetches the list with Activities, if something goes wrong a test activity is made
         public List<Activity> GetActivities()
@@ -61,6 +58,7 @@ namespace SomerenLogic
                 return activities;
             }
         }
+
         public void Change_Activity(Activity activity)
         {
             // Tim Roffelsen
@@ -76,6 +74,7 @@ namespace SomerenLogic
                 // something went wrong connecting to the database, so we will add a fake student to the list to make sure the rest of the application continues working!
             }
         }
+
         public void Delete_Activity(Activity activity)
         {
             // Tim Roffelsen
@@ -91,6 +90,7 @@ namespace SomerenLogic
                 // something went wrong connecting to the database, so we will add a fake student to the list to make sure the rest of the application continues working!
             }
         }
+
         public void Add_Activity(Activity activity)
         {
             // Tim Roffelsen

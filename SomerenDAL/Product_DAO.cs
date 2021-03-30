@@ -1,18 +1,13 @@
-﻿using System;
+﻿using SomerenModel;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data.SqlClient;
 using System.Data;
-using System.Collections.ObjectModel;
-using SomerenModel;
+using System.Data.SqlClient;
 
 namespace SomerenDAL
 {
     public class Product_DAO : Base
     {
-
         // Ruben Stoop
         // Opdracht B
         // Data gets pulled from the database by the query from the 'Product' table
@@ -22,6 +17,7 @@ namespace SomerenDAL
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
+
         // Tim Roffelsen
         // Data gets pulled from the database and ordered by Stock, then Price, then Amount sold
         public List<Product> Db_Get_All_Stock()
@@ -60,6 +56,7 @@ namespace SomerenDAL
             }
             return products;
         }
+
         // Ruben Stoop
         // Opdracht B
         public void Update_Stock(Order_Product order_Product)
@@ -70,10 +67,9 @@ namespace SomerenDAL
 
             sqlParameters[0] = new SqlParameter("@amount", order_Product.Amount);
             sqlParameters[1] = new SqlParameter("@productid", order_Product.ProductID);
-            
+
             ExecuteEditQuery(query, sqlParameters);
         }
-
 
         public void Add_Product(Product product)
         {
@@ -91,6 +87,7 @@ namespace SomerenDAL
 
             ExecuteEditQuery(query, sqlParameters);
         }
+
         public void Change_Product(Product product)
         {
             // Tim Roffelsen
@@ -108,6 +105,7 @@ namespace SomerenDAL
 
             ExecuteEditQuery(query, sqlParameters);
         }
+
         public void Delete_Product(Product product)
         {
             // Tim Roffelsen

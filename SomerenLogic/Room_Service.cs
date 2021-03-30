@@ -2,17 +2,13 @@
 using SomerenModel;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SomerenLogic
 {
     public class Room_Service : Base_Service
     {
         // Thomas Eddyson
-        Room_DAO room_db = new Room_DAO();
+        private Room_DAO room_db = new Room_DAO();
 
         public List<Room> GetRooms()
         {
@@ -35,9 +31,7 @@ namespace SomerenLogic
                 room.Add(a);
 
                 return room;
-
             }
-
         }
     }
 }

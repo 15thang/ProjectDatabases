@@ -1,14 +1,6 @@
-﻿using SomerenLogic;
-using SomerenModel;
+﻿using SomerenModel;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SomerenUI
@@ -24,6 +16,7 @@ namespace SomerenUI
 
         //list to check amounts
         public List<Product> Products = new List<Product>();
+
         public AddAmount(Product product, List<Product> products)
         {
             InitializeComponent();
@@ -32,42 +25,42 @@ namespace SomerenUI
             productLabel.Text = product.ProductName;
             this.Price = product.Price;
             this.Products = products;
-
         }
 
         private void AddAmount_Load(object sender, EventArgs e)
         {
-
         }
 
         private void AddProduct_Click(object sender, EventArgs e)
         {
             int checkAmount = 0;
 
-            foreach(Product p in Products)
+            foreach (Product p in Products)
             {
-                if(ProductID == p.ProductID)
+                if (ProductID == p.ProductID)
                 {
                     if (p.Stock == 0)
                     {
                         MessageBox.Show("There aren't enough products in stock.", "Error!");
                         return;
-                    } else
+                    }
+                    else
                     {
                         checkAmount = p.Stock;
                     }
                 }
-
             }
             int amount = 0;
             try
             {
                 amount = int.Parse(AmountBox.Text);
-            } catch
+            }
+            catch
             {
                 MessageBox.Show("Not the correct input", "Error!");
             }
-            if (amount == 0) {
+            if (amount == 0)
+            {
                 MessageBox.Show("Order atleast one product.", "Error!");
                 return;
             }
@@ -77,7 +70,8 @@ namespace SomerenUI
             {
                 this.DialogResult = DialogResult.OK;
                 this.Close();
-            } else
+            }
+            else
             {
                 MessageBox.Show("There aren't enough products in stock.", "Error!");
                 return;

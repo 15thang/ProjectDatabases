@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SomerenModel
+﻿namespace SomerenModel
 {
     public class Room
     {
         // Thomas Eddyson
         public int Number { get; set; } // RoomNumber, e.g. 206
-        public int Capacity { get; set;  } // number of beds, either 4,6,8,12 or 16        
+
+        public int Capacity { get; set; } // number of beds, either 4,6,8,12 or 16
         public string Type { get; set; } // student = false, teacher = true
         public string RoomType { get; set; } // RoomType either student, teacher
     }

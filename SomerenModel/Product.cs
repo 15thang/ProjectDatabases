@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SomerenModel
+﻿namespace SomerenModel
 {
     public class Product
     {
@@ -17,11 +11,12 @@ namespace SomerenModel
             this.Price = price;
             this.Stock = stock;
             this.Sold = sold;
-            
-            if(isalcohol)
+
+            if (isalcohol)
             {
                 this.AlcoholString = "Yes";
-            } else if(!isalcohol)
+            }
+            else if (!isalcohol)
             {
                 this.AlcoholString = "No";
             }
@@ -33,26 +28,35 @@ namespace SomerenModel
             this.ProductName = productName;
             this.Price = price;
         }
+
         // Key
-        public int ProductID { get; set; } 
+        public int ProductID { get; set; }
+
         // Is alcoholic drink
-        public bool IsAlcohol { get; set; }   
+        public bool IsAlcohol { get; set; }
+
         // The name of the product
         public string ProductName { get; set; }
+
         // Price
         public double Price { get; set; }
+
         // Stock
         public int Stock { get; set; }
+
         //Bool alcohol naar string
         public string AlcoholString { get; set; }
+
         // Amount sold
         public int Sold { get; set; }
+
         public override string ToString()
         {
             // Tim Roffelsen
             // Returns product name
             return ProductName;
         }
+
         public override bool Equals(object obj)
         {
             // Tim Roffelsen

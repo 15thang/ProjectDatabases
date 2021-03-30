@@ -1,12 +1,8 @@
-﻿using System;
+﻿using SomerenModel;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data.SqlClient;
 using System.Data;
-using System.Collections.ObjectModel;
-using SomerenModel;
+using System.Data.SqlClient;
 
 namespace SomerenDAL
 {
@@ -33,7 +29,7 @@ namespace SomerenDAL
             //Fills the Order_Product Table
             Order_Product_DAO order_product_dao = new Order_Product_DAO();
             int recentOrder = GetLatest();
-            foreach(Order_Product op in order_Product)
+            foreach (Order_Product op in order_Product)
             {
                 op.OrderID = recentOrder;
                 order_product_dao.Insert_Order_Product(op);

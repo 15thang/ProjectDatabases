@@ -1,14 +1,7 @@
-﻿using SomerenLogic;
-using SomerenModel;
+﻿using SomerenModel;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SomerenUI
@@ -18,7 +11,6 @@ namespace SomerenUI
     // Because of our database a supervisor cannot exist without a Activity.
     // Thats why we consider this exercise B.
 
-
     // Opdracht B Week 4
     public partial class SuperVisor : Form
     {
@@ -26,11 +18,11 @@ namespace SomerenUI
 
         public Activity Activity;
 
-        SomerenLogic.Activity_Service actService = new SomerenLogic.Activity_Service();
+        private SomerenLogic.Activity_Service actService = new SomerenLogic.Activity_Service();
 
-        SomerenLogic.Supervisor_Service supService = new SomerenLogic.Supervisor_Service();
+        private SomerenLogic.Supervisor_Service supService = new SomerenLogic.Supervisor_Service();
 
-        SomerenLogic.Teacher_Service teachService = new SomerenLogic.Teacher_Service();
+        private SomerenLogic.Teacher_Service teachService = new SomerenLogic.Teacher_Service();
 
         //Ruben Stoop
         // Opdracht B Week 4
@@ -70,13 +62,11 @@ namespace SomerenUI
             Supervisor_LV.Clear();
             TeacherListView.Clear();
 
-
             //Setting up Supervisor listview
             Supervisor_LV.View = View.Details;
             Supervisor_LV.GridLines = true;
             Supervisor_LV.FullRowSelect = true;
             Supervisor_LV.Sorting = SortOrder.Ascending;
-
 
             // add column header
             Supervisor_LV.Columns.Add("Teacher ID");
@@ -97,8 +87,6 @@ namespace SomerenUI
 
                 li = new ListViewItem(arr);
                 Supervisor_LV.Items.Add(li);
-
-
             }
             foreach (ColumnHeader ch in Supervisor_LV.Columns) // dynamically change column width
             {
@@ -145,11 +133,9 @@ namespace SomerenUI
             }
         }
 
-
         //Checks the available teachers
         public List<Teacher> checkAvailableTeachers(List<Teacher> teacher, List<Supervisor> supervisors, List<Supervisor> Allsupervisors, List<Activity> Allactivities)
         {
-
             List<Teacher> selectedTeachers = new List<Teacher>();
 
             //Checks if teacher is already supervising activity
@@ -173,28 +159,26 @@ namespace SomerenUI
                 {
                     Checktime = CheckTime(a, Activity);
 
-                    if(!Checktime)
+                    if (!Checktime)
                     {
                         break;
                     }
                 }
-                if(Checktime)
+                if (Checktime)
                 {
                     SuperSelectedTeachers.Add(t);
-                } 
+                }
             }
             return SuperSelectedTeachers;
         }
 
-
         // Ruben Stoop
         // Opdracht B week 4
         // Checks activities time
-        public bool CheckTime(Activity ActCheck, Activity activity )
-        {   
+        public bool CheckTime(Activity ActCheck, Activity activity)
+        {
             bool Check = true;
 
-            
             if (activity.BeginTime < ActCheck.EndTime && ActCheck.BeginTime < activity.EndTime)
             {
                 Check = false;
@@ -207,18 +191,18 @@ namespace SomerenUI
         {
             List<Activity> activities = new List<Activity>();
             List<Supervisor> SelectSupervisors = new List<Supervisor>();
-            foreach(Supervisor sv in Allsupervisors)
+            foreach (Supervisor sv in Allsupervisors)
             {
-                if(sv.TeacherID == TeacherID)
+                if (sv.TeacherID == TeacherID)
                 {
                     SelectSupervisors.Add(sv);
                 }
             }
 
-            foreach(Activity a in Allactivities)
+            foreach (Activity a in Allactivities)
             {
                 bool contains = SelectSupervisors.Any(p => p.ActivityID == a.ActivityId);
-                if(contains)
+                if (contains)
                 {
                     activities.Add(a);
                 }
@@ -230,7 +214,6 @@ namespace SomerenUI
         // The teacher still exists
         private void AddTeacherBTN_Click(object sender, EventArgs e)
         {
-
             //Supervisor service
             //Makes The sup service
             SomerenLogic.Supervisor_Service sup_Service = new SomerenLogic.Supervisor_Service();
@@ -250,14 +233,12 @@ namespace SomerenUI
                 //Shows messagebox and resets panel
                 FillListViews();
                 MessageBox.Show("Teacher added to supervisors for this activity", "Succes");
-
             }
             else
             {
                 MessageBox.Show("Select a teacher to add to the supervisor for this activity", "Error!");
             }
         }
-
 
         // This removes the Supervisor from the database and the listview
         // The teacher still exists

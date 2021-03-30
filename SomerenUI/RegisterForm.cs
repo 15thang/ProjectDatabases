@@ -1,16 +1,6 @@
-﻿using SomerenLogic;
-using SomerenModel;
+﻿using SomerenModel;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-
 
 namespace SomerenUI
 {
@@ -19,8 +9,7 @@ namespace SomerenUI
     // Opdracht B
     public partial class RegisterForm : Form
     {
-        SomerenLogic.Register_Service registerService = new SomerenLogic.Register_Service();
-
+        private SomerenLogic.Register_Service registerService = new SomerenLogic.Register_Service();
 
         public RegisterForm()
         {
@@ -37,18 +26,19 @@ namespace SomerenUI
             string license = licenceBOX.Text;
             string LicenseCheck = "XsZAb-tgz3PsD-qYh69un-WQCEx";
 
-            User user = new User() 
-            { 
-              Name = name, 
-              UserName = username, 
-              Password = password 
+            User user = new User()
+            {
+                Name = name,
+                UserName = username,
+                Password = password
             };
 
             // Checks licence
-            if(string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(name))
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(name))
             {
                 MessageBox.Show("Username or password is empty", "Error!");
-            } else
+            }
+            else
             {
                 // Checks if string aren't empty
                 if (String.Equals(license, LicenseCheck, StringComparison.CurrentCulture))
@@ -74,7 +64,6 @@ namespace SomerenUI
 
         private void RegisterForm_Load(object sender, EventArgs e)
         {
-
         }
 
         private void Cancelbtn_Click(object sender, EventArgs e)

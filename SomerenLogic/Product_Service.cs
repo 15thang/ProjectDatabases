@@ -2,16 +2,12 @@
 using SomerenModel;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SomerenLogic
 {
     public class Product_Service : Base_Service
     {
-        Product_DAO product_db = new Product_DAO();
+        private Product_DAO product_db = new Product_DAO();
 
         // Ruben Stoop
         // Opdracht B
@@ -36,6 +32,7 @@ namespace SomerenLogic
                 return products;
             }
         }
+
         public List<Product> GetStock()
         {
             // Tim Roffelsen
@@ -57,6 +54,7 @@ namespace SomerenLogic
                 return products;
             }
         }
+
         public void Add_Product(Product product)
         {
             // Tim Roffelsen
@@ -71,6 +69,7 @@ namespace SomerenLogic
                 // something went wrong connecting to the database, so we will add a fake student to the list to make sure the rest of the application continues working!
             }
         }
+
         public void Change_Product(Product product)
         {
             // Tim Roffelsen
@@ -85,6 +84,7 @@ namespace SomerenLogic
                 // something went wrong connecting to the database, so we will add a fake student to the list to make sure the rest of the application continues working!
             }
         }
+
         public void Delete_Product(Product product)
         {
             // Tim Roffelsen

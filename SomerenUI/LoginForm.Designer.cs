@@ -47,9 +47,9 @@ namespace SomerenUI
             this.lbl_UserName.AutoSize = true;
             this.lbl_UserName.Location = new System.Drawing.Point(32, 60);
             this.lbl_UserName.Name = "lbl_UserName";
-            this.lbl_UserName.Size = new System.Drawing.Size(57, 13);
+            this.lbl_UserName.Size = new System.Drawing.Size(55, 13);
             this.lbl_UserName.TabIndex = 0;
-            this.lbl_UserName.Text = "UserName";
+            this.lbl_UserName.Text = "Username";
             // 
             // lbl_Password
             // 

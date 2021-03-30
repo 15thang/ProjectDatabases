@@ -1,14 +1,6 @@
 ﻿using SomerenLogic;
 using SomerenModel;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SomerenUI
@@ -18,10 +10,11 @@ namespace SomerenUI
     // Opdracht B
     public partial class TeacherForm : Form
     {
-        Teacher editTeacher { get; set; }
+        private Teacher editTeacher { get; set; }
 
-        SomerenLogic.Teacher_Service teachService = new SomerenLogic.Teacher_Service();
+        private SomerenLogic.Teacher_Service teachService = new SomerenLogic.Teacher_Service();
         public string panelName { get; set; }
+
         public TeacherForm(string panelName)
         {
             InitializeComponent();
@@ -39,13 +32,15 @@ namespace SomerenUI
         {
             showPanel(panelName);
         }
+
         private void showPanel(string panelName)
         {
             if (panelName == "Addteacher")
             {
                 pnl_EditTeacher.Hide();
                 pnl_AddTeacher.Show();
-            } else if(panelName == "EditTeacher")
+            }
+            else if (panelName == "EditTeacher")
             {
                 pnl_EditTeacher.Show();
                 pnl_AddTeacher.Hide();
@@ -68,7 +63,8 @@ namespace SomerenUI
             string lastname = lastnameBox.Text;
             DateTime birthdate = birthdatePicker.Value;
 
-            Teacher teacher = new Teacher() {
+            Teacher teacher = new Teacher()
+            {
                 FirstName = firstname,
                 LastName = lastname,
                 BirthDate = birthdate,
@@ -78,11 +74,13 @@ namespace SomerenUI
             {
                 MessageBox.Show("Input from first or lastname is not correct", "Error");
                 return;
-            } else if (birthdate == DateTime.MinValue)
+            }
+            else if (birthdate == DateTime.MinValue)
             {
                 MessageBox.Show("Input from Date is not correct", "Error");
                 return;
-            } else
+            }
+            else
             {
                 teachService.Insert_Teacher(teacher);
                 Error_Show(teachService);

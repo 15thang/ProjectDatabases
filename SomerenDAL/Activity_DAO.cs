@@ -1,12 +1,8 @@
-﻿using System;
+﻿using SomerenModel;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data.SqlClient;
 using System.Data;
-using System.Collections.ObjectModel;
-using SomerenModel;
+using System.Data.SqlClient;
 
 namespace SomerenDAL
 {
@@ -40,10 +36,10 @@ namespace SomerenDAL
 
             Activity activity = new Activity()
             {
-                    ActivityId = (int)dr["ActiviteitID"],
-                    Type = (String)dr["Soort"],
-                    BeginTime = (DateTime)dr["Begintijd"],
-                    EndTime = (DateTime)dr["Eindtijd"]
+                ActivityId = (int)dr["ActiviteitID"],
+                Type = (String)dr["Soort"],
+                BeginTime = (DateTime)dr["Begintijd"],
+                EndTime = (DateTime)dr["Eindtijd"]
             };
 
             return activity;
@@ -57,6 +53,7 @@ namespace SomerenDAL
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
+
         public void Change_Activity(Activity activity)
         {
             // Tim Roffelsen
@@ -73,6 +70,7 @@ namespace SomerenDAL
 
             ExecuteEditQuery(query, sqlParameters);
         }
+
         public void Delete_Activity(Activity activity)
         {
             // Tim Roffelsen
@@ -86,6 +84,7 @@ namespace SomerenDAL
 
             ExecuteEditQuery(query, sqlParameters);
         }
+
         public void Add_Activity(Activity activity)
         {
             // Tim Roffelsen
@@ -101,6 +100,7 @@ namespace SomerenDAL
 
             ExecuteEditQuery(query, sqlParameters);
         }
+
         // Tim Roffelsen
         // The returned data gets saved in a list
         private List<Activity> ReadTables(DataTable dataTable)
@@ -126,6 +126,5 @@ namespace SomerenDAL
             }
             return activities;
         }
-
     }
 }

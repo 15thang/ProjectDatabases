@@ -1,12 +1,8 @@
-﻿using System;
+﻿using SomerenModel;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data.SqlClient;
 using System.Data;
-using System.Collections.ObjectModel;
-using SomerenModel;
+using System.Data.SqlClient;
 
 namespace SomerenDAL
 {
@@ -45,7 +41,6 @@ namespace SomerenDAL
             };
             return teacher;
         }
-
 
         // Ruben Stoop
         // Opdracht B Week 4 Also uses this method
@@ -145,8 +140,8 @@ namespace SomerenDAL
 
             DataRow dr = dataTable.Rows[0];
             return (int)dr["PersonID"];
-        }        
-        
+        }
+
         // Ruben Stoop
         // Reads the datatable and returns the DocentID
         private int ReadIntDocent(DataTable dataTable)
@@ -172,7 +167,7 @@ namespace SomerenDAL
             sqlParameters[0] = new SqlParameter("@teacherid", TeacherID);
             ExecuteEditQuery(query, sqlParameters);
 
-            string query2= "DELETE FROM Docent WHERE DocentID = @teacherid;";
+            string query2 = "DELETE FROM Docent WHERE DocentID = @teacherid;";
             SqlParameter[] sqlParameters2 = new SqlParameter[1];
             sqlParameters2[0] = new SqlParameter("@teacherid", TeacherID);
             ExecuteEditQuery(query2, sqlParameters2);

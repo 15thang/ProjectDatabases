@@ -1,19 +1,15 @@
-﻿using System;
+﻿using SomerenModel;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data.SqlClient;
 using System.Data;
-using System.Collections.ObjectModel;
-using SomerenModel;
+using System.Data.SqlClient;
 
 namespace SomerenDAL
 {
     public class Vat_DAO : Base
     {
-        const double taxTwntyOnePrcnt = 0.21;
-        const double taxSixPrcnt = 0.06;
+        private const double taxTwntyOnePrcnt = 0.21;
+        private const double taxSixPrcnt = 0.06;
 
         private string Quarter;
 
@@ -32,7 +28,7 @@ namespace SomerenDAL
             string QMonth = Quarter;
 
             double isAlcDrink = 0;
-            double isNotAlcDrink = 0;            
+            double isNotAlcDrink = 0;
 
             // Check if datatable is null
             if (dataTable == null)
@@ -59,7 +55,7 @@ namespace SomerenDAL
                         else
                         {
                             isNotAlcDrink = (Price * amount) + isNotAlcDrink;
-                        }                        
+                        }
                     }
                 }
                 else if (QMonth == "Q2")
@@ -103,7 +99,7 @@ namespace SomerenDAL
                             isNotAlcDrink = (Price * amount) + isNotAlcDrink;
                         }
                     }
-                }                
+                }
 
                 Vat vat = new Vat()
                 {

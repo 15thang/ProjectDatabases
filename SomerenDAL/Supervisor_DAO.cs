@@ -1,12 +1,8 @@
-﻿using System;
+﻿using SomerenModel;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data.SqlClient;
 using System.Data;
-using System.Collections.ObjectModel;
-using SomerenModel;
+using System.Data.SqlClient;
 
 namespace SomerenDAL
 {
@@ -83,14 +79,13 @@ namespace SomerenDAL
             return ReadSuperVisors(ExecuteSelectQuery(query, sqlParameters));
         }
 
-
         // Ruben Stoop
         // Opdracht B Week 4
         // Reads all supervisors
         public List<Supervisor> ReadSuperVisors(DataTable dataTable)
         {
             List<Supervisor> supervisors = new List<Supervisor>();
-            
+
             // Check if datatable is null
             if (dataTable == null)
             {
@@ -109,7 +104,6 @@ namespace SomerenDAL
                 supervisors.Add(supervisor);
             }
             return supervisors;
-
         }
 
         // Tim Roffelsen

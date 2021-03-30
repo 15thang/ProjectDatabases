@@ -1,21 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using SomerenLogic;
+using System;
 using System.Windows.Forms;
-using SomerenUI;
-using SomerenLogic;
-using SomerenModel;
 
 namespace SomerenUI
 {
     public partial class LoginForm : Form
     {
-
         public LoginForm()
         {
             InitializeComponent();
@@ -39,7 +29,7 @@ namespace SomerenUI
                     return; // if failed stop
                 }
                 this.Hide(); // if success open the app
-                SomerenApp.ShowDialog(); 
+                SomerenApp.ShowDialog();
                 this.Close();
             }
             else
@@ -79,7 +69,6 @@ namespace SomerenUI
 
         private void LoginForm_Load(object sender, EventArgs e)
         {
-
         }
 
         private void lbl_ForgotPassword_Click(object sender, EventArgs e)

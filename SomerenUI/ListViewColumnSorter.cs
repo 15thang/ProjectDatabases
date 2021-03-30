@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Windows.Forms;
 
-
 public class ListViewColumnSorter : IComparer
 {
     // Tim Roffelsen
@@ -100,5 +99,4 @@ public class ListViewColumnSorter : IComparer
             return OrderOfSort;
         }
     }
-
 }

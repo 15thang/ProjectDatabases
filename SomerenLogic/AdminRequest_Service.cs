@@ -2,17 +2,12 @@
 using SomerenModel;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SomerenLogic
 {
-
     public class AdminRequest_Service : Base_Service
     {
-        AdminRequest_DAO adminrequest_db = new AdminRequest_DAO();
+        private AdminRequest_DAO adminrequest_db = new AdminRequest_DAO();
 
         // Ruben Stoop
         // Opdracht B Week 5
@@ -30,7 +25,6 @@ namespace SomerenLogic
                 return false;
             }
         }
-
 
         // Ruben Stoop
         // Opdracht B Week 5

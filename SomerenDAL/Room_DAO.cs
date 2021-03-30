@@ -1,12 +1,8 @@
-﻿using System;
+﻿using SomerenModel;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data.SqlClient;
 using System.Data;
-using System.Collections.ObjectModel;
-using SomerenModel;
+using System.Data.SqlClient;
 
 namespace SomerenDAL
 {
@@ -14,7 +10,7 @@ namespace SomerenDAL
     {
         // Thomas Eddyson
         public List<Room> Db_Get_All_Rooms()
-        {            
+        {
             string query = "USE prjdb4 SELECT Kamer.KamerID, Kamer.isDocentenKamer, kamer.KamerGrootte FROM Kamer";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
@@ -53,6 +49,5 @@ namespace SomerenDAL
             }
             return Rooms;
         }
-
     }
 }

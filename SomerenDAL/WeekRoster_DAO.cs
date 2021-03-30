@@ -1,12 +1,8 @@
-﻿using System;
+﻿using SomerenModel;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data.SqlClient;
 using System.Data;
-using System.Collections.ObjectModel;
-using SomerenModel;
+using System.Data.SqlClient;
 
 namespace SomerenDAL
 {
@@ -14,7 +10,7 @@ namespace SomerenDAL
     {
         // Thomas Eddyson
         public List<WeekRoster> Db_Get_All_WeekRoster()
-        {            
+        {
             string query = "SELECT p.Voornaam, p.Achternaam, a.Begintijd, a.Eindtijd, a.Soort FROM[Persoon] as p JOIN[Docent] AS d ON p.PersoonID = d.PersoonID JOIN[Begeleider] AS b ON d.DocentID = b.DocentID JOIN[Activiteit] as a ON b.ActiviteitID = a.ActiviteitID";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
@@ -23,7 +19,7 @@ namespace SomerenDAL
         private List<WeekRoster> ReadTables(DataTable dataTable)
         {
             List<WeekRoster> activityRosters = new List<WeekRoster>();
-            WeekRoster date = new WeekRoster();            
+            WeekRoster date = new WeekRoster();
 
             // Check if datatable is null
             if (dataTable == null)
@@ -34,7 +30,7 @@ namespace SomerenDAL
             foreach (DataRow dr in dataTable.Rows)
             {
                 date.Date = (DateTime)dr["Begintijd"];
-                date.DayOfWeek = (int)date.Date.DayOfWeek;                
+                date.DayOfWeek = (int)date.Date.DayOfWeek;
 
                 WeekRoster activityRoster = new WeekRoster()
                 {
@@ -50,6 +46,5 @@ namespace SomerenDAL
 
             return activityRosters;
         }
-
     }
 }

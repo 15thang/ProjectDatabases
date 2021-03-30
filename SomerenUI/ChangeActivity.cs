@@ -58,7 +58,7 @@ namespace SomerenUI
                                 exists = true;
                             }
                         }
-                        if (exists == false) 
+                        if (exists == false)
                         {
                             DialogResult confirm = MessageBox.Show($"The selected activity will be changed to have the values:\n\nActivity Name:\t{activity.Type}\nBegin Time:\t{activity.BeginTime.ToString("dd/MM/yyyy HH:mm")}\nEnd Time:\t{activity.EndTime.ToString("dd/MM/yyyy HH:mm")}", "Confirmation", MessageBoxButtons.OKCancel);
                             if (confirm == DialogResult.OK) // If confirmed, change item

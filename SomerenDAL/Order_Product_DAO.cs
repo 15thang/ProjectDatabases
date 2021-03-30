@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using SomerenModel;
 using System.Data.SqlClient;
-using System.Data;
-using System.Collections.ObjectModel;
-using SomerenModel;
 
 namespace SomerenDAL
 {
@@ -29,6 +22,5 @@ namespace SomerenDAL
             Product_DAO product_dao = new Product_DAO();
             product_dao.Update_Stock(order_Product);
         }
-
     }
 }

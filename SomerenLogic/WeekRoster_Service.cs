@@ -2,17 +2,13 @@
 using SomerenModel;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SomerenLogic
 {
     public class WeekRoster_Service : Base_Service
     {
         // Thomas Eddyson
-        WeekRoster_DAO activityRoster_db = new WeekRoster_DAO();
+        private WeekRoster_DAO activityRoster_db = new WeekRoster_DAO();
 
         public List<WeekRoster> GetWeekRosters()
         {
@@ -33,14 +29,12 @@ namespace SomerenLogic
                 a.FirstName = "Bob";
                 a.LastName = "Ross";
                 a.ActivityName = "Happy Painting";
-                a.BeginTime = new DateTime(2020,12,12,12,12,12);
+                a.BeginTime = new DateTime(2020, 12, 12, 12, 12, 12);
                 a.EndTime = new DateTime(2020, 12, 12, 12, 12, 12);
                 rosters.Add(a);
 
                 return rosters;
-
             }
-
         }
     }
 }

@@ -2,16 +2,12 @@
 using SomerenModel;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SomerenLogic
 {
     public class Supervisor_Service : Base_Service
     {
-        Supervisor_DAO supervisor_db = new Supervisor_DAO();
+        private Supervisor_DAO supervisor_db = new Supervisor_DAO();
 
         // Ruben Stoop
         // Opdracht B Week 4
@@ -115,10 +111,11 @@ namespace SomerenLogic
                 List<Supervisor> supervisors = new List<Supervisor>();
                 Supervisor s = new Supervisor();
                 s.ActivityID = -1;
-                s.TeacherID = -1; 
+                s.TeacherID = -1;
                 return supervisors;
             }
         }
+
         // Tim Roffelsen
         // Searches for activities supervised by the teacher with given teacherID
         public string FindActivities(int tId, List<Activity> activities, List<Supervisor> supervisors)
@@ -140,7 +137,7 @@ namespace SomerenLogic
                 foreach (Activity activity in activities) // run through list activities
                 {
                     if (supervisor.ActivityID == activity.ActivityId) // true if activityID matches for both the supervisor and activity
-                    {   
+                    {
                         if (activitiesString != "")
                         {
                             activitiesString += ", "; // add comma after first word, but not after last
@@ -151,6 +148,7 @@ namespace SomerenLogic
             }
             return activitiesString; // return string with all activities
         }
+
         // Tim Roffelsen
         // Searches for supervisors matching activityId
         public string FindSupervisors(int aId, List<Supervisor> supervisors)

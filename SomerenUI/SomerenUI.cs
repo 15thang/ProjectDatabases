@@ -2,16 +2,9 @@
 using SomerenModel;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Globalization;
-using System.Threading;
+using System.Windows.Forms;
 
 namespace SomerenUI
 {
@@ -19,11 +12,13 @@ namespace SomerenUI
     {
         // Tim Roffelsen
         private ListViewColumnSorter lvwColumnSorter; // column sort functionality
+
         private User User; // user perms
 
         // Ruben Stoop
         // Important list to check amounts
         public static List<Product> ProductsList = new List<Product>();
+
         public SomerenUI()
         {
             InitializeComponent();
@@ -39,12 +34,12 @@ namespace SomerenUI
             this.SuperVisor_LV.ListViewItemSorter = lvwColumnSorter;
             this.ActivitySuperVisor_LV.ListViewItemSorter = lvwColumnSorter;
 
-
             //Ruben Stoop
             this.Shown += new System.EventHandler(this.SomerenUI_Shown);
             //Centers the form when loaded
             this.StartPosition = FormStartPosition.CenterParent;
         }
+
         private void SomerenUI_Shown(object sender, EventArgs e)
         {
             SomerenLogic.AdminRequest_Service adminrequest = new SomerenLogic.AdminRequest_Service();
@@ -53,7 +48,7 @@ namespace SomerenUI
             // Week 5
             // Opdracht B
             // Sends admin users a notification
-            if(Checkexistance)
+            if (Checkexistance)
             {
                 AdminNotification();
             }
@@ -91,7 +86,7 @@ namespace SomerenUI
             // Tim Roffelsen
             this.User = null; // sets user to null
             LoginForm loginForm = new LoginForm(); // logout
-            
+
             this.Hide();
             loginForm.ShowDialog(); // open login form
             this.Close();
@@ -107,21 +102,21 @@ namespace SomerenUI
         // Week 5
         private void AdminNotification()
         {
-            if(User.IsAdmin)
+            if (User.IsAdmin)
             {
                 SomerenLogic.AdminRequest_Service adminrequest = new SomerenLogic.AdminRequest_Service();
                 List<User> Usersadminreq = adminrequest.GetUsersWithRequest();
 
                 string users = "";
 
-                foreach(User u in Usersadminreq)
+                foreach (User u in Usersadminreq)
                 {
                     users += u.UserName + "\n";
                 }
                 MessageBox.Show("These users have requested the admin role: \n" + users, "Notifcation");
-
             }
         }
+
         private void AlignPanels()
         {
             Point point = new Point(10, 30);
@@ -138,7 +133,6 @@ namespace SomerenUI
             pnl_Supervisors.Location = point;
             pnl_WeekRoster.Location = point;
             pnl_User.Location = point;
-
         }
 
         private void HideAllPanels()
@@ -273,7 +267,7 @@ namespace SomerenUI
                 // Tim Roffelsen
                 // hide all other panels
                 HideAllPanels();
-                
+
                 // show activities
                 pnl_Activities.Show();
 
@@ -408,7 +402,6 @@ namespace SomerenUI
                         }
                     }
 
-
                     string[] arr = new string[6];
                     ListViewItem li;
 
@@ -422,8 +415,6 @@ namespace SomerenUI
 
                     li = new ListViewItem(arr);
                     SuperVisor_LV.Items.Add(li);
-
-
                 }
                 foreach (ColumnHeader ch in SuperVisor_LV.Columns) // dynamically change column width
                 {
@@ -434,7 +425,6 @@ namespace SomerenUI
                     ch.Width = -2;
                 }
             }
-
             else if (panelName == "Stock")
             {
                 // Tim Roffelsen
@@ -446,7 +436,8 @@ namespace SomerenUI
 
                 // refresh stock
                 Stock_Refresh();
-            } else if (panelName == "User")
+            }
+            else if (panelName == "User")
             {
                 LoadUserPanel();
             }
@@ -487,25 +478,29 @@ namespace SomerenUI
                 ListViewGroup friday = new ListViewGroup("Vrijdagen", HorizontalAlignment.Left);
 
                 foreach (SomerenModel.WeekRoster wkr in weekRosters)
-                {                    
-
+                {
                     switch (wkr.DayOfWeek)
                     {
-                        case 1:                            
+                        case 1:
                             listViewWeekRoster.Items.Add(new ListViewItem(string.Format("Activiteit: {0} \nBegeleider: {1}, \nBegin tijd: {2}, \nEind tijd: {3}", wkr.ActivityName, wkr.FirstName + " " + wkr.LastName, wkr.BeginTime.ToString("MM dd HH:mm"), wkr.EndTime.ToString("MM HH:mm"), -2), monday));
                             break;
-                        case 2:                            
+
+                        case 2:
                             listViewWeekRoster.Items.Add(new ListViewItem(string.Format("Activiteit: {0} \nBegeleider: {1}, \nBegin tijd: {2}, \n Eind tijd: {3}", wkr.ActivityName, wkr.FirstName + " " + wkr.LastName, wkr.BeginTime.ToString("MM HH:mm"), wkr.EndTime.ToString("MM HH:mm"), -2), tuesday));
                             break;
-                        case 3:                            
+
+                        case 3:
                             listViewWeekRoster.Items.Add(new ListViewItem(string.Format("Activiteit: {0} \nBegeleider: {1}, \nBegin tijd: {2}, \nEind tijd: {3}", wkr.ActivityName, wkr.FirstName + " " + wkr.LastName, wkr.BeginTime.ToString("MM HH:mm"), wkr.EndTime.ToString("MM HH:mm"), -2), wednesday));
                             break;
-                        case 4:                            
-                            listViewWeekRoster.Items.Add(new ListViewItem(string.Format("Activiteit: {0} \nBegeleider: {1}, \nBegin tijd: {2}, \nEind tijd: {3}", wkr.ActivityName, wkr.FirstName + " " + wkr.LastName, wkr.BeginTime.ToString("MM MM HH:mm"), wkr.EndTime.ToString("MM HH:mm"), -2), thursday));                            
+
+                        case 4:
+                            listViewWeekRoster.Items.Add(new ListViewItem(string.Format("Activiteit: {0} \nBegeleider: {1}, \nBegin tijd: {2}, \nEind tijd: {3}", wkr.ActivityName, wkr.FirstName + " " + wkr.LastName, wkr.BeginTime.ToString("MM MM HH:mm"), wkr.EndTime.ToString("MM HH:mm"), -2), thursday));
                             break;
+
                         case 5:
-                            listViewWeekRoster.Items.Add(new ListViewItem(string.Format("Activiteit: {0} \nBegeleider: {1}, \nBegin tijd: {2}, \nEind tijd: {3}", wkr.ActivityName, wkr.FirstName + " " + wkr.LastName, wkr.BeginTime.ToString("MM HH:mm"), wkr.EndTime.ToString("MM HH:mm"), -2), friday));                            
+                            listViewWeekRoster.Items.Add(new ListViewItem(string.Format("Activiteit: {0} \nBegeleider: {1}, \nBegin tijd: {2}, \nEind tijd: {3}", wkr.ActivityName, wkr.FirstName + " " + wkr.LastName, wkr.BeginTime.ToString("MM HH:mm"), wkr.EndTime.ToString("MM HH:mm"), -2), friday));
                             break;
+
                         default:
                             break;
                     }
@@ -515,7 +510,7 @@ namespace SomerenUI
                 listViewWeekRoster.Groups.Add(tuesday);
                 listViewWeekRoster.Groups.Add(wednesday);
                 listViewWeekRoster.Groups.Add(thursday);
-                listViewWeekRoster.Groups.Add(friday);                
+                listViewWeekRoster.Groups.Add(friday);
             }
 
             switch (panelName)
@@ -528,6 +523,7 @@ namespace SomerenUI
                     LblQrtlFirstMonth.Text = "Januari";
                     LblQrtlLastMonth.Text = "Maart";
                     break;
+
                 case "Q2Click":
                     get_QuarterTaxResult("Q2");
                     Lbl_VatTarief.Text = "BTW Tarief Kwartaal 2";
@@ -535,6 +531,7 @@ namespace SomerenUI
                     LblQrtlFirstMonth.Text = "April";
                     LblQrtlLastMonth.Text = "Juni";
                     break;
+
                 case "Q3Click":
                     get_QuarterTaxResult("Q3");
                     Lbl_VatTarief.Text = "BTW Tarief Kwartaal 3";
@@ -542,6 +539,7 @@ namespace SomerenUI
                     LblQrtlFirstMonth.Text = "Juli";
                     LblQrtlLastMonth.Text = "September";
                     break;
+
                 case "Q4Click":
                     get_QuarterTaxResult("Q4");
                     Lbl_VatTarief.Text = "BTW Tarief Kwartaal 4";
@@ -565,7 +563,7 @@ namespace SomerenUI
 
             vatService.SetQuaterString(quarterName);
 
-            List<Vat> vatList = vatService.GetVats();            
+            List<Vat> vatList = vatService.GetVats();
 
             foreach (SomerenModel.Vat a in vatList)
             {
@@ -601,12 +599,10 @@ namespace SomerenUI
         private void drinkLV_SelectedIndexChanged(object sender, EventArgs e)
         {
             // Adds the item to selected items
-            if (drinkLV.SelectedItems.Count > 0) 
+            if (drinkLV.SelectedItems.Count > 0)
             {
-
-
                 int ProductID = int.Parse(drinkLV.SelectedItems[0].Text);
-                
+
                 // Checks if product already exists in Selected drinks
                 foreach (ListViewItem item in selectedDrinks_lv.Items)
                 {
@@ -632,7 +628,7 @@ namespace SomerenUI
                         // Add the items
                         arr[0] = form.ProductID.ToString("00");
                         arr[1] = form.ProductName;
-                        arr[2] = form.Price.ToString("0.00") ;
+                        arr[2] = form.Price.ToString("0.00");
                         arr[3] = form.Amount.ToString();
 
                         li = new ListViewItem(arr);
@@ -647,10 +643,9 @@ namespace SomerenUI
             }
         }
 
-
         private void dashboardToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           //
+            //
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -697,6 +692,7 @@ namespace SomerenUI
         {
             showPanel("OrderDrinks");
         }
+
         private void stockToolStripMenuItem_Click(object sender, EventArgs e)
         {
             showPanel("Stock");
@@ -747,10 +743,8 @@ namespace SomerenUI
             showPanel("User");
         }
 
-
         private void ActivitySuperVisor_LV_ColumnClick(object sender, ColumnClickEventArgs e)
         {
-
             // Tim Roffelsen
             // Determine if clicked column is already the column that is being sorted.
             if (e.Column == lvwColumnSorter.SortColumn)
@@ -775,8 +769,6 @@ namespace SomerenUI
             // Perform the sort with these new sort options.
             this.ActivitySuperVisor_LV.Sort();
         }
-
-        
 
         private void SuperVisor_LV_ColumnClick(object sender, ColumnClickEventArgs e)
         {
@@ -804,7 +796,6 @@ namespace SomerenUI
             // Perform the sort with these new sort options.
             this.SuperVisor_LV.Sort();
         }
-
 
         private void listViewActivities_ColumnClick(object sender, ColumnClickEventArgs e)
         {
@@ -969,6 +960,7 @@ namespace SomerenUI
                 }
             }
         }
+
         private bool alreadyExist(string _text, ref char KeyChar)
         {
             // Tim Roffelsen
@@ -978,9 +970,10 @@ namespace SomerenUI
                 KeyChar = '.';
                 return true;
             }
-            
+
             return false;
         }
+
         private void btn_Add_Click(object sender, EventArgs e)
         {
             // Tim Roffelsen
@@ -998,7 +991,7 @@ namespace SomerenUI
                     }
                 }
                 // Get product values from input
-                Product product = new Product(0, cb_AlcoholAdd.Checked, tb_ProductNameAdd.Text, Convert.ToDouble(tb_PriceAdd.Text), Convert.ToInt32(num_AmountAdd.Value), 0); 
+                Product product = new Product(0, cb_AlcoholAdd.Checked, tb_ProductNameAdd.Text, Convert.ToDouble(tb_PriceAdd.Text), Convert.ToInt32(num_AmountAdd.Value), 0);
                 // Show confirmation box
                 DialogResult confirm = MessageBox.Show($"The following item will be made:\n\nName:\t\t{tb_ProductNameAdd.Text}\nPrice:\t\t€ {double.Parse(tb_PriceAdd.Text).ToString("0.00")}\nAlcoholic:\t{cb_AlcoholAdd.Checked}\nAmount:\t\t{Convert.ToInt32(num_AmountAdd.Value)}", "Confirmation", MessageBoxButtons.OKCancel);
                 // If confirmed, add item
@@ -1030,7 +1023,8 @@ namespace SomerenUI
             }
             cbox_ChangeProduct.Width = DropDownWidth(cbox_ChangeProduct); // Set width of combobox
         }
-        int DropDownWidth(ComboBox myCombo)
+
+        private int DropDownWidth(ComboBox myCombo)
         {
             // Get width of longest item in combobox
             int maxWidth = 0, temp = 0;
@@ -1044,6 +1038,7 @@ namespace SomerenUI
             }
             return maxWidth;
         }
+
         private void cbox_ChangeProduct_SelectedIndexChanged(object sender, EventArgs e)
         {
             // Tim Roffelsen
@@ -1142,7 +1137,8 @@ namespace SomerenUI
                 MessageBox.Show("Please select a product to remove.", "Error!");
             }
         }
-        void Stock_Refresh() // Refreshes listviews and dropdowns
+
+        private void Stock_Refresh() // Refreshes listviews and dropdowns
         {
             // Tim Roffelsen
             // fill the stock listview within the stock panel with a list of products
@@ -1226,6 +1222,7 @@ namespace SomerenUI
             }
             cbox_ChangeProduct.Width = DropDownWidth(cbox_ChangeProduct); // Set width of combobox
         }
+
         private void btn_StockRefresh_Click(object sender, EventArgs e)
         {
             // Tim Roffelsen
@@ -1300,7 +1297,6 @@ namespace SomerenUI
             update_TotalPrice();
         }
 
-
         // Ruben Stoop
         private void orderButton_Click(object sender, EventArgs e)
         {
@@ -1308,11 +1304,10 @@ namespace SomerenUI
             //Makes The order service
             SomerenLogic.Order_Service order_Service = new SomerenLogic.Order_Service();
 
-
             List<Order_Product> orderProducts = new List<Order_Product>();
 
             //Order Product
-            if(selectedDrinks_lv.Items.Count > 0)
+            if (selectedDrinks_lv.Items.Count > 0)
             {
                 foreach (ListViewItem item in selectedDrinks_lv.Items)
                 {
@@ -1350,8 +1345,8 @@ namespace SomerenUI
                 {
                     MessageBox.Show("Select a student.", "Error!");
                 }
-
-            } else
+            }
+            else
             {
                 MessageBox.Show("There are no products in the order", "Error!");
             }
@@ -1427,7 +1422,7 @@ namespace SomerenUI
                 string[] arr = new string[5];
                 ListViewItem li;
 
-                // Add to 
+                // Add to
                 Product listProd = new Product(p.ProductID, p.IsAlcohol, p.ProductName, p.Price, p.Stock, 0);
                 ProductsList.Add(listProd);
                 // Add the items
@@ -1462,7 +1457,6 @@ namespace SomerenUI
             // Ruben Stoop
             // Selected Drinks
             selectedDrinks_lv.Clear();
-
 
             selectedDrinks_lv.View = View.Details;
             selectedDrinks_lv.GridLines = true;
@@ -1557,6 +1551,7 @@ namespace SomerenUI
                 ch.Width = -2;
             }
         }
+
         private void listViewActivities_DoubleClick(object sender, EventArgs e)
         {
             // Tim Roffelsen
@@ -1674,7 +1669,6 @@ namespace SomerenUI
             listViewTeachers.Sorting = SortOrder.Ascending;
             listViewTeachers.MultiSelect = false;
 
-
             // add column header
             listViewTeachers.Columns.Add("TeacherID");
             listViewTeachers.Columns.Add("First Name");
@@ -1703,7 +1697,6 @@ namespace SomerenUI
 
         private void editBTN_Click(object sender, EventArgs e)
         {
-
             int teacherID = 0;
             string panelName = "EditTeacher";
             // Get the student
@@ -1736,13 +1729,15 @@ namespace SomerenUI
             if (User.AdminRequest)
             {
                 MessageBox.Show("U have already requested to be an admin!", "Error!");
-            } else
+            }
+            else
             {
                 adminrequest.InsertAdminRequest(User.UserID);
-                if(adminrequest.Error)
+                if (adminrequest.Error)
                 {
                     MessageBox.Show(adminrequest.ErrorText, "Error!");
-                } else
+                }
+                else
                 {
                     User.AdminRequest = true;
                     MessageBox.Show("Your request to become an admin has been sent", "Succes!");
@@ -1762,13 +1757,11 @@ namespace SomerenUI
             // clear the listview and comboboxes
             adminRequest_LV.Clear();
 
-
             //Setting up Supervisor listview
             adminRequest_LV.View = View.Details;
             adminRequest_LV.GridLines = true;
             adminRequest_LV.FullRowSelect = true;
             adminRequest_LV.Sorting = SortOrder.Ascending;
-
 
             // add column header
             adminRequest_LV.Columns.Add("User ID");
@@ -1808,7 +1801,6 @@ namespace SomerenUI
                 pnl_UserUser.Hide();
                 pnl_UserAdmin.Show();
                 LoadUserAdminRequestLV();
-
             }
             else if (User.IsAdmin == false)
             {
@@ -1834,10 +1826,11 @@ namespace SomerenUI
 
                 adminrequest.MakeAdmin(UserID);
 
-                if(adminrequest.Error)
+                if (adminrequest.Error)
                 {
                     MessageBox.Show(adminrequest.ErrorText);
-                } else
+                }
+                else
                 {
                     //Shows messagebox and resets panel
                     LoadUserAdminRequestLV();
@@ -1853,7 +1846,6 @@ namespace SomerenUI
         private void rejectadminBTN_Click(object sender, EventArgs e)
         {
             SomerenLogic.AdminRequest_Service adminrequest = new SomerenLogic.AdminRequest_Service();
-
 
             int UserID = 0;
             // Get the student

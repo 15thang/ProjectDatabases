@@ -2,16 +2,12 @@
 using SomerenModel;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SomerenLogic
 {
     public class Order_Service : Base_Service
     {
-        Order_DAO order_db = new Order_DAO();
+        private Order_DAO order_db = new Order_DAO();
 
         // Ruben Stoop
         // Opdracht B
